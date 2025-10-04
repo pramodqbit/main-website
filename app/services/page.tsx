@@ -9,7 +9,6 @@ import { TextFadeIn } from "@/components/animation/text-animation";
 import { TextAnimate } from "@/components/ui/text-animate";
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
 import { OrbitingCircles } from "@/components/ui/orbiting-circles";
-import { Marquee } from "@/components/ui/marquee";
 import { Iphone } from "@/components/ui/iphone";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
