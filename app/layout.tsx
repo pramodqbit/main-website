@@ -5,6 +5,7 @@ import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import SmoothScrolling from "@/components/animation/smooth-scrolling";
 
+
 const geistSans = Geist({
 	variable: "--font-geist-sans",
 	subsets: ["latin"],
