@@ -3,6 +3,7 @@ export type Service = {
 	description: string;
 	learn_more: string;
 	images: string[];
+	tags: string[];
 };
 
 export type ServicesData = Service[];

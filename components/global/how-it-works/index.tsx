@@ -4,6 +4,9 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
+import { TextFadeIn } from "@/components/animation/text-animation";
 import {
 	Card,
 	CardHeader,
@@ -12,6 +15,8 @@ import {
 	CardContent,
 	CardAction,
 } from "@/components/ui/card";
+import { Brain } from "lucide-react";
+import { SectionHeader } from "../section-layout";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -127,19 +132,22 @@ export default function HowItWorks() {
 	}, []);
 
 	return (
-		<div ref={sectionRef} className='relative  border-l border-r '>
+		<div
+			ref={sectionRef}
+			className='relative border-l border-r overflow-hidden'>
+			{/* Header Section with SectionLayout styling */}
+
+			{/* Horizontal Scrolling Section */}
 			<div ref={containerRef} className='relative min-h-screen'>
 				{/* Background gradient */}
-				<div className='absolute inset-0  pointer-events-none' />
-
-				{/* Header Section */}
-				<div className='absolute top-10 left-10 md:left-20 z-20 max-w-md'>
-					<h2 className='text-[16px] md:text-3xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'>
-						How It Works
-					</h2>
-					<p className='text-[12px] md:text-lg text-muted-foreground'>
-						Our proven process transforms your ideas into exceptional software
-					</p>
+				<div className='absolute inset-0 pointer-events-none' />
+				<div className='container mx-auto px-4 py-16'>
+					<SectionHeader
+						badgeLabel='How It Works'
+						badgeIcon={<Brain size={24} className='text-primary' />}
+						title='Our Proven Process for Success'
+						description='From idea to implementation, we follow a structured approach to deliver results.'
+					/>
 				</div>
 
 				{/* Horizontal scrolling container */}
