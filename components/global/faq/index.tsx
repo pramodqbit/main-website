@@ -6,6 +6,7 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "@/components/ui/accordion";
+import { AnimatedList } from "@/components/ui/animated-list";
 
 export default function FAQ() {
 	const faqs = [
@@ -57,19 +58,21 @@ export default function FAQ() {
 			<div className=''>
 				<div className=' rounded-2xl  '>
 					<Accordion type='single' collapsible className='space-y-1'>
-						{faqs.map((faq, index) => (
-							<AccordionItem
-								key={index}
-								value={`item-${index}`}
-								className='border-border/50'>
-								<AccordionTrigger className='cursor-pointer text-base lg:text-lg font-semibold text-primary hover:text-primary transition-colors px-2'>
-									{faq.question}
-								</AccordionTrigger>
-								<AccordionContent className='text-foreground/70 leading-relaxed px-2'>
-									{faq.answer}
-								</AccordionContent>
-							</AccordionItem>
-						))}
+						<AnimatedList delay={500}>
+							{faqs.map((faq, index) => (
+								<AccordionItem
+									key={index}
+									value={`item-${index}`}
+									className='border-border/50'>
+									<AccordionTrigger className='cursor-pointer text-sm lg:text-lg font-semibold text-primary hover:text-primary transition-colors px-2'>
+										{faq.question}
+									</AccordionTrigger>
+									<AccordionContent className='text-[10px] lg:text-base text-foreground/70 leading-relaxed px-2'>
+										{faq.answer}
+									</AccordionContent>
+								</AccordionItem>
+							))}
+						</AnimatedList>
 					</Accordion>
 				</div>
 

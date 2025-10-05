@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/card";
 import { Brain } from "lucide-react";
 import { SectionHeader } from "../section-layout";
+import { cn } from "@/lib/utils";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -78,7 +79,7 @@ const steps: Step[] = [
 	},
 ];
 
-export default function HowItWorks() {
+export default function HowItWorks({ className }: { className?: string }) {
 	const sectionRef = useRef<HTMLDivElement>(null);
 	const containerRef = useRef<HTMLDivElement>(null);
 	const horizontalRef = useRef<HTMLDivElement>(null);
@@ -134,26 +135,26 @@ export default function HowItWorks() {
 	return (
 		<div
 			ref={sectionRef}
-			className='relative border-l border-r overflow-hidden'>
+			className={cn("relative border-l border-r overflow-hidden", className)}>
 			{/* Header Section with SectionLayout styling */}
 
 			{/* Horizontal Scrolling Section */}
 			<div ref={containerRef} className='relative min-h-screen'>
 				{/* Background gradient */}
 				<div className='absolute inset-0 pointer-events-none' />
-				<div className='container mx-auto px-4 py-16'>
+				<div className='container mx-auto px-4 py-16 '>
 					<SectionHeader
 						badgeLabel='How It Works'
 						badgeIcon={<Brain size={24} className='text-primary' />}
 						title='Our Proven Process for Success'
-						description='From idea to implementation, we follow a structured approach to deliver results.'
+						description='From idea to implementation, we follow a structured approach to deliver results. Our process ensures clear communication, transparency, and collaboration at every stage—so you always know what to expect and can see your vision come to life step by step.'
 					/>
 				</div>
 
 				{/* Horizontal scrolling container */}
 				<div
 					ref={horizontalRef}
-					className='absolute top-0 left-0 h-screen flex items-center gap-8 px-10 md:px-20'
+					className='absolute md:top-5 top-8 left-0 h-screen flex items-center gap-8 px-10 md:px-20'
 					style={{ paddingLeft: "40vw", paddingRight: "40vw" }}>
 					{steps.map((step, index) => (
 						<div

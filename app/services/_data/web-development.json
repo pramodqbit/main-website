@@ -1,0 +1,48 @@
+{
+	"slug": "web-development",
+	"tags": [
+		"Web Development",
+		"React",
+		"Next.js",
+		"Tailwind CSS",
+		"TypeScript",
+		"Node.js",
+		"MongoDB"
+	],
+	"title": "Web Development",
+	"description": "We develop web applications that are fast, responsive, and easy to use.",
+	"section_name": "Our Tech Stack",
+	"section_description": "We use the latest and greatest technologies to build web applications that are fast, responsive, and easy to use. Our team leverages modern frameworks, robust backend solutions, and scalable databases to ensure your web projects are secure, maintainable, and future-proof. From intuitive user interfaces to efficient server-side logic, we deliver comprehensive solutions tailored to your business needs.",
+	"techstack": [
+		{
+			"name": "React",
+			"image": "/icons/react.webp",
+			"description": "React is a JavaScript library for building user interfaces."
+		},
+		{
+			"name": "Next.js",
+			"image": "/icons/next.webp",
+			"description": "Next.js is a React framework for building server-side rendered and static websites."
+		},
+		{
+			"name": "Tailwind CSS",
+			"image": "/icons/tailwind.webp",
+			"description": "Tailwind CSS is a CSS framework for building custom user interfaces."
+		},
+		{
+			"name": "TypeScript",
+			"image": "/icons/typescript.webp",
+			"description": "TypeScript is a superset of JavaScript that adds static typing."
+		},
+		{
+			"name": "Node.js",
+			"image": "/icons/node.webp",
+			"description": "Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine."
+		},
+		{
+			"name": "MongoDB",
+			"image": "/icons/mongodb.webp",
+			"description": "MongoDB is a NoSQL database that uses JSON-like documents with schemas."
+		}
+	]
+}

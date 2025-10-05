@@ -7,12 +7,13 @@ export default function Hero() {
 
 	return (
 		<div className='flex flex-col items-center justify-center  border-l border-r pb-10'>
-			<p className='relative inline-block text-right text-[100px] lg:text-[245px] lg:leading-[320px] lg:tracking-[80px] ml-2'>
+			<h1 className='relative inline-block text-right text-[100px] lg:text-[245px] lg:leading-[320px] lg:tracking-[80px] ml-2'>
 				{title.map((item, index) => (
 					<span key={index} className='relative inline-block'>
 						{/* Stroke layer */}
 						<Span
 							delay={index * 0.1}
+							as='span'
 							className='absolute lg:top-[17px] top-[7px] font-bold bg-gradient-to-r from-[#8A38F5] to-[#25D0FF] bg-clip-text text-transparent inset-0 seven-segment-font'>
 							{item}
 						</Span>
@@ -20,15 +21,17 @@ export default function Hero() {
 						{/* Fill layer */}
 						<Span
 							delay={index * 0.1}
+							as='span'
 							className='relative seven-segment-font text-white'>
 							{item}
 						</Span>
 					</span>
 				))}
-			</p>
+			</h1>
 
 			<Span
 				delay={0.3}
+				as='h2'
 				className='text-center lg:text-[48px] md:text-[24px] text-[16px] font-semibold bg-gradient-to-r from-[#8A38F5] to-[#25D0FF] bg-clip-text text-transparent'>
 				Crafting Digital Experiences That Drive Results
 			</Span>

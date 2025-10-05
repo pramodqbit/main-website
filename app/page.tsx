@@ -46,6 +46,7 @@ export default function Home() {
 				<Hero />
 				<OurMarque Items={Items} />
 				<SectionLayout
+					id='about'
 					badgeIcon={<Award size={ICON_SIZE} className='text-primary' />}
 					badgeLabel='About Us'
 					title='Empowering Your Vision with Innovative Digital Solutions'
@@ -54,17 +55,21 @@ export default function Home() {
 				</SectionLayout>
 
 				<Services />
-
-				<HowItWorks />
+				<section id='how-it-works'>
+					<HowItWorks />
+				</section>
 
 				<SectionLayout
+					id='faq'
 					badgeIcon={<HelpCircle size={ICON_SIZE} className='text-primary' />}
 					badgeLabel='FAQ'
 					title='Frequently Asked Questions'
 					description='Answers to common questions about our services and solutions.'>
 					<FAQ />
 				</SectionLayout>
-				<ContactUs />
+				<section id='contact-us'>
+					<ContactUs />
+				</section>
 			</main>
 			<Footer />
 		</div>
