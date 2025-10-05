@@ -29,12 +29,18 @@ export const SectionHeader = ({
 					<span className='text-[8px] md:text-[12px]'>{badgeLabel}</span>
 				</AnimatedGradientText>
 			</Badge>
-			<TextFadeIn className=' text-md md:text-4xl font-bold mb-0 md:mb-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-tight text-center'>
+			<TextFadeIn
+				delay={0.3}
+				as='h2'
+				className=' text-md md:text-4xl font-bold mb-0 md:mb-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-tight text-center'>
 				{title}
 			</TextFadeIn>
-			<p className=' lg:w-[1000px] w-[300px]  md:text-md text-[10px] md:text-base text-center text-muted-foreground'>
+			<TextFadeIn
+				as='p'
+				delay={0.3}
+				className=' lg:w-[1000px] w-[300px]  md:text-md text-[10px] md:text-base text-center text-muted-foreground'>
 				{description}
-			</p>
+			</TextFadeIn>
 		</div>
 	);
 };

@@ -23,7 +23,7 @@ export function TextFadeIn({
 		<MotionComponent
 			initial={{ opacity: 0 }}
 			whileInView={{ opacity: 1 }}
-			viewport={{ once, amount: 0.3 }}
+			viewport={{ once, amount: 0.7 }}
 			transition={{ duration: 0.8, ease: "easeOut", delay }}
 			className={className}>
 			{children}
