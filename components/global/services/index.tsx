@@ -86,8 +86,8 @@ const services_data: ServicesData = [
 
 export default function Services() {
 	return (
-		<div className='p-10 border relative'>
+		<section id='services' className='p-10 border relative'>
 			<Carsoule data={services_data} />
-		</div>
+		</section>
 	);
 }

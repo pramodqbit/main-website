@@ -39,8 +39,8 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 
 		const ctx = gsap.context(() => {
 			// Get responsive start/end values based on screen size
-			const startValue = isMobile ? "top 10%" : "top 10%";
-			const endValue = isMobile ? "60% 5%" : "60% 5%";
+			const startValue = isMobile ? "top 5%" : "top 10%";
+			const endValue = isMobile ? "60% 0%" : "60% 5%";
 
 			ScrollTrigger.create({
 				trigger: containerRef.current,
@@ -81,14 +81,14 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 		<div
 			ref={containerRef}
 			className='relative  overflow-hidden'
-			style={{ height: `${data.length * (isMobile ? 32 : 37)}vh` }}>
+			style={{ height: `${data.length * (isMobile ? 35 : 37)}vh` }}>
 			<div ref={contentRef} className='relative min-h-screen'>
 				<div className='container mx-auto '>
 					<SectionHeader
 						badgeLabel='Services'
 						badgeIcon={<Code2 size={24} className='text-primary' />}
 						title='Comprehensive Digital Solutions Tailored to Your Business'
-						description='Explore our full spectrum of digital services designed to elevate your business at every stage. From custom web and mobile development to strategic marketing, SEO, and stunning graphic design, we provide end-to-end solutions that empower your brand, streamline operations, and accelerate growth. Partner with us to transform your ideas into impactful digital experiences that drive measurable results.'
+						description='From custom web and mobile development to strategic marketing, SEO, and graphic design, we deliver end-to-end digital solutions that empower your brand and drive measurable results.'
 					/>
 				</div>
 				<div className='w-full px-4 md:px-8'>
@@ -104,26 +104,26 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 								initial={{ opacity: 0, scale: 0.9 }}
 								animate={{ opacity: 1, scale: 1 }}
 								transition={{ duration: 0.6, ease: "easeOut" }}
-								className='lg:w-[440px] w-[220px] md:ml-10 ml-0'>
+								className='lg:w-[440px] w-[220px] md:ml-10 ml-5 mx-auto md:mx-0'>
 								<HexRing center={center} ring={ring} iconSize={iconSize} />
 							</motion.div>
 
-							<div className='max-w-[520px] flex flex-col gap-4'>
+							<div className='max-w-[520px] flex flex-col md:gap-4 gap-2'>
 								<motion.h1
 									initial={{ opacity: 0, y: 20 }}
 									animate={{ opacity: 1, y: 0 }}
 									transition={{ duration: 0.5, delay: 0.1 }}
-									className='text-2xl font-semibold mb-2 text-center lg:text-left text-[16px] lg:text-[24px]'>
+									className=' font-semibold md:mb-2 mb-0 text-center lg:text-left text-[16px] lg:text-[24px]'>
 									{item.title}
 								</motion.h1>
 								<motion.p
 									initial={{ opacity: 0, y: 20 }}
 									animate={{ opacity: 1, y: 0 }}
 									transition={{ duration: 0.5, delay: 0.3 }}
-									className='mb-3 text-muted-foreground text-center lg:text-left text-[12px] lg:text-[16px]'>
+									className=' md:mb-3 mb-1 text-muted-foreground text-center lg:text-left text-[10px] lg:text-[16px]'>
 									{item.description}
 								</motion.p>
-								<motion.div className='flex justify-center lg:justify-start gap-2 mb-3  flex-wrap'>
+								<motion.div className='flex justify-center lg:justify-start  md:gap-2 gap-1 md:mb-3 mb-2  flex-wrap'>
 									{item.tags.map((tag, idx) => (
 										<motion.div
 											key={idx}
@@ -133,7 +133,7 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 											<Badge
 												key={idx}
 												variant='outline'
-												className='text-primary text-[12px]  bg-primary/10 rounded-full px-4 py-1'>
+												className='text-primary text-[10px] md:text-[12px]  bg-primary/10 rounded-full  md:px-4 px-2 md:py-1 py-0.5'>
 												{tag}
 											</Badge>
 										</motion.div>
@@ -177,12 +177,13 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 						</div>
 						<p>{data.length}</p>
 					</div>
-					<div className='md:hidden flex items-center justify-center absolute bottom-[-15px] mx-auto left-0 right-0'>
+					<div className='md:hidden flex items-center justify-center absolute top-[18.5%] mx-auto left-0 right-0'>
 						<motion.p
 							key={`current-${current}`}
 							initial={{ opacity: 0, y: -10 }}
 							animate={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.3 }}>
+							transition={{ duration: 0.3 }}
+							className='text-[10px] mr-2'>
 							{current + 1}
 						</motion.p>
 						<div className='w-[300px] h-[4px] rounded-full  relative overflow-hidden bg-gray-200'>
@@ -197,7 +198,7 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 								}}
 							/>
 						</div>
-						<p>{data.length}</p>
+						<p className='text-[10px] ml-2'>{data.length}</p>
 					</div>
 				</div>
 			</div>

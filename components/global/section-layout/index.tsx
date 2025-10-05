@@ -10,6 +10,7 @@ interface SectionLayoutProps {
 	badgeIcon: React.ReactNode;
 	title: string;
 	description: string;
+	id?: string;
 }
 
 export const SectionHeader = ({
@@ -17,21 +18,21 @@ export const SectionHeader = ({
 	badgeIcon,
 	title,
 	description,
-}: Omit<SectionLayoutProps, "children">) => {
+}: Omit<SectionLayoutProps, "children" | "id">) => {
 	return (
-		<div className='flex flex-col gap-5 items-center justify-center mb-10'>
+		<div className='flex flex-col md:gap-5 gap-1 items-center justify-center md:mb-10 mb-5'>
 			<Badge
 				variant='outline'
-				className='flex items-center justify-center gap-2 py-2 px-4 rounded-full border'>
+				className='flex items-center justify-center gap-2 md:py-2 py-1 md:px-4 px-2 rounded-full border text-[10px] md:text-[12px]'>
 				{badgeIcon}
 				<AnimatedGradientText speed={0.5} colorFrom='#8A38F5' colorTo='#25D0FF'>
-					{badgeLabel}
+					<span className='text-[8px] md:text-[12px]'>{badgeLabel}</span>
 				</AnimatedGradientText>
 			</Badge>
-			<TextFadeIn className='text-4xl font-bold mb-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-tight'>
+			<TextFadeIn className=' text-md md:text-4xl font-bold mb-0 md:mb-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-tight text-center'>
 				{title}
 			</TextFadeIn>
-			<p className=' lg:w-[1000px] w-[300px] text-md text-center text-muted-foreground'>
+			<p className=' lg:w-[1000px] w-[300px]  md:text-md text-[10px] md:text-base text-center text-muted-foreground'>
 				{description}
 			</p>
 		</div>
@@ -39,9 +40,12 @@ export const SectionHeader = ({
 };
 
 const SectionLayout = forwardRef<HTMLDivElement, SectionLayoutProps>(
-	({ children, badgeLabel, badgeIcon, title, description }, ref) => {
+	({ children, badgeLabel, badgeIcon, title, description, id }, ref) => {
 		return (
-			<section ref={ref} className='container mx-auto px-4 border py-16'>
+			<section
+				ref={ref}
+				className='container mx-auto px-4 border py-16'
+				id={id}>
 				<SectionHeader
 					badgeLabel={badgeLabel}
 					badgeIcon={badgeIcon}
