@@ -100,7 +100,7 @@ export default async function ServicePage({
 	return (
 		<div>
 			<ServiceBanner title={service.title} />
-			<div className='mt-6 flex w-full   gap-1 flex-nowrap'>
+			<div className='mt-6 flex w-full   gap-2 flex-nowrap'>
 				{service.techstack.map((service) => (
 					<Badge
 						key={service.name}
