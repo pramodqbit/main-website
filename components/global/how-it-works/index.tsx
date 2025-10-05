@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/card";
 import { Brain } from "lucide-react";
 import { SectionHeader } from "../section-layout";
+import { cn } from "@/lib/utils";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -78,7 +79,7 @@ const steps: Step[] = [
 	},
 ];
 
-export default function HowItWorks() {
+export default function HowItWorks({ className }: { className?: string }) {
 	const sectionRef = useRef<HTMLDivElement>(null);
 	const containerRef = useRef<HTMLDivElement>(null);
 	const horizontalRef = useRef<HTMLDivElement>(null);
@@ -134,7 +135,7 @@ export default function HowItWorks() {
 	return (
 		<div
 			ref={sectionRef}
-			className='relative border-l border-r overflow-hidden'>
+			className={cn("relative border-l border-r overflow-hidden", className)}>
 			{/* Header Section with SectionLayout styling */}
 
 			{/* Horizontal Scrolling Section */}

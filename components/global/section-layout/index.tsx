@@ -1,6 +1,7 @@
 import { TextFadeIn } from "@/components/animation/text-animation";
 import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
 import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 import { forwardRef } from "react";
 
 interface SectionLayoutProps {
@@ -46,11 +47,14 @@ export const SectionHeader = ({
 };
 
 const SectionLayout = forwardRef<HTMLDivElement, SectionLayoutProps>(
-	({ children, badgeLabel, badgeIcon, title, description, id }, ref) => {
+	(
+		{ children, badgeLabel, badgeIcon, title, description, id, className },
+		ref,
+	) => {
 		return (
 			<section
 				ref={ref}
-				className='container mx-auto px-4 border py-16'
+				className={cn("container mx-auto px-4 border py-16", className)}
 				id={id}>
 				<SectionHeader
 					badgeLabel={badgeLabel}

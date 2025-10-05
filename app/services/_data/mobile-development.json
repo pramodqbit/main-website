@@ -1,0 +1,30 @@
+{
+	"slug": "mobile-development",
+	"tags": ["Mobile Development", "React Native", "Flutter", "Swift", "Kotlin"],
+	"title": "Mobile Development",
+	"description": "We develop mobile applications that are fast, responsive, and easy to use.",
+	"section_name": "Mobile Development",
+	"section_description": "We develop mobile applications that are fast, responsive, and easy to use.",
+	"techstack": [
+		{
+			"name": "React Native",
+			"image": "/icons/react-native.webp",
+			"description": "React Native is a JavaScript library for building user interfaces."
+		},
+		{
+			"name": "Flutter",
+			"image": "/icons/flutter.webp",
+			"description": "Flutter is a UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase."
+		},
+		{
+			"name": "Swift",
+			"image": "/icons/swift.webp",
+			"description": "Swift is a programming language for building iOS and macOS applications."
+		},
+		{
+			"name": "Kotlin",
+			"image": "/icons/kotlin.webp",
+			"description": "Kotlin is a programming language for building Android applications."
+		}
+	]
+}

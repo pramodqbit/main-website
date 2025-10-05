@@ -1,0 +1,20 @@
+{
+	"slug": "uiux",
+	"tags": ["UI/UX Design", "React", "Next.js"],
+	"title": "UI/UX Design",
+	"description": "We design user interfaces that are fast, responsive, and easy to use.",
+	"section_name": "UI/UX Design",
+	"section_description": "We design user interfaces that are fast, responsive, and easy to use.",
+	"techstack": [
+		{
+			"name": "React",
+			"image": "/icons/react.webp",
+			"description": "React is a JavaScript library for building user interfaces."
+		},
+		{
+			"name": "Next.js",
+			"image": "/icons/next.webp",
+			"description": "Next.js is a React framework for building server-side rendered and static websites."
+		}
+	]
+}

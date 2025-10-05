@@ -8,9 +8,9 @@ import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
 
 import { cn } from "@/lib/utils";
 
-import { AnimatedList } from "@/components/ui/animated-list";
 import WebDevBg from "./_components/web-dev-bg";
 import CtaBanner from "@/components/global/cta-banner";
+import CloudBg from "./_components/cloud-bg";
 
 const services = [
 	{
@@ -76,26 +76,7 @@ const services = [
 		href: "/services/cloud-solutions",
 		cta: "Learn more",
 		className: "col-span-3 lg:col-span-2",
-		background: (
-			<AnimatedList className='absolute top-0 w-[400px] right-0 [mask-image:linear-gradient(to_top,transparent_10%,#000_80%)]'>
-				{[
-					{ name: "AWS" },
-					{ name: "Azure" },
-					{ name: "Google Cloud" },
-					{ name: "Vercel" },
-					{ name: "Netlify" },
-					{ name: "DigitalOcean" },
-				].map((provider, idx) => (
-					<div
-						key={idx}
-						className={cn(
-							"mx-3 flex h-14 w-full items-center justify-center rounded-lg text-white dark:text-black text-xs font-bold shadow-lg",
-						)}>
-						{provider.name}
-					</div>
-				))}
-			</AnimatedList>
-		),
+		background: <CloudBg />,
 	},
 ];
 
