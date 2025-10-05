@@ -3,11 +3,21 @@ import Hero from "@/app/_home/components/hero";
 import OurMarque from "@/components/global/our-marque";
 import About from "@/app/_home/components/about";
 import Services from "@/components/global/services";
-import { Star, Sparkles, Shield, DollarSign } from "lucide-react";
+import {
+	Star,
+	Sparkles,
+	Shield,
+	DollarSign,
+	Award,
+	Code2,
+	Brain,
+	HelpCircle,
+} from "lucide-react";
 import HowItWorks from "@/components/global/how-it-works";
 import ContactUs from "@/components/global/contact-us";
 import Footer from "@/components/global/footer";
 import FAQ from "@/components/global/faq";
+import SectionLayout from "@/components/global/section-layout";
 const ICON_SIZE = 32;
 
 export default function Home() {
@@ -35,10 +45,25 @@ export default function Home() {
 				<Navbar />
 				<Hero />
 				<OurMarque Items={Items} />
-				<About />
+				<SectionLayout
+					badgeIcon={<Award size={ICON_SIZE} className='text-primary' />}
+					badgeLabel='About Us'
+					title='Empowering Your Vision with Innovative Digital Solutions'
+					description='We are a team of experienced developers and designers who are passionate about creating innovative solutions for our clients.'>
+					<About />
+				</SectionLayout>
+
 				<Services />
+
 				<HowItWorks />
-				<FAQ />
+
+				<SectionLayout
+					badgeIcon={<HelpCircle size={ICON_SIZE} className='text-primary' />}
+					badgeLabel='FAQ'
+					title='Frequently Asked Questions'
+					description='Answers to common questions about our services and solutions.'>
+					<FAQ />
+				</SectionLayout>
 				<ContactUs />
 			</main>
 			<Footer />

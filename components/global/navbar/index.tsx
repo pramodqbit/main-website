@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Navbar() {
 	return (
-		<div className='flex w-full items-center justify-between gap-4 bg-background rounded-full px-4 py-1 shadow-md mt-2'>
+		<div className='sticky top-3 z-50 flex w-full items-center justify-between gap-4 bg-background rounded-full px-4 py-1 shadow-md mt-2'>
 			<Link href='/'>
 				<Image
 					src='/icons/logo.svg'

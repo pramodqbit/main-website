@@ -52,50 +52,37 @@ export default function FAQ() {
 	];
 
 	return (
-		<section className='w-full py-16 lg:py-24 border '>
-			<div className='container mx-auto px-4'>
-				{/* Header */}
-				<div className='text-center mb-12 lg:mb-16'>
-					<h2 className='text-[24px] lg:text-[32px] font-bold mb-4 bg-gradient-to-r from-primary to-secondary  bg-clip-text text-transparent'>
-						Frequently Asked Questions
-					</h2>
-					<p className='text-foreground/70 text-[16px] md:text-lg max-w-2xl mx-auto'>
-						Got questions? We&apos;ve got answers. If you can&apos;t find what
-						you&apos;re looking for, feel free to reach out to our team.
-					</p>
+		<div className='container mx-auto px-4'>
+			{/* FAQ Accordion */}
+			<div className=''>
+				<div className=' rounded-2xl  '>
+					<Accordion type='single' collapsible className='space-y-1'>
+						{faqs.map((faq, index) => (
+							<AccordionItem
+								key={index}
+								value={`item-${index}`}
+								className='border-border/50'>
+								<AccordionTrigger className='cursor-pointer text-base lg:text-lg font-semibold text-primary hover:text-primary transition-colors px-2'>
+									{faq.question}
+								</AccordionTrigger>
+								<AccordionContent className='text-foreground/70 leading-relaxed px-2'>
+									{faq.answer}
+								</AccordionContent>
+							</AccordionItem>
+						))}
+					</Accordion>
 				</div>
 
-				{/* FAQ Accordion */}
-				<div className=''>
-					<div className=' rounded-2xl  '>
-						<Accordion type='single' collapsible className='space-y-1'>
-							{faqs.map((faq, index) => (
-								<AccordionItem
-									key={index}
-									value={`item-${index}`}
-									className='border-border/50'>
-									<AccordionTrigger className='cursor-pointer text-base lg:text-lg font-semibold text-primary hover:text-primary transition-colors px-2'>
-										{faq.question}
-									</AccordionTrigger>
-									<AccordionContent className='text-foreground/70 leading-relaxed px-2'>
-										{faq.answer}
-									</AccordionContent>
-								</AccordionItem>
-							))}
-						</Accordion>
-					</div>
-
-					{/* CTA Section */}
-					{/* <div className='mt-12 text-center'>
-						<p className='text-foreground/70 mb-4'>Still have questions?</p>
-						<a
-							href='#contact'
-							className='inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:opacity-90 transition-all hover:scale-105 shadow-lg'>
-							Contact Us
-						</a>
-					</div> */}
-				</div>
+				{/* CTA Section */}
+				{/* <div className='mt-12 text-center'>
+					<p className='text-foreground/70 mb-4'>Still have questions?</p>
+					<a
+						href='#contact'
+						className='inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:opacity-90 transition-all hover:scale-105 shadow-lg'>
+						Contact Us
+					</a>
+				</div> */}
 			</div>
-		</section>
+		</div>
 	);
 }
