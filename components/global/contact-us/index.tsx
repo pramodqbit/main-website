@@ -28,7 +28,7 @@ export default function ContactUs() {
 		<section
 			id='contact'
 			aria-labelledby='contact-heading'
-			className='w-full min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 py-10 md:py-20 px-4 md:px-8'>
+			className='w-full min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 py-10 md:py-20 px-4 md:px-8 my-2 rounded-2xl'>
 			<div className='max-w-7xl mx-auto'>
 				{/* Mobile Layout */}
 				<div className='block lg:hidden'>
