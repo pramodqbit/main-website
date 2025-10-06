@@ -13,7 +13,6 @@ export default function ServicesLayout({
 	return (
 		<>
 			<main className='container'>
-				<Navbar />
 				{children}
 				<SectionLayout
 					id='faq'

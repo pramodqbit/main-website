@@ -135,7 +135,7 @@ export default function HowItWorks({ className }: { className?: string }) {
 	return (
 		<div
 			ref={sectionRef}
-			className={cn("relative border-l border-r overflow-hidden", className)}>
+			className={cn("relative border-l border-r ", className)}>
 			{/* Header Section with SectionLayout styling */}
 
 			{/* Horizontal Scrolling Section */}

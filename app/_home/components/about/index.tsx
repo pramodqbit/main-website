@@ -19,12 +19,12 @@ export default function About() {
 	return (
 		<div className='flex lg:flex-row lg:gap-4 gap-1 items-center justify-center mt-4'>
 			{about_data.map((item, index) => (
-				<Card key={index}>
-					<CardContent>
+				<Card key={index} className='p-0 overflow-hidden'>
+					<CardContent className='p-0'>
 						<Image
 							src={item.url}
 							alt={item.alt}
-							className='lg:w-[370px] w-[70px] lg:h-[370px] h-[70px]'
+							className='lg:w-[370px] w-[70px] lg:h-[370px] h-[70px] object-cover hover:scale-105 transition-all duration-300'
 							width={370}
 							height={370}
 						/>
