@@ -25,16 +25,16 @@ export default function OurMarque({
 }) {
 	return (
 		<div className='flex w-full border border-gray-200 lg:p-4 p-2  '>
-			<div className=' lg:w-[300px] w-[100px] flex flex-col items-center justify-center '>
-				<p className='lg:text-[16px] text-[12px]  font-bold'>
+			<div className=' lg:w-[300px] w-[100px] flex flex-col items-end justify-center px-4 relative '>
+				<p className='lg:text-[16px] text-[12px]  font-bold text-right'>
 					What sets us apart
 				</p>
-				<p className='lg:text-[12px] text-[8px] text-gray-500 '>
+				<p className='lg:text-[12px] text-[8px] text-gray-500 text-right'>
 					Reliable delivery, robust security, fair pricing, and unmatched
 					flexibility guaranteed.
 				</p>
 			</div>
-			<div className='lg:w-[calc(100%-300px)] w-[calc(100%-100px)]'>
+			<div className='lg:w-[calc(100%-300px)] w-[calc(100%-100px)] relative'>
 				<Marquee pauseOnHover className='[--duration:20s]  justify-between'>
 					{Items?.map((item, index) => (
 						<MarqueeCard
@@ -44,6 +44,8 @@ export default function OurMarque({
 						/>
 					))}
 				</Marquee>
+				<div className='from-background pointer-events-none absolute inset-y-0 h-full left-0 w-[100px] bg-gradient-to-r to-transparent'></div>
+				<div className='from-background pointer-events-none absolute inset-y-0 h-full right-0 w-[100px] bg-gradient-to-l to-transparent'></div>
 			</div>
 		</div>
 	);
