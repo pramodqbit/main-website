@@ -14,7 +14,14 @@ export default function Navbar() {
 					className='w-10 h-10'
 				/>
 			</Link>
-			<Menu size={32} className='cursor-pointer hover:text-primary' />
+			<div className='flex items-center gap-6'>
+				<Link 
+					href='/teams' 
+					className='text-sm font-medium hover:text-primary transition-colors hidden md:block'>
+					Our Team
+				</Link>
+				<Menu size={32} className='cursor-pointer hover:text-primary' />
+			</div>
 		</div>
 	);
 }
