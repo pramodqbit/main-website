@@ -4,7 +4,7 @@ import { readdirSync, readFileSync } from "fs";
 import { join } from "path";
 import ServiceBanner from "./_components/banner";
 import { Badge } from "@/components/ui/badge";
-import HowItWorks from "@/components/global/how-it-works";
+import CoreCompetencies from "@/components/global/core-competencies";
 
 type ServiceData = {
 	slug: string;
@@ -100,6 +100,7 @@ export default async function ServicePage({
 	return (
 		<div>
 			<ServiceBanner title={service.title} />
+
 			<div className='mt-6 flex w-full   gap-2 flex-nowrap'>
 				{service.techstack.map((service) => (
 					<Badge
@@ -117,7 +118,8 @@ export default async function ServicePage({
 					</Badge>
 				))}
 			</div>
-			<HowItWorks className='border-none' />
+
+			<CoreCompetencies className='border-none' />
 
 			{/* Tech Stack */}
 			<div className='mt-16 mb-20'>

@@ -30,12 +30,20 @@ const NavigationCard = ({
 }) => {
 	return (
 		<div className='flex items-center gap-4'>
-			<div className='h-10 w-10 bg-gray-400 rounded  flex items-center justify-center border p-1 text-white'>
+			<div className='md:h-10 md:w-10 h-8 w-8 bg-gray-400 rounded  flex items-center justify-center border p-1 text-white'>
 				{icon}
 			</div>
 			<div>
-				<p className='text-md font-bold'>{label}</p>
-				<p className='text-sm text-muted-foreground'>{description}</p>
+				<p
+					className='text-sm md:text-md font-bold line-clamp-1 max-w-28 md:max-w-none'
+					title={label}>
+					{label}
+				</p>
+				<p
+					className='text-xs md:text-sm text-muted-foreground line-clamp-1'
+					title={description}>
+					{description}
+				</p>
 			</div>
 		</div>
 	);
@@ -58,7 +66,7 @@ const COMPANY_LINKS = [
 		icon: <Mail />,
 		label: "Contact",
 		description: "Connect with us",
-		href: "/contact",
+		href: "/contact-us",
 	},
 ];
 
@@ -82,26 +90,26 @@ const OUR_SERVICES = [
 		icon: <Server />,
 		label: "Cloud Services",
 		description: "Cloud services",
-		href: "/cloud-services",
+		href: "/services/cloud-services",
 	},
 	{
 		icon: <CodeXml />,
 		label: "Web Development",
 		description: "Web development",
-		href: "/cloud-services",
+		href: "/services/web-development",
 	},
 
 	{
 		icon: <TabletSmartphone />,
 		label: "Mobile Development",
 		description: "Mobile development",
-		href: "/cloud-services",
+		href: "/services/mobile-development",
 	},
 	{
 		icon: <Palette />,
 		label: "UI/UX Design",
 		description: "UI/UX design",
-		href: "/cloud-services",
+		href: "/services/uiux",
 	},
 ];
 
@@ -169,17 +177,17 @@ export default function Navbar() {
 							duration: 0.3,
 							ease: "easeInOut",
 						}}
-						className='fixed top-18 z-50 container overflow-hidden shadow-lg rounded-2xl backdrop-blur-xl bg-white/30 dark:bg-black/30 border border-white/20 dark:border-white/10'>
+						className='fixed top-18 z-50 h-[100dvh] container overflow-y-auto md:overflow-hidden shadow-lg rounded-2xl backdrop-blur-xl bg-white/30 dark:bg-black/30 border border-white/20 dark:border-white/10'>
 						<Card className='bg-transparent border-none shadow-none p-0'>
-							<CardContent className='backdrop-blur-sm p-0 '>
-								<div className='grid grid-cols-4 gap-4 '>
-									<div className='col-span-2 px-5 py-4'>
+							<CardContent className='backdrop-blur-sm md:p-0 h-[100dvh] md:h-auto'>
+								<div className='grid md:grid-cols-4 grid-cols-2  md:gap-4 gap-0 '>
+									<div className=' col-span-2 md:px-5 px-3 md:py-4 py-0 '>
 										<h5 className='text-xl font-semibold mb-4'>Qbitlog</h5>
 										<p className='text-sm text-muted-foreground max-w-lg'>
 											Crafting innovative digital experiences that transform
 											businesses and delight users. Your vision, our expertise.
 										</p>
-										<div className='grid grid-cols-2 gap-4 my-4'>
+										<div className='grid grid-cols-2  md:gap-4 gap-0 my-4'>
 											{OUR_SERVICES.map((service) => (
 												<Link
 													href={service.href}
@@ -201,7 +209,7 @@ export default function Navbar() {
 											animate='rest'>
 											<Link
 												href='/services'
-												className='text-sm p-2 inline-flex items-center gap-2 text-white px-4 rounded-md bg-gradient-to-r from-primary to-secondary justify-center'>
+												className='md:text-sm text-xs md:p-2 p-1 inline-flex items-center md:gap-2 gap-1 text-white px-4 rounded-md bg-gradient-to-r from-primary to-secondary justify-center'>
 												View All Services
 												<motion.span
 													variants={{
@@ -218,13 +226,15 @@ export default function Navbar() {
 											</Link>
 										</motion.div>
 									</div>
-									<div className='border-r-2 border-l-2 border-dashed  px-5 py-2'>
-										<h5 className='text-xl font-semibold mb-4'>Company</h5>
+									<div className='border-r-2 border-l-2 col-span-2 md:col-span-1 border-dashed mt-2 md:mt-0 md:px-5 px-3 md:py-2 py-0'>
+										<h5 className='md:text-xl text-lg font-semibold md:mb-4 mb-2'>
+											Company
+										</h5>
 										<ul>
 											{COMPANY_LINKS.map((link) => (
 												<li
 													key={link.href}
-													className='hover:bg-primary/10 rounded-md p-2'>
+													className='hover:bg-primary/10 rounded-md  md:p-2 p-1'>
 													<Link href={link.href}>
 														<NavigationCard
 															icon={link.icon}
@@ -236,15 +246,15 @@ export default function Navbar() {
 											))}
 										</ul>
 									</div>
-									<div className='  border-dashed  px-5 py-2'>
-										<h5 className='text-xl font-semibold mb-4 capitalize'>
+									<div className='  border-dashed col-span-2 md:col-span-1  md:px-5 px-3 md:py-2 py-0'>
+										<h5 className='md:text-xl text-lg font-semibold md:mb-4 mb-2 capitalize'>
 											Resources
 										</h5>
 										<ul>
 											{RESOURCES_LINKS.map((link) => (
 												<li
 													key={link.href}
-													className='hover:bg-primary/10 rounded-md p-2'>
+													className='hover:bg-primary/10 rounded-md md:p-2 p-1'>
 													<Link href={link.href}>
 														<NavigationCard
 															icon={link.icon}
