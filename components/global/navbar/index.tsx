@@ -66,7 +66,7 @@ const COMPANY_LINKS = [
 		icon: <Mail />,
 		label: "Contact",
 		description: "Connect with us",
-		href: "/contact",
+		href: "/contact-us",
 	},
 ];
 
@@ -90,26 +90,26 @@ const OUR_SERVICES = [
 		icon: <Server />,
 		label: "Cloud Services",
 		description: "Cloud services",
-		href: "/cloud-services",
+		href: "/services/cloud-services",
 	},
 	{
 		icon: <CodeXml />,
 		label: "Web Development",
 		description: "Web development",
-		href: "/cloud-services",
+		href: "/services/web-development",
 	},
 
 	{
 		icon: <TabletSmartphone />,
 		label: "Mobile Development",
 		description: "Mobile development",
-		href: "/cloud-services",
+		href: "/services/mobile-development",
 	},
 	{
 		icon: <Palette />,
 		label: "UI/UX Design",
 		description: "UI/UX design",
-		href: "/cloud-services",
+		href: "/services/uiux",
 	},
 ];
 
