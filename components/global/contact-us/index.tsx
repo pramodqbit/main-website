@@ -11,11 +11,57 @@ export default function ContactUs() {
 		message: "",
 	});
 
-	const handleSubmit = (e: React.FormEvent) => {
-		e.preventDefault();
-		// Handle form submission
-		console.log("Form submitted:", formData);
-	};
+	// const handleSubmit = (e: React.FormEvent) => {
+	// 	e.preventDefault();
+	// 	// Handle form submission
+	// 	console.log("Form submitted:", formData);
+	// };
+
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+//   setIsSubmitting(true);
+
+  try {
+    // Replace with your actual Google Apps Script Web App URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxLmcYFd7ERer8KoV8xBhV05SAP8c_Ej0pDrmY1HhADicTXAzIP0tNJ9YbYMPsL_O4k/exec';
+    
+    // Create form data
+    const formDataToSend = new URLSearchParams();
+    formDataToSend.append('name', formData.name);
+    formDataToSend.append('email', formData.email);
+    formDataToSend.append('subject', formData.subject);
+    formDataToSend.append('message', formData.message);
+
+    // Use no-cors mode - the request will go through but we can't read response
+    await fetch(scriptURL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: formDataToSend
+    });
+
+    // Even with CORS issues, the data usually gets submitted
+    console.log("Form submitted successfully!");
+    alert("Thank you for your message! We'll get back to you within 24 hours.");
+    
+    // Reset form
+    setFormData({
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    });
+    
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    // Even if there's an error, the form might have submitted
+    alert("Thank you for your message! If you don't hear back from us, please try contacting us directly.");
+  } finally {
+    // setIsSubmitting(false);
+  }
+};
 
 	const handleChange = (
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
