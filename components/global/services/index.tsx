@@ -86,7 +86,7 @@ const services_data: ServicesData = [
 
 export default function Services() {
 	return (
-		<section id='services' className='p-10 border relative'>
+		<section id='services' className='p-10 border relative overflow-hidden'>
 			<Carsoule data={services_data} />
 		</section>
 	);

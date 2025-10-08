@@ -24,12 +24,12 @@ export default function OurMarque({
 	Items: { icon: React.ReactNode; label: string }[];
 }) {
 	return (
-		<div className='flex w-full border border-gray-200 lg:p-4 p-2  '>
-			<div className=' lg:w-[300px] w-[100px] flex flex-col items-end justify-center px-4 relative '>
-				<p className='lg:text-[16px] text-[12px]  font-bold text-right'>
+		<div className='flex w-full border border-gray-200 lg:p-4 p-2 items-center  '>
+			<div className=' lg:w-[300px] sm:w-[200px] w-[100px] flex flex-col items-end justify-center px-1 relative '>
+				<p className='lg:text-[16px] text-[10px]  font-bold text-left md:text-right'>
 					What sets us apart
 				</p>
-				<p className='lg:text-[12px] text-[8px] text-gray-500 text-right'>
+				<p className='lg:text-[12px] text-[8px] text-gray-500 text-justify md:text-right'>
 					Reliable delivery, robust security, fair pricing, and unmatched
 					flexibility guaranteed.
 				</p>

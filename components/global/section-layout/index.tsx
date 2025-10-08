@@ -33,13 +33,18 @@ export const SectionHeader = ({
 			<TextFadeIn
 				delay={0.3}
 				as='h2'
-				className=' text-md md:text-4xl font-bold mb-0 md:mb-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-tight text-center'>
+				className={cn(
+					" font-bold mb-0 md:mb-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-tight text-center",
+					"text-sm sm:text-md md:text-4xl",
+				)}>
 				{title}
 			</TextFadeIn>
 			<TextFadeIn
 				as='p'
 				delay={0.3}
-				className=' lg:w-[1000px] w-[300px]  md:text-md text-[10px] md:text-base text-center text-muted-foreground'>
+				className={cn(
+					"md:text-md text-[10px] md:text-base text-center text-muted-foreground",
+				)}>
 				{description}
 			</TextFadeIn>
 		</div>
@@ -54,7 +59,11 @@ const SectionLayout = forwardRef<HTMLDivElement, SectionLayoutProps>(
 		return (
 			<section
 				ref={ref}
-				className={cn("container mx-auto px-4 border py-16", className)}
+				className={cn(
+					"container mx-auto px-4 border ",
+					"py-4 sm:py-6 md:py-8 lg:py-10 xl:py-12 2xl:py-14",
+					className,
+				)}
 				id={id}>
 				<SectionHeader
 					badgeLabel={badgeLabel}

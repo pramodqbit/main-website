@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 const about_data = [
@@ -24,9 +25,15 @@ export default function About() {
 						<Image
 							src={item.url}
 							alt={item.alt}
-							className='lg:w-[370px] w-[70px] lg:h-[370px] h-[70px] object-cover hover:scale-105 transition-all duration-300'
+							className={cn(
+								" object-cover hover:scale-105 transition-all duration-300",
+								" w-[100px] sm:w-[150px] lg:w-[370px]",
+								" h-[100px] sm:h-[150px] lg:h-[370px]",
+							)}
 							width={370}
 							height={370}
+							loading='lazy'
+							quality={100}
 						/>
 					</CardContent>
 				</Card>

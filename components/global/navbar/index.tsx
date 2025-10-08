@@ -125,7 +125,7 @@ export default function Navbar() {
 						alt='logo'
 						width={40}
 						height={40}
-						className='w-10 h-10'
+						className='w-8 h-8 md:w-10 md:h-10'
 					/>
 				</Link>
 				<div className='flex items-center gap-6'>

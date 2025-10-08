@@ -1,20 +1,30 @@
 import { Button } from "@/components/ui/button";
 import { TextAnimate } from "@/components/ui/text-animate";
 import { Span } from "@/components/animation/hero-animation";
+import { cn } from "@/lib/utils";
 
 export default function Hero() {
 	const title = ["Q", "B", "I", "T", "L", "O", "G"];
 
 	return (
-		<div className='flex flex-col items-center justify-center  border-l border-r pb-10'>
-			<h1 className='relative inline-block text-right text-[100px] lg:text-[245px] lg:leading-[320px] lg:tracking-[80px] ml-2'>
+		<div className='flex flex-col items-center justify-center  border-l border-r md:pb-10 pb-5 overflow-hidden'>
+			<h1
+				className={cn(
+					"relative  text-right  ml-2 text-nowrap",
+					"sm:text-[100px] text-[80px] md:text-[150px] lg:text-[150px]  xl:text-[200px] 2xl:text-[300px]",
+					" leading-[120px] lg:leading-[220px] xl:leading-[220px] 2xl:leading-[320px]",
+					"lg:tracking-[50px]",
+				)}>
 				{title.map((item, index) => (
 					<span key={index} className='relative inline-block'>
 						{/* Stroke layer */}
 						<Span
 							delay={index * 0.1}
 							as='span'
-							className='absolute lg:top-[17px] top-[7px] font-bold bg-gradient-to-r from-[#8A38F5] to-[#25D0FF] bg-clip-text text-transparent inset-0 seven-segment-font'>
+							className={cn(
+								"absolute  font-bold bg-gradient-to-r from-[#8A38F5] to-[#25D0FF] bg-clip-text text-transparent inset-0 seven-segment-font",
+								" top-[6px] sm:top-[7px] md:top-[11px] lg:top-[10px] xl:top-[14px] 2xl:top-[20px]",
+							)}>
 							{item}
 						</Span>
 
@@ -38,13 +48,18 @@ export default function Hero() {
 			<TextAnimate
 				animation='blurIn'
 				as='p'
-				className='text-center lg:text-[24px] text-[12px]  lg:w-[1000px] w-[300px] lg:my-[40px] my-[10px]'>
+				className='text-center lg:text-[24px] text-[12px]  lg:w-[1000px] md:w-[600px] w-[290px] sm:w-[300px] lg:my-[40px] my-[10px]'>
 				We&apos;re a leading software design agency specializing in creating
 				innovative web and mobile applications that transform businesses and
 				delight users.
 			</TextAnimate>
 
-			<Button className=' lg:mt-10 mt-2 lg:w-[200px] w-[100px] h-[30px] text-[12px] lg:text-[16px]'>
+			<Button
+				className={cn(
+					" lg:w-[200px] w-[100px]   text-[12px] lg:text-[16px]",
+					" mt-2  lg:mt-2",
+					"h-[30px] lg:h-[50px]",
+				)}>
 				Hire Us
 			</Button>
 		</div>
