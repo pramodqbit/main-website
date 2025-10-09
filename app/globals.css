@@ -163,9 +163,9 @@
 	--sidebar-border: #262626;
 	--sidebar-ring: #8a38f5;
 }
-body {
+/* body {
 	overflow-x: hidden;
-}
+} */
 
 @layer base {
 	* {

@@ -36,7 +36,7 @@ export const SectionHeader = ({
 				className={cn(
 					" font-bold mb-0  bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-tight text-center",
 					"text-sm sm:text-md md:text-3xl lg:text-4xl",
-					"leading-[40px] lg:leading-[50px] ",
+					"leading-[20px] md:leading-[40px] lg:leading-[50px] ",
 				)}>
 				{title}
 			</TextFadeIn>
