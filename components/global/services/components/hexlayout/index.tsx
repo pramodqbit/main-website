@@ -50,7 +50,6 @@ function HexRing({
 		width: 0,
 		height: 0,
 	});
-	const [responsiveIconSize, setResponsiveIconSize] = useState(iconSize);
 
 	useEffect(() => {
 		if (!containerRef.current) return;
@@ -59,10 +58,6 @@ function HexRing({
 			if (!containerRef.current) return;
 			const { width, height } = containerRef.current.getBoundingClientRect();
 			setDims({ width, height });
-
-			// Adjust icon size based on container width
-			const newIconSize = width < 380 ? iconSize * 0.42 : iconSize * 0.9;
-			setResponsiveIconSize(newIconSize);
 		};
 
 		updateSize();
@@ -76,13 +71,12 @@ function HexRing({
 	const centerX = dims.width / 2;
 	const centerY = dims.height / 2;
 	const containerCircleRadius = Math.min(centerX, centerY);
-	const radius = containerCircleRadius - responsiveIconSize / 2 - 8;
+	const radius = containerCircleRadius - iconSize / 2 - 8;
 
 	return (
 		<div
 			ref={containerRef}
-			className='relative w-full max-w-[440px] mx-auto aspect-square'
-			style={{ maxHeight: 440 }}>
+			className='relative w-full max-w-[440px] xl:max-w-[550px]  mx-auto aspect-square'>
 			{center && (
 				<motion.div
 					initial={{ opacity: 0, scale: 0.85 }}
@@ -92,11 +86,11 @@ function HexRing({
 					<HexTile
 						src={center}
 						alt={"center"}
-						size={responsiveIconSize}
+						size={iconSize}
 						className='absolute bg-black'
 						style={{
-							left: centerX - responsiveIconSize / 2,
-							top: centerY - responsiveIconSize / 2,
+							left: centerX - iconSize / 2,
+							top: centerY - iconSize / 2,
 						}}
 					/>
 				</motion.div>
@@ -106,8 +100,8 @@ function HexRing({
 				const angle = (angleDeg * Math.PI) / 180;
 				const x = Math.cos(angle) * radius;
 				const y = Math.sin(angle) * radius;
-				const left = centerX + x - responsiveIconSize / 2;
-				const top = centerY + y - responsiveIconSize / 2;
+				const left = centerX + x - iconSize / 2;
+				const top = centerY + y - iconSize / 2;
 				return (
 					<motion.div
 						key={`${src}-${i}`}
@@ -122,7 +116,7 @@ function HexRing({
 						<HexTile
 							src={src}
 							alt={"ring"}
-							size={responsiveIconSize}
+							size={iconSize}
 							className='absolute bg-muted'
 							style={{ left, top }}
 						/>

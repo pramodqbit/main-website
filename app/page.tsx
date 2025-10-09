@@ -9,8 +9,6 @@ import {
 	Shield,
 	DollarSign,
 	Award,
-	Code2,
-	Brain,
 	HelpCircle,
 } from "lucide-react";
 import HowItWorks from "@/components/global/how-it-works";

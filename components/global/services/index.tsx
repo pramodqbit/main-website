@@ -1,5 +1,6 @@
 import { ServicesData } from "./types";
 import Carsoule from "./components/carsoule";
+import { Globe } from "@/components/ui/globe";
 
 const services_data: ServicesData = [
 	{
@@ -86,7 +87,7 @@ const services_data: ServicesData = [
 
 export default function Services() {
 	return (
-		<section id='services' className='p-10 border relative'>
+		<section id='services' className=' border py-2 relative overflow-hidden'>
 			<Carsoule data={services_data} />
 		</section>
 	);

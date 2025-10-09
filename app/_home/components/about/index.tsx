@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 const about_data = [
@@ -17,16 +18,24 @@ const about_data = [
 ];
 export default function About() {
 	return (
-		<div className='flex lg:flex-row lg:gap-4 gap-1 items-center justify-center mt-4'>
+		<div className='flex lg:flex-row  gap-1 lg:gap-4 items-center justify-center '>
 			{about_data.map((item, index) => (
-				<Card key={index} className='p-0 overflow-hidden'>
+				<Card
+					key={index}
+					className={cn("p-0 overflow-hidden", "rounded-sm md:rounded-md")}>
 					<CardContent className='p-0'>
 						<Image
 							src={item.url}
 							alt={item.alt}
-							className='lg:w-[370px] w-[70px] lg:h-[370px] h-[70px] object-cover hover:scale-105 transition-all duration-300'
+							className={cn(
+								" object-cover hover:scale-105 transition-all duration-300",
+								" w-[100px] sm:w-[150px] md:w-[220px] lg:w-[370px]",
+								" h-[100px] sm:h-[150px] md:h-[220px] lg:h-[370px]",
+							)}
 							width={370}
 							height={370}
+							loading='lazy'
+							quality={100}
 						/>
 					</CardContent>
 				</Card>

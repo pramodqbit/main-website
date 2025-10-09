@@ -94,6 +94,8 @@ export default function HowItWorks({ className }: { className?: string }) {
 			// Calculate total width needed to scroll
 			const totalWidth = horizontalRef.current.scrollWidth;
 			const windowWidth = window.innerWidth;
+			console.log(windowWidth);
+			console.log(totalWidth);
 			const scrollDistance = totalWidth - windowWidth;
 
 			// Create main horizontal scroll animation
@@ -135,11 +137,20 @@ export default function HowItWorks({ className }: { className?: string }) {
 	return (
 		<div
 			ref={sectionRef}
-			className={cn("relative border-l border-r ", className)}>
+			className={cn(
+				"relative border-l border-r ",
+
+				className,
+			)}>
 			{/* Header Section with SectionLayout styling */}
 
 			{/* Horizontal Scrolling Section */}
-			<div ref={containerRef} className='relative min-h-screen'>
+			<div
+				ref={containerRef}
+				className={cn(
+					"relative border ",
+					"h-[90vh] lg:h-[80vh] xl:h-[100vh] 2xl:h-[100vh]",
+				)}>
 				{/* Background gradient */}
 				<div className='absolute inset-0 pointer-events-none' />
 				<div className='container mx-auto px-4 py-16 '>
@@ -154,12 +165,20 @@ export default function HowItWorks({ className }: { className?: string }) {
 				{/* Horizontal scrolling container */}
 				<div
 					ref={horizontalRef}
-					className='absolute md:top-5 top-8 left-0 h-screen flex items-center gap-8 px-10 md:px-20'
+					className={cn(
+						"absolute left-0 flex items-center gap-8 ",
+						"top-[250px] md:top-[300px] xl:top-[300px] ",
+						"px-10 md:px-10",
+					)}
 					style={{ paddingLeft: "40vw", paddingRight: "40vw" }}>
 					{steps.map((step, index) => (
 						<div
 							key={index}
-							className='step-card flex-shrink-0 w-[85vw] md:w-[600px] h-[50vh] md:h-[450px]'>
+							className={cn(
+								"step-card flex-shrink-0 ",
+								"w-[80vw] md:w-[60vh] ",
+								"h-[42vh] md:h-[500px] xl:h-[450px]",
+							)}>
 							<Card className='relative h-full bg-card/50 backdrop-blur-sm rounded-3xl p-0 border-border hover:border-primary/50 transition-all duration-300 shadow-2xl overflow-hidden group'>
 								{/* Gradient overlay on hover */}
 								<div className='absolute inset-0 bg-gradient-to-br from-primary/0 to-secondary/0 group-hover:from-primary/10 group-hover:to-secondary/10 transition-all duration-500 rounded-3xl' />
@@ -219,7 +238,12 @@ export default function HowItWorks({ className }: { className?: string }) {
 					))}
 
 					{/* Final CTA Card */}
-					<div className='step-card flex-shrink-0 w-[85vw] md:w-[600px] h-[50vh] md:h-[450px]'>
+					<div
+						className={cn(
+							"step-card flex-shrink-0",
+							" w-[85vw] md:w-[60vh] ",
+							"h-[42vh] md:h-[500px] xl:h-[450px]",
+						)}>
 						<Card className='h-full bg-gradient-to-br from-primary/20 to-secondary/20 backdrop-blur-sm rounded-3xl p-8 md:p-10 border-primary/30 flex flex-col items-center justify-center text-center shadow-2xl'>
 							<div className='flex flex-col items-center justify-center h-full'>
 								<div className='w-12 h-12 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-4 md:mb-6 shadow-lg'>
@@ -257,7 +281,7 @@ export default function HowItWorks({ className }: { className?: string }) {
 
 				{/* Scroll indicator */}
 				<div className='absolute bottom-10 right-10 flex items-center gap-2 text-muted-foreground animate-pulse'>
-					<span className='text-sm hidden md:inline'>Scroll to explore</span>
+					<span className='text-sm inline'>Scroll to explore</span>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
 						fill='none'
