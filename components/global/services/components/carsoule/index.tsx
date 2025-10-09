@@ -374,7 +374,7 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 							"linear-gradient(135deg, rgba(251,100,21,0.08) 0%, rgba(0,212,255,0.10) 100%)",
 					}}
 				/>
-				<Globe className=' z-[-1] max-w-[1600px] left-[100px] top-[350px]' />
+				<Globe className='[--duration: 0.5s] z-[-1] max-w-[1600px] left-[100px] top-[350px]' />
 			</div>
 		</div>
 	);
