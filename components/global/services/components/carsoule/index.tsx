@@ -31,11 +31,13 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 		const updateDimensions = () => {
 			const width = window.innerWidth;
 
+			console.log("WIDTH", width);
+
 			// Dynamic height calculation based on screen size
 			let multiplier;
 			// Mobile-first approach: start with mobile defaults
 			multiplier = 40;
-			setIconSize(95);
+			setIconSize(45);
 			if (width >= 1536) {
 				// Desktop and larger
 				multiplier = 44;
@@ -56,6 +58,9 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 				// Small tablets
 				multiplier = 30;
 				setIconSize(125);
+			} else {
+				setIconSize(90);
+				multiplier = 30;
 			}
 
 			setContainerHeight(data.length * multiplier);
@@ -74,8 +79,8 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 
 		mm.add("(max-width: 600px)", () => {
 			// Get responsive start/end values based on screen size
-			const startValue = "top 10%";
-			const endValue = "60% 0%";
+			const startValue = "top 5%";
+			const endValue = "40% 0%";
 
 			ScrollTrigger.create({
 				trigger: containerRef.current,
