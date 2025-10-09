@@ -102,41 +102,23 @@ export default async function ServicePage({
 		<div>
 			<ServiceBanner title={service.title} />
 
-			<Marquee className='[--duration:40s]  justify-between lg:hidden'>
-				{service.techstack.map((service) => (
+			<Marquee className='[--duration:40s] my-6' repeat={6} pauseOnHover={true}>
+				{service.techstack.map((tech, index) => (
 					<Badge
-						key={service.name}
+						key={`${tech.name}-${index}`}
 						variant='default'
 						className='rounded-full py-2 bg-white shadow-sm text-dark w-[220px] flex items-center justify-start gap-2'>
 						<Image
-							src={service.image}
-							alt={service.name}
+							src={tech.image}
+							alt={tech.name}
 							width={24}
 							height={24}
 							className='w-5 h-5 object-contain'
 						/>
-						{service.name}
+						{tech.name}
 					</Badge>
 				))}
 			</Marquee>
-
-			<div className='mt-6 w-full   gap-2 flex-nowrap hidden lg:flex'>
-				{service.techstack.map((service) => (
-					<Badge
-						key={service.name}
-						variant='default'
-						className='rounded-full py-2 bg-white shadow-sm text-dark w-[220px] flex items-center justify-start gap-2'>
-						<Image
-							src={service.image}
-							alt={service.name}
-							width={24}
-							height={24}
-							className='w-5 h-5 object-contain'
-						/>
-						{service.name}
-					</Badge>
-				))}
-			</div>
 
 			<CoreCompetencies className='border-none' />
 

@@ -1,6 +1,6 @@
 import Navbar from "@/components/global/navbar";
 
-import { Code2, Smartphone, Palette, Cloud } from "lucide-react";
+import { Code2, Smartphone, Palette, Cloud, Brain } from "lucide-react";
 
 import { TextFadeIn } from "@/components/animation/text-animation";
 import { TextAnimate } from "@/components/ui/text-animate";
@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import WebDevBg from "./_components/web-dev-bg";
 import CtaBanner from "@/components/global/cta-banner";
 import CloudBg from "./_components/cloud-bg";
+import AIBg from "./_components/ai-bg";
 
 const services = [
 	{
@@ -77,6 +78,16 @@ const services = [
 		cta: "Learn more",
 		className: "col-span-3 lg:col-span-2",
 		background: <CloudBg />,
+	},
+	{
+		Icon: Brain,
+		name: "AI & Machine Learning",
+		description:
+			"Intelligent automation and AI-powered solutions. From predictive analytics to natural language processing and computer vision.",
+		href: "/services/ai-machine-learning",
+		cta: "Learn more",
+		className: "col-span-3 lg:col-span-3",
+		background: <AIBg />,
 	},
 ];
 
