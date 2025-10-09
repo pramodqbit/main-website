@@ -5,81 +5,107 @@ import { Github, Linkedin, Mail, ExternalLink } from "lucide-react";
 
 const teamData = [
 	{
-		name: "Sarah Johnson",
-		role: "Lead Developer & CTO",
-		image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-		alt: "Sarah Johnson, Lead Developer and CTO with expertise in full-stack development",
-		description: "Full-stack developer with 8+ years of experience in React, Node.js, and cloud architecture. Passionate about building scalable web applications.",
-		skills: ["React", "Node.js", "AWS", "TypeScript"],
-		social: {
-			github: "https://github.com/sarahjohnson",
-			linkedin: "https://linkedin.com/in/sarahjohnson",
-			email: "sarah@qbitlog.com"
-		}
-	},
-	{
-		name: "Michael Chen",
-		role: "Senior Mobile Developer",
-		image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-		alt: "Michael Chen, Senior Mobile Developer specializing in React Native and Flutter",
-		description: "Mobile development expert specializing in React Native and Flutter. Has launched 20+ apps on both iOS and Android platforms.",
-		skills: ["React Native", "Flutter", "Swift", "Kotlin"],
-		social: {
-			github: "https://github.com/michaelchen",
-			linkedin: "https://linkedin.com/in/michaelchen",
-			email: "michael@qbitlog.com"
-		}
-	},
-	{
-		name: "Emily Rodriguez",
-		role: "UI/UX Designer",
-		image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-		alt: "Emily Rodriguez, UI/UX Designer creating beautiful and intuitive user experiences",
-		description: "Creative designer with a focus on user-centered design. Expert in Figma, Adobe Creative Suite, and creating engaging digital experiences.",
-		skills: ["Figma", "Adobe XD", "Sketch", "Prototyping"],
-		social: {
-			github: "https://github.com/emilyrodriguez",
-			linkedin: "https://linkedin.com/in/emilyrodriguez",
-			email: "emily@qbitlog.com"
-		}
-	},
-	{
-		name: "David Kim",
-		role: "DevOps Engineer",
+		name: "Arup",
+		role: "Chief Executive Officer (CEO)",
 		image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-		alt: "David Kim, DevOps Engineer ensuring reliable and scalable infrastructure",
-		description: "DevOps specialist with expertise in AWS, Docker, and CI/CD pipelines. Ensures our applications are secure, scalable, and performant.",
-		skills: ["AWS", "Docker", "Kubernetes", "Jenkins"],
+		alt: "Arup, Chief Executive Officer leading QBITLOG with strategic vision and innovation",
+		description: "Visionary leader with a proven track record in driving digital transformation and business growth. Arup brings strategic insight and entrepreneurial expertise to steer QBITLOG towards innovation, ensuring client success through cutting-edge solutions and exceptional service delivery.",
+		skills: ["Strategic Planning", "Business Development", "Leadership", "Innovation"],
 		social: {
-			github: "https://github.com/davidkim",
-			linkedin: "https://linkedin.com/in/davidkim",
-			email: "david@qbitlog.com"
+			github: "https://github.com/arup",
+			linkedin: "https://linkedin.com/in/arup",
+			email: "arup@qbitlog.com"
 		}
 	},
 	{
-		name: "Lisa Wang",
-		role: "Digital Marketing Specialist",
-		image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-		alt: "Lisa Wang, Digital Marketing Specialist driving growth through data-driven strategies",
-		description: "Marketing expert with 6+ years in digital strategy, SEO, and social media. Helps businesses grow their online presence and reach.",
-		skills: ["SEO", "Google Ads", "Social Media", "Analytics"],
+		name: "Adil",
+		role: "Chief Technology Officer (CTO)",
+		image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+		alt: "Adil, Chief Technology Officer with deep technical expertise and innovation mindset",
+		description: "As Chief Technology Officer, Adil possesses an exceptional depth of technical knowledge spanning modern frameworks, cloud architecture, and emerging technologies. His expertise in React, Node.js, AI/ML integration, and scalable system design ensures QBITLOG delivers robust, future-proof solutions that exceed client expectations.",
+		skills: ["React", "Node.js", "Cloud Architecture", "AI/ML", "System Design"],
 		social: {
-			github: "https://github.com/lisawang",
-			linkedin: "https://linkedin.com/in/lisawang",
-			email: "lisa@qbitlog.com"
+			github: "https://github.com/adil",
+			linkedin: "https://linkedin.com/in/adil",
+			email: "adil@qbitlog.com"
 		}
 	},
 	{
-		name: "Alex Thompson",
-		role: "Project Manager",
+		name: "Srijan",
+		role: "Chief Product Officer (CPO)",
 		image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-		alt: "Alex Thompson, Project Manager ensuring smooth project delivery and client satisfaction",
-		description: "Experienced project manager with a track record of delivering complex projects on time and within budget. Expert in Agile methodologies.",
-		skills: ["Agile", "Scrum", "Jira", "Communication"],
+		alt: "Srijan, Chief Product Officer crafting exceptional product experiences",
+		description: "Srijan excels at transforming ideas into market-leading products through data-driven strategies and user-centric design thinking. With expertise in product roadmapping, market analysis, and agile methodologies, he ensures every solution we build delivers maximum value and delights users at every touchpoint.",
+		skills: ["Product Strategy", "User Research", "Agile", "Analytics", "Roadmapping"],
 		social: {
-			github: "https://github.com/alexthompson",
-			linkedin: "https://linkedin.com/in/alexthompson",
-			email: "alex@qbitlog.com"
+			github: "https://github.com/srijan",
+			linkedin: "https://linkedin.com/in/srijan",
+			email: "srijan@qbitlog.com"
+		}
+	},
+	{
+		name: "Hiren",
+		role: "Chief Software Architect (CSA)",
+		image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+		alt: "Hiren, Chief Software Architect designing scalable and resilient systems",
+		description: "Hiren architects enterprise-grade solutions with a focus on scalability, security, and performance. His mastery of microservices, distributed systems, cloud-native technologies, and design patterns enables QBITLOG to build resilient applications that handle millions of users while maintaining optimal performance.",
+		skills: ["Microservices", "System Architecture", "AWS/Azure", "Performance Optimization"],
+		social: {
+			github: "https://github.com/hiren",
+			linkedin: "https://linkedin.com/in/hiren",
+			email: "hiren@qbitlog.com"
+		}
+	},
+	{
+		name: "Muskan",
+		role: "Chief Innovation Officer (CINO)",
+		image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+		alt: "Muskan, Chief Innovation Officer driving breakthrough innovations and digital transformation",
+		description: "Muskan spearheads QBITLOG's innovation initiatives, exploring emerging technologies like AI, blockchain, and IoT to create groundbreaking solutions. Her forward-thinking approach and passion for disruptive innovation keep our clients ahead of the curve in an ever-evolving digital landscape.",
+		skills: ["Innovation Strategy", "Emerging Tech", "AI/Blockchain", "R&D", "Digital Transformation"],
+		social: {
+			github: "https://github.com/muskan",
+			linkedin: "https://linkedin.com/in/muskan",
+			email: "muskan@qbitlog.com"
+		}
+	},
+	{
+		name: "Deepak",
+		role: "Chief Operating Officer (COO)",
+		image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+		alt: "Deepak, Chief Operating Officer ensuring operational excellence and efficiency",
+		description: "Deepak orchestrates seamless operations across all QBITLOG initiatives, optimizing processes and ensuring exceptional project execution. His expertise in operational strategy, resource management, and quality assurance guarantees that every project is delivered on time, within budget, and exceeds quality standards.",
+		skills: ["Operations Management", "Process Optimization", "Quality Assurance", "Team Leadership"],
+		social: {
+			github: "https://github.com/deepak",
+			linkedin: "https://linkedin.com/in/deepak",
+			email: "deepak@qbitlog.com"
+		}
+	},
+	{
+		name: "Jeevan",
+		role: "Chief Growth Officer (CGO)",
+		image: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+		alt: "Jeevan, Chief Growth Officer accelerating business expansion and market reach",
+		description: "Jeevan drives exponential growth through strategic partnerships, market expansion, and data-driven marketing initiatives. His expertise in growth hacking, customer acquisition, and revenue optimization has consistently delivered remarkable results, helping QBITLOG and our clients achieve sustainable, scalable growth.",
+		skills: ["Growth Strategy", "Marketing", "Partnerships", "Revenue Optimization", "Analytics"],
+		social: {
+			github: "https://github.com/jeevan",
+			linkedin: "https://linkedin.com/in/jeevan",
+			email: "jeevan@qbitlog.com"
+		}
+	},
+	{
+		name: "Ashish",
+		role: "Chief Financial Officer (CFO)",
+		image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+		alt: "Ashish, Chief Financial Officer ensuring financial stability and strategic investment",
+		description: "Ashish brings financial acumen and strategic foresight to manage QBITLOG's fiscal health and investment strategies. With expertise in financial planning, risk management, and strategic forecasting, he ensures sustainable profitability while enabling smart investments in innovation and growth opportunities.",
+		skills: ["Financial Planning", "Risk Management", "Investment Strategy", "Budgeting", "Forecasting"],
+		social: {
+			github: "https://github.com/ashish",
+			linkedin: "https://linkedin.com/in/ashish",
+			email: "ashish@qbitlog.com"
 		}
 	}
 ];

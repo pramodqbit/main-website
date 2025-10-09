@@ -4,39 +4,39 @@ import { Calendar, MapPin, Users, Target } from "lucide-react";
 
 const storyData = [
 	{
-		year: "2020",
-		title: "The Beginning",
-		description: "QBITLOG was founded with a vision to bridge the gap between innovative ideas and digital reality. Our journey began with a small team of passionate developers.",
-		icon: <Calendar className="w-6 h-6" />,
-		highlight: "Founded"
-	},
-	{
-		year: "2021",
-		title: "First Major Project",
-		description: "We delivered our first enterprise-level web application, establishing our reputation for quality and reliability in the market.",
+		year: "Our Vision",
+		title: "Expertise-Driven Excellence",
+		description: "QBITLOG brings together seasoned professionals with decades of combined experience in software development, cloud architecture, and digital transformation. Our leadership team has successfully delivered enterprise solutions across Fortune 500 companies and innovative startups alike.",
 		icon: <Target className="w-6 h-6" />,
-		highlight: "Breakthrough"
+		highlight: "Expert Team"
 	},
 	{
-		year: "2022",
-		title: "Team Expansion",
-		description: "We grew our team to include UI/UX designers, mobile developers, and DevOps specialists, expanding our service offerings.",
+		year: "Our Mission",
+		title: "Client Success Through Innovation",
+		description: "We leverage cutting-edge technologies and proven methodologies to deliver solutions that exceed expectations. Each team member brings specialized expertise from leading tech companies, ensuring world-class quality in every project we undertake.",
+		icon: <Target className="w-6 h-6" />,
+		highlight: "Excellence"
+	},
+	{
+		year: "Our Approach",
+		title: "Agile & Scalable Solutions",
+		description: "Our architects and developers have built systems handling millions of users. We apply enterprise-grade best practices, DevOps excellence, and modern frameworks to create robust, future-proof applications that scale effortlessly with your business growth.",
 		icon: <Users className="w-6 h-6" />,
-		highlight: "Growth"
+		highlight: "Proven Methods"
 	},
 	{
-		year: "2023",
-		title: "Global Reach",
-		description: "We expanded our services internationally, working with clients across different continents and time zones.",
+		year: "Our Reach",
+		title: "Global Standards, Local Touch",
+		description: "With experience serving international markets and diverse industries, our team understands global business requirements. We combine international best practices with personalized attention, ensuring your project receives the expertise it deserves regardless of scale.",
 		icon: <MapPin className="w-6 h-6" />,
-		highlight: "Expansion"
+		highlight: "Global Expertise"
 	},
 	{
-		year: "2024",
-		title: "Innovation Leader",
-		description: "Today, we're recognized as a leading digital solutions provider, continuously innovating and setting new industry standards.",
-		icon: <Target className="w-6 h-6" />,
-		highlight: "Leadership"
+		year: "Our Promise",
+		title: "Innovation & Reliability",
+		description: "We stay ahead of technology trends through continuous learning and R&D. Our innovation-first culture, combined with rigorous quality standards, ensures you receive cutting-edge solutions built on stable, reliable foundations that drive real business results.",
+		icon: <Calendar className="w-6 h-6" />,
+		highlight: "Future-Ready"
 	}
 ];
 
