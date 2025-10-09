@@ -128,6 +128,18 @@ export default function Navbar() {
 						className='w-8 h-8 md:w-10 md:h-10'
 					/>
 				</Link>
+
+				{/* Tagline - Hidden on mobile, visible on larger screens */}
+				<div className='hidden md:flex items-center justify-center flex-1'>
+					<motion.p 
+						initial={{ opacity: 0, y: -10 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.5, delay: 0.2 }}
+						className='text-sm font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent hover:from-secondary hover:to-primary transition-all duration-300 cursor-default'>
+						Crafting Digital Excellence
+					</motion.p>
+				</div>
+
 				<div className='flex items-center gap-6'>
 					<AnimatePresence mode='wait' initial={false}>
 						{!isOpen ? (
@@ -191,7 +203,7 @@ export default function Navbar() {
 											{OUR_SERVICES.map((service) => (
 												<Link
 													href={service.href}
-													key={service.href}
+													key={service.label}
 													className='hover:bg-primary/10 rounded-md p-2'>
 													<NavigationCard
 														key={service.href}
