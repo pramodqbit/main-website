@@ -177,7 +177,7 @@ export default function Navbar() {
 							duration: 0.3,
 							ease: "easeInOut",
 						}}
-						className='fixed top-18 z-50 h-[100dvh] container overflow-y-auto md:overflow-hidden shadow-lg rounded-2xl backdrop-blur-xl bg-white/30 dark:bg-black/30 border border-white/20 dark:border-white/10'>
+						className='fixed top-18 z-50 h-[100dvh] container overflow-y-auto md:overflow-hidden shadow-lg rounded-2xl backdrop-blur-lg bg-white/90 dark:bg-black/60 border border-white/40 dark:border-white/40'>
 						<Card className='bg-transparent border-none shadow-none p-0'>
 							<CardContent className='backdrop-blur-sm md:p-0 h-[100dvh] md:h-auto'>
 								<div className='grid md:grid-cols-4 grid-cols-2  md:gap-4 gap-0 '>

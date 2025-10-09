@@ -21,7 +21,7 @@ export const SectionHeader = ({
 	description,
 }: Omit<SectionLayoutProps, "children" | "id">) => {
 	return (
-		<div className='flex flex-col md:gap-5 gap-1 items-center justify-center md:mb-10 mb-5'>
+		<div className='flex flex-col md:gap-3 gap-1 items-center justify-center md:mb-10 mb-5'>
 			<Badge
 				variant='outline'
 				className='flex items-center justify-center gap-2 md:py-2 py-1 md:px-4 px-2 rounded-full border text-[10px] md:text-[12px]'>
@@ -34,8 +34,9 @@ export const SectionHeader = ({
 				delay={0.3}
 				as='h2'
 				className={cn(
-					" font-bold mb-0 md:mb-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-tight text-center",
-					"text-sm sm:text-md md:text-4xl",
+					" font-bold mb-0  bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-tight text-center",
+					"text-sm sm:text-md md:text-3xl lg:text-4xl",
+					"leading-[40px] lg:leading-[50px] ",
 				)}>
 				{title}
 			</TextFadeIn>

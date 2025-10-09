@@ -5,6 +5,7 @@ import { join } from "path";
 import ServiceBanner from "./_components/banner";
 import { Badge } from "@/components/ui/badge";
 import CoreCompetencies from "@/components/global/core-competencies";
+import { Marquee } from "@/components/ui/marquee";
 
 type ServiceData = {
 	slug: string;
@@ -101,7 +102,25 @@ export default async function ServicePage({
 		<div>
 			<ServiceBanner title={service.title} />
 
-			<div className='mt-6 flex w-full   gap-2 flex-nowrap'>
+			<Marquee className='[--duration:40s]  justify-between lg:hidden'>
+				{service.techstack.map((service) => (
+					<Badge
+						key={service.name}
+						variant='default'
+						className='rounded-full py-2 bg-white shadow-sm text-dark w-[220px] flex items-center justify-start gap-2'>
+						<Image
+							src={service.image}
+							alt={service.name}
+							width={24}
+							height={24}
+							className='w-5 h-5 object-contain'
+						/>
+						{service.name}
+					</Badge>
+				))}
+			</Marquee>
+
+			<div className='mt-6 w-full   gap-2 flex-nowrap hidden lg:flex'>
 				{service.techstack.map((service) => (
 					<Badge
 						key={service.name}

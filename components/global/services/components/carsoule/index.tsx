@@ -7,8 +7,10 @@ import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Code2 } from "lucide-react";
+import { Globe } from "@/components/ui/globe";
 import { Badge } from "@/components/ui/badge";
 import { SectionHeader } from "@/components/global/section-layout";
+import { cn } from "@/lib/utils";
 
 // Register GSAP ScrollTrigger plugin
 if (typeof window !== "undefined") {
@@ -17,30 +19,63 @@ if (typeof window !== "undefined") {
 
 export default function Carsoule({ data }: { data: ServicesData }) {
 	const [current, setCurrent] = useState(0);
-	const [isMobile, setIsMobile] = useState(false);
+
+	const [containerHeight, setContainerHeight] = useState(0);
+	const [iconSize, setIconSize] = useState(150);
 
 	const containerRef = useRef<HTMLDivElement>(null);
 	const contentRef = useRef<HTMLDivElement>(null);
 
-	// Track screen size
+	// Track screen size and calculate dynamic height
 	useEffect(() => {
-		const checkMobile = () => {
-			setIsMobile(window.innerWidth < 768);
+		const updateDimensions = () => {
+			const width = window.innerWidth;
+
+			// Dynamic height calculation based on screen size
+			let multiplier;
+			// Mobile-first approach: start with mobile defaults
+			multiplier = 40;
+			setIconSize(95);
+			if (width >= 1536) {
+				// Desktop and larger
+				multiplier = 44;
+				setIconSize(165);
+			} else if (width >= 1208) {
+				// Desktop and larger
+				multiplier = 48;
+				setIconSize(165);
+			} else if (width >= 1024) {
+				// Large tablets
+				multiplier = 35;
+				setIconSize(135);
+			} else if (width >= 768) {
+				// Tablets
+				multiplier = 35;
+				setIconSize(95);
+			} else if (width >= 640) {
+				// Small tablets
+				multiplier = 30;
+				setIconSize(125);
+			}
+
+			setContainerHeight(data.length * multiplier);
 		};
 
-		checkMobile();
-		window.addEventListener("resize", checkMobile);
-		return () => window.removeEventListener("resize", checkMobile);
-	}, []);
+		updateDimensions();
+		window.addEventListener("resize", updateDimensions);
+		return () => window.removeEventListener("resize", updateDimensions);
+	}, [data.length]);
 
 	// GSAP ScrollTrigger setup
 	useLayoutEffect(() => {
 		if (!containerRef.current || !contentRef.current) return;
 
-		const ctx = gsap.context(() => {
+		const mm = gsap.matchMedia();
+
+		mm.add("(max-width: 600px)", () => {
 			// Get responsive start/end values based on screen size
-			const startValue = isMobile ? "top 5%" : "top 10%";
-			const endValue = isMobile ? "60% 0%" : "60% 5%";
+			const startValue = "top 10%";
+			const endValue = "60% 0%";
 
 			ScrollTrigger.create({
 				trigger: containerRef.current,
@@ -59,12 +94,125 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 					setCurrent(index);
 				},
 			});
-		}, containerRef);
+		});
 
+		mm.add(
+			"(min-width: 640px)",
+			() => {
+				// Get responsive start/end values based on screen size
+				const startValue = "top 12%";
+				const endValue = "60% 0%";
+
+				ScrollTrigger.create({
+					trigger: containerRef.current,
+					start: startValue,
+					end: endValue,
+					pin: contentRef.current,
+					pinSpacing: false,
+
+					onUpdate: (self) => {
+						const progress = self.progress;
+
+						const index = Math.min(
+							Math.floor(progress * data.length),
+							data.length - 1,
+						);
+						setCurrent(index);
+					},
+				});
+			},
+			containerRef,
+		);
+		/*
+		mm.add(
+			"(min-width: 1024px)",
+			() => {
+				// Get responsive start/end values based on screen size
+				const startValue = "top 14%";
+				const endValue = "60% 0%";
+
+				ScrollTrigger.create({
+					trigger: containerRef.current,
+					start: startValue,
+					end: endValue,
+					pin: contentRef.current,
+					pinSpacing: false,
+					markers: true,
+
+					onUpdate: (self) => {
+						const progress = self.progress;
+
+						const index = Math.min(
+							Math.floor(progress * data.length),
+							data.length - 1,
+						);
+						setCurrent(index);
+					},
+				});
+			},
+			containerRef,
+		);
+		
+		mm.add(
+			"(max-width: 1280px)",
+			() => {
+				// Get responsive start/end values based on screen size
+				const startValue = "top top";
+				const endValue = "bottom bottom";
+
+				ScrollTrigger.create({
+					trigger: containerRef.current,
+					start: startValue,
+					end: endValue,
+					pin: contentRef.current,
+					pinSpacing: false,
+
+					onUpdate: (self) => {
+						const progress = self.progress;
+
+						const index = Math.min(
+							Math.floor(progress * data.length),
+							data.length - 1,
+						);
+						setCurrent(index);
+					},
+				});
+			},
+			containerRef,
+		);
+
+		mm.add(
+			"(min-width: 1536px)",
+			() => {
+				// Get responsive start/end values based on screen size
+				const startValue = "top top";
+				const endValue = "bottom bottom";
+
+				ScrollTrigger.create({
+					trigger: containerRef.current,
+					start: startValue,
+					end: endValue,
+					pin: contentRef.current,
+					pinSpacing: false,
+
+					onUpdate: (self) => {
+						const progress = self.progress;
+
+						const index = Math.min(
+							Math.floor(progress * data.length),
+							data.length - 1,
+						);
+						setCurrent(index);
+					},
+				});
+			},
+			containerRef,
+		);
+*/
 		return () => {
-			ctx.revert();
+			mm.revert();
 		};
-	}, [data.length, isMobile]);
+	}, [data.length]);
 
 	// Refresh ScrollTrigger when needed
 	useEffect(() => {
@@ -75,15 +223,14 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 	const images = item.images;
 	const center = images[0];
 	const ring = images.slice(1, 7);
-	const iconSize = 150;
 
 	return (
 		<div
 			ref={containerRef}
-			className='relative  overflow-hidden'
-			style={{ height: `${data.length * (isMobile ? 35 : 37)}vh` }}>
-			<div ref={contentRef} className='relative min-h-screen'>
-				<div className='container mx-auto '>
+			className={cn("relative overflow-hidden")}
+			style={{ height: `${containerHeight}vh` }}>
+			<div ref={contentRef} className='relative min-h-screen overflow-hidden'>
+				<div className='container mx-auto pt-2 md:pt-4 lg:pt-6 xl:pt-8 2xl:pt-10'>
 					<SectionHeader
 						badgeLabel='Services'
 						badgeIcon={<Code2 size={24} className='text-primary' />}
@@ -91,11 +238,14 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 						description='From custom web and mobile development to strategic marketing, SEO, and graphic design, we deliver end-to-end digital solutions that empower your brand and drive measurable results.'
 					/>
 				</div>
-				<div className='w-full px-4 md:px-8'>
+				<div className='w-full px-0 md:px-8 relative'>
 					<AnimatePresence mode='wait'>
 						<motion.div
 							key={item.title}
-							className='flex w-full flex-col lg:flex-row items-center justify-between '
+							className={cn(
+								"w-full grid  items-center justify-between ",
+								"grid-cols-1 md:grid-cols-2",
+							)}
 							initial={{ opacity: 0, y: 40 }}
 							animate={{ opacity: 1, y: 0 }}
 							exit={{ opacity: 0, y: -40 }}
@@ -104,26 +254,32 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 								initial={{ opacity: 0, scale: 0.9 }}
 								animate={{ opacity: 1, scale: 1 }}
 								transition={{ duration: 0.6, ease: "easeOut" }}
-								className='lg:w-[440px] w-[220px] md:ml-10 ml-5 mx-auto md:mx-0'>
+								className={cn("  ")}>
 								<HexRing center={center} ring={ring} iconSize={iconSize} />
 							</motion.div>
 
-							<div className='max-w-[520px] flex flex-col md:gap-4 gap-2'>
+							<div className=' flex flex-col lg:gap-4 gap-2'>
 								<motion.h1
 									initial={{ opacity: 0, y: 20 }}
 									animate={{ opacity: 1, y: 0 }}
 									transition={{ duration: 0.5, delay: 0.1 }}
-									className=' font-semibold md:mb-2 mb-0 text-center lg:text-left text-[16px] lg:text-[24px]'>
+									className={cn(
+										" font-semibold  mb-0 text-center md:text-left",
+										"text-[16px]  md:text-[24px] lg:text-[28px]",
+									)}>
 									{item.title}
 								</motion.h1>
 								<motion.p
 									initial={{ opacity: 0, y: 20 }}
 									animate={{ opacity: 1, y: 0 }}
 									transition={{ duration: 0.5, delay: 0.3 }}
-									className=' md:mb-3 mb-1 text-muted-foreground text-center lg:text-left text-[10px] lg:text-[16px]'>
+									className={cn(
+										" md:mb-3 mb-1 text-muted-foreground text-center md:text-left",
+										"text-[10px]  md:text-[16px] lg:text-[20px]",
+									)}>
 									{item.description}
 								</motion.p>
-								<motion.div className='flex justify-center lg:justify-start  md:gap-2 gap-1 md:mb-3 mb-2  flex-wrap'>
+								<motion.div className='flex justify-center md:justify-start  md:gap-2 gap-1 md:mb-3 mb-2  flex-wrap'>
 									{item.tags.map((tag, idx) => (
 										<motion.div
 											key={idx}
@@ -133,7 +289,12 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 											<Badge
 												key={idx}
 												variant='outline'
-												className='text-primary text-[10px] md:text-[12px]  bg-primary/10 rounded-full  md:px-4 px-2 md:py-1 py-0.5'>
+												className={cn(
+													"text-primary   bg-primary/10 rounded-full ",
+													"text-[10px] md:text-[12px] lg:text-[14px]",
+													"px-2 md:px-4 lg:px-6 ",
+													"py-0.5 md:py-1 lg:py-2 ",
+												)}>
 												{tag}
 											</Badge>
 										</motion.div>
@@ -143,10 +304,10 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 									initial={{ opacity: 0 }}
 									animate={{ opacity: 1 }}
 									transition={{ duration: 0.5, delay: 0.3 }}
-									className='flex justify-center lg:justify-start'>
+									className='flex justify-center md:justify-start'>
 									<Link
 										href={item.learn_more}
-										className='text-primary  font-medium text-center lg:text-left text-[12px] lg:text-[16px]'>
+										className='text-primary  font-medium text-center lg:text-left text-[12px] md:text-[16px]'>
 										Learn More
 									</Link>
 								</motion.div>
@@ -155,7 +316,11 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 					</AnimatePresence>
 
 					{/* Progress indicator */}
-					<div className='hidden lg:flex flex-col items-center justify-center absolute top-[30%] right-2'>
+					<div
+						className={cn(
+							"hidden md:flex flex-col items-center justify-center absolute   right-2",
+							" md:top-[0%] lg:top-[10%]",
+						)}>
 						<motion.p
 							key={`current-${current}`}
 							initial={{ opacity: 0, y: -10 }}
@@ -177,7 +342,7 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 						</div>
 						<p>{data.length}</p>
 					</div>
-					<div className='md:hidden flex items-center justify-center absolute top-[18.5%] mx-auto left-0 right-0'>
+					<div className='md:hidden flex items-center justify-center absolute bottom-[-40px] mx-auto left-0 right-0'>
 						<motion.p
 							key={`current-${current}`}
 							initial={{ opacity: 0, y: -10 }}
@@ -186,21 +351,30 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 							className='text-[10px] mr-2'>
 							{current + 1}
 						</motion.p>
-						<div className='w-[300px] h-[4px] rounded-full  relative overflow-hidden bg-gray-200'>
+						<div className='w-[180px] h-[4px] rounded-full  relative overflow-hidden bg-gray-200'>
 							<motion.div
 								className=' h-[4px] bg-gradient-to-l from-primary to-secondary absolute'
 								transition={{ duration: 0.5, ease: "easeInOut" }}
 								style={{
-									width: `${300 / data.length}px`,
+									width: `${180 / data.length}px`,
 								}}
 								animate={{
-									left: `${(300 / data.length) * current}px`,
+									left: `${(180 / data.length) * current}px`,
 								}}
 							/>
 						</div>
 						<p className='text-[10px] ml-2'>{data.length}</p>
 					</div>
 				</div>
+				<div
+					aria-hidden='true'
+					className='pointer-events-none absolute inset-0 z-[-2]'
+					style={{
+						background:
+							"linear-gradient(135deg, rgba(251,100,21,0.08) 0%, rgba(0,212,255,0.10) 100%)",
+					}}
+				/>
+				<Globe className=' z-[-1] max-w-[1600px] left-[100px] top-[350px]' />
 			</div>
 		</div>
 	);
