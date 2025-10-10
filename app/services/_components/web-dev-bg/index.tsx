@@ -13,98 +13,110 @@ export default function WebDevBg() {
 			<OrbitingCircles radius={360} duration={120} delay={0}>
 				<Image
 					src='/icons/react.webp'
-					alt='React'
+					alt='React - JavaScript library for building user interfaces'
 					width={ICON_SIZE}
 					height={ICON_SIZE}
 					className='rounded-full object-cover'
+					loading='lazy'
 				/>
 
 				<Image
 					src='/icons/angular.webp'
-					alt='React'
+					alt='Angular - TypeScript-based web application framework'
 					width={ICON_SIZE}
 					height={ICON_SIZE}
 					className='rounded-full object-cover'
+					loading='lazy'
 				/>
 				<Image
 					src='/icons/python.webp'
-					alt='React'
+					alt='Python - High-level programming language for web development'
 					width={ICON_SIZE}
 					height={ICON_SIZE}
 					className='rounded-full object-cover'
+					loading='lazy'
 				/>
 				<Image
 					src='/icons/react.webp'
-					alt='React'
+					alt='React - Modern web development framework'
 					width={ICON_SIZE}
 					height={ICON_SIZE}
 					className='rounded-full object-cover'
+					loading='lazy'
 				/>
 
 				<Image
 					src='/icons/angular.webp'
-					alt='React'
+					alt='Angular - Enterprise web application framework'
 					width={ICON_SIZE}
 					height={ICON_SIZE}
 					className='rounded-full object-cover'
+					loading='lazy'
 				/>
 				<Image
 					src='/icons/python.webp'
-					alt='React'
+					alt='Python - Backend web development language'
 					width={ICON_SIZE}
 					height={ICON_SIZE}
 					className='rounded-full object-cover'
+					loading='lazy'
 				/>
 			</OrbitingCircles>
 			<OrbitingCircles radius={290} duration={60} delay={5} reverse>
 				<Image
 					src='/icons/js.webp'
-					alt='JavaScript'
+					alt='JavaScript - Core web programming language'
 					width={ICON_SIZE}
 					height={ICON_SIZE}
 					className='rounded-full'
+					loading='lazy'
 				/>
 				<Image
 					src='/icons/wordpress.webp'
-					alt='JavaScript'
+					alt='WordPress - Popular content management system'
 					width={ICON_SIZE}
 					height={ICON_SIZE}
 					className='rounded-full'
+					loading='lazy'
 				/>
 				<Image
 					src='/icons/php.webp'
-					alt='JavaScript'
+					alt='PHP - Server-side scripting language'
 					width={ICON_SIZE}
 					height={ICON_SIZE}
 					className='rounded-full'
+					loading='lazy'
 				/>
 			</OrbitingCircles>
 			<OrbitingCircles radius={210} duration={60} delay={10}>
 				<Image
 					src='/icons/python.webp'
-					alt='Python'
+					alt='Python - Versatile programming language'
 					width={ICON_SIZE}
 					height={ICON_SIZE}
 					className='rounded-full'
+					loading='lazy'
 				/>
 			</OrbitingCircles>
 
 			<OrbitingCircles radius={120} duration={25} reverse>
 				<Image
 					src='/icons/angular.webp'
-					alt='Angular'
+					alt='Angular - Modern web application framework'
 					width={ICON_SIZE}
 					height={ICON_SIZE}
 					className='rounded-full'
+					loading='lazy'
 				/>
 			</OrbitingCircles>
 			<OrbitingCircles radius={60} duration={20} delay={15}>
 				<Image
 					src='/icons/wordpress.webp'
-					alt='WordPress'
+					alt='WordPress - Website and blog platform'
 					width={ICON_SIZE}
 					height={ICON_SIZE}
 					className='rounded-full'
+					loading='lazy'
 				/>
 			</OrbitingCircles>
 		</div>

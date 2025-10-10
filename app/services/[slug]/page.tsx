@@ -72,17 +72,43 @@ export async function generateMetadata({
 }) {
 	const { slug } = await params;
 	const service = await getServiceData(slug);
+	const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://qbitlog.com";
 
 	if (!service) {
 		return {
 			title: "Service Not Found",
+			description: "The requested service could not be found."
 		};
 	}
 
 	return {
-		title: `${service.title} | Qbitlog`,
+		title: service.title,
 		description: service.description,
-		keywords: service.tags.join(", "),
+		keywords: service.tags,
+		openGraph: {
+			type: "website",
+			title: `${service.title} - QBITLOG`,
+			description: service.description,
+			url: `${siteUrl}/services/${slug}`,
+			images: [
+				{
+					url: `${siteUrl}/og-image-services.jpg`,
+					width: 1200,
+					height: 630,
+					alt: service.title
+				}
+			]
+		},
+		twitter: {
+			card: "summary_large_image",
+			title: `${service.title} - QBITLOG`,
+			description: service.description,
+			images: [`${siteUrl}/twitter-image-services.jpg`],
+			creator: "@qbitlog"
+		},
+		alternates: {
+			canonical: `${siteUrl}/services/${slug}`,
+		}
 	};
 }
 
