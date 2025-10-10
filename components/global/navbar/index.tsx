@@ -199,7 +199,7 @@ export default function Navbar() {
 											Crafting innovative digital experiences that transform
 											businesses and delight users. Your vision, our expertise.
 										</p>
-										<div className='grid grid-cols-1  md:gap-4 gap-0 my-4'>
+										<div className='grid grid-cols-1 md:grid-cols-2  md:gap-4 gap-0 my-4'>
 											{OUR_SERVICES.map((service) => (
 												<Link
 													href={service.href}

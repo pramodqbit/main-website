@@ -24,35 +24,47 @@ export default function Footer() {
 
 	const footerLinks = {
 		services: [
-			{ name: "Web Development", href: "#services" },
-			{ name: "Mobile Apps", href: "#services" },
-			{ name: "UI/UX Design", href: "#services" },
-			{ name: "Cloud Solutions", href: "#services" },
+			{ name: "Web Development", href: "/services/web-development" },
+			{ name: "Mobile Apps", href: "/services/mobile-development" },
+			{ name: "UI/UX Design", href: "/services/uiux" },
+			{ name: "Cloud Solutions", href: "/services/cloud-solutions" },
 		],
 		company: [
-			{ name: "About Us", href: "#about" },
-			{ name: "Our Team", href: "#team" },
-			{ name: "Careers", href: "#careers" },
-			{ name: "Contact", href: "#contact" },
+			{ name: "About Us", href: "/aboutus" },
+			{ name: "Our Team", href: "/teams" },
+			// { name: "Careers", href: "#careers" },
+			{ name: "Contact", href: "/contact-us" },
 		],
 		resources: [
-			{ name: "Blog", href: "#blog" },
-			{ name: "Case Studies", href: "#cases" },
-			{ name: "Documentation", href: "#docs" },
-			{ name: "Support", href: "#support" },
+			{ name: "Blog", href: "/blog" },
+			{ name: "Case Studies", href: "/cases" },
+			// { name: "Documentation", href: "#docs" },
+			// { name: "Support", href: "#support" },
 		],
 		legal: [
-			{ name: "Privacy Policy", href: "#privacy" },
-			{ name: "Terms of Service", href: "#terms" },
-			{ name: "Cookie Policy", href: "#cookies" },
+			{ name: "Privacy Policy", href: "/construction" },
+			{ name: "Terms of Service", href: "/construction" },
+			{ name: "Cookie Policy", href: "/construction" },
 		],
 	};
 
 	const socialLinks = [
-		{ icon: Facebook, href: "https://www.facebook.com/Qbitlog", label: "Facebook" },
+		{
+			icon: Facebook,
+			href: "https://www.facebook.com/Qbitlog",
+			label: "Facebook",
+		},
 		{ icon: Twitter, href: "https://x.com/qbitlog", label: "X (Twitter)" },
-		{ icon: Linkedin, href: "https://www.linkedin.com/company/qbitlog", label: "LinkedIn" },
-		{ icon: Instagram, href: "https://www.instagram.com/qbitlog?utm_source=qr&igsh=MWdqbDlvOTg0ejJ5cg==", label: "Instagram" },
+		{
+			icon: Linkedin,
+			href: "https://www.linkedin.com/company/qbitlog",
+			label: "LinkedIn",
+		},
+		{
+			icon: Instagram,
+			href: "https://www.instagram.com/qbitlog?utm_source=qr&igsh=MWdqbDlvOTg0ejJ5cg==",
+			label: "Instagram",
+		},
 	];
 
 	return (
