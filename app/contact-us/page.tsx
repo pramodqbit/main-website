@@ -7,20 +7,22 @@ import ContactInfo from "./_components/contact-info";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://qbitlog.com";
 
 export const metadata: Metadata = {
-	title: "Contact Us - Get in Touch with QBITLOG",
-	description: "Ready to transform your business with innovative digital solutions? Contact QBITLOG today. Our expert team is here to help you with web development, mobile apps, AI/ML, cloud solutions, and UI/UX design.",
+	title: "Contact Us - Connect with us on a journey to build faster",
+	description: "Ready to bring your ideas to life? Reach out to our team with your questions, project ideas, or partnership inquiries. Let's build something amazing together with cutting-edge web, mobile, AI/ML, and cloud solutions.",
 	keywords: [
 		"contact QBITLOG",
 		"get in touch",
 		"software development inquiry",
 		"project consultation",
-		"free quote",
+		"partnership inquiries",
+		"build faster",
 		"contact form",
+		"project ideas",
 		"business inquiry"
 	],
 	openGraph: {
-		title: "Contact QBITLOG - Let's Build Something Great",
-		description: "Get in touch with our expert team. Ready to transform your business with innovative digital solutions.",
+		title: "Contact QBITLOG - Connect on a journey to build faster",
+		description: "Ready to bring your ideas to life? Reach out with your questions, project ideas, or partnership inquiries.",
 		url: `${siteUrl}/contact-us`,
 		type: "website",
 		images: [
@@ -34,8 +36,8 @@ export const metadata: Metadata = {
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "Contact QBITLOG - Let's Build Something Great",
-		description: "Get in touch with our expert team for innovative digital solutions.",
+		title: "Contact QBITLOG - Let's build something amazing together",
+		description: "Reach out with your project ideas and partnership inquiries. Let's build faster.",
 		images: [`${siteUrl}/twitter-image-contact.jpg`]
 	},
 	alternates: {
