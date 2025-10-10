@@ -2,15 +2,19 @@ import { Button } from "@/components/ui/button";
 import { TextAnimate } from "@/components/ui/text-animate";
 import { Span } from "@/components/animation/hero-animation";
 import { cn } from "@/lib/utils";
+import AnimatedBackground from "@/components/animation/animated-background";
 
-export default function Hero() {
-	const title = ["Q", "B", "I", "T", "L", "O", "G"];
+export default function Hero({ title, description, subtitle, button }: { title: string[], description: string, subtitle: string, button: string }) {
 
 	return (
-		<section className='flex flex-col items-center justify-center  border-l border-r md:pb-10 pb-5 overflow-hidden' aria-label='Hero Section'>
+		<section className='relative flex flex-col items-center justify-center  border-l border-r md:pb-10 pb-5 overflow-hidden' aria-label='Hero Section'>
+			{/* Animated Background */}
+			<AnimatedBackground />
+			
+			{/* Content with higher z-index */}
 			<h1
 				className={cn(
-					"relative  text-right  ml-2 text-nowrap",
+					"relative z-10 text-right  ml-2 text-nowrap",
 					"sm:text-[100px] text-[80px] md:text-[150px] lg:text-[150px]  xl:text-[200px] 2xl:text-[300px]",
 					" leading-[120px] lg:leading-[220px] xl:leading-[220px] 2xl:leading-[320px]",
 					"lg:tracking-[50px]",
@@ -39,30 +43,28 @@ export default function Hero() {
 				))}
 			</h1>
 
-			<Span
+			{subtitle && <Span
 				delay={0.3}
 				as='h2'
-				className='text-center lg:text-[48px] md:text-[24px] text-[16px] font-semibold bg-gradient-to-r from-[#8A38F5] to-[#25D0FF] bg-clip-text text-transparent'>
-				Crafting AI Powered Digital Experiences That Drive Results
-			</Span>
-			<TextAnimate
+				className='relative z-10 text-center lg:text-[48px] md:text-[24px] text-[16px] font-semibold bg-gradient-to-r from-[#8A38F5] to-[#25D0FF] bg-clip-text text-transparent'>
+				{subtitle}
+			</Span>}
+			{description && <TextAnimate
 				animation='blurIn'
 				as='p'
-				className='text-center lg:text-[24px] text-[12px]  lg:w-[1000px] md:w-[600px] w-[290px] sm:w-[300px] lg:my-[40px] my-[10px]'>
-				We&apos;re a leading software design agency specializing in creating
-				innovative web, mobile, and AI-driven applications that transform
-				businesses and delight users.
-			</TextAnimate>
+				className='relative z-10 text-center lg:text-[24px] text-[12px]  lg:w-[1000px] md:w-[600px] w-[290px] sm:w-[300px] lg:my-[40px] my-[10px]'>
+				{description}
+			</TextAnimate>}
 
-			<Button
+			{button && <Button
 				className={cn(
-					" lg:w-[200px] w-[100px]   text-[12px] lg:text-[16px]",
+					"relative z-10 lg:w-[200px] w-[100px]   text-[12px] lg:text-[16px]",
 					" mt-2  lg:mt-2",
 					"h-[30px] lg:h-[50px]",
 				)}
 				aria-label='Contact us to hire our services'>
-				Hire Us
-			</Button>
+				{button}
+			</Button>}
 		</section>
 	);
 }

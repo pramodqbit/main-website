@@ -161,7 +161,11 @@ export default function Home() {
 			/>
 			<main className='container'>
 				<Navbar />
-				<Hero />
+				<Hero
+					title={["Q", "B", "I", "T", "L", "O", "G"]}
+					subtitle="Crafting Digital Experiences That Drive Results"
+					description="We're a leading software design agency specializing in creating innovative web and mobile applications that transform businesses and delight users."
+					button="Hire Us"/>
 				<OurMarque Items={Items} />
 				<SectionLayout
 					id='about'

@@ -256,9 +256,17 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 							exit={{ opacity: 0, y: -40 }}
 							transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}>
 							<motion.div
-								initial={{ opacity: 0, scale: 0.9 }}
-								animate={{ opacity: 1, scale: 1 }}
-								transition={{ duration: 0.6, ease: "easeOut" }}
+								initial={{ opacity: 0, scale: 0.9, rotate: -5 }}
+								animate={{ opacity: 1, scale: 1, rotate: 0 }}
+								transition={{
+									duration: 0.8,
+									ease: [0.21, 0.47, 0.32, 0.98],
+									scale: {
+										type: "spring",
+										damping: 15,
+										stiffness: 100,
+									},
+								}}
 								className={cn("  ")}>
 								<HexRing center={center} ring={ring} iconSize={iconSize} />
 							</motion.div>
@@ -290,12 +298,13 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 											key={idx}
 											initial={{ opacity: 0, y: 20 }}
 											animate={{ opacity: 1, y: 0 }}
-											transition={{ duration: 0.5, delay: 0.2 * idx }}>
+											transition={{ duration: 0.5, delay: 0.2 * idx }}
+											whileHover={{ scale: 1.1 }}
+											whileTap={{ scale: 0.95 }}>
 											<Badge
-												key={idx}
 												variant='outline'
 												className={cn(
-													"text-primary   bg-primary/10 rounded-full ",
+													"text-primary   bg-primary/10 rounded-full transition-all duration-200 hover:bg-primary/20 cursor-default",
 													"text-[10px] md:text-[12px] lg:text-[14px]",
 													"px-2 md:px-4 lg:px-6 ",
 													"py-0.5 md:py-1 lg:py-2 ",
@@ -309,11 +318,29 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 									initial={{ opacity: 0 }}
 									animate={{ opacity: 1 }}
 									transition={{ duration: 0.5, delay: 0.3 }}
-									className='flex justify-center md:justify-start'>
+									className='flex justify-center md:justify-start'
+									whileHover='hover'
+									variants={{
+										hover: {
+											x: 5,
+										},
+									}}>
 									<Link
 										href={item.learn_more}
-										className='text-primary  font-medium text-center lg:text-left text-[12px] md:text-[16px]'>
+										className='text-primary font-medium text-center lg:text-left text-[12px] md:text-[16px] inline-flex items-center gap-2 group'>
 										Learn More
+										<motion.span
+											variants={{
+												hover: { x: 5 },
+											}}
+											transition={{
+												type: "spring",
+												stiffness: 400,
+												damping: 10,
+											}}
+											className='inline-block'>
+											→
+										</motion.span>
 									</Link>
 								</motion.div>
 							</div>

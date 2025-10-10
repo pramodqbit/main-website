@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -9,6 +11,13 @@ import {
 	Linkedin,
 	Instagram,
 } from "lucide-react";
+import { motion } from "motion/react";
+
+const fadeInUp = {
+	initial: { opacity: 0, y: 30 },
+	whileInView: { opacity: 1, y: 0 },
+	viewport: { once: true, amount: 0.2 },
+};
 
 export default function Footer() {
 	const currentYear = new Date().getFullYear();
@@ -52,15 +61,22 @@ export default function Footer() {
 			<div className='container mx-auto px-4 py-12 lg:py-16'>
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-12'>
 					{/* Brand Section */}
-					<div className='lg:col-span-2 space-y-4'>
+					<motion.div
+						className='lg:col-span-2 space-y-4'
+						{...fadeInUp}
+						transition={{ duration: 0.5 }}>
 						<Link href='/' className='inline-block'>
-							<Image
-								src='/icons/logo.svg'
-								alt='Qbitlog Logo'
-								width={50}
-								height={50}
-								className='w-12 h-12'
-							/>
+							<motion.div
+								whileHover={{ scale: 1.1, rotate: 360 }}
+								transition={{ duration: 0.6 }}>
+								<Image
+									src='/icons/logo.svg'
+									alt='Qbitlog Logo'
+									width={50}
+									height={50}
+									className='w-12 h-12'
+								/>
+							</motion.div>
 						</Link>
 						<h3 className='text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'>
 							QBITLOG
@@ -72,104 +88,148 @@ export default function Footer() {
 
 						{/* Contact Info */}
 						<div className='space-y-3 pt-4'>
-							<div className='flex items-start gap-3 text-sm text-foreground/70'>
+							<motion.div
+								className='flex items-start gap-3 text-sm text-foreground/70'
+								whileHover={{ x: 5 }}
+								transition={{ duration: 0.2 }}>
 								<Mail className='w-4 h-4 mt-0.5 text-primary flex-shrink-0' />
 								<a
 									href='mailto:contact@qbitlog.com'
 									className='hover:text-primary transition-colors'>
 									contact@qbitlog.com
 								</a>
-							</div>
-							<div className='flex items-start gap-3 text-sm text-foreground/70'>
+							</motion.div>
+							<motion.div
+								className='flex items-start gap-3 text-sm text-foreground/70'
+								whileHover={{ x: 5 }}
+								transition={{ duration: 0.2 }}>
 								<Phone className='w-4 h-4 mt-0.5 text-secondary flex-shrink-0' />
 								<a
 									href='tel:+918981969797'
 									className='hover:text-secondary transition-colors'>
 									+91 - 8981969797
 								</a>
-							</div>
-							<div className='flex items-start gap-3 text-sm text-foreground/70'>
+							</motion.div>
+							<motion.div
+								className='flex items-start gap-3 text-sm text-foreground/70'
+								whileHover={{ x: 5 }}
+								transition={{ duration: 0.2 }}>
 								<MapPin className='w-4 h-4 mt-0.5 text-primary flex-shrink-0' />
 								<span>New Delhi, India</span>
-							</div>
+							</motion.div>
 						</div>
-					</div>
+					</motion.div>
 
 					{/* Services Links */}
-					<div className='space-y-4'>
+					<motion.div
+						className='space-y-4'
+						{...fadeInUp}
+						transition={{ duration: 0.5, delay: 0.1 }}>
 						<h4 className='text-sm font-bold uppercase tracking-wider text-foreground'>
 							Services
 						</h4>
 						<ul className='space-y-3'>
-							{footerLinks.services.map((link) => (
-								<li key={link.name}>
+							{footerLinks.services.map((link, index) => (
+								<motion.li
+									key={link.name}
+									initial={{ opacity: 0, x: -20 }}
+									whileInView={{ opacity: 1, x: 0 }}
+									viewport={{ once: true }}
+									transition={{ duration: 0.3, delay: index * 0.1 }}>
 									<Link
 										href={link.href}
 										className='text-sm text-foreground/70 hover:text-primary transition-colors hover:translate-x-1 inline-block'>
 										{link.name}
 									</Link>
-								</li>
+								</motion.li>
 							))}
 						</ul>
-					</div>
+					</motion.div>
 
 					{/* Company Links */}
-					<div className='space-y-4'>
+					<motion.div
+						className='space-y-4'
+						{...fadeInUp}
+						transition={{ duration: 0.5, delay: 0.2 }}>
 						<h4 className='text-sm font-bold uppercase tracking-wider text-foreground'>
 							Company
 						</h4>
 						<ul className='space-y-3'>
-							{footerLinks.company.map((link) => (
-								<li key={link.name}>
+							{footerLinks.company.map((link, index) => (
+								<motion.li
+									key={link.name}
+									initial={{ opacity: 0, x: -20 }}
+									whileInView={{ opacity: 1, x: 0 }}
+									viewport={{ once: true }}
+									transition={{ duration: 0.3, delay: index * 0.1 }}>
 									<Link
 										href={link.href}
 										className='text-sm text-foreground/70 hover:text-secondary transition-colors hover:translate-x-1 inline-block'>
 										{link.name}
 									</Link>
-								</li>
+								</motion.li>
 							))}
 						</ul>
-					</div>
+					</motion.div>
 
 					{/* Resources Links */}
-					<div className='space-y-4'>
+					<motion.div
+						className='space-y-4'
+						{...fadeInUp}
+						transition={{ duration: 0.5, delay: 0.3 }}>
 						<h4 className='text-sm font-bold uppercase tracking-wider text-foreground'>
 							Resources
 						</h4>
 						<ul className='space-y-3'>
-							{footerLinks.resources.map((link) => (
-								<li key={link.name}>
+							{footerLinks.resources.map((link, index) => (
+								<motion.li
+									key={link.name}
+									initial={{ opacity: 0, x: -20 }}
+									whileInView={{ opacity: 1, x: 0 }}
+									viewport={{ once: true }}
+									transition={{ duration: 0.3, delay: index * 0.1 }}>
 									<Link
 										href={link.href}
 										className='text-sm text-foreground/70 hover:text-primary transition-colors hover:translate-x-1 inline-block'>
 										{link.name}
 									</Link>
-								</li>
+								</motion.li>
 							))}
 						</ul>
-					</div>
+					</motion.div>
 
 					{/* Legal Links */}
-					<div className='space-y-4'>
+					<motion.div
+						className='space-y-4'
+						{...fadeInUp}
+						transition={{ duration: 0.5, delay: 0.4 }}>
 						<h4 className='text-sm font-bold uppercase tracking-wider text-foreground'>
 							Legal
 						</h4>
 						<ul className='space-y-3'>
-							{footerLinks.legal.map((link) => (
-								<li key={link.name}>
+							{footerLinks.legal.map((link, index) => (
+								<motion.li
+									key={link.name}
+									initial={{ opacity: 0, x: -20 }}
+									whileInView={{ opacity: 1, x: 0 }}
+									viewport={{ once: true }}
+									transition={{ duration: 0.3, delay: index * 0.1 }}>
 									<Link
 										href={link.href}
 										className='text-sm text-foreground/70 hover:text-secondary transition-colors hover:translate-x-1 inline-block'>
 										{link.name}
 									</Link>
-								</li>
+								</motion.li>
 							))}
 						</ul>
-					</div>
+					</motion.div>
 				</div>
 
 				{/* Newsletter Section */}
-				<div className='mt-12 pt-8 border-t border-border'>
+				<motion.div
+					className='mt-12 pt-8 border-t border-border'
+					{...fadeInUp}
+					transition={{ duration: 0.5, delay: 0.5 }}>
 					<div className='flex flex-col md:flex-row items-center justify-between gap-6'>
 						<div className='text-center md:text-left'>
 							<h4 className='text-lg font-bold mb-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'>
@@ -179,18 +239,22 @@ export default function Footer() {
 								Subscribe to our newsletter for the latest updates and insights.
 							</p>
 						</div>
-						<div className='flex gap-2 w-full flex-col md:flex-row md:w-auto '>
-							<input
+						<div className='flex gap-2 w-full md:w-auto'>
+							<motion.input
 								type='email'
 								placeholder='Enter your email'
 								className='px-4 py-2 rounded-lg bg-card border border-border focus:border-primary outline-none text-sm flex-1 md:w-64 transition-colors'
+								whileFocus={{ scale: 1.02, borderColor: "var(--primary)" }}
 							/>
-							<button className='px-6 py-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:opacity-90 transition-opacity text-sm whitespace-nowrap'>
+							<motion.button
+								className='px-6 py-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:opacity-90 transition-opacity text-sm whitespace-nowrap'
+								whileHover={{ scale: 1.05 }}
+								whileTap={{ scale: 0.95 }}>
 								Subscribe
-							</button>
+							</motion.button>
 						</div>
 					</div>
-				</div>
+				</motion.div>
 			</div>
 
 			{/* Bottom Bar */}
@@ -205,16 +269,22 @@ export default function Footer() {
 
 						{/* Social Links */}
 						<div className='flex items-center gap-3'>
-							{socialLinks.map((social) => {
+							{socialLinks.map((social, index) => {
 								const Icon = social.icon;
 								return (
-									<a
+									<motion.a
 										key={social.label}
 										href={social.href}
 										aria-label={social.label}
-										className='w-9 h-9 rounded-full bg-card border border-border hover:border-primary flex items-center justify-center transition-all hover:scale-110 hover:shadow-lg group'>
+										className='w-9 h-9 rounded-full bg-card border border-border hover:border-primary flex items-center justify-center transition-all group'
+										initial={{ opacity: 0, scale: 0 }}
+										whileInView={{ opacity: 1, scale: 1 }}
+										viewport={{ once: true }}
+										transition={{ duration: 0.3, delay: index * 0.1 }}
+										whileHover={{ scale: 1.2, rotate: 360 }}
+										whileTap={{ scale: 0.9 }}>
 										<Icon className='w-4 h-4 text-foreground/70 group-hover:text-primary transition-colors' />
-									</a>
+									</motion.a>
 								);
 							})}
 						</div>
