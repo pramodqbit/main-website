@@ -1,0 +1,49 @@
+{
+	"slug": "cloud-solutions",
+	"tags": [
+		"Cloud Computing",
+		"DevOps",
+		"AWS",
+		"Azure",
+		"Docker",
+		"Kubernetes",
+		"CI/CD",
+		"Infrastructure"
+	],
+	"title": "Cloud Solutions",
+	"description": "Scalable cloud infrastructure and DevOps solutions. Deploy, manage, and scale your applications with confidence.",
+	"section_name": "Cloud Technologies",
+	"section_description": "We provide comprehensive cloud solutions leveraging leading platforms and DevOps practices. Our expertise spans cloud architecture, containerization, orchestration, and continuous deployment, enabling businesses to build resilient, scalable, and cost-effective infrastructure that grows with their needs.",
+	"techstack": [
+		{
+			"name": "Amazon Web Services",
+			"image": "/icons/react.webp",
+			"description": "AWS provides a comprehensive suite of cloud services including compute, storage, databases, and machine learning capabilities."
+		},
+		{
+			"name": "Microsoft Azure",
+			"image": "/icons/js.webp",
+			"description": "Azure offers enterprise-grade cloud services with seamless integration with Microsoft products and hybrid cloud solutions."
+		},
+		{
+			"name": "Docker",
+			"image": "/icons/python.webp",
+			"description": "Docker enables containerization of applications for consistent deployment across different environments."
+		},
+		{
+			"name": "Kubernetes",
+			"image": "/icons/react.webp",
+			"description": "Kubernetes orchestrates containerized applications at scale with automated deployment, scaling, and management."
+		},
+		{
+			"name": "Terraform",
+			"image": "/icons/js.webp",
+			"description": "Terraform provides infrastructure as code for provisioning and managing cloud resources across multiple providers."
+		},
+		{
+			"name": "CI/CD Pipelines",
+			"image": "/icons/shopify.webp",
+			"description": "Automated continuous integration and deployment pipelines for faster, more reliable software delivery."
+		}
+	]
+}
