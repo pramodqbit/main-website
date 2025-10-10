@@ -10,111 +10,36 @@ export default function ContactUs() {
 		subject: "",
 		message: "",
 	});
-	const ZEPTO_API_URL = "https://api.zeptomail.in/v1.1/email";
-	const ZEPTO_API_KEY = "PHtE6r0EEb+9imUu9UcI5/O7E5OhYdkmq7tlL1RG5NwUDPZSHU1Sr4grwWTi+hp7AKFFHKSanN9us+mftu6NcGnuM29FCmqyqK3sx/VYSPOZsbq6x00VuVgYf0HYV4DpddBj0CPRu93fNA==";
-	const FROM_EMAIL = "arup@qbitlog.com";
-	const To_EMAIL = "srijandev92prog@gmail.com";
-
-	// const handleSubmit = (e: React.FormEvent) => {
-	// 	e.preventDefault();
-	// 	// Handle form submission
-	// 	console.log("Form submitted:", formData);
-	// };
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [submitStatus, setSubmitStatus] = useState<{
+		type: 'success' | 'error' | null;
+		message: string;
+	}>({ type: null, message: '' });
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-		//   setIsSubmitting(true);
+		setIsSubmitting(true);
+		setSubmitStatus({ type: null, message: '' });
 
 		try {
-			// Replace with your actual Google Apps Script Web App URL
-			const scriptURL = 'https://script.google.com/macros/s/AKfycbxLmcYFd7ERer8KoV8xBhV05SAP8c_Ej0pDrmY1HhADicTXAzIP0tNJ9YbYMPsL_O4k/exec';
-			if (!scriptURL) {
-				throw new Error('Google Script URL is not configured');
-			}
-			// Create form data
-			const formDataToSend = new URLSearchParams();
-			formDataToSend.append('name', formData.name);
-			formDataToSend.append('email', formData.email);
-			formDataToSend.append('subject', formData.subject);
-			formDataToSend.append('message', formData.message);
-
-
-			// Use no-cors mode - the request will go through but we can't read response
-			await fetch(scriptURL, {
+			const response = await fetch('/api/contact', {
 				method: 'POST',
-				mode: 'no-cors',
 				headers: {
-					'Content-Type': 'application/x-www-form-urlencoded',
+					'Content-Type': 'application/json',
 				},
-				body: formDataToSend
+				body: JSON.stringify(formData),
 			});
-			// const emailResponse = await fetch(ZEPTO_API_URL, {
-			// 	method: 'POST',
-			// 	mode: 'no-cors',
-			// 	headers: {
-			// 		'Content-Type': 'application/json',
-			// 		"Authorization": `Zoho-enczapikey ${ZEPTO_API_KEY}`,
-			// 	},
-			// 	body: JSON.stringify({
-			// 		name: formData.name,
-			// 		email: formData.email,
-			// 		subject: formData.subject,
-			// 		message: formData.message,
-			// 		toEmail: To_EMAIL,
-			// 		fromEmail: FROM_EMAIL
-			// 	}),
-			// });
 
-			// if (!emailResponse.ok) {
-			// 	throw new Error('Failed to send email notification');
-			// }
-			// Even with CORS issues, the data usually gets submitted
+			const data = await response.json();
 
-    const payload = {
-      from: { 
-        address: FROM_EMAIL,
-        name: "Qbitlog Contact Form"
-      },
-      to: [
-        { 
-          email_address: { 
-            address: To_EMAIL,
-            name: "Qbitlog Team"
-          } 
-        }
-      ],
-      subject: `New Contact Form: test`,
-      htmlbody: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #333;">New Contact Form Submission</h2>
-          <div style="background: #f5f5f5; padding: 20px; border-radius: 5px;">
-            <p><strong>Name:</strong> ${formData.name}</p>
-            <p><strong>Email:</strong> ${formData.email}</p>
-            <p><strong>Subject:</strong> ${formData.subject}</p>
-            <p><strong>Message:</strong></p>
-            <div style="background: white; padding: 15px; border-radius: 3px; margin-top: 10px;">
-              ${formData.message.replace(/\n/g, '<br>')}
-            </div>
-          </div>
-        </div>
-      `
-    };
+			if (!response.ok) {
+				throw new Error(data.error || 'Failed to send message');
+			}
 
-    await fetch(ZEPTO_API_URL, {
-      method: 'POST',
-	mode: 'no-cors',
-      headers: {
-        'Authorization': `Zoho-enczapikey ${ZEPTO_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
-    });
-
-
-  
-
-			console.log("Form submitted successfully!");
-			alert("Thank you for your message! We'll get back to you within 24 hours.");
+			setSubmitStatus({
+				type: 'success',
+				message: 'Thank you for your message! We\'ll get back to you within 24 hours.'
+			});
 
 			// Reset form
 			setFormData({
@@ -126,10 +51,12 @@ export default function ContactUs() {
 
 		} catch (error) {
 			console.error("Error submitting form:", error);
-			// Even if there's an error, the form might have submitted
-			alert("Thank you for your message! If you don't hear back from us, please try contacting us directly.");
+			setSubmitStatus({
+				type: 'error',
+				message: 'Failed to send message. Please try again or contact us directly.'
+			});
 		} finally {
-			// setIsSubmitting(false);
+			setIsSubmitting(false);
 		}
 	};
 
@@ -144,7 +71,7 @@ export default function ContactUs() {
 		<section
 			id='contact'
 			aria-labelledby='contact-heading'
-			className='w-full  bg-gradient-to-br from-gray-100 to-gray-200 py-10 md:py-20 px-4 md:px-4 my-2 rounded-2xl'>
+			className='w-full bg-gradient-to-br from-gray-100 to-gray-200 py-10 md:py-20 px-4 md:px-4 my-2 rounded-2xl'>
 			<div className='max-w-7xl mx-auto'>
 				{/* Mobile Layout */}
 				<div className='block lg:hidden'>
@@ -158,6 +85,16 @@ export default function ContactUs() {
 						<p className='text-gray-500 mb-6'>
 							We will contact you within 24 hours
 						</p>
+
+						{submitStatus.type && (
+							<div className={`mb-6 p-4 rounded-lg ${
+								submitStatus.type === 'success'
+									? 'bg-green-100 text-green-800 border border-green-200'
+									: 'bg-red-100 text-red-800 border border-red-200'
+							}`}>
+								{submitStatus.message}
+							</div>
+						)}
 
 						<form
 							onSubmit={handleSubmit}
@@ -175,9 +112,10 @@ export default function ContactUs() {
 									value={formData.name}
 									onChange={handleChange}
 									autoComplete='name'
-									className='w-full pb-3 border-b-2 border-gray-300  outline-none focus:border-primary text-gray-700 placeholder-gray-400 transition-colors'
+									className='w-full pb-3 border-b-2 border-gray-300 bg-transparent outline-none focus:border-primary text-gray-700 placeholder-gray-400 transition-colors'
 									required
 									aria-required='true'
+									disabled={isSubmitting}
 								/>
 							</div>
 							<div>
@@ -192,9 +130,10 @@ export default function ContactUs() {
 									value={formData.email}
 									onChange={handleChange}
 									autoComplete='email'
-									className='w-full pb-3 border-b-2 border-gray-300  outline-none focus:border-primary text-gray-700 placeholder-gray-400 transition-colors'
+									className='w-full pb-3 border-b-2 border-gray-300 bg-transparent outline-none focus:border-primary text-gray-700 placeholder-gray-400 transition-colors'
 									required
 									aria-required='true'
+									disabled={isSubmitting}
 								/>
 							</div>
 							<div>
@@ -209,9 +148,10 @@ export default function ContactUs() {
 									value={formData.subject}
 									onChange={handleChange}
 									autoComplete='off'
-									className='w-full pb-3 border-b-2 border-gray-300  outline-none focus:border-primary text-gray-700 placeholder-gray-400 transition-colors'
+									className='w-full pb-3 border-b-2 border-gray-300 bg-transparent outline-none focus:border-primary text-gray-700 placeholder-gray-400 transition-colors'
 									required
 									aria-required='true'
+									disabled={isSubmitting}
 								/>
 							</div>
 							<div>
@@ -225,15 +165,17 @@ export default function ContactUs() {
 									value={formData.message}
 									onChange={handleChange}
 									rows={4}
-									className='w-full pb-3 border-b-2 border-gray-300  outline-none focus:border-primary text-gray-700 placeholder-gray-400 transition-colors resize-none'
+									className='w-full pb-3 border-b-2 border-gray-300 bg-transparent outline-none focus:border-primary text-gray-700 placeholder-gray-400 transition-colors resize-none'
 									required
 									aria-required='true'
+									disabled={isSubmitting}
 								/>
 							</div>
 							<Button
 								type='submit'
-								className='bg-black hover:bg-gray-800 text-white px-8 py-3 rounded-lg transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-black'>
-								Contact Us
+								disabled={isSubmitting}
+								className='bg-black hover:bg-gray-800 text-white px-8 py-3 rounded-lg transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-black disabled:opacity-50 disabled:cursor-not-allowed'>
+								{isSubmitting ? 'Sending...' : 'Contact Us'}
 							</Button>
 						</form>
 					</div>
@@ -458,6 +400,16 @@ export default function ContactUs() {
 							We will contact you within 24 hours
 						</p>
 
+						{submitStatus.type && (
+							<div className={`mb-6 p-4 rounded-lg ${
+								submitStatus.type === 'success'
+									? 'bg-green-100 text-green-800 border border-green-200'
+									: 'bg-red-100 text-red-800 border border-red-200'
+							}`}>
+								{submitStatus.message}
+							</div>
+						)}
+
 						<form
 							onSubmit={handleSubmit}
 							className='space-y-8'
@@ -474,9 +426,10 @@ export default function ContactUs() {
 									value={formData.name}
 									onChange={handleChange}
 									autoComplete='name'
-									className='w-full pb-3 border-b-2 border-gray-300 focus:border-primary   outline-none text-gray-700 placeholder-gray-400 transition-colors text-lg'
+									className='w-full pb-3 border-b-2 border-gray-300 focus:border-primary bg-transparent outline-none text-gray-700 placeholder-gray-400 transition-colors text-lg'
 									required
 									aria-required='true'
+									disabled={isSubmitting}
 								/>
 							</div>
 							<div>
@@ -491,9 +444,10 @@ export default function ContactUs() {
 									value={formData.email}
 									onChange={handleChange}
 									autoComplete='email'
-									className='w-full pb-3 border-b-2 border-gray-300 focus:border-primary   outline-none text-gray-700 placeholder-gray-400 transition-colors text-lg'
+									className='w-full pb-3 border-b-2 border-gray-300 focus:border-primary bg-transparent outline-none text-gray-700 placeholder-gray-400 transition-colors text-lg'
 									required
 									aria-required='true'
+									disabled={isSubmitting}
 								/>
 							</div>
 							<div>
@@ -508,9 +462,10 @@ export default function ContactUs() {
 									value={formData.subject}
 									onChange={handleChange}
 									autoComplete='off'
-									className='w-full pb-3 border-b-2 border-gray-300 focus:border-primary   outline-none text-gray-700 placeholder-gray-400 transition-colors text-lg'
+									className='w-full pb-3 border-b-2 border-gray-300 focus:border-primary bg-transparent outline-none text-gray-700 placeholder-gray-400 transition-colors text-lg'
 									required
 									aria-required='true'
+									disabled={isSubmitting}
 								/>
 							</div>
 							<div>
@@ -524,15 +479,17 @@ export default function ContactUs() {
 									value={formData.message}
 									onChange={handleChange}
 									rows={4}
-									className='w-full pb-3 border-b-2 border-gray-300 focus:border-primary   outline-none text-gray-700 placeholder-gray-400 transition-colors resize-none text-lg'
+									className='w-full pb-3 border-b-2 border-gray-300 focus:border-primary bg-transparent outline-none text-gray-700 placeholder-gray-400 transition-colors resize-none text-lg'
 									required
 									aria-required='true'
+									disabled={isSubmitting}
 								/>
 							</div>
 							<Button
 								type='submit'
-								className='bg-black hover:bg-gray-800 text-white px-10 py-3 rounded-lg transition-colors text-lg focus:ring-2 focus:ring-offset-2 focus:ring-black'>
-								Contact Us
+								disabled={isSubmitting}
+								className='bg-black hover:bg-gray-800 text-white px-10 py-3 rounded-lg transition-colors text-lg focus:ring-2 focus:ring-offset-2 focus:ring-black disabled:opacity-50 disabled:cursor-not-allowed'>
+								{isSubmitting ? 'Sending...' : 'Contact Us'}
 							</Button>
 						</form>
 					</div>
