@@ -6,7 +6,7 @@ import CompanyStory from "./_components/company-story";
 import OurValues from "./_components/our-values";
 import CompanyStats from "./_components/company-stats";
 import { Building2, Target, TrendingUp, Users, Award, Lightbulb } from "lucide-react";
-
+import Hero from "@/app/_home/components/hero";
 const ICON_SIZE = 32;
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://qbitlog.com";
 
@@ -53,7 +53,13 @@ export default function AboutUsPage() {
 		<div className=''>
 			<main className='container'>
 				<Navbar />
-				
+
+				<Hero 
+				title={["A", "B", "O", "U", "T", "U", "S"]}
+				description={`Qbitlog is a future-forward software design agency where innovation meets intelligence. With a sophisticated dark mode aesthetic highlighted by electric cyan and AI green, we specialize in crafting adaptive web and mobile applications. Our passionate team leverages machine learning and cutting-edge animations, delivering intuitively engaging and transformative digital experiences. We empower your vision, building an intelligent digital future, one meticulously designed, AI-enhanced solution at a time.`}
+				button=""
+				subtitle="Architecting Tomorrow's Digital Landscape"
+				/>
 				<SectionLayout
 					id='company-story'
 					badgeIcon={<Building2 size={ICON_SIZE} className='text-primary' />}

@@ -1,6 +1,8 @@
+"use client";
+
 import { Card, CardContent } from "@/components/ui/card";
-import { Span } from "@/components/animation/hero-animation";
 import { Heart, Shield, Lightbulb, Users, Target, Zap } from "lucide-react";
+import { motion } from "motion/react";
 
 const valuesData = [
 	{
@@ -46,32 +48,67 @@ export default function OurValues() {
 		<div className='space-y-8'>
 			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
 				{valuesData.map((value, index) => (
-					<Span
+					<motion.div
 						key={index}
-						delay={index * 0.1}
-						as='div'
-						className='group'>
-						<Card className='h-full hover:shadow-lg transition-all duration-300 hover:scale-105'>
-							<CardContent className='p-6'>
-								<div className='flex flex-col items-center text-center space-y-4'>
+						className='group'
+						initial={{ opacity: 0, y: 50, rotateY: -15 }}
+						whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
+						viewport={{ once: true, amount: 0.3 }}
+						transition={{
+							duration: 0.6,
+							delay: index * 0.1,
+							ease: [0.21, 0.47, 0.32, 0.98],
+						}}
+						whileHover={{ y: -10, scale: 1.02 }}>
+						<Card className='h-full shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden'>
+							<CardContent className='p-6 relative'>
+								{/* Animated background gradient on hover */}
+								<motion.div
+									className='absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100'
+									transition={{ duration: 0.3 }}
+								/>
+
+								<div className='flex flex-col items-center text-center space-y-4 relative z-10'>
 									{/* Icon */}
-									<div className={`p-4 rounded-full bg-gray-100 dark:bg-gray-800 ${value.color} group-hover:scale-110 transition-transform duration-300`}>
+									<motion.div
+										className={`p-4 rounded-full bg-gray-100 dark:bg-gray-800 ${value.color}`}
+										initial={{ scale: 0, rotate: -180 }}
+										whileInView={{ scale: 1, rotate: 0 }}
+										viewport={{ once: true }}
+										transition={{
+											delay: index * 0.1 + 0.2,
+											type: "spring",
+											stiffness: 200,
+											damping: 15,
+										}}
+										whileHover={{ scale: 1.2, rotate: 360 }}
+										>
 										{value.icon}
-									</div>
+									</motion.div>
 
 									{/* Title */}
-									<h3 className='text-xl font-semibold text-foreground group-hover:text-primary transition-colors'>
+									<motion.h3
+										className='text-xl font-semibold text-foreground group-hover:text-primary transition-colors'
+										initial={{ opacity: 0, y: 20 }}
+										whileInView={{ opacity: 1, y: 0 }}
+										viewport={{ once: true }}
+										transition={{ delay: index * 0.1 + 0.3 }}>
 										{value.title}
-									</h3>
+									</motion.h3>
 
 									{/* Description */}
-									<p className='text-sm text-muted-foreground leading-relaxed'>
+									<motion.p
+										className='text-sm text-muted-foreground leading-relaxed'
+										initial={{ opacity: 0 }}
+										whileInView={{ opacity: 1 }}
+										viewport={{ once: true }}
+										transition={{ delay: index * 0.1 + 0.4 }}>
 										{value.description}
-									</p>
+									</motion.p>
 								</div>
 							</CardContent>
 						</Card>
-					</Span>
+					</motion.div>
 				))}
 			</div>
 		</div>

@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import SmoothScrolling from "@/components/animation/smooth-scrolling";
+import ScrollProgress from "@/components/global/scroll-progress";
 
 
 const geistSans = Geist({
@@ -114,6 +115,7 @@ export default function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} ${sevenSegment.variable} antialiased`}>
 				<SmoothScrolling />
+				<ScrollProgress />
 				{children}
 			</body>
 		</html>

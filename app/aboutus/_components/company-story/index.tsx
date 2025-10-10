@@ -1,6 +1,8 @@
+"use client";
+
 import { Card, CardContent } from "@/components/ui/card";
-import { Span } from "@/components/animation/hero-animation";
 import { Calendar, MapPin, Users, Target } from "lucide-react";
+import { motion } from "motion/react";
 
 const storyData = [
 	{
@@ -45,42 +47,78 @@ export default function CompanyStory() {
 		<div className='space-y-8'>
 			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
 				{storyData.map((milestone, index) => (
-					<Span
+					<motion.div
 						key={index}
-						delay={index * 0.1}
-						as='div'
-						className='group'>
-						<Card className='h-full hover:shadow-lg transition-all duration-300 hover:scale-105'>
+						className='group'
+						initial={{ opacity: 0, y: 50, scale: 0.95 }}
+						whileInView={{ opacity: 1, y: 0, scale: 1 }}
+						viewport={{ once: true, amount: 0.3 }}
+						transition={{
+							duration: 0.5,
+							delay: index * 0.1,
+							ease: [0.21, 0.47, 0.32, 0.98],
+						}}
+						whileHover={{ y: -8 }}
+						>
+						<Card className='h-full shadow-md hover:shadow-2xl transition-all duration-300'>
 							<CardContent className='p-6'>
 								<div className='flex flex-col space-y-4'>
 									{/* Year and Icon */}
 									<div className='flex items-center justify-between'>
-										<span className='text-2xl font-bold text-primary'>{milestone.year}</span>
-										<div className='p-2 rounded-full bg-primary/10 text-primary'>
+										<motion.span
+											className='text-2xl font-bold text-primary'
+											initial={{ opacity: 0, x: -20 }}
+											whileInView={{ opacity: 1, x: 0 }}
+											viewport={{ once: true }}
+											transition={{ delay: index * 0.1 + 0.2 }}>
+											{milestone.year}
+										</motion.span>
+										<motion.div
+											className='p-2 rounded-full bg-primary/10 text-primary'
+											whileHover={{ scale: 1.2, rotate: 360 }}
+											transition={{ duration: 0.6 }}>
 											{milestone.icon}
-										</div>
+										</motion.div>
 									</div>
 
 									{/* Title */}
-									<h3 className='text-xl font-semibold text-foreground group-hover:text-primary transition-colors'>
+									<motion.h3
+										className='text-xl font-semibold text-foreground group-hover:text-primary transition-colors'
+										initial={{ opacity: 0 }}
+										whileInView={{ opacity: 1 }}
+										viewport={{ once: true }}
+										transition={{ delay: index * 0.1 + 0.3 }}>
 										{milestone.title}
-									</h3>
+									</motion.h3>
 
 									{/* Description */}
-									<p className='text-sm text-muted-foreground leading-relaxed'>
+									<motion.p
+										className='text-sm text-muted-foreground leading-relaxed'
+										initial={{ opacity: 0 }}
+										whileInView={{ opacity: 1 }}
+										viewport={{ once: true }}
+										transition={{ delay: index * 0.1 + 0.4 }}>
 										{milestone.description}
-									</p>
+									</motion.p>
 
 									{/* Highlight Badge */}
-									<div className='pt-2'>
-										<span className='inline-block px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full'>
+									<motion.div
+										className='pt-2'
+										initial={{ opacity: 0, scale: 0.8 }}
+										whileInView={{ opacity: 1, scale: 1 }}
+										viewport={{ once: true }}
+										transition={{ delay: index * 0.1 + 0.5 }}>
+										<motion.span
+											className='inline-block px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full'
+											whileHover={{ scale: 1.1 }}
+											whileTap={{ scale: 0.95 }}>
 											{milestone.highlight}
-										</span>
-									</div>
+										</motion.span>
+									</motion.div>
 								</div>
 							</CardContent>
 						</Card>
-					</Span>
+					</motion.div>
 				))}
 			</div>
 		</div>

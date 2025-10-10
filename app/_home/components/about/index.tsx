@@ -1,6 +1,9 @@
+"use client";
+
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { motion } from "motion/react";
 
 const about_data = [
 	{
@@ -16,29 +19,50 @@ const about_data = [
 		alt: "Business analytics dashboard and data visualization representing our IT consulting and digital transformation services",
 	},
 ];
+
 export default function About() {
 	return (
 		<div className='flex lg:flex-row  gap-1 lg:gap-4 items-center justify-center '>
 			{about_data.map((item, index) => (
-				<Card
+				<motion.div
 					key={index}
-					className={cn("p-0 overflow-hidden", "rounded-sm md:rounded-md")}>
-					<CardContent className='p-0'>
-						<Image
-							src={item.url}
-							alt={item.alt}
-							className={cn(
-								" object-cover hover:scale-105 transition-all duration-300",
-								" w-[100px] sm:w-[150px] md:w-[220px] lg:w-[370px]",
-								" h-[100px] sm:h-[150px] md:h-[220px] lg:h-[370px]",
-							)}
-							width={370}
-							height={370}
-							loading='lazy'
-							quality={100}
-						/>
-					</CardContent>
-				</Card>
+					initial={{ opacity: 0, y: 50, scale: 0.9 }}
+					whileInView={{ opacity: 1, y: 0, scale: 1 }}
+					viewport={{ once: true, amount: 0.3 }}
+					transition={{
+						duration: 0.6,
+						delay: index * 0.2,
+						ease: [0.21, 0.47, 0.32, 0.98],
+					}}>
+					<Card
+						className={cn(
+							"p-0 overflow-hidden group",
+							"rounded-sm md:rounded-md",
+							"hover:shadow-2xl transition-shadow duration-300",
+						)}>
+						<CardContent className='p-0 relative'>
+							<motion.div
+								whileHover={{ scale: 1.05 }}
+								transition={{ duration: 0.4, ease: "easeOut" }}>
+								<Image
+									src={item.url}
+									alt={item.alt}
+									className={cn(
+										"object-cover transition-all duration-500",
+										" w-[100px] sm:w-[150px] md:w-[220px] lg:w-[370px]",
+										" h-[100px] sm:h-[150px] md:h-[220px] lg:h-[370px]",
+									)}
+									width={370}
+									height={370}
+									loading='lazy'
+									quality={100}
+								/>
+							</motion.div>
+							{/* Gradient overlay on hover */}
+							<div className='absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
+						</CardContent>
+					</Card>
+				</motion.div>
 			))}
 		</div>
 	);
