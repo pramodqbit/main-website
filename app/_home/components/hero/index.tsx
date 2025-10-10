@@ -3,6 +3,7 @@ import { TextAnimate } from "@/components/ui/text-animate";
 import { Span } from "@/components/animation/hero-animation";
 import { cn } from "@/lib/utils";
 import AnimatedBackground from "@/components/animation/animated-background";
+import Link from "next/link";
 
 export default function Hero({ title, description, subtitle, button }: { title: string[], description: string, subtitle: string, button: string }) {
 
@@ -56,15 +57,17 @@ export default function Hero({ title, description, subtitle, button }: { title: 
 				{description}
 			</TextAnimate>}
 
-			{button && <Button
-				className={cn(
-					"relative z-10 lg:w-[200px] w-[100px]   text-[12px] lg:text-[16px]",
-					" mt-2  lg:mt-2",
-					"h-[30px] lg:h-[50px]",
-				)}
-				aria-label='Contact us to hire our services'>
-				{button}
-			</Button>}
+			{button && <Link href="/contact-us">
+				<Button
+					className={cn(
+						"relative z-10 lg:w-[200px] w-[100px]   text-[12px] lg:text-[16px]",
+						" mt-2  lg:mt-2",
+						"h-[30px] lg:h-[50px]",
+					)}
+					aria-label='Contact us to hire our services'>
+					{button}
+				</Button>
+			</Link>}
 		</section>
 	);
 }

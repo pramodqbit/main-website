@@ -31,7 +31,7 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 		const updateDimensions = () => {
 			const width = window.innerWidth;
 
-			console.log("WIDTH", width);
+		
 
 			// Dynamic height calculation based on screen size
 			let multiplier;
