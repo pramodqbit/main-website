@@ -1,6 +1,7 @@
+import { Metadata } from "next";
 import Navbar from "@/components/global/navbar";
 
-import { Code2, Smartphone, Palette, Cloud } from "lucide-react";
+import { Code2, Smartphone, Palette, Cloud, Brain } from "lucide-react";
 
 import { TextFadeIn } from "@/components/animation/text-animation";
 import { TextAnimate } from "@/components/ui/text-animate";
@@ -11,6 +12,49 @@ import { cn } from "@/lib/utils";
 import WebDevBg from "./_components/web-dev-bg";
 import CtaBanner from "@/components/global/cta-banner";
 import CloudBg from "./_components/cloud-bg";
+import AIBg from "./_components/ai-bg";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://qbitlog.com";
+
+export const metadata: Metadata = {
+	title: "Our Services - Comprehensive Digital Solutions for Your Business",
+	description: "Explore QBITLOG's comprehensive digital services: Web Development, Mobile Apps, UI/UX Design, Cloud Solutions, and AI & Machine Learning. From concept to launch, we deliver tailored solutions that drive growth and innovation.",
+	keywords: [
+		"web development services",
+		"mobile app development",
+		"UI UX design services",
+		"cloud computing solutions",
+		"AI machine learning services",
+		"custom software development",
+		"React development",
+		"Next.js development",
+		"AWS cloud services",
+		"DevOps services"
+	],
+	openGraph: {
+		title: "QBITLOG Services - Comprehensive Digital Solutions",
+		description: "Web Development, Mobile Apps, UI/UX Design, Cloud Solutions, and AI/ML services. Tailored solutions that drive growth and innovation.",
+		url: `${siteUrl}/services`,
+		type: "website",
+		images: [
+			{
+				url: `${siteUrl}/og-image-services.jpg`,
+				width: 1200,
+				height: 630,
+				alt: "QBITLOG Services"
+			}
+		]
+	},
+	twitter: {
+		card: "summary_large_image",
+		title: "QBITLOG Services - Comprehensive Digital Solutions",
+		description: "Web Development, Mobile Apps, UI/UX Design, Cloud Solutions, and AI/ML services.",
+		images: [`${siteUrl}/twitter-image-services.jpg`]
+	},
+	alternates: {
+		canonical: `${siteUrl}/services`,
+	}
+};
 
 const services = [
 	{
@@ -77,6 +121,16 @@ const services = [
 		cta: "Learn more",
 		className: "col-span-3 lg:col-span-2",
 		background: <CloudBg />,
+	},
+	{
+		Icon: Brain,
+		name: "AI & Machine Learning",
+		description:
+			"Intelligent automation and AI-powered solutions. From predictive analytics to natural language processing and computer vision.",
+		href: "/services/ai-machine-learning",
+		cta: "Learn more",
+		className: "col-span-3 lg:col-span-3",
+		background: <AIBg />,
 	},
 ];
 

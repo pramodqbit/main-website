@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Navbar from "@/components/global/navbar";
 import Footer from "@/components/global/footer";
 import SectionLayout from "@/components/global/section-layout";
@@ -8,6 +9,46 @@ import caseStudies from "./_data/case-studies.json";
 import { Briefcase, Users, Clock, TrendingUp } from "lucide-react";
 
 const ICON_SIZE = 32;
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://qbitlog.com";
+
+export const metadata: Metadata = {
+	title: "Case Studies - Real-World Success Stories",
+	description: "Explore how QBITLOG has helped businesses across industries achieve their digital transformation goals. From fintech to e-commerce, healthcare to AI/ML implementations - real results from real projects.",
+	keywords: [
+		"case studies",
+		"success stories",
+		"client portfolio",
+		"project showcase",
+		"digital transformation",
+		"fintech projects",
+		"ecommerce solutions",
+		"healthcare IT",
+		"AI implementation"
+	],
+	openGraph: {
+		title: "QBITLOG Case Studies - Real-World Success Stories",
+		description: "Discover how we've helped businesses achieve digital transformation goals across fintech, e-commerce, healthcare, and more.",
+		url: `${siteUrl}/case-studies`,
+		type: "website",
+		images: [
+			{
+				url: `${siteUrl}/og-image-case-studies.jpg`,
+				width: 1200,
+				height: 630,
+				alt: "QBITLOG Case Studies"
+			}
+		]
+	},
+	twitter: {
+		card: "summary_large_image",
+		title: "QBITLOG Case Studies - Real-World Success Stories",
+		description: "Real results from real projects across fintech, e-commerce, healthcare, and AI/ML.",
+		images: [`${siteUrl}/twitter-image-case-studies.jpg`]
+	},
+	alternates: {
+		canonical: `${siteUrl}/case-studies`,
+	}
+};
 
 export default function CaseStudiesPage() {
 	return (

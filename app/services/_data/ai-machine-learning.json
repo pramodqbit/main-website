@@ -1,0 +1,49 @@
+{
+	"slug": "ai-machine-learning",
+	"tags": [
+		"Artificial Intelligence",
+		"Machine Learning",
+		"Deep Learning",
+		"TensorFlow",
+		"PyTorch",
+		"Python",
+		"NLP",
+		"Computer Vision"
+	],
+	"title": "AI / ML",
+	"description": "Intelligent automation and AI-powered solutions. From predictive analytics to natural language processing and computer vision.",
+	"section_name": "AI/ML Technologies",
+	"section_description": "We leverage cutting-edge artificial intelligence and machine learning technologies to build intelligent systems that learn, adapt, and deliver insights. Our expertise spans from neural networks and deep learning to natural language processing and computer vision, enabling businesses to automate processes, make data-driven decisions, and unlock new capabilities.",
+	"techstack": [
+		{
+			"name": "TensorFlow",
+			"image": "/icons/python.webp",
+			"description": "TensorFlow is an open-source machine learning framework for building and deploying ML models at scale."
+		},
+		{
+			"name": "PyTorch",
+			"image": "/icons/python.webp",
+			"description": "PyTorch is a deep learning framework that provides maximum flexibility and speed for research and production."
+		},
+		{
+			"name": "Python",
+			"image": "/icons/python.webp",
+			"description": "Python is the leading language for AI/ML development with extensive libraries and frameworks."
+		},
+		{
+			"name": "Scikit-learn",
+			"image": "/icons/python.webp",
+			"description": "Scikit-learn provides simple and efficient tools for predictive data analysis and machine learning."
+		},
+		{
+			"name": "Natural Language Processing",
+			"image": "/icons/react.webp",
+			"description": "NLP enables machines to understand, interpret, and generate human language for chatbots and text analysis."
+		},
+		{
+			"name": "Computer Vision",
+			"image": "/icons/js.webp",
+			"description": "Computer vision algorithms enable machines to interpret and understand visual information from images and videos."
+		}
+	]
+}

@@ -88,9 +88,9 @@ const RESOURCES_LINKS = [
 const OUR_SERVICES = [
 	{
 		icon: <Server />,
-		label: "Cloud Services",
-		description: "Cloud services",
-		href: "/services/cloud-services",
+		label: "Cloud Solutions",
+		description: "Cloud solutions",
+		href: "/services/cloud-solutions",
 	},
 	{
 		icon: <CodeXml />,

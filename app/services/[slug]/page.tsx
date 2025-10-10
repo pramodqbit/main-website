@@ -71,17 +71,43 @@ export async function generateMetadata({
 }) {
 	const { slug } = await params;
 	const service = await getServiceData(slug);
+	const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://qbitlog.com";
 
 	if (!service) {
 		return {
 			title: "Service Not Found",
+			description: "The requested service could not be found.",
 		};
 	}
 
 	return {
-		title: `${service.title} | Qbitlog`,
+		title: service.title,
 		description: service.description,
-		keywords: service.tags.join(", "),
+		keywords: service.tags,
+		openGraph: {
+			type: "website",
+			title: `${service.title} - QBITLOG`,
+			description: service.description,
+			url: `${siteUrl}/services/${slug}`,
+			images: [
+				{
+					url: `${siteUrl}/og-image-services.jpg`,
+					width: 1200,
+					height: 630,
+					alt: service.title,
+				},
+			],
+		},
+		twitter: {
+			card: "summary_large_image",
+			title: `${service.title} - QBITLOG`,
+			description: service.description,
+			images: [`${siteUrl}/twitter-image-services.jpg`],
+			creator: "@qbitlog",
+		},
+		alternates: {
+			canonical: `${siteUrl}/services/${slug}`,
+		},
 	};
 }
 
@@ -101,20 +127,20 @@ export default async function ServicePage({
 		<div>
 			<ServiceBanner title={service.title} />
 
-			<Marquee className='[--duration:40s]  justify-between lg:hidden'>
-				{service.techstack.map((service) => (
+			<Marquee className='[--duration:40s] my-6' repeat={6} pauseOnHover={true}>
+				{service.techstack.map((tech, index) => (
 					<Badge
-						key={service.name}
+						key={`${tech.name}-${index}`}
 						variant='default'
 						className='rounded-full py-2 bg-white shadow-sm text-dark w-[220px] flex items-center justify-start gap-2'>
 						<Image
-							src={service.image}
-							alt={service.name}
+							src={tech.image}
+							alt={tech.name}
 							width={24}
 							height={24}
 							className='w-5 h-5 object-contain'
 						/>
-						{service.name}
+						{tech.name}
 					</Badge>
 				))}
 			</Marquee>
