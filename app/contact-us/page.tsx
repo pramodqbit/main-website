@@ -49,8 +49,8 @@ export default function Page() {
 			<SectionHeader
 				badgeLabel='Contact Us'
 				badgeIcon={<Mail />}
-				title='Contact Us'
-				description='Contact with us for any questions or inquiries.'
+				title='Connect with us on a journey to build faster'
+				description="Ready to bring your ideas to life? Reach out to our team with your questions, project ideas, or partnership inquiries. Let's build something amazing together!"
 			/>
 			<div className='grid grid-cols-1 lg:grid-cols-2 gap-10   p-10 border-t border-b'>
 				<div>

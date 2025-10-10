@@ -13,6 +13,11 @@ export default function ContactUs() {
 	});
 
 	const [focusedField, setFocusedField] = useState<string | null>(null);
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [submitStatus, setSubmitStatus] = useState<{
+		type: 'success' | 'error' | null;
+		message: string;
+	}>({ type: null, message: '' });
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
@@ -81,6 +86,16 @@ export default function ContactUs() {
 							We will contact you within 24 hours
 						</motion.p>
 
+						{submitStatus.type && (
+							<div className={`mb-6 p-4 rounded-lg ${
+								submitStatus.type === 'success'
+									? 'bg-green-100 text-green-800 border border-green-200'
+									: 'bg-red-100 text-red-800 border border-red-200'
+							}`}>
+								{submitStatus.message}
+							</div>
+						)}
+
 						<motion.form
 							onSubmit={handleSubmit}
 							className='space-y-6'
@@ -106,6 +121,7 @@ export default function ContactUs() {
 									className='w-full pb-3 border-b-2 border-gray-300  outline-none focus:border-primary text-gray-700 placeholder-gray-400 transition-colors'
 									required
 									aria-required='true'
+									disabled={isSubmitting}
 									animate={{
 										borderColor:
 											focusedField === "name" ? "#8A38F5" : "#d1d5db",
@@ -130,6 +146,7 @@ export default function ContactUs() {
 									className='w-full pb-3 border-b-2 border-gray-300  outline-none focus:border-primary text-gray-700 placeholder-gray-400 transition-colors'
 									required
 									aria-required='true'
+									disabled={isSubmitting}
 									animate={{
 										borderColor:
 											focusedField === "email" ? "#8A38F5" : "#d1d5db",
@@ -154,6 +171,7 @@ export default function ContactUs() {
 									className='w-full pb-3 border-b-2 border-gray-300  outline-none focus:border-primary text-gray-700 placeholder-gray-400 transition-colors'
 									required
 									aria-required='true'
+									disabled={isSubmitting}
 									animate={{
 										borderColor:
 											focusedField === "subject" ? "#8A38F5" : "#d1d5db",
@@ -177,6 +195,7 @@ export default function ContactUs() {
 									className='w-full pb-3 border-b-2 border-gray-300  outline-none focus:border-primary text-gray-700 placeholder-gray-400 transition-colors resize-none'
 									required
 									aria-required='true'
+									disabled={isSubmitting}
 									animate={{
 										borderColor:
 											focusedField === "message" ? "#8A38F5" : "#d1d5db",
@@ -188,8 +207,9 @@ export default function ContactUs() {
 								<motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
 									<Button
 										type='submit'
-										className='bg-black hover:bg-gray-800 text-white px-8 py-3 rounded-lg transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-black w-full'>
-										Contact Us
+								disabled={isSubmitting}
+										className='bg-black hover:bg-gray-800 text-white px-8 py-3 rounded-lg transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-black disabled:opacity-50 disabled:cursor-not-allowed w-full'>
+										{isSubmitting ? 'Sending...' : 'Contact Us'}
 									</Button>
 								</motion.div>
 							</motion.div>
@@ -499,6 +519,16 @@ export default function ContactUs() {
 							We will contact you within 24 hours
 						</motion.p>
 
+						{submitStatus.type && (
+							<div className={`mb-6 p-4 rounded-lg ${
+								submitStatus.type === 'success'
+									? 'bg-green-100 text-green-800 border border-green-200'
+									: 'bg-red-100 text-red-800 border border-red-200'
+							}`}>
+								{submitStatus.message}
+							</div>
+						)}
+
 						<motion.form
 							onSubmit={handleSubmit}
 							className='space-y-8'
@@ -524,6 +554,7 @@ export default function ContactUs() {
 									className='w-full pb-3 border-b-2 border-gray-300 focus:border-primary   outline-none text-gray-700 placeholder-gray-400 transition-colors text-lg'
 									required
 									aria-required='true'
+									disabled={isSubmitting}
 									animate={{
 										borderColor:
 											focusedField === "name-desktop" ? "#8A38F5" : "#d1d5db",
@@ -548,6 +579,7 @@ export default function ContactUs() {
 									className='w-full pb-3 border-b-2 border-gray-300 focus:border-primary   outline-none text-gray-700 placeholder-gray-400 transition-colors text-lg'
 									required
 									aria-required='true'
+									disabled={isSubmitting}
 									animate={{
 										borderColor:
 											focusedField === "email-desktop" ? "#8A38F5" : "#d1d5db",
@@ -572,6 +604,7 @@ export default function ContactUs() {
 									className='w-full pb-3 border-b-2 border-gray-300 focus:border-primary   outline-none text-gray-700 placeholder-gray-400 transition-colors text-lg'
 									required
 									aria-required='true'
+									disabled={isSubmitting}
 									animate={{
 										borderColor:
 											focusedField === "subject-desktop" ? "#8A38F5" : "#d1d5db",
@@ -595,6 +628,7 @@ export default function ContactUs() {
 									className='w-full pb-3 border-b-2 border-gray-300 focus:border-primary   outline-none text-gray-700 placeholder-gray-400 transition-colors resize-none text-lg'
 									required
 									aria-required='true'
+									disabled={isSubmitting}
 									animate={{
 										borderColor:
 											focusedField === "message-desktop" ? "#8A38F5" : "#d1d5db",
@@ -606,8 +640,9 @@ export default function ContactUs() {
 								<motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
 									<Button
 										type='submit'
-										className='bg-black hover:bg-gray-800 text-white px-10 py-3 rounded-lg transition-colors text-lg focus:ring-2 focus:ring-offset-2 focus:ring-black w-full'>
-										Contact Us
+								disabled={isSubmitting}
+										className='bg-black hover:bg-gray-800 text-white px-10 py-3 rounded-lg transition-colors text-lg focus:ring-2 focus:ring-offset-2 focus:ring-black disabled:opacity-50 disabled:cursor-not-allowed w-full'>
+										{isSubmitting ? 'Sending...' : 'Contact Us'}
 									</Button>
 								</motion.div>
 							</motion.div>

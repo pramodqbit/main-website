@@ -49,7 +49,7 @@ export default function OurMarque({
 				<p className='lg:text-[16px] text-[10px]  font-bold text-left md:text-right'>
 					What sets us apart
 				</p>
-				<p className='lg:text-[12px] text-[8px] text-gray-500 text-justify md:text-right'>
+				<p className='hidden lg:block lg:text-[12px] text-[8px] text-gray-500 text-justify md:text-right'>
 					Reliable delivery, robust security, fair pricing, and unmatched
 					flexibility guaranteed.
 				</p>

@@ -35,7 +35,7 @@ const NavigationCard = ({
 			</div>
 			<div>
 				<p
-					className='text-sm md:text-md font-bold line-clamp-1 max-w-28 md:max-w-none'
+					className='text-sm md:text-md font-bold line-clamp-1  md:max-w-none'
 					title={label}>
 					{label}
 				</p>
@@ -131,7 +131,7 @@ export default function Navbar() {
 
 				{/* Tagline - Hidden on mobile, visible on larger screens */}
 				<div className='hidden md:flex items-center justify-center flex-1'>
-					<motion.p 
+					<motion.p
 						initial={{ opacity: 0, y: -10 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.5, delay: 0.2 }}
@@ -199,7 +199,7 @@ export default function Navbar() {
 											Crafting innovative digital experiences that transform
 											businesses and delight users. Your vision, our expertise.
 										</p>
-										<div className='grid grid-cols-2  md:gap-4 gap-0 my-4'>
+										<div className='grid grid-cols-1  md:gap-4 gap-0 my-4'>
 											{OUR_SERVICES.map((service) => (
 												<Link
 													href={service.href}
@@ -238,7 +238,7 @@ export default function Navbar() {
 											</Link>
 										</motion.div>
 									</div>
-									<div className='border-r-2 border-l-2 col-span-2 md:col-span-1 border-dashed mt-2 md:mt-0 md:px-5 px-3 md:py-2 py-0'>
+									<div className='border-r-0 border-l-0 md:border-r-2 md:border-l-2 col-span-2 md:col-span-1 border-dashed mt-2 md:mt-0 md:px-5 px-3 md:py-2 py-0'>
 										<h5 className='md:text-xl text-lg font-semibold md:mb-4 mb-2'>
 											Company
 										</h5>

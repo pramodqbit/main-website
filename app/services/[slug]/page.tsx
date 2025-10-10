@@ -4,7 +4,6 @@ import { readdirSync, readFileSync } from "fs";
 import { join } from "path";
 import ServiceBanner from "./_components/banner";
 import { Badge } from "@/components/ui/badge";
-import CoreCompetencies from "@/components/global/core-competencies";
 import { Marquee } from "@/components/ui/marquee";
 
 type ServiceData = {
@@ -77,7 +76,7 @@ export async function generateMetadata({
 	if (!service) {
 		return {
 			title: "Service Not Found",
-			description: "The requested service could not be found."
+			description: "The requested service could not be found.",
 		};
 	}
 
@@ -95,20 +94,20 @@ export async function generateMetadata({
 					url: `${siteUrl}/og-image-services.jpg`,
 					width: 1200,
 					height: 630,
-					alt: service.title
-				}
-			]
+					alt: service.title,
+				},
+			],
 		},
 		twitter: {
 			card: "summary_large_image",
 			title: `${service.title} - QBITLOG`,
 			description: service.description,
 			images: [`${siteUrl}/twitter-image-services.jpg`],
-			creator: "@qbitlog"
+			creator: "@qbitlog",
 		},
 		alternates: {
 			canonical: `${siteUrl}/services/${slug}`,
-		}
+		},
 	};
 }
 
@@ -146,7 +145,23 @@ export default async function ServicePage({
 				))}
 			</Marquee>
 
-			<CoreCompetencies className='border-none' />
+			<div className='mt-6 w-full   gap-2 flex-nowrap hidden lg:flex'>
+				{service.techstack.map((service) => (
+					<Badge
+						key={service.name}
+						variant='default'
+						className='rounded-full py-2 bg-white shadow-sm text-dark w-[220px] flex items-center justify-start gap-2'>
+						<Image
+							src={service.image}
+							alt={service.name}
+							width={24}
+							height={24}
+							className='w-5 h-5 object-contain'
+						/>
+						{service.name}
+					</Badge>
+				))}
+			</div>
 
 			{/* Tech Stack */}
 			<div className='mt-16 mb-20'>

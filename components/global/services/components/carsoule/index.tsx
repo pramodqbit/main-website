@@ -44,8 +44,8 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 				setIconSize(165);
 			} else if (width >= 1208) {
 				// Desktop and larger
-				multiplier = 48;
-				setIconSize(165);
+				multiplier = 46;
+				setIconSize(155);
 			} else if (width >= 1024) {
 				// Large tablets
 				multiplier = 35;
@@ -105,7 +105,7 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 			"(min-width: 640px)",
 			() => {
 				// Get responsive start/end values based on screen size
-				const startValue = "top 12%";
+				const startValue = "top 10%";
 				const endValue = "60% 0%";
 
 				ScrollTrigger.create({
@@ -239,8 +239,8 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 					<SectionHeader
 						badgeLabel='Services'
 						badgeIcon={<Code2 size={24} className='text-primary' />}
-						title='Comprehensive Digital Solutions Tailored to Your Business'
-						description='From custom web and mobile development to strategic marketing, SEO, and graphic design, we deliver end-to-end digital solutions that empower your brand and drive measurable results.'
+						title='Comprehensive AI Powered Digital Solutions Tailored to Your Business'
+						description='From custom web,AI powered applications and mobile development to strategic marketing, SEO, and graphic design, we deliver end-to-end digital solutions that empower your brand and drive measurable results.'
 					/>
 				</div>
 				<div className='w-full px-0 md:px-8 relative'>
