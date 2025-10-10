@@ -23,11 +23,45 @@ export async function generateMetadata({
 }) {
 	const { slug } = await params;
 	const post = getPost(slug);
-	if (!post) return { title: "Blog | Qbitlog" };
+	const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://qbitlog.com";
+	
+	if (!post) return { 
+		title: "Blog Post Not Found",
+		description: "The requested blog post could not be found."
+	};
+	
 	return {
-		title: `${post.title} | Qbitlog`,
+		title: post.title,
 		description: post.excerpt,
-		keywords: post.tags.join(", "),
+		keywords: post.tags,
+		authors: [{ name: "QBITLOG Team" }],
+		openGraph: {
+			type: "article",
+			title: post.title,
+			description: post.excerpt,
+			url: `${siteUrl}/blog/${slug}`,
+			publishedTime: post.date,
+			authors: ["QBITLOG Team"],
+			tags: post.tags,
+			images: [
+				{
+					url: post.heroImage,
+					width: 1200,
+					height: 630,
+					alt: post.title
+				}
+			]
+		},
+		twitter: {
+			card: "summary_large_image",
+			title: post.title,
+			description: post.excerpt,
+			images: [post.heroImage],
+			creator: "@qbitlog"
+		},
+		alternates: {
+			canonical: `${siteUrl}/blog/${slug}`,
+		}
 	};
 }
 
@@ -40,8 +74,72 @@ export default async function BlogPostPage({
 	const post = getPost(slug);
 	if (!post) notFound();
 
+	const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://qbitlog.com";
+
+	// Structured Data (JSON-LD)
+	const articleStructuredData = {
+		"@context": "https://schema.org",
+		"@type": "Article",
+		"headline": post.title,
+		"description": post.excerpt,
+		"image": post.heroImage,
+		"datePublished": post.date,
+		"dateModified": post.date,
+		"author": {
+			"@type": "Organization",
+			"name": "QBITLOG",
+			"url": siteUrl
+		},
+		"publisher": {
+			"@type": "Organization",
+			"name": "QBITLOG",
+			"logo": {
+				"@type": "ImageObject",
+				"url": `${siteUrl}/icons/logo.svg`
+			}
+		},
+		"mainEntityOfPage": {
+			"@type": "WebPage",
+			"@id": `${siteUrl}/blog/${slug}`
+		},
+		"keywords": post.tags.join(", ")
+	};
+
+	const breadcrumbStructuredData = {
+		"@context": "https://schema.org",
+		"@type": "BreadcrumbList",
+		"itemListElement": [
+			{
+				"@type": "ListItem",
+				"position": 1,
+				"name": "Home",
+				"item": siteUrl
+			},
+			{
+				"@type": "ListItem",
+				"position": 2,
+				"name": "Blog",
+				"item": `${siteUrl}/blog`
+			},
+			{
+				"@type": "ListItem",
+				"position": 3,
+				"name": post.title,
+				"item": `${siteUrl}/blog/${slug}`
+			}
+		]
+	};
+
 	return (
 		<div className=''>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData) }}
+			/>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
+			/>
 			<main className='container'>
 				<Navbar />
 				

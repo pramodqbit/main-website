@@ -23,11 +23,44 @@ export async function generateMetadata({
 }) {
 	const { slug } = await params;
 	const study = getCaseStudy(slug);
-	if (!study) return { title: "Case Study | Qbitlog" };
+	const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://qbitlog.com";
+	
+	if (!study) return { 
+		title: "Case Study Not Found",
+		description: "The requested case study could not be found."
+	};
+	
 	return {
-		title: `${study.title} | Qbitlog`,
+		title: study.title,
 		description: study.excerpt,
-		keywords: study.tags.join(", "),
+		keywords: study.tags,
+		authors: [{ name: "QBITLOG Team" }],
+		openGraph: {
+			type: "article",
+			title: study.title,
+			description: study.excerpt,
+			url: `${siteUrl}/case-studies/${slug}`,
+			publishedTime: study.date,
+			tags: study.tags,
+			images: [
+				{
+					url: study.heroImage,
+					width: 1200,
+					height: 630,
+					alt: study.title
+				}
+			]
+		},
+		twitter: {
+			card: "summary_large_image",
+			title: study.title,
+			description: study.excerpt,
+			images: [study.heroImage],
+			creator: "@qbitlog"
+		},
+		alternates: {
+			canonical: `${siteUrl}/case-studies/${slug}`,
+		}
 	};
 }
 
@@ -40,8 +73,79 @@ export default async function CaseStudyPage({
 	const study = getCaseStudy(slug);
 	if (!study) notFound();
 
+	const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://qbitlog.com";
+
+	// Structured Data (JSON-LD)
+	const caseStudyStructuredData = {
+		"@context": "https://schema.org",
+		"@type": "Article",
+		"headline": study.title,
+		"description": study.excerpt,
+		"image": study.heroImage,
+		"datePublished": study.date,
+		"dateModified": study.date,
+		"author": {
+			"@type": "Organization",
+			"name": "QBITLOG",
+			"url": siteUrl
+		},
+		"publisher": {
+			"@type": "Organization",
+			"name": "QBITLOG",
+			"logo": {
+				"@type": "ImageObject",
+				"url": `${siteUrl}/icons/logo.svg`
+			}
+		},
+		"mainEntityOfPage": {
+			"@type": "WebPage",
+			"@id": `${siteUrl}/case-studies/${slug}`
+		},
+		"keywords": study.tags.join(", "),
+		"about": {
+			"@type": "Project",
+			"name": study.title,
+			"description": study.excerpt,
+			"client": study.client,
+			"duration": study.duration
+		}
+	};
+
+	const breadcrumbStructuredData = {
+		"@context": "https://schema.org",
+		"@type": "BreadcrumbList",
+		"itemListElement": [
+			{
+				"@type": "ListItem",
+				"position": 1,
+				"name": "Home",
+				"item": siteUrl
+			},
+			{
+				"@type": "ListItem",
+				"position": 2,
+				"name": "Case Studies",
+				"item": `${siteUrl}/case-studies`
+			},
+			{
+				"@type": "ListItem",
+				"position": 3,
+				"name": study.title,
+				"item": `${siteUrl}/case-studies/${slug}`
+			}
+		]
+	};
+
 	return (
 		<div className=''>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudyStructuredData) }}
+			/>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
+			/>
 			<main className='container'>
 				<Navbar />
 				

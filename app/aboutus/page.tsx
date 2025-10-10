@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Navbar from "@/components/global/navbar";
 import Footer from "@/components/global/footer";
 import SectionLayout from "@/components/global/section-layout";
@@ -7,6 +8,45 @@ import CompanyStats from "./_components/company-stats";
 import { Building2, Target, TrendingUp, Users, Award, Lightbulb } from "lucide-react";
 
 const ICON_SIZE = 32;
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://qbitlog.com";
+
+export const metadata: Metadata = {
+	title: "About Us - Powered by Expertise, Driven by Excellence",
+	description: "QBITLOG assembles elite professionals with extensive experience from leading tech companies and Fortune 500 enterprises. Our expert-driven approach combines decades of collective knowledge with cutting-edge innovation to deliver transformative digital solutions.",
+	keywords: [
+		"about QBITLOG",
+		"technology company",
+		"expert developers",
+		"Fortune 500 experience",
+		"enterprise software experts",
+		"digital transformation company",
+		"innovation team",
+		"technology consulting"
+	],
+	openGraph: {
+		title: "About QBITLOG - Elite Professionals Driving Digital Excellence",
+		description: "Meet the expert team behind QBITLOG. Battle-tested professionals from Fortune 500 companies delivering enterprise-grade digital solutions.",
+		url: `${siteUrl}/aboutus`,
+		type: "website",
+		images: [
+			{
+				url: `${siteUrl}/og-image-about.jpg`,
+				width: 1200,
+				height: 630,
+				alt: "About QBITLOG"
+			}
+		]
+	},
+	twitter: {
+		card: "summary_large_image",
+		title: "About QBITLOG - Elite Professionals Driving Digital Excellence",
+		description: "Battle-tested professionals from Fortune 500 companies delivering enterprise-grade digital solutions.",
+		images: [`${siteUrl}/twitter-image-about.jpg`]
+	},
+	alternates: {
+		canonical: `${siteUrl}/aboutus`,
+	}
+};
 
 export default function AboutUsPage() {
 	return (

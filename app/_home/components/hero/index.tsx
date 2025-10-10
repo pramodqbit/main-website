@@ -7,7 +7,7 @@ export default function Hero() {
 	const title = ["Q", "B", "I", "T", "L", "O", "G"];
 
 	return (
-		<div className='flex flex-col items-center justify-center  border-l border-r md:pb-10 pb-5 overflow-hidden'>
+		<section className='flex flex-col items-center justify-center  border-l border-r md:pb-10 pb-5 overflow-hidden' aria-label='Hero Section'>
 			<h1
 				className={cn(
 					"relative  text-right  ml-2 text-nowrap",
@@ -59,9 +59,10 @@ export default function Hero() {
 					" lg:w-[200px] w-[100px]   text-[12px] lg:text-[16px]",
 					" mt-2  lg:mt-2",
 					"h-[30px] lg:h-[50px]",
-				)}>
+				)}
+				aria-label='Contact us to hire our services'>
 				Hire Us
 			</Button>
-		</div>
+		</section>
 	);
 }
