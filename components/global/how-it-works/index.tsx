@@ -94,8 +94,7 @@ export default function HowItWorks({ className }: { className?: string }) {
 			// Calculate total width needed to scroll
 			const totalWidth = horizontalRef.current.scrollWidth;
 			const windowWidth = window.innerWidth;
-			console.log(windowWidth);
-			console.log(totalWidth);
+			
 			const scrollDistance = totalWidth - windowWidth;
 
 			// Create main horizontal scroll animation

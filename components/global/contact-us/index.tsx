@@ -8,8 +8,9 @@ export default function ContactUs() {
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
-		subject: "",
-		message: "",
+		companyName: "",
+		phone: "",
+		projectInfo: "",
 	});
 
 	const [focusedField, setFocusedField] = useState<string | null>(null);
@@ -19,10 +20,49 @@ export default function ContactUs() {
 		message: string;
 	}>({ type: null, message: '' });
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-		// Handle form submission
-		console.log("Form submitted:", formData);
+		setIsSubmitting(true);
+		setSubmitStatus({ type: null, message: '' });
+
+		try {
+			const response = await fetch('/api/contact', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(formData),
+			});
+
+			const data = await response.json();
+
+			if (!response.ok) {
+				throw new Error(data.error || 'Failed to send message');
+			}
+
+			setSubmitStatus({
+				type: 'success',
+				message: 'Thank you for your inquiry! We\'ll get back to you within 24 hours.'
+			});
+
+			// Reset form
+			setFormData({
+				name: "",
+				email: "",
+				companyName: "",
+				phone: "",
+				projectInfo: "",
+			});
+
+		} catch (error) {
+			console.error("Error submitting form:", error);
+			setSubmitStatus({
+				type: 'error',
+				message: 'Failed to send your request. Please try again or email us directly.'
+			});
+		} finally {
+			setIsSubmitting(false);
+		}
 	};
 
 	const handleChange = (
@@ -155,41 +195,66 @@ export default function ContactUs() {
 								/>
 							</motion.div>
 							<motion.div variants={itemVariants}>
-								<label htmlFor='subject-mobile' className='sr-only'>
-									Subject
+								<label htmlFor='companyName-mobile' className='sr-only'>
+									Company Name
 								</label>
 								<motion.input
-									id='subject-mobile'
+									id='companyName-mobile'
 									type='text'
-									name='subject'
-									placeholder='Subject'
-									value={formData.subject}
+									name='companyName'
+									placeholder='Company Name'
+									value={formData.companyName}
 									onChange={handleChange}
-									onFocus={() => setFocusedField("subject")}
+									onFocus={() => setFocusedField("companyName")}
 									onBlur={() => setFocusedField(null)}
-									autoComplete='off'
+									autoComplete='organization'
 									className='w-full pb-3 border-b-2 border-gray-300  outline-none focus:border-primary text-gray-700 placeholder-gray-400 transition-colors'
 									required
 									aria-required='true'
 									disabled={isSubmitting}
 									animate={{
 										borderColor:
-											focusedField === "subject" ? "#8A38F5" : "#d1d5db",
+											focusedField === "companyName" ? "#8A38F5" : "#d1d5db",
 									}}
 									transition={{ duration: 0.3 }}
 								/>
 							</motion.div>
 							<motion.div variants={itemVariants}>
-								<label htmlFor='message-mobile' className='sr-only'>
-									Your Message
+								<label htmlFor='phone-mobile' className='sr-only'>
+									Phone Number
+								</label>
+								<motion.input
+									id='phone-mobile'
+									type='tel'
+									name='phone'
+									placeholder='Phone Number'
+									value={formData.phone}
+									onChange={handleChange}
+									onFocus={() => setFocusedField("phone")}
+									onBlur={() => setFocusedField(null)}
+									autoComplete='tel'
+									className='w-full pb-3 border-b-2 border-gray-300  outline-none focus:border-primary text-gray-700 placeholder-gray-400 transition-colors'
+									required
+									aria-required='true'
+									disabled={isSubmitting}
+									animate={{
+										borderColor:
+											focusedField === "phone" ? "#8A38F5" : "#d1d5db",
+									}}
+									transition={{ duration: 0.3 }}
+								/>
+							</motion.div>
+							<motion.div variants={itemVariants}>
+								<label htmlFor='projectInfo-mobile' className='sr-only'>
+									Project Information
 								</label>
 								<motion.textarea
-									id='message-mobile'
-									name='message'
-									placeholder='Message'
-									value={formData.message}
+									id='projectInfo-mobile'
+									name='projectInfo'
+									placeholder='Project Information'
+									value={formData.projectInfo}
 									onChange={handleChange}
-									onFocus={() => setFocusedField("message")}
+									onFocus={() => setFocusedField("projectInfo")}
 									onBlur={() => setFocusedField(null)}
 									rows={4}
 									className='w-full pb-3 border-b-2 border-gray-300  outline-none focus:border-primary text-gray-700 placeholder-gray-400 transition-colors resize-none'
@@ -198,7 +263,7 @@ export default function ContactUs() {
 									disabled={isSubmitting}
 									animate={{
 										borderColor:
-											focusedField === "message" ? "#8A38F5" : "#d1d5db",
+											focusedField === "projectInfo" ? "#8A38F5" : "#d1d5db",
 									}}
 									transition={{ duration: 0.3 }}
 								/>
@@ -588,41 +653,66 @@ export default function ContactUs() {
 								/>
 							</motion.div>
 							<motion.div variants={itemVariants}>
-								<label htmlFor='subject-desktop' className='sr-only'>
-									Subject
+								<label htmlFor='companyName-desktop' className='sr-only'>
+									Company Name
 								</label>
 								<motion.input
-									id='subject-desktop'
+									id='companyName-desktop'
 									type='text'
-									name='subject'
-									placeholder='Subject'
-									value={formData.subject}
+									name='companyName'
+									placeholder='Company Name'
+									value={formData.companyName}
 									onChange={handleChange}
-									onFocus={() => setFocusedField("subject-desktop")}
+									onFocus={() => setFocusedField("companyName-desktop")}
 									onBlur={() => setFocusedField(null)}
-									autoComplete='off'
+									autoComplete='organization'
 									className='w-full pb-3 border-b-2 border-gray-300 focus:border-primary   outline-none text-gray-700 placeholder-gray-400 transition-colors text-lg'
 									required
 									aria-required='true'
 									disabled={isSubmitting}
 									animate={{
 										borderColor:
-											focusedField === "subject-desktop" ? "#8A38F5" : "#d1d5db",
+											focusedField === "companyName-desktop" ? "#8A38F5" : "#d1d5db",
 									}}
 									transition={{ duration: 0.3 }}
 								/>
 							</motion.div>
 							<motion.div variants={itemVariants}>
-								<label htmlFor='message-desktop' className='sr-only'>
-									Your Message
+								<label htmlFor='phone-desktop' className='sr-only'>
+									Phone Number
+								</label>
+								<motion.input
+									id='phone-desktop'
+									type='tel'
+									name='phone'
+									placeholder='Phone Number'
+									value={formData.phone}
+									onChange={handleChange}
+									onFocus={() => setFocusedField("phone-desktop")}
+									onBlur={() => setFocusedField(null)}
+									autoComplete='tel'
+									className='w-full pb-3 border-b-2 border-gray-300 focus:border-primary   outline-none text-gray-700 placeholder-gray-400 transition-colors text-lg'
+									required
+									aria-required='true'
+									disabled={isSubmitting}
+									animate={{
+										borderColor:
+											focusedField === "phone-desktop" ? "#8A38F5" : "#d1d5db",
+									}}
+									transition={{ duration: 0.3 }}
+								/>
+							</motion.div>
+							<motion.div variants={itemVariants}>
+								<label htmlFor='projectInfo-desktop' className='sr-only'>
+									Project Information
 								</label>
 								<motion.textarea
-									id='message-desktop'
-									name='message'
-									placeholder='Message'
-									value={formData.message}
+									id='projectInfo-desktop'
+									name='projectInfo'
+									placeholder='Project Information'
+									value={formData.projectInfo}
 									onChange={handleChange}
-									onFocus={() => setFocusedField("message-desktop")}
+									onFocus={() => setFocusedField("projectInfo-desktop")}
 									onBlur={() => setFocusedField(null)}
 									rows={4}
 									className='w-full pb-3 border-b-2 border-gray-300 focus:border-primary   outline-none text-gray-700 placeholder-gray-400 transition-colors resize-none text-lg'
@@ -631,7 +721,7 @@ export default function ContactUs() {
 									disabled={isSubmitting}
 									animate={{
 										borderColor:
-											focusedField === "message-desktop" ? "#8A38F5" : "#d1d5db",
+											focusedField === "projectInfo-desktop" ? "#8A38F5" : "#d1d5db",
 									}}
 									transition={{ duration: 0.3 }}
 								/>
