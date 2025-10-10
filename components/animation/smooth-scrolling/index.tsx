@@ -9,12 +9,14 @@ export default function SmoothScrolling() {
 
 	useEffect(() => {
 		function update(time: number) {
-			lenisRef.current?.lenis?.raf(time * 800);
+			lenisRef.current?.lenis?.raf(time * 1000);
 		}
 
 		gsap.ticker.add(update);
 
-		return () => gsap.ticker.remove(update);
+		return () => {
+			gsap.ticker.remove(update);
+		};
 	}, []);
 
 	return <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />;
