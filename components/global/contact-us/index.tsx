@@ -10,11 +10,54 @@ export default function ContactUs() {
 		subject: "",
 		message: "",
 	});
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [submitStatus, setSubmitStatus] = useState<{
+		type: 'success' | 'error' | null;
+		message: string;
+	}>({ type: null, message: '' });
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-		// Handle form submission
-		console.log("Form submitted:", formData);
+		setIsSubmitting(true);
+		setSubmitStatus({ type: null, message: '' });
+
+		try {
+			const response = await fetch('/api/contact', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(formData),
+			});
+
+			const data = await response.json();
+
+			if (!response.ok) {
+				throw new Error(data.error || 'Failed to send message');
+			}
+
+			setSubmitStatus({
+				type: 'success',
+				message: 'Thank you for your message! We\'ll get back to you within 24 hours.'
+			});
+
+			// Reset form
+			setFormData({
+				name: "",
+				email: "",
+				subject: "",
+				message: "",
+			});
+
+		} catch (error) {
+			console.error("Error submitting form:", error);
+			setSubmitStatus({
+				type: 'error',
+				message: 'Failed to send message. Please try again or contact us directly.'
+			});
+		} finally {
+			setIsSubmitting(false);
+		}
 	};
 
 	const handleChange = (
@@ -28,7 +71,7 @@ export default function ContactUs() {
 		<section
 			id='contact'
 			aria-labelledby='contact-heading'
-			className='w-full  bg-gradient-to-br from-gray-100 to-gray-200 py-10 md:py-20 px-4 md:px-4 my-2 rounded-2xl'>
+			className='w-full bg-gradient-to-br from-gray-100 to-gray-200 py-10 md:py-20 px-4 md:px-4 my-2 rounded-2xl'>
 			<div className='max-w-7xl mx-auto'>
 				{/* Mobile Layout */}
 				<div className='block lg:hidden'>
@@ -42,6 +85,16 @@ export default function ContactUs() {
 						<p className='text-gray-500 mb-6'>
 							We will contact you within 24 hours
 						</p>
+
+						{submitStatus.type && (
+							<div className={`mb-6 p-4 rounded-lg ${
+								submitStatus.type === 'success'
+									? 'bg-green-100 text-green-800 border border-green-200'
+									: 'bg-red-100 text-red-800 border border-red-200'
+							}`}>
+								{submitStatus.message}
+							</div>
+						)}
 
 						<form
 							onSubmit={handleSubmit}
@@ -59,9 +112,10 @@ export default function ContactUs() {
 									value={formData.name}
 									onChange={handleChange}
 									autoComplete='name'
-									className='w-full pb-3 border-b-2 border-gray-300  outline-none focus:border-primary text-gray-700 placeholder-gray-400 transition-colors'
+									className='w-full pb-3 border-b-2 border-gray-300 bg-transparent outline-none focus:border-primary text-gray-700 placeholder-gray-400 transition-colors'
 									required
 									aria-required='true'
+									disabled={isSubmitting}
 								/>
 							</div>
 							<div>
@@ -76,9 +130,10 @@ export default function ContactUs() {
 									value={formData.email}
 									onChange={handleChange}
 									autoComplete='email'
-									className='w-full pb-3 border-b-2 border-gray-300  outline-none focus:border-primary text-gray-700 placeholder-gray-400 transition-colors'
+									className='w-full pb-3 border-b-2 border-gray-300 bg-transparent outline-none focus:border-primary text-gray-700 placeholder-gray-400 transition-colors'
 									required
 									aria-required='true'
+									disabled={isSubmitting}
 								/>
 							</div>
 							<div>
@@ -93,9 +148,10 @@ export default function ContactUs() {
 									value={formData.subject}
 									onChange={handleChange}
 									autoComplete='off'
-									className='w-full pb-3 border-b-2 border-gray-300  outline-none focus:border-primary text-gray-700 placeholder-gray-400 transition-colors'
+									className='w-full pb-3 border-b-2 border-gray-300 bg-transparent outline-none focus:border-primary text-gray-700 placeholder-gray-400 transition-colors'
 									required
 									aria-required='true'
+									disabled={isSubmitting}
 								/>
 							</div>
 							<div>
@@ -109,15 +165,17 @@ export default function ContactUs() {
 									value={formData.message}
 									onChange={handleChange}
 									rows={4}
-									className='w-full pb-3 border-b-2 border-gray-300  outline-none focus:border-primary text-gray-700 placeholder-gray-400 transition-colors resize-none'
+									className='w-full pb-3 border-b-2 border-gray-300 bg-transparent outline-none focus:border-primary text-gray-700 placeholder-gray-400 transition-colors resize-none'
 									required
 									aria-required='true'
+									disabled={isSubmitting}
 								/>
 							</div>
 							<Button
 								type='submit'
-								className='bg-black hover:bg-gray-800 text-white px-8 py-3 rounded-lg transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-black'>
-								Contact Us
+								disabled={isSubmitting}
+								className='bg-black hover:bg-gray-800 text-white px-8 py-3 rounded-lg transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-black disabled:opacity-50 disabled:cursor-not-allowed'>
+								{isSubmitting ? 'Sending...' : 'Contact Us'}
 							</Button>
 						</form>
 					</div>
@@ -342,6 +400,16 @@ export default function ContactUs() {
 							We will contact you within 24 hours
 						</p>
 
+						{submitStatus.type && (
+							<div className={`mb-6 p-4 rounded-lg ${
+								submitStatus.type === 'success'
+									? 'bg-green-100 text-green-800 border border-green-200'
+									: 'bg-red-100 text-red-800 border border-red-200'
+							}`}>
+								{submitStatus.message}
+							</div>
+						)}
+
 						<form
 							onSubmit={handleSubmit}
 							className='space-y-8'
@@ -358,9 +426,10 @@ export default function ContactUs() {
 									value={formData.name}
 									onChange={handleChange}
 									autoComplete='name'
-									className='w-full pb-3 border-b-2 border-gray-300 focus:border-primary   outline-none text-gray-700 placeholder-gray-400 transition-colors text-lg'
+									className='w-full pb-3 border-b-2 border-gray-300 focus:border-primary bg-transparent outline-none text-gray-700 placeholder-gray-400 transition-colors text-lg'
 									required
 									aria-required='true'
+									disabled={isSubmitting}
 								/>
 							</div>
 							<div>
@@ -375,9 +444,10 @@ export default function ContactUs() {
 									value={formData.email}
 									onChange={handleChange}
 									autoComplete='email'
-									className='w-full pb-3 border-b-2 border-gray-300 focus:border-primary   outline-none text-gray-700 placeholder-gray-400 transition-colors text-lg'
+									className='w-full pb-3 border-b-2 border-gray-300 focus:border-primary bg-transparent outline-none text-gray-700 placeholder-gray-400 transition-colors text-lg'
 									required
 									aria-required='true'
+									disabled={isSubmitting}
 								/>
 							</div>
 							<div>
@@ -392,9 +462,10 @@ export default function ContactUs() {
 									value={formData.subject}
 									onChange={handleChange}
 									autoComplete='off'
-									className='w-full pb-3 border-b-2 border-gray-300 focus:border-primary   outline-none text-gray-700 placeholder-gray-400 transition-colors text-lg'
+									className='w-full pb-3 border-b-2 border-gray-300 focus:border-primary bg-transparent outline-none text-gray-700 placeholder-gray-400 transition-colors text-lg'
 									required
 									aria-required='true'
+									disabled={isSubmitting}
 								/>
 							</div>
 							<div>
@@ -408,15 +479,17 @@ export default function ContactUs() {
 									value={formData.message}
 									onChange={handleChange}
 									rows={4}
-									className='w-full pb-3 border-b-2 border-gray-300 focus:border-primary   outline-none text-gray-700 placeholder-gray-400 transition-colors resize-none text-lg'
+									className='w-full pb-3 border-b-2 border-gray-300 focus:border-primary bg-transparent outline-none text-gray-700 placeholder-gray-400 transition-colors resize-none text-lg'
 									required
 									aria-required='true'
+									disabled={isSubmitting}
 								/>
 							</div>
 							<Button
 								type='submit'
-								className='bg-black hover:bg-gray-800 text-white px-10 py-3 rounded-lg transition-colors text-lg focus:ring-2 focus:ring-offset-2 focus:ring-black'>
-								Contact Us
+								disabled={isSubmitting}
+								className='bg-black hover:bg-gray-800 text-white px-10 py-3 rounded-lg transition-colors text-lg focus:ring-2 focus:ring-offset-2 focus:ring-black disabled:opacity-50 disabled:cursor-not-allowed'>
+								{isSubmitting ? 'Sending...' : 'Contact Us'}
 							</Button>
 						</form>
 					</div>
