@@ -11,21 +11,22 @@ const ICON_SIZE = 32;
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://qbitlog.com";
 
 export const metadata: Metadata = {
-	title: "About Us - Powered by Expertise, Driven by Excellence",
-	description: "QBITLOG assembles elite professionals with extensive experience from leading tech companies and Fortune 500 enterprises. Our expert-driven approach combines decades of collective knowledge with cutting-edge innovation to deliver transformative digital solutions.",
+	title: "About Us - Architecting Tomorrow's Digital Landscape",
+	description: "Qbitlog is a future-forward software design agency where innovation meets intelligence. We specialize in crafting adaptive web and mobile applications with machine learning and cutting-edge animations, delivering intuitively engaging and transformative digital experiences.",
 	keywords: [
 		"about QBITLOG",
-		"technology company",
-		"expert developers",
-		"Fortune 500 experience",
-		"enterprise software experts",
-		"digital transformation company",
-		"innovation team",
-		"technology consulting"
+		"future-forward agency",
+		"AI software design",
+		"machine learning applications",
+		"adaptive web applications",
+		"innovative mobile apps",
+		"digital transformation",
+		"intelligent software solutions",
+		"cutting-edge technology"
 	],
 	openGraph: {
-		title: "About QBITLOG - Elite Professionals Driving Digital Excellence",
-		description: "Meet the expert team behind QBITLOG. Battle-tested professionals from Fortune 500 companies delivering enterprise-grade digital solutions.",
+		title: "About QBITLOG - Architecting Tomorrow's Digital Landscape",
+		description: "Future-forward software design agency where innovation meets intelligence. Crafting adaptive web and mobile applications with AI and ML.",
 		url: `${siteUrl}/aboutus`,
 		type: "website",
 		images: [
@@ -33,14 +34,14 @@ export const metadata: Metadata = {
 				url: `${siteUrl}/og-image-about.jpg`,
 				width: 1200,
 				height: 630,
-				alt: "About QBITLOG"
+				alt: "About QBITLOG - Future-Forward Software Agency"
 			}
 		]
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "About QBITLOG - Elite Professionals Driving Digital Excellence",
-		description: "Battle-tested professionals from Fortune 500 companies delivering enterprise-grade digital solutions.",
+		title: "About QBITLOG - Architecting Tomorrow's Digital Landscape",
+		description: "Future-forward software design agency specializing in AI-enhanced, adaptive digital experiences.",
 		images: [`${siteUrl}/twitter-image-about.jpg`]
 	},
 	alternates: {
