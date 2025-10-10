@@ -64,7 +64,7 @@ export default function FAQ() {
 									key={index}
 									value={`item-${index}`}
 									className='border-border/50'>
-									<AccordionTrigger className='cursor-pointer text-sm lg:text-lg font-semibold text-primary hover:text-primary transition-colors px-2'>
+									<AccordionTrigger className='cursor-pointer text-sm lg:text-lg text-[12px] md:font-semibold text-primary hover:text-primary transition-colors px-2'>
 										{faq.question}
 									</AccordionTrigger>
 									<AccordionContent className='text-[10px] lg:text-base text-foreground/70 leading-relaxed px-2'>

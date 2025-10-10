@@ -165,9 +165,9 @@ export default function ContactForm() {
 				<div className='space-y-2'>
 					<Label
 						htmlFor='projectInfo'
-						className='text-sm font-medium text-gray-700'>
-						Project Information{" "}
-						<span className='text-gray-500 font-normal text-xs'>
+						className='text-sm font-medium text-gray-700 flex flex-col md:flex-row items-start'>
+						<span className=''>Project Information </span>
+						<span className='text-gray-500 font-normal text-xs '>
 							Please provide details about your project requirements.
 						</span>
 					</Label>
