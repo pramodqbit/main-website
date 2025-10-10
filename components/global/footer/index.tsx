@@ -8,7 +8,6 @@ import {
 	Twitter,
 	Linkedin,
 	Instagram,
-	Github,
 } from "lucide-react";
 
 export default function Footer() {
@@ -41,11 +40,10 @@ export default function Footer() {
 	};
 
 	const socialLinks = [
-		{ icon: Facebook, href: "#", label: "Facebook" },
-		{ icon: Twitter, href: "#", label: "Twitter" },
-		{ icon: Linkedin, href: "#", label: "LinkedIn" },
-		{ icon: Instagram, href: "#", label: "Instagram" },
-		{ icon: Github, href: "#", label: "GitHub" },
+		{ icon: Facebook, href: "https://www.facebook.com/Qbitlog", label: "Facebook" },
+		{ icon: Twitter, href: "https://x.com/qbitlog", label: "X (Twitter)" },
+		{ icon: Linkedin, href: "https://www.linkedin.com/company/qbitlog", label: "LinkedIn" },
+		{ icon: Instagram, href: "https://www.instagram.com/qbitlog?utm_source=qr&igsh=MWdqbDlvOTg0ejJ5cg==", label: "Instagram" },
 	];
 
 	return (
@@ -77,22 +75,22 @@ export default function Footer() {
 							<div className='flex items-start gap-3 text-sm text-foreground/70'>
 								<Mail className='w-4 h-4 mt-0.5 text-primary flex-shrink-0' />
 								<a
-									href='mailto:info@qbitlog.com'
+									href='mailto:contact@qbitlog.com'
 									className='hover:text-primary transition-colors'>
-									info@qbitlog.com
+									contact@qbitlog.com
 								</a>
 							</div>
 							<div className='flex items-start gap-3 text-sm text-foreground/70'>
 								<Phone className='w-4 h-4 mt-0.5 text-secondary flex-shrink-0' />
 								<a
-									href='tel:+31201234567'
+									href='tel:+918981969797'
 									className='hover:text-secondary transition-colors'>
-									+31 20 123 4567
+									+91 - 8981969797
 								</a>
 							</div>
 							<div className='flex items-start gap-3 text-sm text-foreground/70'>
 								<MapPin className='w-4 h-4 mt-0.5 text-primary flex-shrink-0' />
-								<span>Amsterdam, Netherlands</span>
+								<span>New Delhi, India</span>
 							</div>
 						</div>
 					</div>
