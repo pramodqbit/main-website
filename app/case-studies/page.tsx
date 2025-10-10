@@ -64,8 +64,11 @@ export default function CaseStudiesPage() {
 					description='Explore how we have helped businesses across industries achieve their digital transformation goals.'>
 					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
 						{caseStudies.map((study) => (
-							<Link key={study.slug} href={`/case-studies/${study.slug}`} className='group'>
-								<Card className='h-full overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-primary/20'>
+							<Link
+								key={study.slug}
+								href={`/case-studies/${study.slug}`}
+								className='group'>
+								<Card className='h-full overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-primary/20 p-0 gap-0'>
 									<div className='relative h-48 w-full'>
 										<Image
 											src={study.heroImage}
@@ -85,14 +88,22 @@ export default function CaseStudiesPage() {
 												className='w-8 h-8 object-contain rounded'
 											/>
 											<div className='flex-1'>
-												<p className='text-xs text-muted-foreground'>{study.industry}</p>
-												<p className='text-xs text-muted-foreground'>{new Date(study.date).toLocaleDateString()}</p>
+												<p className='text-xs text-muted-foreground'>
+													{study.industry}
+												</p>
+												<p className='text-xs text-muted-foreground'>
+													{new Date(study.date).toLocaleDateString()}
+												</p>
 											</div>
 										</div>
-										
-										<h3 className='text-lg font-semibold leading-snug mb-2'>{study.title}</h3>
-										<p className='text-sm text-muted-foreground line-clamp-3 mb-4'>{study.excerpt}</p>
-										
+
+										<h3 className='text-lg font-semibold leading-snug mb-2'>
+											{study.title}
+										</h3>
+										<p className='text-sm text-muted-foreground line-clamp-3 mb-4'>
+											{study.excerpt}
+										</p>
+
 										{/* Case Study Stats */}
 										<div className='grid grid-cols-2 gap-3 mb-4'>
 											<div className='flex items-center gap-2 text-xs'>
@@ -104,16 +115,20 @@ export default function CaseStudiesPage() {
 												<span>{study.teamSize}</span>
 											</div>
 										</div>
-										
+
 										{/* Key Results */}
 										<div className='flex items-center gap-2 text-xs text-green-600 font-medium'>
 											<TrendingUp className='w-3 h-3' />
-											<span>{study.results.split(',')[0]}</span>
+											<span>{study.results.split(",")[0]}</span>
 										</div>
-										
+
 										<div className='mt-3 flex flex-wrap gap-2'>
 											{study.tags.slice(0, 3).map((tag) => (
-												<span key={tag} className='text-xs px-2 py-1 rounded-full border'>#{tag}</span>
+												<span
+													key={tag}
+													className='text-xs px-2 py-1 rounded-full border'>
+													#{tag}
+												</span>
 											))}
 										</div>
 									</CardContent>
@@ -122,7 +137,6 @@ export default function CaseStudiesPage() {
 						))}
 					</div>
 				</SectionLayout>
-
 			</main>
 			<Footer />
 		</div>

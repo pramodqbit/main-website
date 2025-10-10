@@ -43,15 +43,15 @@ export default function Hero() {
 				delay={0.3}
 				as='h2'
 				className='text-center lg:text-[48px] md:text-[24px] text-[16px] font-semibold bg-gradient-to-r from-[#8A38F5] to-[#25D0FF] bg-clip-text text-transparent'>
-				Crafting Digital Experiences That Drive Results
+				Crafting AI Powered Digital Experiences That Drive Results
 			</Span>
 			<TextAnimate
 				animation='blurIn'
 				as='p'
 				className='text-center lg:text-[24px] text-[12px]  lg:w-[1000px] md:w-[600px] w-[290px] sm:w-[300px] lg:my-[40px] my-[10px]'>
 				We&apos;re a leading software design agency specializing in creating
-				innovative web and mobile applications that transform businesses and
-				delight users.
+				innovative web, mobile, and AI-driven applications that transform
+				businesses and delight users.
 			</TextAnimate>
 
 			<Button
