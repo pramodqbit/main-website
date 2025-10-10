@@ -1,6 +1,5 @@
 import { ServicesData } from "./types";
 import Carsoule from "./components/carsoule";
-import { Globe } from "@/components/ui/globe";
 
 const services_data: ServicesData = [
 	{
@@ -27,30 +26,30 @@ const services_data: ServicesData = [
 		tags: ["Mobile Development", "React Native", "Flutter", "Swift", "Kotlin"],
 		images: [
 			"/icons/react.webp",
-			"/icons/angular.webp",
-			"/icons/python.webp",
-			"/icons/js.webp",
-			"/icons/wordpress.webp",
-			"/icons/php.webp",
-			"/icons/shopify.webp",
+			"/icons/expo.png",
+			"/icons/andriod.png",
+			"/icons/swift.png",
+			"/icons/flutter.png",
+			"/icons/ionic.webp",
+			"/icons/android-studio-icon.png",
 		],
 	},
-	{
-		title: "Marketing",
-		description:
-			"Data-driven digital marketing strategies that boost brand visibility and ROI. From social media campaigns to content marketing, we help you reach your target audience and achieve measurable results.",
-		learn_more: "/services/marketing",
-		tags: ["Marketing", "Social Media", "Content Marketing", "SEO", "SEM"],
-		images: [
-			"/icons/react.webp",
-			"/icons/angular.webp",
-			"/icons/python.webp",
-			"/icons/js.webp",
-			"/icons/wordpress.webp",
-			"/icons/php.webp",
-			"/icons/shopify.webp",
-		],
-	},
+	// {
+	// 	title: "Marketing",
+	// 	description:
+	// 		"Data-driven digital marketing strategies that boost brand visibility and ROI. From social media campaigns to content marketing, we help you reach your target audience and achieve measurable results.",
+	// 	learn_more: "/services/marketing",
+	// 	tags: ["Marketing", "Social Media", "Content Marketing", "SEO", "SEM"],
+	// 	images: [
+	// 		"/icons/seo-market.png",
+	// 		"/icons/target.png",
+	// 		"/icons/website.png",
+	// 		"/icons/marketing.png",
+	// 		"/icons/social.png",
+	// 		"/icons/email.png",
+	// 		"/icons/analytics.png",
+	// 	],
+	// },
 	{
 		title: "SEO",
 		description:
@@ -58,13 +57,13 @@ const services_data: ServicesData = [
 		learn_more: "/services/seo",
 		tags: ["Keyword Research", "On-Page Optimization", "Link Building"],
 		images: [
-			"/icons/react.webp",
-			"/icons/angular.webp",
-			"/icons/python.webp",
-			"/icons/js.webp",
-			"/icons/wordpress.webp",
-			"/icons/php.webp",
-			"/icons/shopify.webp",
+			"/icons/seo.png",
+			"/icons/chat.png",
+			"/icons/web-speed.png",
+			"/icons/web-search.png",
+			"/icons/announcement.png",
+			"/icons/digital-campaign.png",
+			"/icons/web-data.png",
 		],
 	},
 	{
@@ -74,13 +73,13 @@ const services_data: ServicesData = [
 		learn_more: "/services/graphics-design",
 		tags: ["Graphics Design", "Branding", "UI/UX", "Visual Identity"],
 		images: [
-			"/icons/react.webp",
-			"/icons/angular.webp",
-			"/icons/python.webp",
-			"/icons/js.webp",
-			"/icons/wordpress.webp",
-			"/icons/php.webp",
-			"/icons/shopify.webp",
+			"/icons/photoshop.png",
+			"/icons/illustrator.png",
+			"/icons/figma.png",
+			"/icons/indesign.png",
+			"/icons/adobe.png",
+			"/icons/canva.png",
+			"/icons/corel-draw.png",
 		],
 	},
 ];

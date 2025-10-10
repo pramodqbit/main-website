@@ -179,7 +179,7 @@ export default function Footer() {
 								Subscribe to our newsletter for the latest updates and insights.
 							</p>
 						</div>
-						<div className='flex gap-2 w-full md:w-auto'>
+						<div className='flex gap-2 w-full flex-col md:flex-row md:w-auto '>
 							<input
 								type='email'
 								placeholder='Enter your email'
