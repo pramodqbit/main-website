@@ -4,7 +4,6 @@ import { readdirSync, readFileSync } from "fs";
 import { join } from "path";
 import ServiceBanner from "./_components/banner";
 import { Badge } from "@/components/ui/badge";
-import CoreCompetencies from "@/components/global/core-competencies";
 import { Marquee } from "@/components/ui/marquee";
 
 type ServiceData = {
@@ -137,8 +136,6 @@ export default async function ServicePage({
 					</Badge>
 				))}
 			</div>
-
-			<CoreCompetencies className='border-none' />
 
 			{/* Tech Stack */}
 			<div className='mt-16 mb-20'>
