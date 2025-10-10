@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 import SmoothScrolling from "@/components/animation/smooth-scrolling";
 import ScrollProgress from "@/components/global/scroll-progress";
 
@@ -112,6 +113,7 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<SpeedInsights />
+			<Analytics />
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} ${sevenSegment.variable} antialiased`}>
 				<SmoothScrolling />
