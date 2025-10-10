@@ -138,7 +138,7 @@ export default function HowItWorks({ className }: { className?: string }) {
 		<div
 			ref={sectionRef}
 			className={cn(
-				"relative border-l border-r ",
+				"relative border-l border-r overflow-x-hidden",
 
 				className,
 			)}>

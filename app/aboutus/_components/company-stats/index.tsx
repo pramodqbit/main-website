@@ -4,44 +4,44 @@ import { Users, Code, Globe, Award, Clock, TrendingUp } from "lucide-react";
 
 const statsData = [
 	{
-		number: "50+",
-		label: "Projects Completed",
-		description: "Successfully delivered projects across various industries",
+		number: "100+",
+		label: "Technologies Mastered",
+		description: "Expert proficiency across modern frameworks, languages, and platforms",
 		icon: <Code className="w-8 h-8" />,
 		color: "text-blue-500"
 	},
 	{
-		number: "25+",
-		label: "Happy Clients",
-		description: "Satisfied clients who trust us with their digital needs",
-		icon: <Users className="w-8 h-8" />,
-		color: "text-green-500"
-	},
-	{
-		number: "15+",
-		label: "Countries Served",
-		description: "Global reach with clients across different continents",
-		icon: <Globe className="w-8 h-8" />,
-		color: "text-purple-500"
-	},
-	{
-		number: "5+",
-		label: "Years Experience",
-		description: "Years of expertise in digital transformation",
+		number: "50+",
+		label: "Combined Years Experience",
+		description: "Decades of collective expertise from industry-leading professionals",
 		icon: <Award className="w-8 h-8" />,
 		color: "text-yellow-500"
 	},
 	{
-		number: "99%",
-		label: "Client Satisfaction",
-		description: "Consistently high satisfaction rates from our clients",
+		number: "Global",
+		label: "Industry Standards",
+		description: "Following international best practices and enterprise-grade methodologies",
+		icon: <Globe className="w-8 h-8" />,
+		color: "text-purple-500"
+	},
+	{
+		number: "8",
+		label: "C-Level Experts",
+		description: "Leadership team with proven track records from Fortune 500 companies",
+		icon: <Users className="w-8 h-8" />,
+		color: "text-green-500"
+	},
+	{
+		number: "100%",
+		label: "Quality Commitment",
+		description: "Enterprise-grade code quality, security, and performance optimization",
 		icon: <TrendingUp className="w-8 h-8" />,
 		color: "text-red-500"
 	},
 	{
 		number: "24/7",
-		label: "Support Available",
-		description: "Round-the-clock support for all our clients",
+		label: "Dedicated Support",
+		description: "Round-the-clock expert assistance and rapid response times",
 		icon: <Clock className="w-8 h-8" />,
 		color: "text-orange-500"
 	}
