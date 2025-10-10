@@ -8,7 +8,6 @@ import {
 	Twitter,
 	Linkedin,
 	Instagram,
-	Github,
 } from "lucide-react";
 
 export default function Footer() {
@@ -41,11 +40,10 @@ export default function Footer() {
 	};
 
 	const socialLinks = [
-		{ icon: Facebook, href: "#", label: "Facebook" },
-		{ icon: Twitter, href: "#", label: "Twitter" },
-		{ icon: Linkedin, href: "#", label: "LinkedIn" },
-		{ icon: Instagram, href: "#", label: "Instagram" },
-		{ icon: Github, href: "#", label: "GitHub" },
+		{ icon: Facebook, href: "https://www.facebook.com/Qbitlog", label: "Facebook" },
+		{ icon: Twitter, href: "https://x.com/qbitlog", label: "X (Twitter)" },
+		{ icon: Linkedin, href: "https://www.linkedin.com/company/qbitlog", label: "LinkedIn" },
+		{ icon: Instagram, href: "https://www.instagram.com/qbitlog?utm_source=qr&igsh=MWdqbDlvOTg0ejJ5cg==", label: "Instagram" },
 	];
 
 	return (
