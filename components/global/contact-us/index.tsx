@@ -10,6 +10,10 @@ export default function ContactUs() {
 		subject: "",
 		message: "",
 	});
+	const ZEPTO_API_URL = "https://api.zeptomail.in/v1.1/email";
+	const ZEPTO_API_KEY = "PHtE6r0EEb+9imUu9UcI5/O7E5OhYdkmq7tlL1RG5NwUDPZSHU1Sr4grwWTi+hp7AKFFHKSanN9us+mftu6NcGnuM29FCmqyqK3sx/VYSPOZsbq6x00VuVgYf0HYV4DpddBj0CPRu93fNA==";
+	const FROM_EMAIL = "arup@qbitlog.com";
+	const To_EMAIL = "srijandev92prog@gmail.com";
 
 	// const handleSubmit = (e: React.FormEvent) => {
 	// 	e.preventDefault();
@@ -17,51 +21,117 @@ export default function ContactUs() {
 	// 	console.log("Form submitted:", formData);
 	// };
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-//   setIsSubmitting(true);
+	const handleSubmit = async (e: React.FormEvent) => {
+		e.preventDefault();
+		//   setIsSubmitting(true);
 
-  try {
-    // Replace with your actual Google Apps Script Web App URL
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxLmcYFd7ERer8KoV8xBhV05SAP8c_Ej0pDrmY1HhADicTXAzIP0tNJ9YbYMPsL_O4k/exec';
-    
-    // Create form data
-    const formDataToSend = new URLSearchParams();
-    formDataToSend.append('name', formData.name);
-    formDataToSend.append('email', formData.email);
-    formDataToSend.append('subject', formData.subject);
-    formDataToSend.append('message', formData.message);
+		try {
+			// Replace with your actual Google Apps Script Web App URL
+			const scriptURL = 'https://script.google.com/macros/s/AKfycbxLmcYFd7ERer8KoV8xBhV05SAP8c_Ej0pDrmY1HhADicTXAzIP0tNJ9YbYMPsL_O4k/exec';
+			if (!scriptURL) {
+				throw new Error('Google Script URL is not configured');
+			}
+			// Create form data
+			const formDataToSend = new URLSearchParams();
+			formDataToSend.append('name', formData.name);
+			formDataToSend.append('email', formData.email);
+			formDataToSend.append('subject', formData.subject);
+			formDataToSend.append('message', formData.message);
 
-    // Use no-cors mode - the request will go through but we can't read response
-    await fetch(scriptURL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+
+			// Use no-cors mode - the request will go through but we can't read response
+			await fetch(scriptURL, {
+				method: 'POST',
+				mode: 'no-cors',
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded',
+				},
+				body: formDataToSend
+			});
+			// const emailResponse = await fetch(ZEPTO_API_URL, {
+			// 	method: 'POST',
+			// 	mode: 'no-cors',
+			// 	headers: {
+			// 		'Content-Type': 'application/json',
+			// 		"Authorization": `Zoho-enczapikey ${ZEPTO_API_KEY}`,
+			// 	},
+			// 	body: JSON.stringify({
+			// 		name: formData.name,
+			// 		email: formData.email,
+			// 		subject: formData.subject,
+			// 		message: formData.message,
+			// 		toEmail: To_EMAIL,
+			// 		fromEmail: FROM_EMAIL
+			// 	}),
+			// });
+
+			// if (!emailResponse.ok) {
+			// 	throw new Error('Failed to send email notification');
+			// }
+			// Even with CORS issues, the data usually gets submitted
+
+    const payload = {
+      from: { 
+        address: FROM_EMAIL,
+        name: "Qbitlog Contact Form"
       },
-      body: formDataToSend
+      to: [
+        { 
+          email_address: { 
+            address: To_EMAIL,
+            name: "Qbitlog Team"
+          } 
+        }
+      ],
+      subject: `New Contact Form: test`,
+      htmlbody: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #333;">New Contact Form Submission</h2>
+          <div style="background: #f5f5f5; padding: 20px; border-radius: 5px;">
+            <p><strong>Name:</strong> ${formData.name}</p>
+            <p><strong>Email:</strong> ${formData.email}</p>
+            <p><strong>Subject:</strong> ${formData.subject}</p>
+            <p><strong>Message:</strong></p>
+            <div style="background: white; padding: 15px; border-radius: 3px; margin-top: 10px;">
+              ${formData.message.replace(/\n/g, '<br>')}
+            </div>
+          </div>
+        </div>
+      `
+    };
+
+    await fetch(ZEPTO_API_URL, {
+      method: 'POST',
+	mode: 'no-cors',
+      headers: {
+        'Authorization': `Zoho-enczapikey ${ZEPTO_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
     });
 
-    // Even with CORS issues, the data usually gets submitted
-    console.log("Form submitted successfully!");
-    alert("Thank you for your message! We'll get back to you within 24 hours.");
-    
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
-    
-  } catch (error) {
-    console.error("Error submitting form:", error);
-    // Even if there's an error, the form might have submitted
-    alert("Thank you for your message! If you don't hear back from us, please try contacting us directly.");
-  } finally {
-    // setIsSubmitting(false);
-  }
-};
+
+  
+
+			console.log("Form submitted successfully!");
+			alert("Thank you for your message! We'll get back to you within 24 hours.");
+
+			// Reset form
+			setFormData({
+				name: "",
+				email: "",
+				subject: "",
+				message: "",
+			});
+
+		} catch (error) {
+			console.error("Error submitting form:", error);
+			// Even if there's an error, the form might have submitted
+			alert("Thank you for your message! If you don't hear back from us, please try contacting us directly.");
+		} finally {
+			// setIsSubmitting(false);
+		}
+	};
 
 	const handleChange = (
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
