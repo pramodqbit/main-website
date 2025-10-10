@@ -3,18 +3,33 @@
 	"tags": ["UI/UX Design", "React", "Next.js"],
 	"title": "UI/UX Design",
 	"description": "We design user interfaces that are fast, responsive, and easy to use.",
-	"section_name": "UI/UX Design",
-	"section_description": "We design user interfaces that are fast, responsive, and easy to use.",
+	"section_name": "Our Design Tools",
+	"section_description": "We use the latest and greatest technologies to build user interfaces that are fast, responsive, and easy to use. Our team leverages modern frameworks, robust backend solutions, and scalable databases to ensure your web projects are secure, maintainable, and future-proof. From intuitive user interfaces to efficient server-side logic, we deliver comprehensive solutions tailored to your business needs.",
 	"techstack": [
 		{
-			"name": "React",
-			"image": "/icons/react.webp",
-			"description": "React is a JavaScript library for building user interfaces."
+			"name": "Figma",
+			"image": "/icons/figma.png",
+			"description": "Figma is a collaborative interface design tool for designing, prototyping, and sharing user interfaces."
 		},
 		{
-			"name": "Next.js",
-			"image": "/icons/next.webp",
-			"description": "Next.js is a React framework for building server-side rendered and static websites."
+			"name": "Adobe Photoshop",
+			"image": "/icons/photoshop.png",
+			"description": "Adobe Photoshop is a powerful graphics editor used for creating, editing, and enhancing images and UI assets."
+		},
+		{
+			"name": "Adobe Illustrator",
+			"image": "/icons/illustrator.png",
+			"description": "Adobe Illustrator is a vector graphics editor used to create icons, illustrations, and scalable UI elements."
+		},
+		{
+			"name": "Adobe Suite",
+			"image": "/icons/adobe.png",
+			"description": "Adobe Suite is a collection of design tools primarily used for user interface and user experience design for web and mobile applications."
+		},
+		{
+			"name": "Corel Draw",
+			"image": "/icons/corel-draw.png",
+			"description": "Corel Draw is a vector-based tool for designing and prototyping user experiences for web and mobile apps."
 		}
 	]
 }

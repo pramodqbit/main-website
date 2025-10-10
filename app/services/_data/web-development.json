@@ -21,27 +21,27 @@
 		},
 		{
 			"name": "Next.js",
-			"image": "/icons/next.webp",
+			"image": "/icons/nextjs.webp",
 			"description": "Next.js is a React framework for building server-side rendered and static websites."
 		},
 		{
 			"name": "Tailwind CSS",
-			"image": "/icons/tailwind.webp",
+			"image": "/icons/tailwind.png",
 			"description": "Tailwind CSS is a CSS framework for building custom user interfaces."
 		},
 		{
 			"name": "TypeScript",
-			"image": "/icons/typescript.webp",
+			"image": "/icons/typescript.png",
 			"description": "TypeScript is a superset of JavaScript that adds static typing."
 		},
 		{
 			"name": "Node.js",
-			"image": "/icons/node.webp",
+			"image": "/icons/js.webp",
 			"description": "Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine."
 		},
 		{
 			"name": "MongoDB",
-			"image": "/icons/mongodb.webp",
+			"image": "/icons/mongo.webp",
 			"description": "MongoDB is a NoSQL database that uses JSON-like documents with schemas."
 		}
 	]

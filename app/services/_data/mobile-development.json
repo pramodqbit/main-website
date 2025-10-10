@@ -3,28 +3,34 @@
 	"tags": ["Mobile Development", "React Native", "Flutter", "Swift", "Kotlin"],
 	"title": "Mobile Development",
 	"description": "We develop mobile applications that are fast, responsive, and easy to use.",
-	"section_name": "Mobile Development",
-	"section_description": "We develop mobile applications that are fast, responsive, and easy to use.",
+	"section_name": "Our Tech Stack",
+	"section_description": "At QBITLOG, we specialize in building high-performance, cross-platform mobile applications that deliver seamless user experiences. Our team leverages leading technologies such as React Native and Flutter, as well as native development with Swift and Kotlin, to create apps tailored to your business needs. From sleek UI/UX to robust and scalable backends, we ensure your mobile solution is fast, responsive, maintainable, and ready for growth on both iOS and Android. Whether you need a consumer app or a complex enterprise tool, we turn your vision into an engaging, user-friendly reality.",
 	"techstack": [
 		{
 			"name": "React Native",
-			"image": "/icons/react-native.webp",
+			"image": "/icons/react.webp",
 			"description": "React Native is a JavaScript library for building user interfaces."
 		},
 		{
 			"name": "Flutter",
-			"image": "/icons/flutter.webp",
+			"image": "/icons/flutter.png",
 			"description": "Flutter is a UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase."
 		},
 		{
 			"name": "Swift",
-			"image": "/icons/swift.webp",
+			"image": "/icons/swift.png",
 			"description": "Swift is a programming language for building iOS and macOS applications."
 		},
 		{
 			"name": "Kotlin",
-			"image": "/icons/kotlin.webp",
+			"image": "/icons/kotlin.png",
 			"description": "Kotlin is a programming language for building Android applications."
+		},
+
+		{
+			"name": "Android Studio",
+			"image": "/icons/android-studio-icon.png",
+			"description": "Android Studio is a development environment for building Android applications."
 		}
 	]
 }

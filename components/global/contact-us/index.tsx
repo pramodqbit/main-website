@@ -15,9 +15,9 @@ export default function ContactUs() {
 	const [focusedField, setFocusedField] = useState<string | null>(null);
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [submitStatus, setSubmitStatus] = useState<{
-		type: 'success' | 'error' | null;
+		type: "success" | "error" | null;
 		message: string;
-	}>({ type: null, message: '' });
+	}>({ type: null, message: "" });
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
@@ -87,11 +87,12 @@ export default function ContactUs() {
 						</motion.p>
 
 						{submitStatus.type && (
-							<div className={`mb-6 p-4 rounded-lg ${
-								submitStatus.type === 'success'
-									? 'bg-green-100 text-green-800 border border-green-200'
-									: 'bg-red-100 text-red-800 border border-red-200'
-							}`}>
+							<div
+								className={`mb-6 p-4 rounded-lg ${
+									submitStatus.type === "success"
+										? "bg-green-100 text-green-800 border border-green-200"
+										: "bg-red-100 text-red-800 border border-red-200"
+								}`}>
 								{submitStatus.message}
 							</div>
 						)}
@@ -204,12 +205,14 @@ export default function ContactUs() {
 								/>
 							</motion.div>
 							<motion.div variants={itemVariants}>
-								<motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+								<motion.div
+									whileHover={{ scale: 1.02 }}
+									whileTap={{ scale: 0.98 }}>
 									<Button
 										type='submit'
-								disabled={isSubmitting}
+										disabled={isSubmitting}
 										className='bg-black hover:bg-gray-800 text-white px-8 py-3 rounded-lg transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-black disabled:opacity-50 disabled:cursor-not-allowed w-full'>
-										{isSubmitting ? 'Sending...' : 'Contact Us'}
+										{isSubmitting ? "Sending..." : "Contact Us"}
 									</Button>
 								</motion.div>
 							</motion.div>
@@ -255,9 +258,9 @@ export default function ContactUs() {
 								</h3>
 								<p className='text-gray-700'>
 									<a
-										href='tel:+31201234567'
+										href='tel:+918981969797'
 										className='hover:text-primary text-[10px] md:text-base transition-colors'>
-										+31 20 123 4567
+										+91 8981969797
 									</a>
 								</p>
 							</motion.div>
@@ -394,10 +397,10 @@ export default function ContactUs() {
 								</h3>
 								<p className='text-gray-700 text-lg'>
 									<motion.a
-										href='tel:+31201234567'
+										href='tel:+918981969797'
 										className='hover:text-primary transition-colors'
 										whileHover={{ x: 5 }}>
-										+31 20 123 4567
+										+91 - 8981969797
 									</motion.a>
 								</p>
 							</motion.div>
@@ -520,11 +523,12 @@ export default function ContactUs() {
 						</motion.p>
 
 						{submitStatus.type && (
-							<div className={`mb-6 p-4 rounded-lg ${
-								submitStatus.type === 'success'
-									? 'bg-green-100 text-green-800 border border-green-200'
-									: 'bg-red-100 text-red-800 border border-red-200'
-							}`}>
+							<div
+								className={`mb-6 p-4 rounded-lg ${
+									submitStatus.type === "success"
+										? "bg-green-100 text-green-800 border border-green-200"
+										: "bg-red-100 text-red-800 border border-red-200"
+								}`}>
 								{submitStatus.message}
 							</div>
 						)}
@@ -607,7 +611,9 @@ export default function ContactUs() {
 									disabled={isSubmitting}
 									animate={{
 										borderColor:
-											focusedField === "subject-desktop" ? "#8A38F5" : "#d1d5db",
+											focusedField === "subject-desktop"
+												? "#8A38F5"
+												: "#d1d5db",
 									}}
 									transition={{ duration: 0.3 }}
 								/>
@@ -631,18 +637,22 @@ export default function ContactUs() {
 									disabled={isSubmitting}
 									animate={{
 										borderColor:
-											focusedField === "message-desktop" ? "#8A38F5" : "#d1d5db",
+											focusedField === "message-desktop"
+												? "#8A38F5"
+												: "#d1d5db",
 									}}
 									transition={{ duration: 0.3 }}
 								/>
 							</motion.div>
 							<motion.div variants={itemVariants}>
-								<motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+								<motion.div
+									whileHover={{ scale: 1.02 }}
+									whileTap={{ scale: 0.98 }}>
 									<Button
 										type='submit'
-								disabled={isSubmitting}
+										disabled={isSubmitting}
 										className='bg-black hover:bg-gray-800 text-white px-10 py-3 rounded-lg transition-colors text-lg focus:ring-2 focus:ring-offset-2 focus:ring-black disabled:opacity-50 disabled:cursor-not-allowed w-full'>
-										{isSubmitting ? 'Sending...' : 'Contact Us'}
+										{isSubmitting ? "Sending..." : "Contact Us"}
 									</Button>
 								</motion.div>
 							</motion.div>
