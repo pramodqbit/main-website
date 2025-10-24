@@ -82,7 +82,7 @@ export default function Footer() {
 								whileHover={{ scale: 1.1, rotate: 360 }}
 								transition={{ duration: 0.6 }}>
 								<Image
-									src='/icons/logo.svg'
+									src='/icons/logo.png'
 									alt='Qbitlog Logo'
 									width={50}
 									height={50}
