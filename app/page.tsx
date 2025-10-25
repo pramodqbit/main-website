@@ -76,7 +76,7 @@ export default function Home() {
 		"name": "QBITLOG",
 		"alternateName": "Qbitlog",
 		"url": siteUrl,
-		"logo": `${siteUrl}/icons/logo.svg`,
+		"logo": `${siteUrl}/icons/logo.png`,
 		"description": "Future-forward software design agency where innovation meets intelligence. We specialize in creating innovative web and mobile applications that transform businesses and delight users with AI-enhanced solutions.",
 		"slogan": "Crafting Digital Experiences That Drive Results",
 		"foundingDate": "2020",

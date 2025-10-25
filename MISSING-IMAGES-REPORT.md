@@ -216,7 +216,7 @@ All pages reference Open Graph and Twitter Card images for social media sharing,
 1. **Open Canva or Figma**
 2. **Create new design**: 1200 x 630 px
 3. **Add dark background** with gradient (purple to cyan)
-4. **Place QBITLOG logo** (from `/public/icons/logo.svg`)
+4. **Place QBITLOG logo** (from `/public/icons/logo.png`)
 5. **Add title text**: Large, bold, white color
 6. **Add tagline text**: Smaller, lighter color
 7. **Add visual elements**: Icons, patterns, graphics

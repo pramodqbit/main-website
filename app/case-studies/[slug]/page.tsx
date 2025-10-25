@@ -94,7 +94,7 @@ export default async function CaseStudyPage({
 			"name": "QBITLOG",
 			"logo": {
 				"@type": "ImageObject",
-				"url": `${siteUrl}/icons/logo.svg`
+				"url": `${siteUrl}/icons/logo.png`
 			}
 		},
 		"mainEntityOfPage": {

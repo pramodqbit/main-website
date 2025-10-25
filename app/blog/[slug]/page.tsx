@@ -95,7 +95,7 @@ export default async function BlogPostPage({
 			"name": "QBITLOG",
 			"logo": {
 				"@type": "ImageObject",
-				"url": `${siteUrl}/icons/logo.svg`
+				"url": `${siteUrl}/icons/logo.png`
 			}
 		},
 		"mainEntityOfPage": {
