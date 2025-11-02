@@ -4,10 +4,10 @@ import { Span } from "@/components/animation/hero-animation";
 
 const teamData = [
 	{
-		name: "Arup",
+		name: "Madhusmita",
 		role: "Chief Executive Officer (CEO)",
 		description:
-			"Visionary leader with a proven track record in driving digital transformation and business growth. Arup brings strategic insight and entrepreneurial expertise to steer QBITLOG towards innovation, ensuring client success through cutting-edge solutions and exceptional service delivery.",
+			"Visionary leader with a proven track record in driving digital transformation and business growth. Madhusmita brings strategic insight and entrepreneurial expertise to steer QBITLOG towards innovation, ensuring client success through cutting-edge solutions and exceptional service delivery.",
 		skills: [
 			"Strategic Planning",
 			"Business Development",
