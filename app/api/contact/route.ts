@@ -42,8 +42,8 @@ export async function POST(request: NextRequest) {
     // Send via ZeptoMail
     const ZEPTO_API_URL = "https://api.zeptomail.in/v1.1/email";
     const ZEPTO_API_KEY = "PHtE6r0EEb+9imUu9UcI5/O7E5OhYdkmq7tlL1RG5NwUDPZSHU1Sr4grwWTi+hp7AKFFHKSanN9us+mftu6NcGnuM29FCmqyqK3sx/VYSPOZsbq6x00VuVgYf0HYV4DpddBj0CPRu93fNA==";
-    const FROM_EMAIL = "arup@qbitlog.com";
-    const TO_EMAIL = "arupdas872@gmail.com";
+    const FROM_EMAIL = "Madhusmita@qbitlog.com";
+    const TO_EMAIL = "Madhusmitadas872@gmail.com";
 
     // Build HTML body based on form type
     let htmlBody = `
