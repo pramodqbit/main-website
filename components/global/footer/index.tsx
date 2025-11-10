@@ -62,7 +62,7 @@ export default function Footer() {
 		},
 		{
 			icon: Instagram,
-			href: "https://www.instagram.com/qbitlog?utm_source=qr&igsh=MWdqbDlvOTg0ejJ5cg==",
+			href: "https://www.instagram.com/qbit_log/?utm_source=qr&igsh=ZXN6ZjRuYzF6aWtv#",
 			label: "Instagram",
 		},
 	];
