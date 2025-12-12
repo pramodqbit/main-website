@@ -124,6 +124,20 @@ const teamData = [
 			"Firebase",
 		],
 	},
+	{
+		name: "Sahanaj Shah",
+		role: "Head of Marketing & HR",
+		description:
+			"Sahanaj Shah leads QBITLOG's marketing and human resources initiatives with a strategic and people-centric approach. Her expertise in brand development, talent acquisition, and organizational culture ensures that QBITLOG attracts top talent while building a strong market presence and fostering an exceptional workplace environment.",
+		skills: [
+			"Marketing Strategy",
+			"Brand Development",
+			"Talent Acquisition",
+			"HR Management",
+			"Employee Engagement",
+			"Digital Marketing",
+		],
+	},
 ];
 
 export default function TeamMembers() {
