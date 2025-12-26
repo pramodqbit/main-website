@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
 import caseStudies from "./_data/case-studies.json";
-import { Briefcase, Users, Clock, TrendingUp } from "lucide-react";
+import { Briefcase, Users, Clock, TrendingUp, ExternalLink } from "lucide-react";
 
 const ICON_SIZE = 32;
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://qbitlog.com";
@@ -63,7 +63,9 @@ export default function CaseStudiesPage() {
 					title='Real-World Success Stories'
 					description='Explore how we have helped businesses across industries achieve their digital transformation goals.'>
 					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-						{caseStudies.map((study) => (
+						{caseStudies.map((study) => {
+							const studyWithExtras = study as typeof study & { demoUrl?: string; isPrototype?: boolean };
+							return (
 							<Link
 								key={study.slug}
 								href={`/case-studies/${study.slug}`}
@@ -77,6 +79,12 @@ export default function CaseStudiesPage() {
 											className='object-cover'
 											priority={false}
 										/>
+										{/* Demo Badge Overlay */}
+										{studyWithExtras.isPrototype && (
+											<div className='absolute top-3 right-3 flex items-center gap-1.5 px-3 py-1.5 bg-amber-500 text-white text-xs font-bold rounded-full shadow-lg'>
+												<span>🚀 Live Demo</span>
+											</div>
+										)}
 									</div>
 									<CardContent className='p-6'>
 										<div className='flex items-center gap-3 mb-3'>
@@ -131,10 +139,20 @@ export default function CaseStudiesPage() {
 												</span>
 											))}
 										</div>
+
+										{/* Demo Link */}
+										{studyWithExtras.demoUrl && (
+											<div className='mt-4 pt-4 border-t'>
+												<span className='inline-flex items-center gap-2 text-sm text-primary font-semibold group-hover:underline'>
+													<ExternalLink className='w-4 h-4' />
+													Try Live Demo
+												</span>
+											</div>
+										)}
 									</CardContent>
 								</Card>
 							</Link>
-						))}
+						)})}
 					</div>
 				</SectionLayout>
 			</main>

@@ -2,14 +2,17 @@ import Navbar from "@/components/global/navbar";
 import Footer from "@/components/global/footer";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Home, Briefcase, Calendar, Users, Clock, TrendingUp, Target, Lightbulb, CheckCircle } from "lucide-react";
+import { ChevronRight, Home, Briefcase, Calendar, Users, Clock, TrendingUp, Target, Lightbulb, CheckCircle, ExternalLink, AlertTriangle } from "lucide-react";
 import caseStudies from "../_data/case-studies.json";
 import { notFound } from "next/navigation";
 
-type CaseStudy = typeof caseStudies[number];
+type CaseStudy = typeof caseStudies[number] & {
+	demoUrl?: string;
+	isPrototype?: boolean;
+};
 
 function getCaseStudy(slug: string): CaseStudy | undefined {
-	return caseStudies.find((s) => s.slug === slug);
+	return caseStudies.find((s) => s.slug === slug) as CaseStudy | undefined;
 }
 
 export async function generateStaticParams() {
@@ -164,6 +167,19 @@ export default async function CaseStudyPage({
 				</nav>
 
 				<article className='mx-auto max-w-4xl py-10'>
+					{/* Prototype/Demo Warning Banner */}
+					{study.isPrototype && (
+						<div className='mb-6 p-4 bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 rounded-r-lg'>
+							<div className='flex items-start gap-3'>
+								<AlertTriangle className='w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5' />
+								<div>
+									<p className='font-semibold text-amber-800 dark:text-amber-200'>Prototype / Demo Product</p>
+									<p className='text-sm text-amber-700 dark:text-amber-300'>This is a demonstration project with synthetic data. Not intended for production use without proper compliance and validation.</p>
+								</div>
+							</div>
+						</div>
+					)}
+
 					{/* Hero Section */}
 					<div className='mb-8'>
 						<div className='flex items-center gap-3 mb-4'>
@@ -172,15 +188,35 @@ export default async function CaseStudyPage({
 								<p className='text-sm text-muted-foreground'>{study.industry}</p>
 								<p className='text-sm text-muted-foreground'>{new Date(study.date).toLocaleDateString()}</p>
 							</div>
+							{study.isPrototype && (
+								<span className='ml-auto px-3 py-1 text-xs font-semibold bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-200 rounded-full'>
+									Demo Project
+								</span>
+							)}
 						</div>
 						
 						<h1 className='text-3xl md:text-4xl font-bold mb-4'>{study.title}</h1>
 						<p className='text-lg text-muted-foreground mb-6'>{study.excerpt}</p>
 						
-						<div className='flex flex-wrap gap-2 mb-6'>
-							{study.tags.map((tag) => (
-								<span key={tag} className='text-sm px-3 py-1 rounded-full border'>#{tag}</span>
-							))}
+						<div className='flex flex-wrap items-center gap-4 mb-6'>
+							<div className='flex flex-wrap gap-2'>
+								{study.tags.map((tag) => (
+									<span key={tag} className='text-sm px-3 py-1 rounded-full border'>#{tag}</span>
+								))}
+							</div>
+							
+							{/* Demo Link Button */}
+							{study.demoUrl && (
+								<a
+									href={study.demoUrl}
+									target='_blank'
+									rel='noopener noreferrer'
+									className='inline-flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg font-semibold transition-colors shadow-lg hover:shadow-xl'
+								>
+									<ExternalLink className='w-4 h-4' />
+									Try Live Demo
+								</a>
+							)}
 						</div>
 					</div>
 
