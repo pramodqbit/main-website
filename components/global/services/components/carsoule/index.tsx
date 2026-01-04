@@ -223,7 +223,7 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 	}, [data]);
 
 	const item = data[current];
-	const images = item.images;
+	const images = item.image;
 	const center = images[0];
 	const ring = images.slice(1, 7);
 
@@ -266,7 +266,11 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 									},
 								}}
 								className={cn("  ")}>
-								<HexRing center={center} ring={ring} iconSize={iconSize} />
+								<HexRing
+									center={center}
+									ring={ring as unknown as string[]}
+									iconSize={iconSize}
+								/>
 							</motion.div>
 
 							<div className=' flex flex-col lg:gap-4 gap-2'>
