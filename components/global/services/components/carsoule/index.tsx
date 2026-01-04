@@ -31,8 +31,6 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 		const updateDimensions = () => {
 			const width = window.innerWidth;
 
-		
-
 			// Dynamic height calculation based on screen size
 			let multiplier;
 			// Mobile-first approach: start with mobile defaults
@@ -243,7 +241,7 @@ export default function Carsoule({ data }: { data: ServicesData }) {
 						description='From custom web,AI powered applications and mobile development to strategic marketing, SEO, and graphic design, we deliver end-to-end digital solutions that empower your brand and drive measurable results.'
 					/>
 				</div>
-				<div className='w-full px-0 md:px-8 relative'>
+				<div className='w-full px-0 md:px-8 container relative'>
 					<AnimatePresence mode='wait'>
 						<motion.div
 							key={item.title}

@@ -58,8 +58,8 @@ export default function FAQ() {
 			<div className=''>
 				<div className=' rounded-2xl  '>
 					<Accordion type='single' collapsible className='space-y-1'>
-						<AnimatedList delay={500}>
-							{faqs.map((faq, index) => (
+						{faqs.map((faq, index) => (
+							<AnimatedList key={index}>
 								<AccordionItem
 									key={index}
 									value={`item-${index}`}
@@ -71,8 +71,8 @@ export default function FAQ() {
 										{faq.answer}
 									</AccordionContent>
 								</AccordionItem>
-							))}
-						</AnimatedList>
+							</AnimatedList>
+						))}
 					</Accordion>
 				</div>
 

@@ -18,7 +18,8 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://qbitlog.com";
 
 export const metadata: Metadata = {
 	title: "Our Services - Comprehensive Digital Solutions for Your Business",
-	description: "Explore QBITLOG's comprehensive digital services: Web Development, Mobile Apps, UI/UX Design, Cloud Solutions, and AI & Machine Learning. From concept to launch, we deliver tailored solutions that drive growth and innovation.",
+	description:
+		"Explore QBITLOG's comprehensive digital services: Web Development, Mobile Apps, UI/UX Design, Cloud Solutions, and AI & Machine Learning. From concept to launch, we deliver tailored solutions that drive growth and innovation.",
 	keywords: [
 		"web development services",
 		"mobile app development",
@@ -29,11 +30,12 @@ export const metadata: Metadata = {
 		"React development",
 		"Next.js development",
 		"AWS cloud services",
-		"DevOps services"
+		"DevOps services",
 	],
 	openGraph: {
 		title: "QBITLOG Services - Comprehensive Digital Solutions",
-		description: "Web Development, Mobile Apps, UI/UX Design, Cloud Solutions, and AI/ML services. Tailored solutions that drive growth and innovation.",
+		description:
+			"Web Development, Mobile Apps, UI/UX Design, Cloud Solutions, and AI/ML services. Tailored solutions that drive growth and innovation.",
 		url: `${siteUrl}/services`,
 		type: "website",
 		images: [
@@ -41,19 +43,20 @@ export const metadata: Metadata = {
 				url: `${siteUrl}/og-image-services.jpg`,
 				width: 1200,
 				height: 630,
-				alt: "QBITLOG Services"
-			}
-		]
+				alt: "QBITLOG Services",
+			},
+		],
 	},
 	twitter: {
 		card: "summary_large_image",
 		title: "QBITLOG Services - Comprehensive Digital Solutions",
-		description: "Web Development, Mobile Apps, UI/UX Design, Cloud Solutions, and AI/ML services.",
-		images: [`${siteUrl}/twitter-image-services.jpg`]
+		description:
+			"Web Development, Mobile Apps, UI/UX Design, Cloud Solutions, and AI/ML services.",
+		images: [`${siteUrl}/twitter-image-services.jpg`],
 	},
 	alternates: {
 		canonical: `${siteUrl}/services`,
-	}
+	},
 };
 
 const services = [
@@ -119,7 +122,7 @@ const services = [
 			"Scalable cloud infrastructure and DevOps solutions. Deploy, manage, and scale your applications with confidence.",
 		href: "/services/cloud-solutions",
 		cta: "Learn more",
-		className: "col-span-3 lg:col-span-2",
+		className: "col-span-3 lg:col-span-1",
 		background: <CloudBg />,
 	},
 	{
@@ -129,7 +132,7 @@ const services = [
 			"Intelligent automation and AI-powered solutions. From predictive analytics to natural language processing and computer vision.",
 		href: "/services/ai-machine-learning",
 		cta: "Learn more",
-		className: "col-span-3 lg:col-span-3",
+		className: "col-span-3 lg:col-span-1",
 		background: <AIBg />,
 	},
 ];
@@ -140,7 +143,7 @@ export default function ServicesPage() {
 			<Navbar />
 
 			{/* Hero Section */}
-			<section className='py-16 md:py-24'>
+			<section className='py-16 md:py-24  '>
 				<div className='max-w-4xl mx-auto text-center space-y-6'>
 					<TextFadeIn
 						delay={0.1}
@@ -165,7 +168,7 @@ export default function ServicesPage() {
 			</section>
 
 			{/* Services Bento Grid */}
-			<section className='pb-16 md:pb-24'>
+			<section className='pb-16 md:pb-24 mx-auto max-w-7xl'>
 				<BentoGrid className='lg:grid-cols-3'>
 					{services.map((service, idx) => (
 						<BentoCard key={idx} {...service} />

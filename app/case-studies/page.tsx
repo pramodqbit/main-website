@@ -6,14 +6,22 @@ import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
 import caseStudies from "./_data/case-studies.json";
-import { Briefcase, Users, Clock, TrendingUp, ExternalLink } from "lucide-react";
+import {
+	Briefcase,
+	Users,
+	Clock,
+	TrendingUp,
+	ExternalLink,
+} from "lucide-react";
+import ContactUs from "@/components/global/contact-us";
 
 const ICON_SIZE = 32;
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://qbitlog.com";
 
 export const metadata: Metadata = {
 	title: "Case Studies - Real-World Success Stories",
-	description: "Explore how QBITLOG has helped businesses across industries achieve their digital transformation goals. From fintech to e-commerce, healthcare to AI/ML implementations - real results from real projects.",
+	description:
+		"Explore how QBITLOG has helped businesses across industries achieve their digital transformation goals. From fintech to e-commerce, healthcare to AI/ML implementations - real results from real projects.",
 	keywords: [
 		"case studies",
 		"success stories",
@@ -23,11 +31,12 @@ export const metadata: Metadata = {
 		"fintech projects",
 		"ecommerce solutions",
 		"healthcare IT",
-		"AI implementation"
+		"AI implementation",
 	],
 	openGraph: {
 		title: "QBITLOG Case Studies - Real-World Success Stories",
-		description: "Discover how we've helped businesses achieve digital transformation goals across fintech, e-commerce, healthcare, and more.",
+		description:
+			"Discover how we've helped businesses achieve digital transformation goals across fintech, e-commerce, healthcare, and more.",
 		url: `${siteUrl}/case-studies`,
 		type: "website",
 		images: [
@@ -35,19 +44,20 @@ export const metadata: Metadata = {
 				url: `${siteUrl}/og-image-case-studies.jpg`,
 				width: 1200,
 				height: 630,
-				alt: "QBITLOG Case Studies"
-			}
-		]
+				alt: "QBITLOG Case Studies",
+			},
+		],
 	},
 	twitter: {
 		card: "summary_large_image",
 		title: "QBITLOG Case Studies - Real-World Success Stories",
-		description: "Real results from real projects across fintech, e-commerce, healthcare, and AI/ML.",
-		images: [`${siteUrl}/twitter-image-case-studies.jpg`]
+		description:
+			"Real results from real projects across fintech, e-commerce, healthcare, and AI/ML.",
+		images: [`${siteUrl}/twitter-image-case-studies.jpg`],
 	},
 	alternates: {
 		canonical: `${siteUrl}/case-studies`,
-	}
+	},
 };
 
 export default function CaseStudiesPage() {
@@ -64,97 +74,102 @@ export default function CaseStudiesPage() {
 					description='Explore how we have helped businesses across industries achieve their digital transformation goals.'>
 					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
 						{caseStudies.map((study) => {
-							const studyWithExtras = study as typeof study & { demoUrl?: string; isPrototype?: boolean };
+							const studyWithExtras = study as typeof study & {
+								demoUrl?: string;
+								isPrototype?: boolean;
+							};
 							return (
-							<Link
-								key={study.slug}
-								href={`/case-studies/${study.slug}`}
-								className='group'>
-								<Card className='h-full overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-primary/20 p-0 gap-0'>
-									<div className='relative h-48 w-full'>
-										<Image
-											src={study.heroImage}
-											alt={study.title}
-											fill
-											className='object-cover'
-											priority={false}
-										/>
-										{/* Demo Badge Overlay */}
-										{studyWithExtras.isPrototype && (
-											<div className='absolute top-3 right-3 flex items-center gap-1.5 px-3 py-1.5 bg-amber-500 text-white text-xs font-bold rounded-full shadow-lg'>
-												<span>🚀 Live Demo</span>
-											</div>
-										)}
-									</div>
-									<CardContent className='p-6'>
-										<div className='flex items-center gap-3 mb-3'>
+								<Link
+									key={study.slug}
+									href={`/case-studies/${study.slug}`}
+									className='group'>
+									<Card className='h-full overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-primary/20 p-0 gap-0'>
+										<div className='relative h-48 w-full'>
 											<Image
-												src={study.iconImage}
-												alt={`${study.title} icon`}
-												width={32}
-												height={32}
-												className='w-8 h-8 object-contain rounded'
+												src={study.heroImage}
+												alt={study.title}
+												fill
+												className='object-cover'
+												priority={false}
 											/>
-											<div className='flex-1'>
-												<p className='text-xs text-muted-foreground'>
-													{study.industry}
-												</p>
-												<p className='text-xs text-muted-foreground'>
-													{new Date(study.date).toLocaleDateString()}
-												</p>
-											</div>
+											{/* Demo Badge Overlay */}
+											{studyWithExtras.isPrototype && (
+												<div className='absolute top-3 right-3 flex items-center gap-1.5 px-3 py-1.5 bg-amber-500 text-white text-xs font-bold rounded-full shadow-lg'>
+													<span>🚀 Live Demo</span>
+												</div>
+											)}
 										</div>
-
-										<h3 className='text-lg font-semibold leading-snug mb-2'>
-											{study.title}
-										</h3>
-										<p className='text-sm text-muted-foreground line-clamp-3 mb-4'>
-											{study.excerpt}
-										</p>
-
-										{/* Case Study Stats */}
-										<div className='grid grid-cols-2 gap-3 mb-4'>
-											<div className='flex items-center gap-2 text-xs'>
-												<Clock className='w-3 h-3 text-primary' />
-												<span>{study.duration}</span>
+										<CardContent className='p-6'>
+											<div className='flex items-center gap-3 mb-3'>
+												<Image
+													src={study.iconImage}
+													alt={`${study.title} icon`}
+													width={32}
+													height={32}
+													className='w-8 h-8 object-contain rounded'
+												/>
+												<div className='flex-1'>
+													<p className='text-xs text-muted-foreground'>
+														{study.industry}
+													</p>
+													<p className='text-xs text-muted-foreground'>
+														{new Date(study.date).toLocaleDateString()}
+													</p>
+												</div>
 											</div>
-											<div className='flex items-center gap-2 text-xs'>
-												<Users className='w-3 h-3 text-primary' />
-												<span>{study.teamSize}</span>
+
+											<h3 className='text-lg font-semibold leading-snug mb-2'>
+												{study.title}
+											</h3>
+											<p className='text-sm text-muted-foreground line-clamp-3 mb-4'>
+												{study.excerpt}
+											</p>
+
+											{/* Case Study Stats */}
+											<div className='grid grid-cols-2 gap-3 mb-4'>
+												<div className='flex items-center gap-2 text-xs'>
+													<Clock className='w-3 h-3 text-primary' />
+													<span>{study.duration}</span>
+												</div>
+												<div className='flex items-center gap-2 text-xs'>
+													<Users className='w-3 h-3 text-primary' />
+													<span>{study.teamSize}</span>
+												</div>
 											</div>
-										</div>
 
-										{/* Key Results */}
-										<div className='flex items-center gap-2 text-xs text-green-600 font-medium'>
-											<TrendingUp className='w-3 h-3' />
-											<span>{study.results.split(",")[0]}</span>
-										</div>
-
-										<div className='mt-3 flex flex-wrap gap-2'>
-											{study.tags.slice(0, 3).map((tag) => (
-												<span
-													key={tag}
-													className='text-xs px-2 py-1 rounded-full border'>
-													#{tag}
-												</span>
-											))}
-										</div>
-
-										{/* Demo Link */}
-										{studyWithExtras.demoUrl && (
-											<div className='mt-4 pt-4 border-t'>
-												<span className='inline-flex items-center gap-2 text-sm text-primary font-semibold group-hover:underline'>
-													<ExternalLink className='w-4 h-4' />
-													Try Live Demo
-												</span>
+											{/* Key Results */}
+											<div className='flex items-center gap-2 text-xs text-green-600 font-medium'>
+												<TrendingUp className='w-3 h-3' />
+												<span>{study.results.split(",")[0]}</span>
 											</div>
-										)}
-									</CardContent>
-								</Card>
-							</Link>
-						)})}
+
+											<div className='mt-3 flex flex-wrap gap-2'>
+												{study.tags.slice(0, 3).map((tag) => (
+													<span
+														key={tag}
+														className='text-xs px-2 py-1 rounded-full border'>
+														#{tag}
+													</span>
+												))}
+											</div>
+
+											{/* Demo Link */}
+											{studyWithExtras.demoUrl && (
+												<div className='mt-4 pt-4 border-t'>
+													<span className='inline-flex items-center gap-2 text-sm text-primary font-semibold group-hover:underline'>
+														<ExternalLink className='w-4 h-4' />
+														Try Live Demo
+													</span>
+												</div>
+											)}
+										</CardContent>
+									</Card>
+								</Link>
+							);
+						})}
 					</div>
 				</SectionLayout>
+				<ContactUs />
 			</main>
 			<Footer />
 		</div>

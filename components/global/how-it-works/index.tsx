@@ -94,7 +94,7 @@ export default function HowItWorks({ className }: { className?: string }) {
 			// Calculate total width needed to scroll
 			const totalWidth = horizontalRef.current.scrollWidth;
 			const windowWidth = window.innerWidth;
-			
+
 			const scrollDistance = totalWidth - windowWidth;
 
 			// Create main horizontal scroll animation
@@ -137,7 +137,7 @@ export default function HowItWorks({ className }: { className?: string }) {
 		<div
 			ref={sectionRef}
 			className={cn(
-				"relative border-l border-r overflow-x-hidden",
+				"relative  overflow-x-hidden",
 
 				className,
 			)}>
@@ -147,7 +147,7 @@ export default function HowItWorks({ className }: { className?: string }) {
 			<div
 				ref={containerRef}
 				className={cn(
-					"relative border ",
+					"relative  ",
 					"h-[90vh] lg:h-[80vh] xl:h-[100vh] 2xl:h-[100vh]",
 				)}>
 				{/* Background gradient */}

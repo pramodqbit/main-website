@@ -4,14 +4,26 @@ import { Span } from "@/components/animation/hero-animation";
 import { cn } from "@/lib/utils";
 import AnimatedBackground from "@/components/animation/animated-background";
 import Link from "next/link";
+import { Globe } from "@/components/ui/globe";
 
-export default function Hero({ title, description, subtitle, button }: { title: string[], description: string, subtitle: string, button: string }) {
-
+export default function Hero({
+	title,
+	description,
+	subtitle,
+	button,
+}: {
+	title: string[];
+	description: string;
+	subtitle: string;
+	button: string;
+}) {
 	return (
-		<section className='relative flex flex-col items-center justify-center  border-l border-r md:pb-10 pb-5 overflow-hidden' aria-label='Hero Section'>
+		<section
+			className='relative flex flex-col items-center justify-center md:pb-10 pb-5 overflow-hidden h-auto 2xl:h-[83vh]'
+			aria-label='Hero Section'>
 			{/* Animated Background */}
-			<AnimatedBackground />
-			
+			{/* <AnimatedBackground /> */}
+
 			{/* Content with higher z-index */}
 			<h1
 				className={cn(
@@ -44,30 +56,39 @@ export default function Hero({ title, description, subtitle, button }: { title: 
 				))}
 			</h1>
 
-			{subtitle && <Span
-				delay={0.3}
-				as='h2'
-				className='relative z-10 text-center lg:text-[48px] md:text-[24px] text-[16px] font-semibold bg-gradient-to-r from-[#8A38F5] to-[#25D0FF] bg-clip-text text-transparent'>
-				{subtitle}
-			</Span>}
-			{description && <TextAnimate
-				animation='blurIn'
-				as='p'
-				className='relative z-10 text-center lg:text-[24px] text-[12px]  lg:w-[1000px] md:w-[600px] w-[290px] sm:w-[300px] lg:my-[40px] my-[10px]'>
-				{description}
-			</TextAnimate>}
+			{subtitle && (
+				<Span
+					delay={0.3}
+					as='h2'
+					className='relative z-10 text-center lg:text-[48px] md:text-[24px] text-[16px] font-semibold bg-gradient-to-r from-[#8A38F5] to-[#25D0FF] bg-clip-text text-transparent'>
+					{subtitle}
+				</Span>
+			)}
+			{description && (
+				<TextAnimate
+					animation='blurIn'
+					as='p'
+					className='relative z-10 text-center lg:text-[24px] text-[12px]  lg:w-[1000px] md:w-[600px] w-[290px] sm:w-[300px] lg:my-[40px] my-[10px]'>
+					{description}
+				</TextAnimate>
+			)}
 
-			{button && <Link href="/contact-us">
-				<Button
-					className={cn(
-						"relative z-10 lg:w-[200px] w-[100px]   text-[12px] lg:text-[16px]",
-						" mt-2  lg:mt-2",
-						"h-[30px] lg:h-[50px]",
-					)}
-					aria-label='Contact us to hire our services'>
-					{button}
-				</Button>
-			</Link>}
+			{button && (
+				<Link href='/contact-us'>
+					<Button
+						className={cn(
+							"relative z-10 lg:w-[200px] w-[100px]   text-[12px] lg:text-[16px]",
+							" mt-2  lg:mt-2",
+							"h-[30px] lg:h-[50px]",
+						)}
+						aria-label='Contact us to hire our services'>
+						{button}
+					</Button>
+				</Link>
+			)}
+			<div className='absolute inset-0 z-[1]  '>
+				<Globe className=' max-w-[1800px] top-[150px]  md:top-[100px] lg:top-[200px] xl:top-[250px] 2xl:top-[400px]' />
+			</div>
 		</section>
 	);
 }

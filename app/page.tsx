@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 import Navbar from "@/components/global/navbar";
-import Hero from "@/app/_home/components/hero";
+import Hero5 from "@/app/_home/components/hero_5";
 import OurMarque from "@/components/global/our-marque";
-import About from "@/app/_home/components/about";
+import AboutV2 from "@/app/_home/components/about/about-v2";
 import Services from "@/components/global/services";
 import {
 	Star,
@@ -11,22 +11,27 @@ import {
 	DollarSign,
 	Award,
 	HelpCircle,
+	Book,
 } from "lucide-react";
 import HowItWorks from "@/components/global/how-it-works";
 import ContactUs from "@/components/global/contact-us";
 import Footer from "@/components/global/footer";
 import FAQ from "@/components/global/faq";
 import SectionLayout from "@/components/global/section-layout";
+import BlogList from "./blog/components/bloglist";
+import CtaBanner from "@/components/global/cta-banner";
 
 const ICON_SIZE = 32;
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://qbitlog.com";
 
 export const metadata: Metadata = {
 	title: "Home",
-	description: "QBITLOG delivers innovative digital solutions with elite professionals from Fortune 500 companies. Expert web development, mobile apps, AI/ML, cloud solutions, and UI/UX design services. Transform your business with enterprise-grade technology and proven expertise.",
+	description:
+		"QBITLOG delivers innovative digital solutions with elite professionals from Fortune 500 companies. Expert web development, mobile apps, AI/ML, cloud solutions, and UI/UX design services. Transform your business with enterprise-grade technology and proven expertise.",
 	openGraph: {
 		title: "QBITLOG - Empowering Your Vision with Innovative Digital Solutions",
-		description: "Transform your business with cutting-edge digital solutions. Expert teams specializing in web, mobile, AI, cloud, and design.",
+		description:
+			"Transform your business with cutting-edge digital solutions. Expert teams specializing in web, mobile, AI, cloud, and design.",
 		url: siteUrl,
 		type: "website",
 		images: [
@@ -34,19 +39,20 @@ export const metadata: Metadata = {
 				url: `${siteUrl}/og-image.jpg`,
 				width: 1200,
 				height: 630,
-				alt: "QBITLOG - Digital Solutions"
-			}
-		]
+				alt: "QBITLOG - Digital Solutions",
+			},
+		],
 	},
 	twitter: {
 		card: "summary_large_image",
 		title: "QBITLOG - Empowering Your Vision with Innovative Digital Solutions",
-		description: "Transform your business with cutting-edge digital solutions from expert teams.",
-		images: [`${siteUrl}/twitter-image.jpg`]
+		description:
+			"Transform your business with cutting-edge digital solutions from expert teams.",
+		images: [`${siteUrl}/twitter-image.jpg`],
 	},
 	alternates: {
 		canonical: siteUrl,
-	}
+	},
 };
 
 export default function Home() {
@@ -73,221 +79,242 @@ export default function Home() {
 	const organizationStructuredData = {
 		"@context": "https://schema.org",
 		"@type": "Organization",
-		"name": "QBITLOG",
-		"alternateName": "Qbitlog",
-		"url": siteUrl,
-		"logo": `${siteUrl}/icons/logo.png`,
-		"description": "Future-forward software design agency where innovation meets intelligence. We specialize in creating innovative web and mobile applications that transform businesses and delight users with AI-enhanced solutions.",
-		"slogan": "Crafting Digital Experiences That Drive Results",
-		"foundingDate": "2020",
-		"address": {
+		name: "QBITLOG",
+		alternateName: "Qbitlog",
+		url: siteUrl,
+		logo: `${siteUrl}/icons/logo.png`,
+		description:
+			"Future-forward software design agency where innovation meets intelligence. We specialize in creating innovative web and mobile applications that transform businesses and delight users with AI-enhanced solutions.",
+		slogan: "Crafting Digital Experiences That Drive Results",
+		foundingDate: "2020",
+		address: {
 			"@type": "PostalAddress",
-			"addressCountry": "US"
+			addressCountry: "US",
 		},
-		"contactPoint": {
+		contactPoint: {
 			"@type": "ContactPoint",
-			"contactType": "Customer Service",
-			"url": `${siteUrl}/contact-us`,
-			"availableLanguage": ["English"]
+			contactType: "Customer Service",
+			url: `${siteUrl}/contact-us`,
+			availableLanguage: ["English"],
 		},
-		"sameAs": [
+		sameAs: [
 			"https://twitter.com/qbitlog",
-			"https://linkedin.com/company/qbitlog"
+			"https://linkedin.com/company/qbitlog",
 		],
-		"knowsAbout": [
+		knowsAbout: [
 			"Web Development",
 			"Mobile App Development",
 			"Artificial Intelligence",
 			"Machine Learning",
 			"UI/UX Design",
 			"Cloud Solutions",
-			"Software Architecture"
-		]
+			"Software Architecture",
+		],
 	};
 
 	const servicesStructuredData = {
 		"@context": "https://schema.org",
 		"@type": "Service",
-		"serviceType": "Software Development",
-		"provider": {
+		serviceType: "Software Development",
+		provider: {
 			"@type": "Organization",
-			"name": "QBITLOG"
+			name: "QBITLOG",
 		},
-		"areaServed": "Worldwide",
-		"hasOfferCatalog": {
+		areaServed: "Worldwide",
+		hasOfferCatalog: {
 			"@type": "OfferCatalog",
-			"name": "Digital Services",
-			"itemListElement": [
+			name: "Digital Services",
+			itemListElement: [
 				{
 					"@type": "Offer",
-					"itemOffered": {
+					itemOffered: {
 						"@type": "Service",
-						"name": "Web Development",
-						"description": "Custom web applications built with modern technologies"
-					}
+						name: "Web Development",
+						description:
+							"Custom web applications built with modern technologies",
+					},
 				},
 				{
 					"@type": "Offer",
-					"itemOffered": {
+					itemOffered: {
 						"@type": "Service",
-						"name": "Mobile App Development",
-						"description": "Native and cross-platform mobile applications"
-					}
+						name: "Mobile App Development",
+						description: "Native and cross-platform mobile applications",
+					},
 				},
 				{
 					"@type": "Offer",
-					"itemOffered": {
+					itemOffered: {
 						"@type": "Service",
-						"name": "UI/UX Design",
-						"description": "User-centered design that combines aesthetics with functionality"
-					}
+						name: "UI/UX Design",
+						description:
+							"User-centered design that combines aesthetics with functionality",
+					},
 				},
 				{
 					"@type": "Offer",
-					"itemOffered": {
+					itemOffered: {
 						"@type": "Service",
-						"name": "Cloud Solutions",
-						"description": "Scalable cloud infrastructure and DevOps solutions"
-					}
+						name: "Cloud Solutions",
+						description: "Scalable cloud infrastructure and DevOps solutions",
+					},
 				},
 				{
 					"@type": "Offer",
-					"itemOffered": {
+					itemOffered: {
 						"@type": "Service",
-						"name": "AI & Machine Learning",
-						"description": "Intelligent automation and AI-powered solutions"
-					}
-				}
-			]
-		}
+						name: "AI & Machine Learning",
+						description: "Intelligent automation and AI-powered solutions",
+					},
+				},
+			],
+		},
 	};
 
 	const faqStructuredData = {
 		"@context": "https://schema.org",
 		"@type": "FAQPage",
-		"mainEntity": [
+		mainEntity: [
 			{
 				"@type": "Question",
-				"name": "What services does Qbitlog offer?",
-				"acceptedAnswer": {
+				name: "What services does Qbitlog offer?",
+				acceptedAnswer: {
 					"@type": "Answer",
-					"text": "Qbitlog specializes in comprehensive digital solutions including web development, mobile app development, UI/UX design, cloud solutions, and custom software development. We leverage cutting-edge technologies to deliver innovative solutions tailored to your business needs."
-				}
+					text: "Qbitlog specializes in comprehensive digital solutions including web development, mobile app development, UI/UX design, cloud solutions, and custom software development. We leverage cutting-edge technologies to deliver innovative solutions tailored to your business needs.",
+				},
 			},
 			{
 				"@type": "Question",
-				"name": "How long does a typical project take?",
-				"acceptedAnswer": {
+				name: "How long does a typical project take?",
+				acceptedAnswer: {
 					"@type": "Answer",
-					"text": "Project timelines vary based on scope and complexity. A simple website might take 2-4 weeks, while a complex web application could take 3-6 months. We provide detailed project timelines during our initial consultation and keep you updated throughout the development process."
-				}
+					text: "Project timelines vary based on scope and complexity. A simple website might take 2-4 weeks, while a complex web application could take 3-6 months. We provide detailed project timelines during our initial consultation and keep you updated throughout the development process.",
+				},
 			},
 			{
 				"@type": "Question",
-				"name": "What is your development process?",
-				"acceptedAnswer": {
+				name: "What is your development process?",
+				acceptedAnswer: {
 					"@type": "Answer",
-					"text": "Our development process follows an agile methodology with five key phases: Discovery & Planning, Design & Prototyping, Development, Testing & QA, and Deployment & Support. We maintain transparent communication throughout, providing regular updates and incorporating your feedback at each stage."
-				}
+					text: "Our development process follows an agile methodology with five key phases: Discovery & Planning, Design & Prototyping, Development, Testing & QA, and Deployment & Support. We maintain transparent communication throughout, providing regular updates and incorporating your feedback at each stage.",
+				},
 			},
 			{
 				"@type": "Question",
-				"name": "Do you provide ongoing support after project completion?",
-				"acceptedAnswer": {
+				name: "Do you provide ongoing support after project completion?",
+				acceptedAnswer: {
 					"@type": "Answer",
-					"text": "Yes! We offer comprehensive post-launch support and maintenance packages. This includes bug fixes, security updates, performance monitoring, and feature enhancements. We believe in building long-term partnerships with our clients."
-				}
+					text: "Yes! We offer comprehensive post-launch support and maintenance packages. This includes bug fixes, security updates, performance monitoring, and feature enhancements. We believe in building long-term partnerships with our clients.",
+				},
 			},
 			{
 				"@type": "Question",
-				"name": "What technologies do you work with?",
-				"acceptedAnswer": {
+				name: "What technologies do you work with?",
+				acceptedAnswer: {
 					"@type": "Answer",
-					"text": "We work with a wide range of modern technologies including React, Next.js, Angular, Vue.js for frontend; Node.js, Python, PHP for backend; and various databases and cloud platforms. We select the best technology stack based on your project requirements and scalability needs."
-				}
+					text: "We work with a wide range of modern technologies including React, Next.js, Angular, Vue.js for frontend; Node.js, Python, PHP for backend; and various databases and cloud platforms. We select the best technology stack based on your project requirements and scalability needs.",
+				},
 			},
 			{
 				"@type": "Question",
-				"name": "How do you ensure project quality?",
-				"acceptedAnswer": {
+				name: "How do you ensure project quality?",
+				acceptedAnswer: {
 					"@type": "Answer",
-					"text": "Quality is our top priority. We implement rigorous testing procedures including unit testing, integration testing, and user acceptance testing. Our code goes through peer reviews, we follow industry best practices, and we use automated testing tools to ensure reliability and performance."
-				}
+					text: "Quality is our top priority. We implement rigorous testing procedures including unit testing, integration testing, and user acceptance testing. Our code goes through peer reviews, we follow industry best practices, and we use automated testing tools to ensure reliability and performance.",
+				},
 			},
 			{
 				"@type": "Question",
-				"name": "What are your pricing models?",
-				"acceptedAnswer": {
+				name: "What are your pricing models?",
+				acceptedAnswer: {
 					"@type": "Answer",
-					"text": "We offer flexible pricing models to suit different needs: fixed-price projects for well-defined scopes, time & material for evolving requirements, and dedicated team arrangements for long-term partnerships. We provide transparent, detailed quotes with no hidden costs."
-				}
+					text: "We offer flexible pricing models to suit different needs: fixed-price projects for well-defined scopes, time & material for evolving requirements, and dedicated team arrangements for long-term partnerships. We provide transparent, detailed quotes with no hidden costs.",
+				},
 			},
 			{
 				"@type": "Question",
-				"name": "Can you help with existing projects or only new ones?",
-				"acceptedAnswer": {
+				name: "Can you help with existing projects or only new ones?",
+				acceptedAnswer: {
 					"@type": "Answer",
-					"text": "We can definitely help with existing projects! Whether you need to modernize legacy code, add new features, fix bugs, improve performance, or take over maintenance, our team can assess your current situation and provide the support you need."
-				}
-			}
-		]
+					text: "We can definitely help with existing projects! Whether you need to modernize legacy code, add new features, fix bugs, improve performance, or take over maintenance, our team can assess your current situation and provide the support you need.",
+				},
+			},
+		],
 	};
 
 	const websiteStructuredData = {
 		"@context": "https://schema.org",
 		"@type": "WebSite",
-		"name": "QBITLOG",
-		"url": siteUrl,
-		"description": "Crafting Digital Experiences That Drive Results",
-		"potentialAction": {
+		name: "QBITLOG",
+		url: siteUrl,
+		description: "Crafting Digital Experiences That Drive Results",
+		potentialAction: {
 			"@type": "SearchAction",
-			"target": {
+			target: {
 				"@type": "EntryPoint",
-				"urlTemplate": `${siteUrl}/search?q={search_term_string}`
+				urlTemplate: `${siteUrl}/search?q={search_term_string}`,
 			},
-			"query-input": "required name=search_term_string"
-		}
+			"query-input": "required name=search_term_string",
+		},
 	};
 
 	return (
 		<div className=''>
 			<script
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationStructuredData) }}
+				type='application/ld+json'
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(organizationStructuredData),
+				}}
 			/>
 			<script
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesStructuredData) }}
+				type='application/ld+json'
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(servicesStructuredData),
+				}}
 			/>
 			<script
-				type="application/ld+json"
+				type='application/ld+json'
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
 			/>
 			<script
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteStructuredData) }}
+				type='application/ld+json'
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(websiteStructuredData),
+				}}
 			/>
-			<main className='container'>
+			<main>
 				<Navbar />
-				<Hero
-					title={["Q", "B", "I", "T", "L", "O", "G"]}
-					subtitle="Crafting Digital Experiences That Drive Results"
-					description="We're a leading software design agency specializing in creating innovative web and mobile applications that transform businesses and delight users."
-					button="Hire Us"/>
+				<Hero5
+					description='From spaghetti code to scalable systems. Engineers obsessed with clean architecture, performant code, and shipping products that make a difference.'
+					button="Let's Talk Code"
+				/>
 				<OurMarque Items={Items} />
-				<SectionLayout
+				{/* <SectionLayout
 					id='about'
 					badgeIcon={<Award size={ICON_SIZE} className='text-primary' />}
-					badgeLabel='About Us'
-					title='Empowering Your Vision with Innovative Digital Solutions'
-					description='We are a team of experienced developers and designers who are passionate about creating innovative solutions for our clients.'>
-					<About />
-				</SectionLayout>
+					badgeLabel=''
+					title=''
+					description=''>
+				</SectionLayout> */}
+				<section id='about' className=' my-20 mx-4'>
+					<AboutV2 />
+				</section>
 
 				<Services />
-				<section id='how-it-works'>
+				<section id='how-it-works' className='container'>
 					<HowItWorks />
 				</section>
+
+				<CtaBanner />
+
+				<SectionLayout
+					id='blog'
+					badgeIcon={<Book size={ICON_SIZE} className='text-primary' />}
+					badgeLabel='Blog'
+					title='Latest Insights in AI, Web Development, and IT'
+					description="Deep dives and practical guides on AI, machine learning, web development, platform engineering, and modern software architecture. Expert insights from QBITLOG's engineering team.">
+					<BlogList />
+				</SectionLayout>
 
 				<SectionLayout
 					id='faq'
@@ -297,6 +324,7 @@ export default function Home() {
 					description='Answers to common questions about our services and solutions.'>
 					<FAQ />
 				</SectionLayout>
+
 				<section id='contact-us'>
 					<ContactUs />
 				</section>

@@ -7,7 +7,6 @@ import { Analytics } from "@vercel/analytics/next";
 import SmoothScrolling from "@/components/animation/smooth-scrolling";
 import ScrollProgress from "@/components/global/scroll-progress";
 
-
 const geistSans = Geist({
 	variable: "--font-geist-sans",
 	subsets: ["latin"],
@@ -29,10 +28,12 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://qbitlog.com";
 export const metadata: Metadata = {
 	metadataBase: new URL(siteUrl),
 	title: {
-		default: "QBITLOG - Expert Digital Solutions | Web, Mobile, AI & Cloud Services",
-		template: "%s | QBITLOG"
+		default:
+			"QBITLOG - Expert Digital Solutions | Web, Mobile, AI & Cloud Services",
+		template: "%s | QBITLOG",
 	},
-	description: "QBITLOG delivers enterprise-grade digital solutions with expert teams from Fortune 500 companies. Specializing in web development, mobile apps, AI/ML, cloud solutions, and UI/UX design. Transform your business with cutting-edge technology and proven expertise.",
+	description:
+		"QBITLOG delivers enterprise-grade digital solutions with expert teams from Fortune 500 companies. Specializing in web development, mobile apps, AI/ML, cloud solutions, and UI/UX design. Transform your business with cutting-edge technology and proven expertise.",
 	keywords: [
 		"web development",
 		"mobile app development",
@@ -48,7 +49,7 @@ export const metadata: Metadata = {
 		"DevOps",
 		"software consulting",
 		"custom software development",
-		"technology consulting"
+		"technology consulting",
 	],
 	authors: [{ name: "QBITLOG Team" }],
 	creator: "QBITLOG",
@@ -63,23 +64,27 @@ export const metadata: Metadata = {
 		locale: "en_US",
 		url: siteUrl,
 		siteName: "QBITLOG",
-		title: "QBITLOG - Expert Digital Solutions | Web, Mobile, AI & Cloud Services",
-		description: "Enterprise-grade digital solutions powered by elite professionals. Transform your business with web development, mobile apps, AI/ML, and cloud services.",
+		title:
+			"QBITLOG - Expert Digital Solutions | Web, Mobile, AI & Cloud Services",
+		description:
+			"Enterprise-grade digital solutions powered by elite professionals. Transform your business with web development, mobile apps, AI/ML, and cloud services.",
 		images: [
 			{
 				url: `${siteUrl}/og-image.jpg`,
 				width: 1200,
 				height: 630,
-				alt: "QBITLOG - Expert Digital Solutions"
-			}
-		]
+				alt: "QBITLOG - Expert Digital Solutions",
+			},
+		],
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "QBITLOG - Expert Digital Solutions | Web, Mobile, AI & Cloud Services",
-		description: "Enterprise-grade digital solutions powered by elite professionals. Transform your business with cutting-edge technology.",
+		title:
+			"QBITLOG - Expert Digital Solutions | Web, Mobile, AI & Cloud Services",
+		description:
+			"Enterprise-grade digital solutions powered by elite professionals. Transform your business with cutting-edge technology.",
 		images: [`${siteUrl}/twitter-image.jpg`],
-		creator: "@qbitlog"
+		creator: "@qbitlog",
 	},
 	robots: {
 		index: true,

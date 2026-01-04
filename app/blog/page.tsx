@@ -7,13 +7,15 @@ import Image from "next/image";
 import Link from "next/link";
 import posts from "./_data/posts.json";
 import { Book } from "lucide-react";
+import ContactUs from "@/components/global/contact-us";
 
 const ICON_SIZE = 32;
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://qbitlog.com";
 
 export const metadata: Metadata = {
 	title: "Blog - Latest Insights in AI, Web Development, and IT",
-	description: "Deep dives and practical guides on AI, machine learning, web development, platform engineering, and modern software architecture. Expert insights from QBITLOG's engineering team.",
+	description:
+		"Deep dives and practical guides on AI, machine learning, web development, platform engineering, and modern software architecture. Expert insights from QBITLOG's engineering team.",
 	keywords: [
 		"AI blog",
 		"machine learning articles",
@@ -23,11 +25,12 @@ export const metadata: Metadata = {
 		"Next.js tutorials",
 		"DevOps best practices",
 		"software engineering blog",
-		"tech insights"
+		"tech insights",
 	],
 	openGraph: {
 		title: "QBITLOG Blog - Latest Insights in AI and IT",
-		description: "Deep dives and practical guides on AI, web development, and platform engineering from expert engineers.",
+		description:
+			"Deep dives and practical guides on AI, web development, and platform engineering from expert engineers.",
 		url: `${siteUrl}/blog`,
 		type: "website",
 		images: [
@@ -35,19 +38,20 @@ export const metadata: Metadata = {
 				url: `${siteUrl}/og-image-blog.jpg`,
 				width: 1200,
 				height: 630,
-				alt: "QBITLOG Blog"
-			}
-		]
+				alt: "QBITLOG Blog",
+			},
+		],
 	},
 	twitter: {
 		card: "summary_large_image",
 		title: "QBITLOG Blog - Latest Insights in AI and IT",
-		description: "Deep dives and practical guides on AI, web development, and platform engineering.",
-		images: [`${siteUrl}/twitter-image-blog.jpg`]
+		description:
+			"Deep dives and practical guides on AI, web development, and platform engineering.",
+		images: [`${siteUrl}/twitter-image-blog.jpg`],
 	},
 	alternates: {
 		canonical: `${siteUrl}/blog`,
-	}
+	},
 };
 
 export default function BlogIndexPage() {
@@ -62,7 +66,7 @@ export default function BlogIndexPage() {
 					badgeLabel='Blog'
 					title='Latest Insights in AI and IT'
 					description='Deep dives and practical guides on AI, web, and platform engineering.'>
-					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
 						{posts.map((post) => (
 							<Link
 								key={post.slug}
@@ -112,6 +116,7 @@ export default function BlogIndexPage() {
 						))}
 					</div>
 				</SectionLayout>
+				<ContactUs />
 			</main>
 			<Footer />
 		</div>

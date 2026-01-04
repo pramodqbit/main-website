@@ -44,7 +44,7 @@ export const SectionHeader = ({
 				as='p'
 				delay={0.3}
 				className={cn(
-					"md:text-md text-[10px] md:text-base text-center text-muted-foreground",
+					"md:text-md text-[10px] md:text-base text-center text-muted-foreground max-w-auto 2xl:max-w-[1200px] mx-auto",
 				)}>
 				{description}
 			</TextFadeIn>
@@ -61,7 +61,7 @@ const SectionLayout = forwardRef<HTMLDivElement, SectionLayoutProps>(
 			<section
 				ref={ref}
 				className={cn(
-					"container mx-auto px-4 border ",
+					"container  px-4  ",
 					"py-4 sm:py-6 md:py-8 lg:py-10 xl:py-12 2xl:py-14",
 					className,
 				)}
