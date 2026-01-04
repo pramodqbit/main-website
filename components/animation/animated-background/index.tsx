@@ -15,7 +15,7 @@ export default function AnimatedBackground() {
 			size: Math.random() * 4 + 2,
 			duration: Math.random() * 10 + 10,
 			delay: Math.random() * 5,
-		}))
+		})),
 	);
 
 	useEffect(() => {
@@ -111,10 +111,10 @@ export default function AnimatedBackground() {
 							linear-gradient(to right, rgba(138, 56, 245, 0.3) 1px, transparent 1px),
 							linear-gradient(to bottom, rgba(37, 208, 255, 0.3) 1px, transparent 1px)
 						`,
-						backgroundSize: '50px 50px',
+						backgroundSize: "50px 50px",
 					}}
 					animate={{
-						backgroundPosition: ['0px 0px', '50px 50px'],
+						backgroundPosition: ["0px 0px", "50px 50px"],
 					}}
 					transition={{
 						duration: 20,
@@ -125,7 +125,7 @@ export default function AnimatedBackground() {
 			</div>
 
 			{/* Floating rings */}
-			{[...Array(3)].map((_, i) => (
+			{/* {[...Array(3)].map((_, i) => (
 				<motion.div
 					key={`ring-${i}`}
 					className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
@@ -142,7 +142,7 @@ export default function AnimatedBackground() {
 					}}>
 					<div className='w-48 h-48 border-2 border-primary/20 rounded-full' />
 				</motion.div>
-			))}
+			))} */}
 
 			{/* Glowing dots */}
 			{[...Array(8)].map((_, i) => (
@@ -150,7 +150,7 @@ export default function AnimatedBackground() {
 					key={`dot-${i}`}
 					className='absolute'
 					style={{
-						left: `${(i * 12.5) + 10}%`,
+						left: `${i * 12.5 + 10}%`,
 						top: `${Math.sin(i) * 30 + 50}%`,
 					}}
 					animate={{
@@ -169,4 +169,3 @@ export default function AnimatedBackground() {
 		</div>
 	);
 }
-

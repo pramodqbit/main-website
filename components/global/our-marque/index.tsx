@@ -18,12 +18,12 @@ const MarqueeCard = ({
 			className={cn("flex items-center justify-center gap-2", className)}
 			whileHover={{ scale: 1.05, y: -2 }}
 			transition={{ duration: 0.2 }}>
-			<motion.div
+			{/* <motion.div
 				whileHover={{ rotate: 360, scale: 1.2 }}
 				transition={{ duration: 0.6 }}>
 				{icon}
-			</motion.div>
-			<p className='lg:text-[24px] text-[16px]'>{label}</p>
+			</motion.div> */}
+			<p className='lg:text-[24px] text-[16px] '>{label}</p>
 		</motion.div>
 	);
 };
@@ -35,7 +35,7 @@ export default function OurMarque({
 }) {
 	return (
 		<motion.div
-			className='flex w-full border border-gray-200 lg:p-4 p-2 items-center'
+			className='flex w-full  lg:p-4 p-2 items-center'
 			initial={{ opacity: 0, y: 20 }}
 			whileInView={{ opacity: 1, y: 0 }}
 			viewport={{ once: true, amount: 0.5 }}
@@ -50,8 +50,7 @@ export default function OurMarque({
 					What sets us apart
 				</p>
 				<p className='hidden lg:block lg:text-[12px] text-[8px] text-gray-500 text-justify md:text-right'>
-					Reliable delivery, robust security, fair pricing, and unmatched
-					flexibility guaranteed.
+					Reliable delivery, robust security, and fair pricing.
 				</p>
 			</motion.div>
 			<motion.div
@@ -60,14 +59,18 @@ export default function OurMarque({
 				whileInView={{ opacity: 1 }}
 				viewport={{ once: true }}
 				transition={{ duration: 0.6, delay: 0.4 }}>
-				<Marquee pauseOnHover className='[--duration:20s]  justify-between'>
-					{Items?.map((item, index) => (
-						<MarqueeCard
-							key={index}
-							{...item}
-							className='lg:w-[220px] w-[160px]  lg:h-[60px] h-[40px] '
-						/>
-					))}
+				<Marquee
+					pauseOnHover
+					className='[--duration:20s] justify-between gap-10'>
+					<div className='flex gap-12'>
+						{Items?.map((item, index) => (
+							<MarqueeCard
+								key={index}
+								{...item}
+								className=' uppercase font-semibold '
+							/>
+						))}
+					</div>
 				</Marquee>
 				<div className='from-background pointer-events-none absolute inset-y-0 h-full left-0 w-[100px] bg-gradient-to-r to-transparent'></div>
 				<div className='from-background pointer-events-none absolute inset-y-0 h-full right-0 w-[100px] bg-gradient-to-l to-transparent'></div>

@@ -23,8 +23,8 @@ export default function ServicesLayout({
 					description='Answers to common questions about our services and solutions.'>
 					<FAQ />
 				</SectionLayout>
-				<ContactUs />
 			</main>
+			<ContactUs />
 			<Footer />
 		</>
 	);

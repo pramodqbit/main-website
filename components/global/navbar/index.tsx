@@ -118,7 +118,15 @@ export default function Navbar() {
 
 	return (
 		<>
-			<div className='sticky top-3 z-50 flex w-full items-center justify-between gap-4 bg-background rounded-full px-4 py-1 shadow-md mt-2'>
+			<motion.div
+				initial={{ scaleX: 0, opacity: 0 }}
+				animate={{ scaleX: 1, opacity: 1 }}
+				transition={{
+					duration: 0.6,
+					ease: "easeOut",
+				}}
+				style={{ originX: 0.5 }}
+				className='sticky max-w-[1200px] mx-auto top-8 z-50 flex w-full items-center justify-between gap-4 bg-background rounded-full px-4 py-3 shadow-md mt-2'>
 				<Link href='/'>
 					<Image
 						src='/icons/logo.png'
@@ -177,19 +185,20 @@ export default function Navbar() {
 						)}
 					</AnimatePresence>
 				</div>
-			</div>
+			</motion.div>
 			<AnimatePresence>
 				{isOpen && (
 					<motion.div
 						onClick={() => setIsOpen(false)}
-						initial={{ height: 0, opacity: 0, y: -20 }}
-						animate={{ height: "auto", opacity: 1, y: 0 }}
-						exit={{ height: 0, opacity: 0, y: -20 }}
+						initial={{ height: 0, opacity: 0, y: -20, scaleX: 0 }}
+						animate={{ height: "auto", opacity: 1, y: 0, scaleX: 1 }}
+						exit={{ height: 0, opacity: 0, y: -20, scaleX: 0 }}
 						transition={{
 							duration: 0.3,
 							ease: "easeInOut",
 						}}
-						className='fixed top-18 z-50 h-[100dvh] container overflow-y-auto md:overflow-hidden shadow-lg rounded-2xl backdrop-blur-lg bg-white/90 dark:bg-black/60 border border-white/40 dark:border-white/40'>
+						style={{ originX: 0.5 }}
+						className='fixed top-26 z-50 h-[100dvh] container translate-x-[-50%] left-1/2 overflow-y-auto md:overflow-hidden shadow-lg rounded-2xl backdrop-blur-lg bg-white/90 dark:bg-black/60 border border-white/40 dark:border-white/40'>
 						<Card className='bg-transparent border-none shadow-none p-0'>
 							<CardContent className='backdrop-blur-sm md:p-0 h-[100dvh] md:h-auto'>
 								<div className='grid md:grid-cols-4 grid-cols-2  md:gap-4 gap-0 '>

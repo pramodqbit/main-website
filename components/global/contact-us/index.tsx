@@ -98,7 +98,7 @@ export default function ContactUs() {
 		<section
 			id='contact'
 			aria-labelledby='contact-heading'
-			className='w-full  bg-gradient-to-br from-gray-100 to-gray-200 py-10 md:py-20 px-4 md:px-4 my-2 rounded-2xl'>
+			className='w-full  bg-gradient-to-br from-gray-100 to-gray-200 py-10 md:py-20 px-4 md:px-4 '>
 			<div className='max-w-7xl mx-auto'>
 				{/* Mobile Layout */}
 				<div className='block lg:hidden'>
@@ -359,7 +359,7 @@ export default function ContactUs() {
 									aria-label='Follow us on Facebook'
 									target='_blank'
 									rel='noopener noreferrer'
-									whileHover={{ scale: 1.2, rotate: 360 }}
+									whileHover={{ scale: 1.2 }}
 									whileTap={{ scale: 0.9 }}>
 									<svg
 										className='w-5 h-5 text-gray-700'
@@ -375,7 +375,7 @@ export default function ContactUs() {
 									aria-label='Follow us on LinkedIn'
 									target='_blank'
 									rel='noopener noreferrer'
-									whileHover={{ scale: 1.2, rotate: 360 }}
+									whileHover={{ scale: 1.2 }}
 									whileTap={{ scale: 0.9 }}>
 									<svg
 										className='w-5 h-5 text-gray-700'
@@ -391,7 +391,7 @@ export default function ContactUs() {
 									aria-label='Follow us on Instagram'
 									target='_blank'
 									rel='noopener noreferrer'
-									whileHover={{ scale: 1.2, rotate: 360 }}
+									whileHover={{ scale: 1.2 }}
 									whileTap={{ scale: 0.9 }}>
 									<svg
 										className='w-5 h-5 text-gray-700'
@@ -407,7 +407,7 @@ export default function ContactUs() {
 									aria-label='Subscribe to our YouTube channel'
 									target='_blank'
 									rel='noopener noreferrer'
-									whileHover={{ scale: 1.2, rotate: 360 }}
+									whileHover={{ scale: 1.2 }}
 									whileTap={{ scale: 0.9 }}>
 									<svg
 										className='w-5 h-5 text-gray-700'
@@ -502,7 +502,7 @@ export default function ContactUs() {
 									aria-label='Follow us on Facebook'
 									target='_blank'
 									rel='noopener noreferrer'
-									whileHover={{ scale: 1.2, rotate: 360 }}
+									whileHover={{ scale: 1.2 }}
 									whileTap={{ scale: 0.9 }}>
 									<svg
 										className='w-6 h-6 text-gray-700'
@@ -518,7 +518,7 @@ export default function ContactUs() {
 									aria-label='Follow us on LinkedIn'
 									target='_blank'
 									rel='noopener noreferrer'
-									whileHover={{ scale: 1.2, rotate: 360 }}
+									whileHover={{ scale: 1.2 }}
 									whileTap={{ scale: 0.9 }}>
 									<svg
 										className='w-6 h-6 text-gray-700'
@@ -534,7 +534,7 @@ export default function ContactUs() {
 									aria-label='Follow us on Instagram'
 									target='_blank'
 									rel='noopener noreferrer'
-									whileHover={{ scale: 1.2, rotate: 360 }}
+									whileHover={{ scale: 1.2 }}
 									whileTap={{ scale: 0.9 }}>
 									<svg
 										className='w-6 h-6 text-gray-700'
@@ -550,7 +550,7 @@ export default function ContactUs() {
 									aria-label='Subscribe to our YouTube channel'
 									target='_blank'
 									rel='noopener noreferrer'
-									whileHover={{ scale: 1.2, rotate: 360 }}
+									whileHover={{ scale: 1.2 }}
 									whileTap={{ scale: 0.9 }}>
 									<svg
 										className='w-6 h-6 text-gray-700'
@@ -742,7 +742,7 @@ export default function ContactUs() {
 									<Button
 										type='submit'
 										disabled={isSubmitting}
-										className='bg-black hover:bg-gray-800 text-white px-10 py-3 rounded-lg transition-colors text-lg focus:ring-2 focus:ring-offset-2 focus:ring-black disabled:opacity-50 disabled:cursor-not-allowed w-full'>
+										className='bg-black hover:bg-gray-800 h-12 text-white  rounded-lg transition-colors text-lg focus:ring-2 focus:ring-offset-2 focus:ring-black disabled:opacity-50 disabled:cursor-not-allowed w-full'>
 										{isSubmitting ? "Sending..." : "Contact Us"}
 									</Button>
 								</motion.div>

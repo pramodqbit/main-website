@@ -5,14 +5,24 @@ import SectionLayout from "@/components/global/section-layout";
 import CompanyStory from "./_components/company-story";
 import OurValues from "./_components/our-values";
 import CompanyStats from "./_components/company-stats";
-import { Building2, Target, TrendingUp, Users, Award, Lightbulb } from "lucide-react";
+import {
+	Building2,
+	Target,
+	TrendingUp,
+	Users,
+	Award,
+	Lightbulb,
+} from "lucide-react";
 import Hero from "@/app/_home/components/hero";
+import CtaBanner from "@/components/global/cta-banner";
+import ContactUs from "@/components/global/contact-us";
 const ICON_SIZE = 32;
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://qbitlog.com";
 
 export const metadata: Metadata = {
 	title: "About Us - Architecting Tomorrow's Digital Landscape",
-	description: "Qbitlog is a future-forward software design agency where innovation meets intelligence. We specialize in crafting adaptive web and mobile applications with machine learning and cutting-edge animations, delivering intuitively engaging and transformative digital experiences.",
+	description:
+		"Qbitlog is a future-forward software design agency where innovation meets intelligence. We specialize in crafting adaptive web and mobile applications with machine learning and cutting-edge animations, delivering intuitively engaging and transformative digital experiences.",
 	keywords: [
 		"about QBITLOG",
 		"future-forward agency",
@@ -22,11 +32,12 @@ export const metadata: Metadata = {
 		"innovative mobile apps",
 		"digital transformation",
 		"intelligent software solutions",
-		"cutting-edge technology"
+		"cutting-edge technology",
 	],
 	openGraph: {
 		title: "About QBITLOG - Architecting Tomorrow's Digital Landscape",
-		description: "Future-forward software design agency where innovation meets intelligence. Crafting adaptive web and mobile applications with AI and ML.",
+		description:
+			"Future-forward software design agency where innovation meets intelligence. Crafting adaptive web and mobile applications with AI and ML.",
 		url: `${siteUrl}/aboutus`,
 		type: "website",
 		images: [
@@ -34,33 +45,34 @@ export const metadata: Metadata = {
 				url: `${siteUrl}/og-image-about.jpg`,
 				width: 1200,
 				height: 630,
-				alt: "About QBITLOG - Future-Forward Software Agency"
-			}
-		]
+				alt: "About QBITLOG - Future-Forward Software Agency",
+			},
+		],
 	},
 	twitter: {
 		card: "summary_large_image",
 		title: "About QBITLOG - Architecting Tomorrow's Digital Landscape",
-		description: "Future-forward software design agency specializing in AI-enhanced, adaptive digital experiences.",
-		images: [`${siteUrl}/twitter-image-about.jpg`]
+		description:
+			"Future-forward software design agency specializing in AI-enhanced, adaptive digital experiences.",
+		images: [`${siteUrl}/twitter-image-about.jpg`],
 	},
 	alternates: {
 		canonical: `${siteUrl}/aboutus`,
-	}
+	},
 };
 
 export default function AboutUsPage() {
 	return (
 		<div className=''>
-			<main className='container'>
-				<Navbar />
+			<Navbar />
 
-				<Hero 
+			<Hero
 				title={["A", "B", "O", "U", "T", "U", "S"]}
-				description={`Qbitlog is a future-forward software design agency where innovation meets intelligence. With a sophisticated dark mode aesthetic highlighted by electric cyan and AI green, we specialize in crafting adaptive web and mobile applications. Our passionate team leverages machine learning and cutting-edge animations, delivering intuitively engaging and transformative digital experiences. We empower your vision, building an intelligent digital future, one meticulously designed, AI-enhanced solution at a time.`}
-				button=""
+				description={`Qbitlog is a future-forward software design agency where innovation meets intelligence. We specialize in crafting adaptive web and mobile applications. Our passionate team leverages machine learning and cutting-edge animations, delivering intuitively engaging and transformative digital experiences. We empower your vision, building an intelligent digital future, one meticulously designed, AI-enhanced solution at a time.`}
+				button=''
 				subtitle="Architecting Tomorrow's Digital Landscape"
-				/>
+			/>
+			<main className='container'>
 				<SectionLayout
 					id='company-story'
 					badgeIcon={<Building2 size={ICON_SIZE} className='text-primary' />}
@@ -78,6 +90,9 @@ export default function AboutUsPage() {
 					description='Our core values shape every project we undertake and every relationship we build. These principles guide our decisions and ensure we deliver exceptional results.'>
 					<OurValues />
 				</SectionLayout>
+				<div className='-mb-25'>
+					<CtaBanner />
+				</div>
 
 				<SectionLayout
 					id='company-stats'
@@ -97,21 +112,38 @@ export default function AboutUsPage() {
 					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
 						<div className='text-center p-6 rounded-lg border bg-card'>
 							<Users className='w-12 h-12 mx-auto mb-4 text-primary' />
-							<h3 className='text-lg font-semibold mb-2'>Battle-Tested Professionals</h3>
-							<p className='text-sm text-muted-foreground'>C-level executives and senior engineers with proven expertise from industry-leading organizations</p>
+							<h3 className='text-lg font-semibold mb-2'>
+								Battle-Tested Professionals
+							</h3>
+							<p className='text-sm text-muted-foreground'>
+								C-level executives and senior engineers with proven expertise
+								from industry-leading organizations
+							</p>
 						</div>
 						<div className='text-center p-6 rounded-lg border bg-card'>
 							<Lightbulb className='w-12 h-12 mx-auto mb-4 text-primary' />
-							<h3 className='text-lg font-semibold mb-2'>Enterprise-Grade Innovation</h3>
-							<p className='text-sm text-muted-foreground'>Leveraging advanced technologies and architectural patterns proven at scale in global enterprises</p>
+							<h3 className='text-lg font-semibold mb-2'>
+								Enterprise-Grade Innovation
+							</h3>
+							<p className='text-sm text-muted-foreground'>
+								Leveraging advanced technologies and architectural patterns
+								proven at scale in global enterprises
+							</p>
 						</div>
 						<div className='text-center p-6 rounded-lg border bg-card'>
 							<Award className='w-12 h-12 mx-auto mb-4 text-primary' />
-							<h3 className='text-lg font-semibold mb-2'>Precision Execution</h3>
-							<p className='text-sm text-muted-foreground'>Applying lessons from hundreds of enterprise deployments to ensure flawless delivery and performance</p>
+							<h3 className='text-lg font-semibold mb-2'>
+								Precision Execution
+							</h3>
+							<p className='text-sm text-muted-foreground'>
+								Applying lessons from hundreds of enterprise deployments to
+								ensure flawless delivery and performance
+							</p>
 						</div>
 					</div>
 				</SectionLayout>
+
+				<ContactUs />
 			</main>
 			<Footer />
 		</div>
