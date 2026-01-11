@@ -117,7 +117,7 @@ export default function AboutV2() {
 						{/* Stats Card - Overlapping */}
 						<motion.div
 							variants={itemVariants}
-							className='bg-white dark:bg-card rounded-2xl p-5 md:p-6 border border-border/40 shadow-lg absolute bottom-4 left-4 right-4'>
+							className=' dark:bg-card rounded-2xl p-5 md:p-6   absolute bottom-4 left-4 right-4'>
 							<motion.span
 								initial={{ opacity: 0, scale: 0.5 }}
 								whileInView={{ opacity: 1, scale: 1 }}
@@ -167,12 +167,12 @@ export default function AboutV2() {
 						/>
 						<div className='absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent' />
 						{/* Stats Badge */}
-						<div className='absolute bottom-3 left-3 right-3 flex items-center justify-between px-4 py-3 rounded-xl bg-white/95 dark:bg-background/95 backdrop-blur-sm shadow-md'>
+						<div className='absolute bottom-3 left-3 right-3 flex items-center justify-between px-4 py-3 rounded-xl '>
 							<div>
 								<span className='block text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'>
 									50+
 								</span>
-								<span className='text-xs md:text-sm text-muted-foreground'>
+								<span className='text-xs md:text-sm text-white'>
 									Happy Clients
 								</span>
 							</div>

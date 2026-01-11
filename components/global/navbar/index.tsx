@@ -18,6 +18,7 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { cn } from "@/lib/utils";
 
 const NavigationCard = ({
 	icon,
@@ -126,7 +127,12 @@ export default function Navbar() {
 					ease: "easeOut",
 				}}
 				style={{ originX: 0.5 }}
-				className='sticky max-w-[1200px] mx-auto top-8 z-50 flex w-full items-center justify-between gap-4 bg-background rounded-full px-4 py-3 shadow-md mt-2'>
+				className={cn(
+					"max-w-[92%] mx-auto",
+					"sticky top-8 z-50 gap-4 px-4 py-1 shadow-md mt-2",
+					"w-full flex items-center justify-between",
+					"rounded-full bg-background",
+				)}>
 				<Link href='/'>
 					<Image
 						src='/icons/logo.png'
@@ -198,11 +204,11 @@ export default function Navbar() {
 							ease: "easeInOut",
 						}}
 						style={{ originX: 0.5 }}
-						className='fixed top-26 z-50 h-[100dvh] container translate-x-[-50%] left-1/2 overflow-y-auto md:overflow-hidden shadow-lg rounded-2xl backdrop-blur-lg bg-white/90 dark:bg-black/60 border border-white/40 dark:border-white/40'>
+						className='fixed top-26 z-50 h-[60dvh] container translate-x-[-50%] left-1/2 overflow-y-auto md:overflow-hidden shadow-lg rounded-2xl backdrop-blur-lg bg-white/90 dark:bg-black/60 border border-white/40 dark:border-white/40'>
 						<Card className='bg-transparent border-none shadow-none p-0'>
-							<CardContent className='backdrop-blur-sm md:p-0 h-[100dvh] md:h-auto'>
+							<CardContent className='backdrop-blur-sm py-2 md:p-0 h-[80dvh] md:h-auto overflow-y-auto'>
 								<div className='grid md:grid-cols-4 grid-cols-2  md:gap-4 gap-0 '>
-									<div className=' col-span-2 md:px-5 px-3 md:py-4 py-0 '>
+									<div className=' col-span-2 md:px-5 px-2 md:py-4 py-2 '>
 										<h5 className='text-xl font-semibold mb-4'>Qbitlog</h5>
 										<p className='text-sm text-muted-foreground max-w-lg'>
 											Crafting innovative digital experiences that transform

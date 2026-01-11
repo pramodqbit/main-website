@@ -296,12 +296,12 @@ export default function Home() {
 					title=''
 					description=''>
 				</SectionLayout> */}
-				<section id='about' className=' my-20 mx-4'>
+				<section id='about' className=' my-5 mx-4'>
 					<AboutV2 />
 				</section>
 
 				<Services />
-				<section id='how-it-works' className='container'>
+				<section id='how-it-works' className='container px-2'>
 					<HowItWorks />
 				</section>
 

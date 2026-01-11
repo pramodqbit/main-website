@@ -205,7 +205,7 @@ function ParticleSphere() {
 	return (
 		<canvas
 			ref={canvasRef}
-			className='absolute inset-0 w-[80%] h-[80%] m-auto'
+			className='absolute inset-0 w-[80%] h-[80%] m-auto opacity-15 md:opacity-100'
 			onMouseMove={handleMouseMove}
 		/>
 	);
@@ -294,9 +294,9 @@ export default function Hero5({
 	];
 
 	return (
-		<div className='relative h-[85vh] w-full overflow-hidden mx-auto max-w-[calc(100%-20px)] -mt-14 mb-4 rounded-[20px] '>
+		<div className='relative h-[97vh] w-full overflow-hidden mx-auto max-w-[calc(100%-20px)] -my-12 mb-4 rounded-[20px] outline '>
 			<section
-				className='relative h-[100vh] overflow-hidden bg-[#08080c] -mt-14'
+				className='relative overflow-hidden bg-[#08080c]'
 				aria-label='Hero Section'>
 				{/* Background watermark */}
 				<BackgroundWatermark />
@@ -310,28 +310,28 @@ export default function Hero5({
 				</div>
 
 				{/* Main content - LEFT aligned, IN FRONT */}
-				<div className='relative z-10 min-h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24 xl:px-32'>
+				<div className='mt-10 relative z-10 min-h-screen flex flex-col justify-center  px-6 md:px-16 lg:px-24 xl:px-32 gap-4'>
 					{/* Typography */}
-					<div className='max-w-3xl'>
+					<div className='max-w-3xl flex flex-col gap-2 sm:gap-4 md:gap-6'>
 						<motion.h1
-							className='text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[1.1] tracking-tight'
+							className='text-3xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-6xl leading-[1.1] tracking-tight '
 							initial={{ opacity: 0, y: 40 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 1, ease: "easeOut" }}>
 							<span className='font-light text-white/90'>We Build </span>
-							<span className='font-semibold italic bg-gradient-to-r from-purple-400 to-violet-300 bg-clip-text text-transparent'>
+							<span className='font-semibold italic bg-gradient-to-r from-purple-400 to-violet-300 bg-clip-text text-transparent w-full px-2'>
 								Software
 							</span>
 							<br />
 							<span className='font-light text-white/90'>That </span>
-							<span className='font-semibold italic bg-gradient-to-r from-purple-400 to-violet-300 bg-clip-text text-transparent'>
+							<span className='font-semibold italic bg-gradient-to-r from-purple-400 to-violet-300 bg-clip-text text-transparent w-full px-2'>
 								Actually Works
 							</span>
 						</motion.h1>
 
 						{/* Description */}
 						<motion.p
-							className='mt-8 text-white/50 text-base md:text-lg max-w-md leading-relaxed'
+							className=' text-white/50 text-base md:text-lg max-w-md leading-relaxed'
 							initial={{ opacity: 0, y: 30 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.8, delay: 0.3 }}>
@@ -341,7 +341,6 @@ export default function Hero5({
 
 						{/* CTA Button */}
 						<motion.div
-							className='mt-10'
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.8, delay: 0.5 }}>
@@ -361,12 +360,12 @@ export default function Hero5({
 
 					{/* Stats - bottom right */}
 					<motion.div
-						className='absolute bottom-56 right-8 md:right-16 lg:right-24 xl:right-32 flex gap-10 md:gap-16'
+						className='relative  ml-auto  flex gap-10 md:gap-16'
 						initial={{ opacity: 0, y: 30 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.8, delay: 0.8 }}>
 						{stats.map((stat, index) => (
-							<div key={index} className='text-right'>
+							<div key={index} className='text-center md:text-right'>
 								<div className='text-2xl md:text-3xl font-semibold text-white'>
 									<AnimatedCounter
 										value={stat.value}

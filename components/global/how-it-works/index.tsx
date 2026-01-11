@@ -136,26 +136,19 @@ export default function HowItWorks({ className }: { className?: string }) {
 	return (
 		<div
 			ref={sectionRef}
-			className={cn(
-				"relative  overflow-x-hidden",
-
-				className,
-			)}>
+			className={cn("relative  overflow-x-hidden ", className)}>
 			{/* Header Section with SectionLayout styling */}
 
 			{/* Horizontal Scrolling Section */}
 			<div
 				ref={containerRef}
-				className={cn(
-					"relative  ",
-					"h-[90vh] lg:h-[80vh] xl:h-[100vh] 2xl:h-[100vh]",
-				)}>
+				className={cn("relative ", "h-[80vh] sm:h-[100vh] 2xl:h-[90vh]")}>
 				{/* Background gradient */}
 				<div className='absolute inset-0 pointer-events-none' />
-				<div className='container mx-auto px-4 py-16 '>
+				<div className='container mx-auto px-4 py-16  '>
 					<SectionHeader
 						badgeLabel='How It Works'
-						badgeIcon={<Brain size={24} className='text-primary' />}
+						badgeIcon={<Brain size={24} className='text-primary ' />}
 						title='Our Proven Process for Success'
 						description='From idea to implementation, we follow a structured approach to deliver results. Our process ensures clear communication, transparency, and collaboration at every stage—so you always know what to expect and can see your vision come to life step by step.'
 					/>
@@ -166,8 +159,7 @@ export default function HowItWorks({ className }: { className?: string }) {
 					ref={horizontalRef}
 					className={cn(
 						"absolute left-0 flex items-center gap-8 ",
-						"top-[250px] md:top-[300px] xl:top-[300px] ",
-						"px-10 md:px-10",
+						"top-[200px]   2xl:top-[250px] ",
 					)}
 					style={{ paddingLeft: "40vw", paddingRight: "40vw" }}>
 					{steps.map((step, index) => (
@@ -176,23 +168,27 @@ export default function HowItWorks({ className }: { className?: string }) {
 							className={cn(
 								"step-card flex-shrink-0 ",
 								"w-[80vw] md:w-[60vh] ",
-								"h-[42vh] md:h-[500px] xl:h-[450px]",
+								"h-full",
 							)}>
-							<Card className='relative h-full bg-card/50 backdrop-blur-sm rounded-3xl p-0 border-border hover:border-primary/50 transition-all duration-300 shadow-2xl overflow-hidden group'>
+							<Card
+								className={cn(
+									"relative h-full bg-card/50 backdrop-blur-sm rounded-3xl p-0 border-border hover:border-primary/50 transition-all duration-300 shadow-2xl overflow-hidden group",
+									"p-0 ",
+								)}>
 								{/* Gradient overlay on hover */}
 								<div className='absolute inset-0 bg-gradient-to-br from-primary/0 to-secondary/0 group-hover:from-primary/10 group-hover:to-secondary/10 transition-all duration-500 rounded-3xl' />
 
 								{/* Content */}
-								<div className='relative z-10 h-full flex flex-col p-8 md:p-10'>
-									<CardHeader className='p-0 mb-6'>
-										<div className=' w-10 h-10 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-[16px] md:text-3xl font-bold text-white shadow-lg transform group-hover:scale-110 transition-transform duration-300'>
+								<div className='relative z-10 h-full flex flex-col  p-4 md:p-6 lg:p-8   2xl:p-8'>
+									<CardHeader className='p-0 mb-2'>
+										<div className=' w-8 h-8 md:w-10 2xl:w-20  md:h-10 2xl:h-20 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-[16px]  lg:text-2xl 2xl:text-3xl font-bold text-white shadow-lg transform group-hover:scale-110 transition-transform duration-300'>
 											{step.number}
 										</div>
 
 										{/* Connecting arrow (except for last item) */}
 										{index < steps.length - 1 && (
 											<CardAction className='p-0'>
-												<div className='hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 group-hover:scale-110 transition-transform duration-300'>
+												<div className='hidden md:flex items-center justify-center w-8 2xl:w-14 h-8 2xl:h-14 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 group-hover:scale-110 transition-transform duration-300'>
 													<svg
 														xmlns='http://www.w3.org/2000/svg'
 														fill='none'
@@ -210,7 +206,7 @@ export default function HowItWorks({ className }: { className?: string }) {
 											</CardAction>
 										)}
 
-										<CardTitle className='text-[16px] md:text-3xl font-semibold  md:mb-4 mb-1 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'>
+										<CardTitle className='text-[16px] md:text-2xl 2xl:text-3xl font-semibold  mb-1 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'>
 											{step.title}
 										</CardTitle>
 
@@ -219,7 +215,7 @@ export default function HowItWorks({ className }: { className?: string }) {
 										</CardDescription>
 									</CardHeader>
 
-									<CardContent className='p-0 space-y-3 flex-1 overflow-hidden'>
+									<CardContent className='p-0 space-y-3 flex-1  overflow-hidden'>
 										{step.details.map((detail, detailIndex) => (
 											<div
 												key={detailIndex}

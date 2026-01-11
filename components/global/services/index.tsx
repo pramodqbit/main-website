@@ -228,7 +228,7 @@ export default function Services() {
 														: "md:flex-row",
 												)}>
 												{/* Image Section */}
-												<div className='relative w-full md:w-1/2 h-[300px] md:h-[400px] rounded-2xl overflow-hidden bg-[#0a0a0a] flex-shrink-0 group-hover:scale-[1.02] transition-transform duration-500'>
+												<div className='relative w-full md:w-1/2 h-[200px] md:h-[400px] rounded-2xl overflow-hidden bg-[#0a0a0a] flex-shrink-0 group-hover:scale-[1.02] transition-transform duration-500'>
 													<Image
 														src={service.image}
 														alt={`${service.title} preview`}
@@ -247,7 +247,7 @@ export default function Services() {
 															{/* Header with Icon and Title */}
 															<div className='flex items-center gap-3 mb-4'>
 																{service.icons[0] && (
-																	<div className='relative w-12 h-12 p-1.5 flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500'>
+																	<div className='relative md:w-12 w-10 md:h-12 h-10 p-1.5 flex-shrink-0 md:rounded-xl rounded-md bg-gradient-to-br from-primary/10 to-secondary/10 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500'>
 																		<Image
 																			src={service.icons[0]}
 																			alt={`${service.title} icon`}
@@ -257,13 +257,13 @@ export default function Services() {
 																		/>
 																	</div>
 																)}
-																<CardTitle className='text-2xl md:text-3xl font-bold group-hover:text-primary transition-colors duration-300'>
+																<CardTitle className='text-xl md:text-3xl font-bold group-hover:text-primary transition-colors duration-300'>
 																	{service.title}
 																</CardTitle>
 															</div>
 
 															{/* Description */}
-															<CardDescription className='text-base md:text-lg leading-relaxed font-medium text-muted-foreground'>
+															<CardDescription className='text-sm md:text-lg leading-relaxed font-medium text-muted-foreground'>
 																{service.description}
 															</CardDescription>
 														</CardHeader>
@@ -294,10 +294,10 @@ export default function Services() {
 													</div>
 
 													{/* Footer Summary */}
-													<CardFooter className='p-0 pt-6 mt-6 border-t border-border/50'>
-														<div className='flex flex-col gap-1'>
+													<CardFooter className='p-0 pt-2 md:pt-6  md:mt-6 mt-4 border-t-1 md:border-t border-border/50'>
+														<div className='flex flex-col gap-2 '>
 															<div className='flex items-baseline gap-2'>
-																<span className='text-3xl md:text-4xl font-bold text-foreground group-hover:text-primary transition-colors duration-300'>
+																<span className='text-2xl md:text-4xl font-bold text-foreground group-hover:text-primary transition-colors duration-300'>
 																	{service.tags.length}+
 																</span>
 																<span className='text-base md:text-lg text-muted-foreground'>
