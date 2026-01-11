@@ -320,12 +320,12 @@ export default function Hero5({
 							transition={{ duration: 1, ease: "easeOut" }}>
 							<span className='font-light text-white/90'>We Build </span>
 							<span className='font-semibold italic bg-gradient-to-r from-purple-400 to-violet-300 bg-clip-text text-transparent w-full px-2'>
-								Software
+								Intelligent Software
 							</span>
 							<br />
 							<span className='font-light text-white/90'>That </span>
 							<span className='font-semibold italic bg-gradient-to-r from-purple-400 to-violet-300 bg-clip-text text-transparent w-full px-2'>
-								Actually Works
+								Designed for Growth
 							</span>
 						</motion.h1>
 
@@ -336,7 +336,7 @@ export default function Hero5({
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.8, delay: 0.3 }}>
 							{description ||
-								"From spaghetti code to scalable systems. Engineers obsessed with clean architecture, performant code, and shipping products that make a difference."}
+								"From robust web and mobile applications enhanced with AI to help you automate tasks and make smarter decisions."}
 						</motion.p>
 
 						{/* CTA Button */}

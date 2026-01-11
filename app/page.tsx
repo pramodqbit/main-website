@@ -285,8 +285,8 @@ export default function Home() {
 			<main>
 				<Navbar />
 				<Hero5
-					description='From spaghetti code to scalable systems. Engineers obsessed with clean architecture, performant code, and shipping products that make a difference.'
-					button="Let's Talk Code"
+					description='From robust web and mobile applications enhanced with AI to help you automate tasks and make smarter decisions.'
+					button='Upgrade Your Business'
 				/>
 				<OurMarque Items={Items} />
 				{/* <SectionLayout

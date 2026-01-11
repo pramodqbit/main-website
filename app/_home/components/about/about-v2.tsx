@@ -124,7 +124,7 @@ export default function AboutV2() {
 								viewport={{ once: true }}
 								transition={{ delay: 0.3, duration: 0.5 }}
 								className='block text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-1'>
-								150+
+								50+
 							</motion.span>
 							<span className='text-sm md:text-base text-muted-foreground'>
 								Projects Delivered
