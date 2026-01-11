@@ -204,8 +204,13 @@ export default function Navbar() {
 							ease: "easeInOut",
 						}}
 						style={{ originX: 0.5 }}
-						className='fixed top-26 z-50 h-[60dvh] container translate-x-[-50%] left-1/2 overflow-y-auto md:overflow-hidden shadow-lg rounded-2xl backdrop-blur-lg bg-white/90 dark:bg-black/60 border border-white/40 dark:border-white/40'>
-						<Card className='bg-transparent border-none shadow-none p-0'>
+						className={cn(
+							"fixed top-20 lg:top-26 z-50 h-[60dvh] container translate-x-[-50%]",
+							"backdrop-blur-lg bg-white/90 dark:bg-black/60",
+							"border-border border ",
+							"left-1/2 overflow-y-auto md:overflow-hidden shadow-lg rounded-2xl ",
+						)}>
+						<Card className='bg-transparent border-none shadow-none p-0 '>
 							<CardContent className='backdrop-blur-sm py-2 md:p-0 h-[80dvh] md:h-auto overflow-y-auto'>
 								<div className='grid md:grid-cols-4 grid-cols-2  md:gap-4 gap-0 '>
 									<div className=' col-span-2 md:px-5 px-2 md:py-4 py-2 '>
@@ -253,7 +258,7 @@ export default function Navbar() {
 											</Link>
 										</motion.div>
 									</div>
-									<div className='border-r-0 border-l-0 md:border-r-2 md:border-l-2 col-span-2 md:col-span-1 border-dashed mt-2 md:mt-0 md:px-5 px-3 md:py-2 py-0'>
+									<div className='border-r-0 border-l-0 md:border-r-2 md:border-l-2 col-span-2 md:col-span-1 border-dashed mt-2  md:px-5 px-3 md:py-2 py-0'>
 										<h5 className='md:text-xl text-lg font-semibold md:mb-4 mb-2'>
 											Company
 										</h5>
@@ -274,7 +279,7 @@ export default function Navbar() {
 										</ul>
 									</div>
 									<div className='  border-dashed col-span-2 md:col-span-1  md:px-5 px-3 md:py-2 py-0'>
-										<h5 className='md:text-xl text-lg font-semibold md:mb-4 mb-2 capitalize'>
+										<h5 className='mt-2  md:text-xl text-lg font-semibold md:mb-4 mb-2 capitalize'>
 											Resources
 										</h5>
 										<ul>
