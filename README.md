@@ -18,6 +18,7 @@ QBITLOG is a software design agency that crafts digital experiences that drive r
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - **Next.js 15.5.3** - React framework with App Router
 - **React 19.1.0** - Modern React with latest features
 - **TypeScript 5** - Type-safe development
@@ -27,11 +28,13 @@ QBITLOG is a software design agency that crafts digital experiences that drive r
 - **Lenis 1.3.11** - Smooth scrolling experience
 
 ### UI Components
+
 - **Radix UI** - Accessible, unstyled UI primitives
 - **Lucide React** - Beautiful, customizable icons
 - **Custom Components** - Tailored UI components for unique design
 
 ### Development Tools
+
 - **ESLint** - Code linting and formatting
 - **Turbopack** - Fast bundling and development
 - **Vercel Speed Insights** - Performance monitoring
@@ -39,21 +42,25 @@ QBITLOG is a software design agency that crafts digital experiences that drive r
 ## 🎯 Services
 
 ### Web Development
+
 - Custom web applications using React, Next.js, and modern frameworks
 - Responsive, high-performance websites
 - Technologies: React, Next.js, Tailwind CSS, TypeScript, Node.js, MongoDB
 
 ### Mobile Development
+
 - Native and cross-platform mobile applications
 - iOS and Android app development
 - Technologies: React Native, Flutter, Swift, Kotlin
 
 ### Digital Marketing
+
 - Data-driven marketing strategies
 - Social media campaigns and content marketing
 - SEO optimization and search ranking improvements
 
 ### Graphics Design
+
 - Professional branding and visual identity
 - UI/UX design services
 - Custom graphics and illustrations
@@ -86,23 +93,27 @@ QBITLOG is a software design agency that crafts digital experiences that drive r
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js >= 22.0.0
 - npm or yarn package manager
 
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    cd qbitlog-website
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Start development server**
+
    ```bash
    npm run dev
    ```
@@ -128,6 +139,7 @@ QBITLOG is a software design agency that crafts digital experiences that drive r
 ## 📱 Responsive Design
 
 The website is fully responsive and optimized for:
+
 - Desktop (1920px+)
 - Laptop (1024px - 1919px)
 - Tablet (768px - 1023px)
@@ -136,16 +148,19 @@ The website is fully responsive and optimized for:
 ## 🔧 Customization
 
 ### Adding New Services
+
 1. Create a new JSON file in `app/services/_data/`
 2. Follow the existing data structure
 3. Add corresponding icons to `public/icons/`
 
 ### Modifying Animations
+
 - Animation components are in `components/animation/`
 - GSAP configurations can be adjusted in individual components
 - Smooth scrolling settings in `components/animation/smooth-scrolling/`
 
 ### Styling
+
 - Global styles in `app/globals.css`
 - Component-specific styles using Tailwind CSS
 - Custom CSS variables for consistent theming
@@ -155,6 +170,7 @@ The website is fully responsive and optimized for:
 The project is optimized for deployment on Vercel:
 
 1. **Build the project**
+
    ```bash
    npm run build
    ```
@@ -187,6 +203,7 @@ This project is private and proprietary to QBITLOG.
 ## 📞 Contact
 
 For business inquiries and project discussions:
+
 - Website: [QBITLOG Website](https://qbitlog.com)
 - Email: Contact through the website contact form
 

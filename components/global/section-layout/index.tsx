@@ -10,7 +10,7 @@ interface SectionLayoutProps {
 	badgeLabel: string;
 	badgeIcon: React.ReactNode;
 	title: string;
-	description: string;
+	description?: string;
 	id?: string;
 }
 
@@ -40,14 +40,14 @@ export const SectionHeader = ({
 				)}>
 				{title}
 			</TextFadeIn>
-			<TextFadeIn
+			{description && <TextFadeIn
 				as='p'
 				delay={0.3}
 				className={cn(
 					"md:text-md text-[10px] md:text-base text-center text-muted-foreground max-w-auto 2xl:max-w-[1200px] mx-auto",
 				)}>
 				{description}
-			</TextFadeIn>
+			</TextFadeIn>}
 		</div>
 	);
 };

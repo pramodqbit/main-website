@@ -66,6 +66,7 @@ export default function CaseStudiesPage() {
 			<main className='container'>
 				<Navbar />
 
+
 				<SectionLayout
 					id='case-studies'
 					badgeIcon={<Briefcase size={ICON_SIZE} className='text-primary' />}

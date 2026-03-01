@@ -13,6 +13,7 @@ import {
 	TabletSmartphone,
 	Palette,
 	ArrowRight,
+	Briefcase,
 } from "lucide-react";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
@@ -68,6 +69,12 @@ const COMPANY_LINKS = [
 		label: "Contact",
 		description: "Connect with us",
 		href: "/contact-us",
+	},
+	{
+		icon: <Briefcase />,
+		label: "Careers",
+		description: "Join our team",
+		href: "/careers",
 	},
 ];
 
