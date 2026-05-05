@@ -134,8 +134,8 @@ function ParticleSphere() {
 					const p2 = sortedPoints[j];
 					const dist = Math.sqrt(
 						Math.pow(p1.x - p2.x, 2) +
-							Math.pow(p1.y - p2.y, 2) +
-							Math.pow(p1.z - p2.z, 2),
+						Math.pow(p1.y - p2.y, 2) +
+						Math.pow(p1.z - p2.z, 2),
 					);
 
 					if (dist < 0.3) {
@@ -288,9 +288,10 @@ export default function Hero5({
 	}
 
 	const stats = [
+		{ value: 98, suffix: "-99%", label: "AI Accuracy" },
 		{ value: 50, suffix: "+", label: "Projects Delivered" },
-		{ value: 100, suffix: "%", label: "Client Satisfaction" },
-		{ value: 24, suffix: "/7", label: "Support Available" },
+		{ value: 8, suffix: "-16", label: "Week Delivery" },
+		{ value: 98, suffix: "%", label: "Client Satisfaction" },
 	];
 
 	return (

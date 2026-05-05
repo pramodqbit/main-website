@@ -150,7 +150,7 @@ export default function HowItWorks({ className }: { className?: string }) {
 						badgeLabel='How It Works'
 						badgeIcon={<Brain size={24} className='text-primary ' />}
 						title='Our Proven Process for Success'
-						description='From idea to implementation, we follow a structured approach to deliver results. Our process ensures clear communication, transparency, and collaboration at every stage—so you always know what to expect and can see your vision come to life step by step.'
+						description='We take a structured approach from idea to implementation, combining strategy, collaboration, and transparency to deliver results. At every step, you have visibility into the process as your vision comes to life.'
 					/>
 				</div>
 

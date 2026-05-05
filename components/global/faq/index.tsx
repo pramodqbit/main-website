@@ -13,7 +13,7 @@ export default function FAQ() {
 		{
 			question: "What services does Qbitlog offer?",
 			answer:
-				"Qbitlog specializes in comprehensive digital solutions including web development, mobile app development, UI/UX design, cloud solutions, and custom software development. We leverage cutting-edge technologies to deliver innovative solutions tailored to your business needs.",
+				"QBITLOG specializes in scalable digital solutions including web and mobile development, UI/UX design, cloud infrastructure, and custom software. We also integrate AI into real business workflows helping automate processes, analyze data, and build smarter, future-ready products.",
 		},
 		{
 			question: "How long does a typical project take?",
