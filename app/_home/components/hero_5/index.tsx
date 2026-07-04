@@ -1,51 +1,11 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useInView } from "motion/react";
+import { motion, useMotionValue, useSpring } from "motion/react";
 import { useEffect, useState, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { AnimatedCounter } from "@/components/animation/animated-counter";
 import Link from "next/link";
-
-// Animated Counter
-function AnimatedCounter({
-	value,
-	suffix = "",
-	duration = 2,
-}: {
-	value: number;
-	suffix?: string;
-	duration?: number;
-}) {
-	const [count, setCount] = useState(0);
-	const ref = useRef<HTMLSpanElement>(null);
-	const isInView = useInView(ref, { once: true });
-
-	useEffect(() => {
-		if (!isInView) return;
-		let startTime: number;
-		let animationFrame: number;
-
-		const animate = (timestamp: number) => {
-			if (!startTime) startTime = timestamp;
-			const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
-			const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-			setCount(Math.floor(easeOutQuart * value));
-			if (progress < 1) {
-				animationFrame = requestAnimationFrame(animate);
-			}
-		};
-
-		animationFrame = requestAnimationFrame(animate);
-		return () => cancelAnimationFrame(animationFrame);
-	}, [isInView, value, duration]);
-
-	return (
-		<span ref={ref} className='tabular-nums'>
-			{count}
-			{suffix}
-		</span>
-	);
-}
 
 // Elegant sparse particle sphere - WHITE particles only
 function ParticleSphere() {

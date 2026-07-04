@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" fill="none" role="img" aria-label="OCR Extraction">
+  <defs>
+    <linearGradient id="g-medical-prescription-ocr-s2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8a38f5"/>
+      <stop offset="1" stop-color="#00cfff"/>
+    </linearGradient>
+    <linearGradient id="soft-medical-prescription-ocr-s2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8a38f5" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#00cfff" stop-opacity="0.10"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="750" rx="24" fill="#ffffff"/>
+  <rect x="1" y="1" width="1198" height="748" rx="23" fill="none" stroke="#e8e8e8"/>
+  <!-- top bar -->
+  <rect x="32" y="32" width="1136" height="56" rx="14" fill="url(#soft-medical-prescription-ocr-s2)"/>
+  <circle cx="64" cy="60" r="10" fill="url(#g-medical-prescription-ocr-s2)"/>
+  <rect x="84" y="52" width="150" height="16" rx="8" fill="#4b4b4b" opacity="0.18"/>
+  <rect x="980" y="48" width="120" height="24" rx="12" fill="url(#g-medical-prescription-ocr-s2)" opacity="0.85"/>
+  <!-- sidebar -->
+  <rect x="32" y="108" width="260" height="610" rx="18" fill="#f5f5f5"/>
+  <rect x="56" y="150" width="200" height="18" rx="9" fill="#8a38f5" opacity="0.9"/>
+  <rect x="56" y="206" width="150" height="18" rx="9" fill="#4b4b4b" opacity="0.16"/>
+  <rect x="56" y="262" width="150" height="18" rx="9" fill="#4b4b4b" opacity="0.16"/>
+  <rect x="56" y="318" width="150" height="18" rx="9" fill="#4b4b4b" opacity="0.16"/>
+  <rect x="56" y="374" width="150" height="18" rx="9" fill="#4b4b4b" opacity="0.16"/>
+  <rect x="56" y="430" width="150" height="18" rx="9" fill="#4b4b4b" opacity="0.16"/>
+  <!-- KPI cards -->
+  <g><rect x="324" y="108" width="262" height="120" rx="16" fill="#ffffff" stroke="#e8e8e8"/><rect x="348" y="132" width="70" height="14" rx="7" fill="#4b4b4b" opacity="0.18"/><rect x="348" y="160" width="130" height="30" rx="8" fill="url(#g-medical-prescription-ocr-s2)" opacity="0.8"/></g>
+  <g><rect x="610" y="108" width="262" height="120" rx="16" fill="#ffffff" stroke="#e8e8e8"/><rect x="634" y="132" width="70" height="14" rx="7" fill="#4b4b4b" opacity="0.18"/><rect x="634" y="160" width="130" height="30" rx="8" fill="url(#g-medical-prescription-ocr-s2)" opacity="0.8"/></g>
+  <g><rect x="896" y="108" width="262" height="120" rx="16" fill="#ffffff" stroke="#e8e8e8"/><rect x="920" y="132" width="70" height="14" rx="7" fill="#4b4b4b" opacity="0.18"/><rect x="920" y="160" width="130" height="30" rx="8" fill="url(#g-medical-prescription-ocr-s2)" opacity="0.8"/></g>
+  <!-- chart area -->
+  <rect x="324" y="252" width="844" height="460" rx="18" fill="#ffffff" stroke="#e8e8e8"/>
+  <rect x="360" y="500" width="90" height="60" rx="10" fill="url(#g-medical-prescription-ocr-s2)" opacity="0.55"/>
+  <rect x="510" y="447" width="90" height="113" rx="10" fill="url(#g-medical-prescription-ocr-s2)" opacity="0.63"/>
+  <rect x="660" y="394" width="90" height="166" rx="10" fill="url(#g-medical-prescription-ocr-s2)" opacity="0.7100000000000001"/>
+  <rect x="810" y="491" width="90" height="69" rx="10" fill="url(#g-medical-prescription-ocr-s2)" opacity="0.79"/>
+  <rect x="960" y="438" width="90" height="122" rx="10" fill="url(#g-medical-prescription-ocr-s2)" opacity="0.8700000000000001"/>
+  <rect x="360" y="560" width="440" height="3" rx="2" fill="#e8e8e8"/>
+  <!-- caption chip -->
+  <rect x="324" y="680" width="174" height="40" rx="20" fill="url(#soft-medical-prescription-ocr-s2)"/>
+  <text x="344" y="706" font-family="Geist, Arial, sans-serif" font-size="20" font-weight="600" fill="#8a38f5">OCR Extraction</text>
+</svg>

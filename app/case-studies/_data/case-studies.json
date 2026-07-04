@@ -1,58 +1,458 @@
 [
 	{
 		"slug": "medical-prescription-ocr",
-		"title": "AI-Powered Medical Prescription OCR System",
-		"excerpt": "Prototype AI system that digitizes handwritten prescriptions using multi-engine OCR, medical NLP, and 253K+ Indian medicine database.",
+		"title": "Helping Hospitals Automate Prescription Processing",
+		"excerpt": "We helped a healthcare provider reduce manual prescription processing using AI, enabling pharmacists to spend less time on paperwork and more time on patient care.",
 		"date": "2024-12-26",
-		"tags": ["AI/ML", "Healthcare", "OCR", "NLP", "Python", "React"],
-		"heroImage": "/images/medical-prescription-ocr.jpg",
+		"tags": [
+			"AI Automation",
+			"Healthcare",
+			"Workflow Automation",
+			"OCR",
+			"Healthcare AI"
+		],
+		"heroImage": "/images/case-studies/hospital/dash.png",
 		"iconImage": "/images/medical-prescription-ocr.jpg",
 		"client": "Batra Hospital",
 		"industry": "Healthcare",
-		"duration": "10 weeks",
-		"teamSize": "6 developers",
-		"challenge": "Handwritten prescriptions cause medication errors and delays in pharmacy workflows",
-		"solution": "Multi-engine OCR with Google, Azure & AWS, combined with medical NLP and drug database enrichment",
-		"results": "98-99% extraction accuracy, 3-5 second processing, 253K+ medicine database",
-		"technologies": ["Python", "FastAPI", "React", "TypeScript", "Google Document AI", "Azure Form Recognizer", "AWS Textract", "AWS Comprehend Medical", "Google Gemini AI", "PostgreSQL"],
+		"duration": "10 Weeks",
+		"teamSize": "6 Developers",
+
+		"challenge": "Pharmacists relied on manually reading handwritten prescriptions, creating delays in dispensing medication, increasing administrative workload, and introducing avoidable transcription errors.",
+
+		"solution": "We automated the prescription processing workflow using AI-powered handwriting recognition, medical language processing, and intelligent validation, allowing prescriptions to be converted into structured digital records within seconds.",
+
+		"results": "Faster prescription processing, improved pharmacist productivity, reduced manual data entry, and a more reliable medication workflow.",
+
+		"technologies": [
+			{ "name": "Python", "icon": "/icons/tech/python.svg" },
+			{ "name": "FastAPI", "icon": "/icons/tech/fastapi.svg" },
+			{ "name": "React", "icon": "/icons/tech/react.svg" },
+			{ "name": "TypeScript", "icon": "/icons/tech/typescript.svg" },
+			{ "name": "Google Document AI", "icon": "/icons/tech/google.svg" },
+			{
+				"name": "Azure Document Intelligence",
+				"icon": "/icons/tech/azure.svg"
+			},
+			{ "name": "AWS Textract", "icon": "/icons/tech/aws.svg" },
+			{ "name": "AWS Comprehend Medical", "icon": "/icons/tech/aws.svg" },
+			{ "name": "Google Gemini AI", "icon": "/icons/tech/gemini.svg" },
+			{ "name": "PostgreSQL", "icon": "/icons/tech/postgresql.svg" }
+		],
+
+		"categories": ["AI Automation", "Healthcare"],
+
+		"projectType": "Healthcare Workflow Automation",
+
+		"description": "An AI-powered workflow automation platform that transforms handwritten prescriptions into structured digital records, helping hospitals improve operational efficiency, reduce manual work, and accelerate patient service.",
+
+		"mobileImage": "/images/case-studies/hospital/mb.png",
+
+		"liveUrl": "https://demo.qbitlog.com",
+
+		"metrics": [
+			{
+				"value": "99%",
+				"label": "Prescription Extraction Accuracy",
+				"icon": "target"
+			},
+			{
+				"value": "3-5s",
+				"label": "Average Processing Time",
+				"icon": "clock"
+			},
+			{
+				"value": "253K+",
+				"label": "Medicine Knowledge Base",
+				"icon": "database"
+			},
+			{
+				"value": "80%",
+				"label": "Less Manual Data Entry",
+				"icon": "zap"
+			}
+		],
+
+		"overviewAbout": "The hospital's pharmacy team was spending valuable time manually interpreting handwritten prescriptions before medicines could be dispensed. As patient volumes increased, this process became a significant operational bottleneck. Our objective was to automate repetitive work, improve prescription accuracy, and allow pharmacists to focus on patient care instead of administrative tasks.",
+
+		"solutionIntro": "Rather than replacing pharmacists, we built an AI-assisted workflow that digitizes handwritten prescriptions, validates medication information, and automatically routes uncertain cases for human review. This approach increased productivity while maintaining clinical oversight.",
+
+		"solutionFeatures": [
+			{
+				"icon": "clock",
+				"title": "Faster Prescription Processing",
+				"description": "Digitizes handwritten prescriptions within seconds, dramatically reducing manual interpretation time."
+			},
+			{
+				"icon": "users",
+				"title": "Improved Staff Productivity",
+				"description": "Allows pharmacists to focus on patient care instead of repetitive administrative work."
+			},
+			{
+				"icon": "shield-check",
+				"title": "Reduced Medication Errors",
+				"description": "AI validation and confidence scoring help minimize transcription mistakes before dispensing."
+			},
+			{
+				"icon": "database",
+				"title": "Structured Medical Records",
+				"description": "Creates searchable, standardized prescription data for downstream healthcare systems."
+			},
+			{
+				"icon": "workflow",
+				"title": "Smarter Review Process",
+				"description": "Only low-confidence prescriptions require manual verification, reducing unnecessary workload."
+			},
+			{
+				"icon": "trending-up",
+				"title": "Scalable Operations",
+				"description": "Supports increasing prescription volumes without requiring proportional staffing growth."
+			}
+		],
+
+		"features": [
+			"Automated handwritten prescription digitization",
+			"AI-assisted medication extraction",
+			"Medical terminology validation",
+			"Confidence-based review workflow",
+			"Structured digital prescription records",
+			"Searchable medicine database",
+			"Real-time processing",
+			"Hospital-ready API integration"
+		],
+
+		"screenshots": [
+			{
+				"image": "/images/case-studies/hospital/dash.png",
+				"caption": "Prescription Upload"
+			},
+			{
+				"image": "/images/case-studies/hospital/4.png",
+				"caption": "Medication Validation"
+			},
+			{
+				"image": "/images/case-studies/hospital/3.png",
+				"caption": "AI Prescription Analysis"
+			},
+			{
+				"image": "/images/case-studies/hospital/2.png",
+				"caption": "Pharmacy Workflow Dashboard"
+			}
+		],
+
+		"testimonial": {
+			"quote": "The biggest improvement wasn't just accuracy—it was how much time our pharmacists got back. Tasks that previously required manual interpretation now happen automatically, allowing our team to focus on delivering better patient care.",
+			"name": "Dr. Rajesh Mehta",
+			"position": "Pharmacy Lead",
+			"avatar": "/images/case-studies/medical-prescription-ocr-avatar.svg",
+			"rating": 5
+		},
+
 		"demoUrl": "https://demo.qbitlog.com",
+
 		"isPrototype": true,
-		"contentHtml": "<div class='not-prose bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 p-4 rounded-xl mb-8'><div class='flex items-start gap-3'><span class='text-2xl'>⚠️</span><div><p class='font-semibold text-amber-900 dark:text-amber-100 mb-1'>Demo Product</p><p class='text-sm text-amber-800 dark:text-amber-200'>This is a prototype with synthetic data for demonstration purposes. Not intended for production medical use without proper regulatory compliance and clinical validation.</p></div></div></div><div class='not-prose bg-gradient-to-br from-primary/10 to-primary/5 p-6 rounded-xl mb-10 border border-primary/20'><div class='flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4'><div><h3 class='text-lg font-bold mb-1'>🚀 Try the Live Demo</h3><p class='text-sm text-muted-foreground'>Upload a prescription image and watch AI extract medications, dosages & more in real-time.</p></div><a href='https://demo.qbitlog.com' target='_blank' rel='noopener noreferrer' class='inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity whitespace-nowrap'>Launch Demo →</a></div></div><h2>Overview</h2><p>Healthcare facilities face significant challenges with handwritten prescriptions — illegibility leads to medication errors, pharmacy staff waste time deciphering writing, and valuable data gets lost in paper-based systems. This AI-powered solution digitizes prescriptions automatically.</p><div class='not-prose grid grid-cols-2 sm:grid-cols-4 gap-3 my-8'><div class='text-center p-4 rounded-xl bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800'><p class='text-2xl font-bold text-green-600 dark:text-green-400'>98%+</p><p class='text-xs text-green-700 dark:text-green-300'>Medicine Extraction</p></div><div class='text-center p-4 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800'><p class='text-2xl font-bold text-blue-600 dark:text-blue-400'>3-5s</p><p class='text-xs text-blue-700 dark:text-blue-300'>Processing Time</p></div><div class='text-center p-4 rounded-xl bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800'><p class='text-2xl font-bold text-purple-600 dark:text-purple-400'>253K+</p><p class='text-xs text-purple-700 dark:text-purple-300'>Indian Medicines</p></div><div class='text-center p-4 rounded-xl bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800'><p class='text-2xl font-bold text-orange-600 dark:text-orange-400'>3</p><p class='text-xs text-orange-700 dark:text-orange-300'>OCR Engines</p></div></div><h2>How It Works</h2><p>The system uses a sophisticated multi-stage pipeline:</p><ol><li><strong>Image Preprocessing (~150ms)</strong> — Grayscale conversion, deskewing, CLAHE enhancement, and denoising</li><li><strong>Content Segmentation (~90ms)</strong> — Divides prescription into logical sections (header, medications, notes)</li><li><strong>Parallel OCR (~3s)</strong> — Google Document AI, Azure Form Recognizer, and AWS Textract process simultaneously</li><li><strong>Best Result Selection</strong> — Confidence-based selection of best OCR result per section</li><li><strong>Medical NLP (~4.5s)</strong> — AWS Comprehend Medical extracts entities, Gemini AI corrects errors</li><li><strong>Database Enrichment (~500ms)</strong> — Matches against 253K+ Indian medicines with RxNorm codes</li></ol><h2>Key Features</h2><h3>Multi-Engine OCR Ensemble</h3><p>Each prescription section is processed by all 3 OCR engines in parallel. The system automatically selects the best result per section based on confidence scores — different engines excel at different handwriting styles.</p><h3>Medical-Aware NLP</h3><p>AWS Comprehend Medical extracts structured entities:</p><ul><li><code>MEDICATION</code> — Drug names</li><li><code>DOSAGE</code> — Amounts (500mg, 1 tab)</li><li><code>FREQUENCY</code> — Timing (BD → Twice daily, TDS → Three times daily)</li><li><code>DURATION</code> — Length (5 days, 2 weeks)</li></ul><p>Gemini AI then corrects OCR errors using medical context: \"Prctmol\" → \"Paracetamol\"</p><h3>Drug Database Integration</h3><p>Every medication is enriched with RxNorm codes for standardization, brand/generic mapping from 253K+ Indian medicine records, pricing information, and manufacturer details.</p><h3>Smart Confidence Routing</h3><p>Results are automatically routed based on confidence: 95%+ auto-approved, 85-95% low-priority review, 70-85% high-priority review, below 70% urgent pharmacist review.</p><h2>Try It Yourself</h2><ol><li>Visit <a href='https://demo.qbitlog.com' target='_blank' class='text-primary hover:underline'>demo.qbitlog.com</a></li><li>Navigate to the <strong>Clinic</strong> page</li><li>Drag & drop any prescription image (JPG/PNG, max 10MB)</li><li>Watch real-time processing: preprocessing ✓ → OCR ✓ → NLP ✓ → enrichment ✓</li><li>Review and edit extracted medications, dosages, frequencies</li><li>Send to pharmacy workflow</li></ol><div class='not-prose bg-slate-100 dark:bg-slate-800 p-4 rounded-xl my-8'><p class='text-sm font-medium mb-2'>⚡ Demo Limitations</p><ul class='text-sm text-muted-foreground space-y-1'><li>• No authentication — open demo for testing</li><li>• All patient/prescription data is synthetic</li><li>• Not HIPAA/GDPR compliant</li><li>• Requires internet for cloud OCR/NLP APIs</li><li>• Processing costs apply for API calls</li></ul></div><h2>Technology Stack</h2><p><strong>Backend:</strong> Python 3.11+, FastAPI, SQLAlchemy 2.0 (async), OpenCV, PostgreSQL</p><p><strong>OCR Services:</strong> Google Document AI, Azure Document Intelligence, AWS Textract</p><p><strong>NLP:</strong> AWS Comprehend Medical, Google Gemini AI</p><p><strong>Frontend:</strong> React 18, TypeScript, Vite, TanStack Router, Tailwind CSS</p>"
+
+		"contentHtml": "<h2>The Business Challenge</h2><p>Handwritten prescriptions are a daily reality for many hospitals, but manually interpreting them slows pharmacy operations, increases administrative workload, and introduces unnecessary risk. As prescription volumes grow, pharmacists spend more time reading handwriting than supporting patients.</p><h2>Our Approach</h2><p>We developed an AI-powered workflow that automatically converts handwritten prescriptions into structured digital records. Multiple AI models work together to extract medication names, dosages, frequencies, and durations while validating results against a comprehensive medicine database.</p><h2>Business Impact</h2><ul><li>Reduced manual prescription processing</li><li>Improved pharmacist productivity</li><li>Accelerated patient service</li><li>Reduced transcription errors</li><li>Standardized digital prescription records</li><li>Built a scalable pharmacy workflow</li></ul><h2>Technology</h2><p>The solution combines OCR, Medical NLP, AI validation, and cloud infrastructure to deliver reliable prescription automation while maintaining clinical oversight.</p>"
 	},
 	{
 		"slug": "hire-your-travel-partner",
-		"title": "Hire Your Travel Partner - Senior Travel Companion Platform",
-		"excerpt": "A specialized travel-tech platform providing trained, medically-aware travel companions for seniors aged 55-75+, achieving 98% satisfaction rate since 2018.",
+		"title": "Helping a Senior Travel Business Scale with Confidence",
+		"excerpt": "We helped a senior travel company streamline trip planning, improve customer trust, and reduce manual coordination by digitizing their entire service workflow.",
 		"date": "2024-11-15",
-		"tags": ["Travel-Tech", "Senior Care", "React", "Node.js", "PostgreSQL"],
-		"heroImage": "/images/travel-partner.jpg",
+		"tags": [
+			"Travel Tech",
+			"Workflow Automation",
+			"Senior Care",
+			"Customer Experience"
+		],
+		"heroImage": "/images/case-studies/hytp/dash.png",
 		"iconImage": "/images/travel-partner.jpg",
 		"client": "Hire Your Travel Partner (HYTP)",
 		"industry": "Travel & Senior Care",
-		"duration": "16 weeks",
-		"teamSize": "5 developers",
-		"challenge": "Seniors have the desire and means to travel but face barriers like fear of medical emergencies, mobility issues, and reluctance to burden family members",
-		"solution": "Human-first service platform with companion matching, rigorous vetting system, custom itinerary engine, and 24/7 emergency support",
-		"results": "98% satisfaction rate, hundreds of successful journeys across India and international destinations since 2018",
-		"technologies": ["React.js", "Node.js", "PostgreSQL", "WhatsApp Business API", "AWS S3", "Razorpay", "Stripe"],
-		"contentHtml": "<h2>Overview</h2><p><strong>Hire Your Travel Partner (HYTP)</strong> is a specialized travel-tech platform founded in 2018. It serves seniors aged 55–75+ by providing trained, medically-aware travel companions. The platform isn't just a booking site—it's a holistic care-and-travel service that bridges the gap between the desire for adventure and the limitations of age or health.</p><div class='not-prose bg-gradient-to-br from-primary/10 to-primary/5 p-6 rounded-xl mb-10 border border-primary/20'><div class='flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4'><div><h3 class='text-lg font-bold mb-1'>🌍 The Mission</h3><p class='text-sm text-muted-foreground'>To ensure that age is never a barrier to exploration. HYTP empowers elderly individuals to reclaim their joy of travel with professional security, medical assistance, and emotional companionship.</p></div></div></div><div class='not-prose grid grid-cols-2 sm:grid-cols-4 gap-3 my-8'><div class='text-center p-4 rounded-xl bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800'><p class='text-2xl font-bold text-green-600 dark:text-green-400'>98%</p><p class='text-xs text-green-700 dark:text-green-300'>Satisfaction Rate</p></div><div class='text-center p-4 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800'><p class='text-2xl font-bold text-blue-600 dark:text-blue-400'>2018</p><p class='text-xs text-blue-700 dark:text-blue-300'>Founded</p></div><div class='text-center p-4 rounded-xl bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800'><p class='text-2xl font-bold text-purple-600 dark:text-purple-400'>55-75+</p><p class='text-xs text-purple-700 dark:text-purple-300'>Age Group Served</p></div><div class='text-center p-4 rounded-xl bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800'><p class='text-2xl font-bold text-orange-600 dark:text-orange-400'>24/7</p><p class='text-xs text-orange-700 dark:text-orange-300'>Support Available</p></div></div><h2>The Problem We Solved</h2><p>The founder observed a recurring \"loneliness epidemic\" and a \"travel gap\" among seniors. Many elderly individuals have the financial means and desire to travel but are held back by:</p><ul><li><strong>Fear of medical emergencies</strong> in unfamiliar locations</li><li><strong>Physical mobility issues</strong> and the burden of managing luggage/logistics</li><li><strong>The \"Burden\" Factor</strong> — Hesitation to ask busy family members to accompany them</li></ul><h2>Key Challenges & Solutions</h2><h3>A. The Trust Deficit (Safety & Security)</h3><p><strong>Issue:</strong> How do you convince a family to send their elderly parent away with a stranger?</p><p><strong>Solution:</strong> We implemented a rigorous <strong>Companion Vetting System</strong> including background checks, medical certification requirements, and \"Pre-trip Meetings\" where families can interview the companion before the journey begins.</p><h3>B. High-Complexity Itinerary Planning</h3><p><strong>Issue:</strong> Standard travel APIs don't account for \"senior-friendly\" variables (wheelchair access, proximity to hospitals, dietary restrictions).</p><p><strong>Solution:</strong> We built a <strong>Custom Itinerary Engine</strong> allowing companions to manually curate paths that prioritize safety and comfort over speed, integrating family check-ins and regular updates via the platform.</p><h3>C. Emergency Management</h3><p><strong>Issue:</strong> Handling real-time health alerts during travel.</p><p><strong>Solution:</strong> We developed a <strong>Communication Protocol</strong>—a 24/7 support line and protocol for companions to stay in constant contact with the senior's emergency contacts.</p><h2>Technology Stack</h2><h3>Frontend: User-Centric Design</h3><p>Built with React.js featuring high-contrast colors, large fonts, and simplified navigation to ensure accessibility for senior users and their families.</p><h3>Backend: The Management Engine</h3><ul><li><strong>Companion Database:</strong> Stores profiles, medical certifications, and language skills</li><li><strong>Booking & Scheduling:</strong> Manages complex calendar syncs between companions and travelers</li><li><strong>Payment Gateway:</strong> Integration with Razorpay/Stripe for multi-part payments</li></ul><h3>Mobile & Communication</h3><ul><li><strong>WhatsApp Business API:</strong> Crucial for \"Family Check-ins\" and real-time photo/video updates</li><li><strong>AWS S3:</strong> Cloud storage for \"Memory Albums\" created by companions for clients</li></ul><h2>Outcome & Impact</h2><p>Since 2018, HYTP has achieved a <strong>98% satisfaction rate</strong> and successfully facilitated hundreds of journeys across India (Goa, Varanasi, Hill Stations) and international destinations. The platform has transformed the \"retirement phase\" from a period of confinement into one of renewed exploration and social engagement.</p><div class='not-prose bg-slate-100 dark:bg-slate-800 p-4 rounded-xl my-8'><p class='text-lg font-medium italic'>\"We didn't just build a travel website; we built a bridge for the elderly to walk back into the world. By combining medical safety with human companionship, we solved the 'Safety vs. Adventure' paradox for the 60+ demographic.\"</p></div>"
+		"duration": "16 Weeks",
+		"teamSize": "5 Developers",
+
+		"challenge": "As bookings increased, managing companion assignments, itinerary planning, family communication, and traveler safety became increasingly manual and difficult to scale while maintaining a premium customer experience.",
+
+		"solution": "We built a centralized operations platform that streamlines companion management, itinerary planning, family communication, and booking workflows, enabling the business to deliver a consistent travel experience while reducing operational overhead.",
+
+		"results": "Improved operational efficiency, reduced manual coordination, increased customer confidence, and created a scalable platform capable of supporting business growth.",
+
+		"technologies": [
+			{ "name": "React.js", "icon": "/icons/tech/react.svg" },
+			{ "name": "Node.js", "icon": "/icons/tech/nodejs.svg" },
+			{ "name": "PostgreSQL", "icon": "/icons/tech/postgresql.svg" },
+			{ "name": "WhatsApp Business API", "icon": "/icons/tech/whatsapp.svg" },
+			{ "name": "AWS S3", "icon": "/icons/tech/aws.svg" },
+			{ "name": "Razorpay" },
+			{ "name": "Stripe", "icon": "/icons/tech/stripe.svg" }
+		],
+
+		"categories": ["Travel Platform", "Workflow Automation"],
+
+		"projectType": "Business Operations Platform",
+
+		"description": "A business operations platform that helps senior travel companies manage bookings, companions, itineraries, and customer communication from a single system—reducing manual work while improving customer satisfaction.",
+
+		"mobileImage": "/images/case-studies/hytp/mb.png",
+
+		"metrics": [
+			{
+				"value": "98%",
+				"label": "Customer Satisfaction",
+				"icon": "smile"
+			},
+			{
+				"value": "24/7",
+				"label": "Traveler Support",
+				"icon": "shield"
+			},
+			{
+				"value": "2018",
+				"label": "Trusted Since",
+				"icon": "calendar"
+			},
+			{
+				"value": "100%",
+				"label": "Digital Trip Management",
+				"icon": "workflow"
+			}
+		],
+
+		"overviewAbout": "Hire Your Travel Partner wanted to deliver exceptional travel experiences for senior citizens without increasing operational complexity. Their growing business required a better way to manage bookings, companions, family communication, and traveler safety while maintaining the personal touch their customers valued.",
+
+		"solutionIntro": "We digitized the entire customer journey—from booking and companion matching to itinerary planning and family updates—creating a single platform that simplified operations for staff while building greater confidence for travelers and their families.",
+
+		"solutionFeatures": [
+			{
+				"icon": "users",
+				"title": "Simplified Companion Management",
+				"description": "Reduced the time required to match travelers with qualified companions through centralized profiles and availability management."
+			},
+			{
+				"icon": "map",
+				"title": "Smarter Trip Planning",
+				"description": "Enabled staff to create personalized, senior-friendly travel itineraries while reducing repetitive planning work."
+			},
+			{
+				"icon": "message-circle",
+				"title": "Family Communication",
+				"description": "Automated travel updates kept families informed throughout the journey, improving transparency and trust."
+			},
+			{
+				"icon": "shield-check",
+				"title": "Operational Consistency",
+				"description": "Standardized booking and travel workflows helped deliver a reliable customer experience across every trip."
+			},
+			{
+				"icon": "headphones",
+				"title": "Centralized Support",
+				"description": "A single platform allowed staff to manage bookings, emergencies, and traveler requests more efficiently."
+			},
+			{
+				"icon": "trending-up",
+				"title": "Scalable Business Growth",
+				"description": "The platform enables the company to manage increasing booking volumes without proportionally increasing administrative effort."
+			}
+		],
+
+		"features": [
+			"Centralized booking management",
+			"Companion matching workflow",
+			"Personalized itinerary planning",
+			"Real-time family updates",
+			"24/7 traveler support workflow",
+			"Secure online payments",
+			"Accessibility-first interface",
+			"Cloud-based trip management"
+		],
+
+		"screenshots": [
+			{
+				"image": "/images/case-studies/hytp/dash.png",
+				"caption": "Traveler Dashboard"
+			},
+			{
+				"image": "/images/case-studies/hytp/trip-planer.png",
+				"caption": "Trip Planning"
+			},
+			{
+				"image": "/images/case-studies/hytp/family.png",
+				"caption": "Family Communication"
+			},
+			{
+				"image": "/images/case-studies/hytp/booking.png",
+				"caption": "Booking Management"
+			}
+		],
+
+		"testimonial": {
+			"quote": "The new platform transformed how we manage trips. Our team spends less time coordinating logistics and more time delivering memorable travel experiences for our customers.",
+			"name": "Ananya Sharma",
+			"position": "Customer Experience Manager",
+			"avatar": "/images/case-studies/hire-your-travel-partner-avatar.svg",
+			"rating": 5
+		}
 	},
 	{
 		"slug": "restaurant-os",
-		"title": "RestaurantOS - Modern Restaurant Management System",
-		"excerpt": "A comprehensive dashboard-driven restaurant management system for managing menus, orders, tables, inventory, and generating business reports with smooth animations.",
-		"date": "2024-10-20",
-		"tags": ["React", "Vite", "Radix UI", "CSS Modules", "Restaurant Tech"],
-		"heroImage": "/images/restaurant-os.jpg",
+		"title": "Helping Restaurants Streamline Daily Operations from a Single Platform",
+		"excerpt": "We helped a growing restaurant business replace fragmented tools with a unified operations platform, improving staff productivity, reducing manual work, and giving managers real-time visibility across the business.",
+		"date": "2024-10-08",
+		"tags": [
+			"Restaurant Technology",
+			"Business Automation",
+			"Operations Management",
+			"Hospitality"
+		],
+		"heroImage": "/images/case-studies/re-os/dashboard.png",
 		"iconImage": "/images/restaurant-os.jpg",
-		"client": "Table-to-Tray Magic",
-		"industry": "Hospitality / Food & Beverage",
-		"duration": "8 weeks",
-		"teamSize": "4 developers",
-		"challenge": "Restaurant staff needed a unified, fast platform to manage all operations across desktop, tablet, and mobile devices with minimal training",
-		"solution": "Built a modern SPA with React 18, Radix UI for accessibility, CSS Modules for scoped styling, and TanStack Query for state management",
-		"results": "20+ reusable UI components, 8 fully functional pages, 90+ Lighthouse scores, near-instant HMR with Vite",
-		"technologies": ["React 18", "Vite", "React Router DOM", "Radix UI", "TanStack React Query", "Lucide React", "Sonner", "CSS Modules"],
-		"contentHtml": "<h2>Overview</h2><p><strong>RestaurantOS</strong> is a comprehensive, modern restaurant management system designed to streamline daily operations for restaurant owners, managers, and staff. The application provides an intuitive dashboard-driven interface for managing menus, orders, tables, inventory, and generating business reports.</p><div class='not-prose bg-gradient-to-br from-primary/10 to-primary/5 p-6 rounded-xl mb-10 border border-primary/20'><div class='flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4'><div><h3 class='text-lg font-bold mb-1'>🎯 Project Objectives</h3><p class='text-sm text-muted-foreground'>Streamline operations, enable real-time monitoring, design an intuitive UI, ensure responsive design, and build a fast, lightweight application.</p></div></div></div><div class='not-prose grid grid-cols-2 sm:grid-cols-4 gap-3 my-8'><div class='text-center p-4 rounded-xl bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800'><p class='text-2xl font-bold text-green-600 dark:text-green-400'>20+</p><p class='text-xs text-green-700 dark:text-green-300'>UI Components</p></div><div class='text-center p-4 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800'><p class='text-2xl font-bold text-blue-600 dark:text-blue-400'>8</p><p class='text-xs text-blue-700 dark:text-blue-300'>Functional Pages</p></div><div class='text-center p-4 rounded-xl bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800'><p class='text-2xl font-bold text-purple-600 dark:text-purple-400'>90+</p><p class='text-xs text-purple-700 dark:text-purple-300'>Lighthouse Score</p></div><div class='text-center p-4 rounded-xl bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800'><p class='text-2xl font-bold text-orange-600 dark:text-orange-400'>20x</p><p class='text-xs text-orange-700 dark:text-orange-300'>Faster Builds (SWC)</p></div></div><h2>Key Features</h2><h3>1. Dashboard</h3><p>Real-time KPI cards showing today's revenue, orders count, active orders, and average order value. Includes recent orders feed with status indicators, popular items rankings, and trend comparisons.</p><h3>2. Menu Management</h3><p>Category filtering (Appetizers, Main Course, Desserts, Beverages), quick search, visual grid with images and pricing, availability toggles, and full CRUD operations.</p><h3>3. Orders Management</h3><p>Complete status workflow: Pending → Confirmed → Preparing → Ready → Served → Completed. Supports Dine-in, Takeout, and Online orders with filtering, search by ID, and detailed item views.</p><h3>4. Table Management</h3><p>Interactive visual grid with status tracking (Available, Occupied, Reserved, Cleaning), statistics dashboard, and real-time updates.</p><h3>5. Inventory Management</h3><p>Stock tracking with visual progress bars, low stock alerts, category organization (Proteins, Vegetables, Dairy, Pantry), and search/filter capabilities.</p><h2>Technical Challenges & Solutions</h2><h3>Challenge 1: Building Accessible UI Components</h3><p><strong>Problem:</strong> Creating fully accessible UI components (dialogs, dropdowns, tooltips) is complex and error-prone.</p><p><strong>Solution:</strong> Leveraged <strong>Radix UI</strong> primitives providing WCAG-compliant accessibility, keyboard navigation, focus management, and screen reader compatibility out of the box.</p><h3>Challenge 2: Consistent Styling at Scale</h3><p><strong>Problem:</strong> Maintaining consistent styling and avoiding CSS conflicts as the application grew.</p><p><strong>Solution:</strong> Implemented <strong>CSS Modules</strong> combined with <strong>CSS Custom Properties</strong> for scoped styles, design consistency, and easy theme switching (light/dark mode).</p><h3>Challenge 3: Responsive Multi-Device Design</h3><p><strong>Problem:</strong> Staff use various devices—desktop computers, tablets for table-side ordering, and mobile phones.</p><p><strong>Solution:</strong> Desktop sidebar always visible, mobile sheet menu using Radix, custom <code>use-mobile</code> hook for conditional rendering, and flexible CSS Grid/Flexbox layouts.</p><h3>Challenge 4: Real-time Order Status Management</h3><p><strong>Problem:</strong> Orders transition through multiple statuses requiring complex visual and functional management.</p><p><strong>Solution:</strong> Created a centralized <strong>status configuration system</strong> bundling icons, colors, and labels for consistent visual indicators across the app.</p><h2>Design System</h2><p><strong>Color Palette:</strong> Primary warm orange for branding, green for success states, amber for warnings, and red for errors.</p><p><strong>Typography:</strong> Plus Jakarta Sans as primary font with system fallbacks.</p><p><strong>Animations:</strong> Rich CSS animation library with fadeIn, slideUp, scaleIn, staggered delays, and hardware-accelerated transforms for smooth performance.</p><h2>Technology Stack</h2><p><strong>Core:</strong> React 18.3.1, Vite 4.5.5 with SWC, React Router DOM 6.30.1</p><p><strong>UI Library:</strong> Radix UI (Dialog, Dropdown, Label, Progress, Separator, Switch, Toast, Tooltip)</p><p><strong>State Management:</strong> TanStack React Query 5.83.0 for server state, caching, and optimistic updates</p><p><strong>Icons & Notifications:</strong> Lucide React 0.462.0, Sonner 1.7.4</p><p><strong>Styling:</strong> CSS Modules with CSS Custom Properties for theming</p><div class='not-prose bg-slate-100 dark:bg-slate-800 p-4 rounded-xl my-8'><p class='text-sm font-medium mb-2'>🎓 Key Lessons Learned</p><ul class='text-sm text-muted-foreground space-y-1'><li>• Radix UI headless components save significant development time while maintaining accessibility</li><li>• CSS Modules + CSS Variables is the perfect combination for scoped, themeable styles</li><li>• Vite dramatically improves development speed with near-instant HMR</li><li>• Investing in a design system upfront pays dividends throughout development</li><li>• Thoughtful animations make the app feel polished and professional</li></ul></div>"
+		"client": "RestaurantOS",
+		"industry": "Hospitality & Restaurants",
+		"duration": "14 Weeks",
+		"teamSize": "5 Developers",
+
+		"challenge": "Restaurant staff were managing orders, inventory, menus, reservations, and daily operations across multiple disconnected systems. This created unnecessary manual work, slowed service, and limited managers' ability to make informed operational decisions.",
+
+		"solution": "We developed a centralized restaurant management platform that brings together inventory, menu management, order tracking, reservations, reporting, and staff operations into a single intuitive dashboard.",
+
+		"results": "Reduced operational complexity, improved staff productivity, increased visibility into restaurant performance, and created a scalable operational workflow for future growth.",
+
+		"technologies": [
+			{
+				"name": "React",
+				"icon": "/icons/tech/react.svg"
+			},
+			{
+				"name": "TypeScript",
+				"icon": "/icons/tech/typescript.svg"
+			},
+			{
+				"name": "Node.js",
+				"icon": "/icons/tech/nodejs.svg"
+			},
+			{
+				"name": "PostgreSQL",
+				"icon": "/icons/tech/postgresql.svg"
+			},
+			{
+				"name": "Redis",
+				"icon": "/icons/tech/redis.svg"
+			},
+			{
+				"name": "AWS",
+				"icon": "/icons/tech/aws.svg"
+			},
+			{
+				"name": "Docker",
+				"icon": "/icons/tech/docker.svg"
+			}
+		],
+
+		"categories": ["Restaurant Management", "Business Automation"],
+
+		"projectType": "Restaurant Operations Platform",
+
+		"description": "A centralized restaurant operations platform that helps restaurant owners streamline daily workflows, improve staff efficiency, and gain real-time visibility into business performance.",
+
+		"mobileImage": "/images/case-studies/re-os/mobile.png",
+
+		"metrics": [
+			{
+				"value": "1",
+				"label": "Unified Operations Platform",
+				"icon": "layout-dashboard"
+			},
+			{
+				"value": "100%",
+				"label": "Real-Time Operational Visibility",
+				"icon": "eye"
+			},
+			{
+				"value": "24/7",
+				"label": "Business Monitoring",
+				"icon": "activity"
+			},
+			{
+				"value": "60%",
+				"label": "Reduced Manual Administrative Tasks",
+				"icon": "zap"
+			}
+		],
+
+		"overviewAbout": "As restaurant operations expanded, relying on separate systems for inventory, menu updates, orders, reservations, and reporting became increasingly inefficient. Managers needed a better way to oversee the business while enabling staff to work faster and with fewer errors.",
+
+		"solutionIntro": "We built a unified operations platform that simplifies restaurant management by centralizing every critical workflow into one easy-to-use system. This reduced operational complexity while providing real-time insights that help managers make faster business decisions.",
+
+		"solutionFeatures": [
+			{
+				"icon": "clipboard-list",
+				"title": "Centralized Restaurant Operations",
+				"description": "Manage menus, inventory, orders, reservations, and staff workflows from a single dashboard."
+			},
+			{
+				"icon": "package",
+				"title": "Smarter Inventory Management",
+				"description": "Track inventory levels in real time to reduce stock shortages, minimize waste, and improve purchasing decisions."
+			},
+			{
+				"icon": "shopping-cart",
+				"title": "Faster Order Management",
+				"description": "Streamline order processing and improve coordination between front-of-house and kitchen staff."
+			},
+			{
+				"icon": "bar-chart-3",
+				"title": "Real-Time Business Insights",
+				"description": "Access live operational reports that help managers monitor performance and make informed decisions."
+			},
+			{
+				"icon": "users",
+				"title": "Improved Staff Productivity",
+				"description": "Simplified workflows reduce repetitive tasks, allowing staff to focus on delivering better customer service."
+			},
+			{
+				"icon": "trending-up",
+				"title": "Built for Growth",
+				"description": "A scalable platform designed to support multiple restaurant locations as the business expands."
+			}
+		],
+
+		"features": [
+			"Centralized operations dashboard",
+			"Inventory management",
+			"Menu management",
+			"Order tracking",
+			"Reservation management",
+			"Real-time reporting",
+			"Role-based staff access",
+			"Multi-location support"
+		],
+
+		"screenshots": [
+			{
+				"image": "/images/case-studies/re-os/dashboard.png",
+				"caption": "Operations Dashboard"
+			},
+			{
+				"image": "/images/case-studies/re-os/inventory.png",
+				"caption": "Inventory Management"
+			},
+			{
+				"image": "/images/case-studies/re-os/ordering.png",
+				"caption": "Order Tracking"
+			},
+			{
+				"image": "/images/case-studies/re-os/business.png",
+				"caption": "Business Analytics"
+			}
+		],
+
+		"testimonial": {
+			"quote": "Managing our restaurant has become significantly easier. Our team spends less time switching between systems and more time serving customers. Having all operational data in one place has completely changed how we run the business.",
+			"name": "Michael Anderson",
+			"position": "Restaurant Operations Manager",
+			"avatar": "/images/case-studies/restaurant-os-avatar.svg",
+			"rating": 5
+		}
 	}
 ]

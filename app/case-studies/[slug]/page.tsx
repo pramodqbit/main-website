@@ -1,18 +1,25 @@
 import Navbar from "@/components/global/navbar";
 import Footer from "@/components/global/footer";
-import Image from "next/image";
-import Link from "next/link";
-import { ChevronRight, Home, Briefcase, Calendar, Users, Clock, TrendingUp, Target, Lightbulb, CheckCircle, ExternalLink, AlertTriangle } from "lucide-react";
-import caseStudies from "../_data/case-studies.json";
+import { AlertTriangle } from "lucide-react";
 import { notFound } from "next/navigation";
+import caseStudiesData from "../_data/case-studies.json";
+import type { CaseStudy } from "../_data/types";
+import { BackToCaseStudies } from "../_components/BackToCaseStudies";
+import { CaseStudyHero } from "../_components/CaseStudyHero";
+import { InfoCard } from "../_components/InfoCard";
+import { OurSolution } from "../_components/OurSolution";
+import { KeyFeatures } from "../_components/KeyFeatures";
+import { ProjectStats } from "../_components/ProjectStats";
+import { TechStack } from "../_components/TechStack";
+import { ScreenshotCarousel } from "../_components/ScreenshotCarousel";
+import { TestimonialCard } from "../_components/TestimonialCard";
+import { ProjectDetailsCard } from "../_components/ProjectDetailsCard";
+import { CaseStudyCTA } from "../_components/CaseStudyCTA";
 
-type CaseStudy = typeof caseStudies[number] & {
-	demoUrl?: string;
-	isPrototype?: boolean;
-};
+const caseStudies = caseStudiesData as CaseStudy[];
 
 function getCaseStudy(slug: string): CaseStudy | undefined {
-	return caseStudies.find((s) => s.slug === slug) as CaseStudy | undefined;
+	return caseStudies.find((s) => s.slug === slug);
 }
 
 export async function generateStaticParams() {
@@ -27,12 +34,13 @@ export async function generateMetadata({
 	const { slug } = await params;
 	const study = getCaseStudy(slug);
 	const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://qbitlog.com";
-	
-	if (!study) return { 
-		title: "Case Study Not Found",
-		description: "The requested case study could not be found."
-	};
-	
+
+	if (!study)
+		return {
+			title: "Case Study Not Found",
+			description: "The requested case study could not be found.",
+		};
+
 	return {
 		title: study.title,
 		description: study.excerpt,
@@ -50,20 +58,20 @@ export async function generateMetadata({
 					url: study.heroImage,
 					width: 1200,
 					height: 630,
-					alt: study.title
-				}
-			]
+					alt: study.title,
+				},
+			],
 		},
 		twitter: {
 			card: "summary_large_image",
 			title: study.title,
 			description: study.excerpt,
 			images: [study.heroImage],
-			creator: "@qbitlog"
+			creator: "@qbitlog",
 		},
 		alternates: {
 			canonical: `${siteUrl}/case-studies/${slug}`,
-		}
+		},
 	};
 }
 
@@ -78,232 +86,158 @@ export default async function CaseStudyPage({
 
 	const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://qbitlog.com";
 
-	// Structured Data (JSON-LD)
 	const caseStudyStructuredData = {
 		"@context": "https://schema.org",
 		"@type": "Article",
-		"headline": study.title,
-		"description": study.excerpt,
-		"image": study.heroImage,
-		"datePublished": study.date,
-		"dateModified": study.date,
-		"author": {
+		headline: study.title,
+		description: study.excerpt,
+		image: study.heroImage,
+		datePublished: study.date,
+		dateModified: study.date,
+		author: { "@type": "Organization", name: "QBITLOG", url: siteUrl },
+		publisher: {
 			"@type": "Organization",
-			"name": "QBITLOG",
-			"url": siteUrl
+			name: "QBITLOG",
+			logo: { "@type": "ImageObject", url: `${siteUrl}/icons/logo.png` },
 		},
-		"publisher": {
-			"@type": "Organization",
-			"name": "QBITLOG",
-			"logo": {
-				"@type": "ImageObject",
-				"url": `${siteUrl}/icons/logo.png`
-			}
-		},
-		"mainEntityOfPage": {
+		mainEntityOfPage: {
 			"@type": "WebPage",
-			"@id": `${siteUrl}/case-studies/${slug}`
+			"@id": `${siteUrl}/case-studies/${slug}`,
 		},
-		"keywords": study.tags.join(", "),
-		"about": {
+		keywords: study.tags.join(", "),
+		about: {
 			"@type": "Project",
-			"name": study.title,
-			"description": study.excerpt,
-			"client": study.client,
-			"duration": study.duration
-		}
+			name: study.title,
+			description: study.excerpt,
+			client: study.client,
+			duration: study.duration,
+		},
 	};
 
 	const breadcrumbStructuredData = {
 		"@context": "https://schema.org",
 		"@type": "BreadcrumbList",
-		"itemListElement": [
+		itemListElement: [
+			{ "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
 			{
 				"@type": "ListItem",
-				"position": 1,
-				"name": "Home",
-				"item": siteUrl
+				position: 2,
+				name: "Case Studies",
+				item: `${siteUrl}/case-studies`,
 			},
 			{
 				"@type": "ListItem",
-				"position": 2,
-				"name": "Case Studies",
-				"item": `${siteUrl}/case-studies`
+				position: 3,
+				name: study.title,
+				item: `${siteUrl}/case-studies/${slug}`,
 			},
-			{
-				"@type": "ListItem",
-				"position": 3,
-				"name": study.title,
-				"item": `${siteUrl}/case-studies/${slug}`
-			}
-		]
+		],
 	};
 
 	return (
-		<div className=''>
+		<>
 			<script
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudyStructuredData) }}
+				type='application/ld+json'
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(caseStudyStructuredData),
+				}}
 			/>
 			<script
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
+				type='application/ld+json'
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(breadcrumbStructuredData),
+				}}
 			/>
-			<main className='container'>
+			<main className='container px-4'>
 				<Navbar />
-				
-				{/* Breadcrumb Navigation */}
-				<nav className='flex items-center space-x-2 text-sm text-muted-foreground py-4'>
-					<Link href='/' className='flex items-center hover:text-primary transition-colors'>
-						<Home className='w-4 h-4 mr-1' />
-						Home
-					</Link>
-					<ChevronRight className='w-4 h-4' />
-					<Link href='/case-studies' className='hover:text-primary transition-colors'>
-						Case Studies
-					</Link>
-					<ChevronRight className='w-4 h-4' />
-					<span className='text-foreground font-medium'>{study.title}</span>
-				</nav>
 
-				<article className='mx-auto max-w-4xl py-10'>
-					{/* Prototype/Demo Warning Banner */}
-					{study.isPrototype && (
-						<div className='mb-6 p-4 bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 rounded-r-lg'>
-							<div className='flex items-start gap-3'>
-								<AlertTriangle className='w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5' />
+				<div className='mx-auto mt-8 max-w-[92%] space-y-6 pb-10'>
+					{/* Back link + prototype notice */}
+					<div className='flex flex-col gap-4'>
+						<BackToCaseStudies />
+						{study.isPrototype && (
+							<div className='flex items-start gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-4'>
+								<AlertTriangle className='mt-0.5 h-5 w-5 flex-shrink-0 text-amber-600' />
 								<div>
-									<p className='font-semibold text-amber-800 dark:text-amber-200'>Prototype / Demo Product</p>
-									<p className='text-sm text-amber-700 dark:text-amber-300'>This is a demonstration project with synthetic data. Not intended for production use without proper compliance and validation.</p>
+									<p className='font-semibold text-amber-900'>
+										Prototype / Demo Product
+									</p>
+									<p className='text-sm text-amber-800'>
+										This is a demonstration project built with synthetic data.
+										Not intended for production use without proper compliance and
+										validation.
+									</p>
 								</div>
 							</div>
+						)}
+					</div>
+
+					{/* 1. Hero */}
+					<div className='pb-6 pt-2'>
+						<CaseStudyHero study={study} />
+					</div>
+
+					{/* 2. Metrics strip */}
+					<ProjectStats metrics={study.metrics} />
+
+					{/* 3. About + Challenge */}
+					<div className='grid gap-6 md:grid-cols-2'>
+						<InfoCard
+							tone='about'
+							title='About the Project'
+							text={study.overviewAbout || study.description || study.excerpt}
+						/>
+						<InfoCard
+							tone='challenge'
+							title='The Challenge'
+							text={study.challenge}
+						/>
+					</div>
+
+					{/* 4. Our Solution */}
+					<OurSolution
+						intro={study.solutionIntro || study.solution}
+						features={study.solutionFeatures}
+					/>
+
+					{/* 5. Key Features + Tech Stack */}
+					<div className='grid gap-6 lg:grid-cols-[1fr_1.35fr]'>
+						<KeyFeatures features={study.features} />
+						<TechStack technologies={study.technologies} />
+					</div>
+
+					{/* 6. Screenshots */}
+					<ScreenshotCarousel
+						screenshots={study.screenshots}
+						viewMoreUrl={study.liveUrl || study.demoUrl}
+					/>
+
+					{/* 7. Testimonial + Project Details */}
+					<div className='grid gap-6 lg:grid-cols-[1.5fr_1fr]'>
+						{study.testimonial && (
+							<TestimonialCard testimonial={study.testimonial} />
+						)}
+						<ProjectDetailsCard study={study} />
+					</div>
+
+					{/* 8. Detailed HTML Content */}
+					{study.contentHtml && (
+						<div className='rounded-2xl border border-border/60 bg-white p-6 shadow-sm md:p-8 display-none'>
+							<h2 className='mb-6 text-lg font-bold text-foreground md:text-xl'>
+								Detailed Overview
+							</h2>
+							<div
+								className='prose prose-neutral max-w-none prose-headings:scroll-mt-24 prose-a:text-primary'
+								dangerouslySetInnerHTML={{ __html: study.contentHtml }}
+							/>
 						</div>
 					)}
 
-					{/* Hero Section */}
-					<div className='mb-8'>
-						<div className='flex items-center gap-3 mb-4'>
-							<Image src={study.iconImage} alt={`${study.title} icon`} width={40} height={40} className='w-10 h-10 object-contain rounded' />
-							<div>
-								<p className='text-sm text-muted-foreground'>{study.industry}</p>
-								<p className='text-sm text-muted-foreground'>{new Date(study.date).toLocaleDateString()}</p>
-							</div>
-							{study.isPrototype && (
-								<span className='ml-auto px-3 py-1 text-xs font-semibold bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-200 rounded-full'>
-									Demo Project
-								</span>
-							)}
-						</div>
-						
-						<h1 className='text-3xl md:text-4xl font-bold mb-4'>{study.title}</h1>
-						<p className='text-lg text-muted-foreground mb-6'>{study.excerpt}</p>
-						
-						<div className='flex flex-wrap items-center gap-4 mb-6'>
-							<div className='flex flex-wrap gap-2'>
-								{study.tags.map((tag) => (
-									<span key={tag} className='text-sm px-3 py-1 rounded-full border'>#{tag}</span>
-								))}
-							</div>
-							
-							{/* Demo Link Button */}
-							{study.demoUrl && (
-								<a
-									href={study.demoUrl}
-									target='_blank'
-									rel='noopener noreferrer'
-									className='inline-flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg font-semibold transition-colors shadow-lg hover:shadow-xl'
-								>
-									<ExternalLink className='w-4 h-4' />
-									Try Live Demo
-								</a>
-							)}
-						</div>
-					</div>
-
-					{/* Hero Image */}
-					<div className='relative h-64 w-full rounded-xl overflow-hidden border mb-8'>
-						<Image src={study.heroImage} alt={study.title} fill className='object-cover' />
-					</div>
-
-					{/* Project Overview */}
-					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8'>
-						<div className='flex items-center gap-3 p-4 rounded-lg border bg-card'>
-							<Briefcase className='w-5 h-5 text-primary' />
-							<div>
-								<p className='text-sm text-muted-foreground'>Client</p>
-								<p className='font-medium'>{study.client}</p>
-							</div>
-						</div>
-						<div className='flex items-center gap-3 p-4 rounded-lg border bg-card'>
-							<Clock className='w-5 h-5 text-primary' />
-							<div>
-								<p className='text-sm text-muted-foreground'>Duration</p>
-								<p className='font-medium'>{study.duration}</p>
-							</div>
-						</div>
-						<div className='flex items-center gap-3 p-4 rounded-lg border bg-card'>
-							<Users className='w-5 h-5 text-primary' />
-							<div>
-								<p className='text-sm text-muted-foreground'>Team Size</p>
-								<p className='font-medium'>{study.teamSize}</p>
-							</div>
-						</div>
-						<div className='flex items-center gap-3 p-4 rounded-lg border bg-card'>
-							<TrendingUp className='w-5 h-5 text-primary' />
-							<div>
-								<p className='text-sm text-muted-foreground'>Key Result</p>
-								<p className='font-medium text-green-600'>{study.results.split(',')[0]}</p>
-							</div>
-						</div>
-					</div>
-
-					{/* Challenge & Solution */}
-					<div className='grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8'>
-						<div className='p-6 rounded-lg border bg-red-50 dark:bg-red-950/20'>
-							<div className='flex items-center gap-3 mb-4'>
-								<Target className='w-5 h-5 text-red-600' />
-								<h3 className='text-lg font-semibold text-red-900 dark:text-red-100'>The Challenge</h3>
-							</div>
-							<p className='text-red-800 dark:text-red-200'>{study.challenge}</p>
-						</div>
-						
-						<div className='p-6 rounded-lg border bg-green-50 dark:bg-green-950/20'>
-							<div className='flex items-center gap-3 mb-4'>
-								<Lightbulb className='w-5 h-5 text-green-600' />
-								<h3 className='text-lg font-semibold text-green-900 dark:text-green-100'>Our Solution</h3>
-							</div>
-							<p className='text-green-800 dark:text-green-200'>{study.solution}</p>
-						</div>
-					</div>
-
-					{/* Results */}
-					<div className='p-6 rounded-lg border bg-blue-50 dark:bg-blue-950/20 mb-8'>
-						<div className='flex items-center gap-3 mb-4'>
-							<CheckCircle className='w-5 h-5 text-blue-600' />
-							<h3 className='text-lg font-semibold text-blue-900 dark:text-blue-100'>Key Results</h3>
-						</div>
-						<p className='text-blue-800 dark:text-blue-200'>{study.results}</p>
-					</div>
-
-					{/* Technologies Used */}
-					<div className='mb-8'>
-						<h3 className='text-xl font-semibold mb-4'>Technologies Used</h3>
-						<div className='flex flex-wrap gap-2'>
-							{study.technologies.map((tech) => (
-								<span key={tech} className='px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium'>
-									{tech}
-								</span>
-							))}
-						</div>
-					</div>
-
-					{/* Detailed Content */}
-					<div className='prose dark:prose-invert max-w-none prose-headings:scroll-mt-24'>
-						<div dangerouslySetInnerHTML={{ __html: study.contentHtml }} />
-					</div>
-				</article>
+					{/* 9. Call To Action */}
+					<CaseStudyCTA cta={study.cta} />
+				</div>
 			</main>
 			<Footer />
-		</div>
+		</>
 	);
 }

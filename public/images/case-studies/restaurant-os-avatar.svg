@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" fill="none" role="img" aria-label="avatar">
+  <defs>
+    <linearGradient id="g-restaurant-os-a" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8a38f5"/>
+      <stop offset="1" stop-color="#00cfff"/>
+    </linearGradient>
+    <linearGradient id="soft-restaurant-os-a" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8a38f5" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#00cfff" stop-opacity="0.10"/>
+    </linearGradient>
+  </defs>
+  <rect width="160" height="160" rx="80" fill="url(#g-restaurant-os-a)"/>
+  <text x="80" y="80" dy="0.35em" text-anchor="middle" font-family="Geist, Arial, sans-serif" font-size="60" font-weight="700" fill="#ffffff">RO</text>
+</svg>

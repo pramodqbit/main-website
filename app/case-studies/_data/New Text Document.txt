@@ -1,0 +1,155 @@
+{
+  "slug": "medical-prescription-ocr",
+  "title": "Helping Hospitals Automate Prescription Processing",
+  "excerpt": "We helped a healthcare provider reduce manual prescription processing using AI, enabling pharmacists to spend less time on paperwork and more time on patient care.",
+  "date": "2024-12-26",
+  "tags": [
+    "AI Automation",
+    "Healthcare",
+    "Workflow Automation",
+    "OCR",
+    "Healthcare AI"
+  ],
+  "heroImage": "/images/medical-prescription-ocr.jpg",
+  "iconImage": "/images/medical-prescription-ocr.jpg",
+  "client": "Batra Hospital",
+  "industry": "Healthcare",
+  "duration": "10 Weeks",
+  "teamSize": "6 Developers",
+
+  "challenge": "Pharmacists relied on manually reading handwritten prescriptions, creating delays in dispensing medication, increasing administrative workload, and introducing avoidable transcription errors.",
+
+  "solution": "We automated the prescription processing workflow using AI-powered handwriting recognition, medical language processing, and intelligent validation, allowing prescriptions to be converted into structured digital records within seconds.",
+
+  "results": "Faster prescription processing, improved pharmacist productivity, reduced manual data entry, and a more reliable medication workflow.",
+
+  "technologies": [
+    { "name": "Python", "icon": "/icons/tech/python.svg" },
+    { "name": "FastAPI", "icon": "/icons/tech/fastapi.svg" },
+    { "name": "React", "icon": "/icons/tech/react.svg" },
+    { "name": "TypeScript", "icon": "/icons/tech/typescript.svg" },
+    { "name": "Google Document AI", "icon": "/icons/tech/google.svg" },
+    { "name": "Azure Document Intelligence", "icon": "/icons/tech/azure.svg" },
+    { "name": "AWS Textract", "icon": "/icons/tech/aws.svg" },
+    { "name": "AWS Comprehend Medical", "icon": "/icons/tech/aws.svg" },
+    { "name": "Google Gemini AI", "icon": "/icons/tech/gemini.svg" },
+    { "name": "PostgreSQL", "icon": "/icons/tech/postgresql.svg" }
+  ],
+
+  "categories": [
+    "AI Automation",
+    "Healthcare"
+  ],
+
+  "projectType": "Healthcare Workflow Automation",
+
+  "description": "An AI-powered workflow automation platform that transforms handwritten prescriptions into structured digital records, helping hospitals improve operational efficiency, reduce manual work, and accelerate patient service.",
+
+  "mobileImage": "/images/case-studies/medical-prescription-ocr-mobile.svg",
+
+  "liveUrl": "https://demo.qbitlog.com",
+
+  "metrics": [
+    {
+      "value": "99%",
+      "label": "Prescription Extraction Accuracy",
+      "icon": "target"
+    },
+    {
+      "value": "3-5s",
+      "label": "Average Processing Time",
+      "icon": "clock"
+    },
+    {
+      "value": "253K+",
+      "label": "Medicine Knowledge Base",
+      "icon": "database"
+    },
+    {
+      "value": "80%",
+      "label": "Less Manual Data Entry",
+      "icon": "zap"
+    }
+  ],
+
+  "overviewAbout": "The hospital's pharmacy team was spending valuable time manually interpreting handwritten prescriptions before medicines could be dispensed. As patient volumes increased, this process became a significant operational bottleneck. Our objective was to automate repetitive work, improve prescription accuracy, and allow pharmacists to focus on patient care instead of administrative tasks.",
+
+  "solutionIntro": "Rather than replacing pharmacists, we built an AI-assisted workflow that digitizes handwritten prescriptions, validates medication information, and automatically routes uncertain cases for human review. This approach increased productivity while maintaining clinical oversight.",
+
+  "solutionFeatures": [
+    {
+      "icon": "clock",
+      "title": "Faster Prescription Processing",
+      "description": "Digitizes handwritten prescriptions within seconds, dramatically reducing manual interpretation time."
+    },
+    {
+      "icon": "users",
+      "title": "Improved Staff Productivity",
+      "description": "Allows pharmacists to focus on patient care instead of repetitive administrative work."
+    },
+    {
+      "icon": "shield-check",
+      "title": "Reduced Medication Errors",
+      "description": "AI validation and confidence scoring help minimize transcription mistakes before dispensing."
+    },
+    {
+      "icon": "database",
+      "title": "Structured Medical Records",
+      "description": "Creates searchable, standardized prescription data for downstream healthcare systems."
+    },
+    {
+      "icon": "workflow",
+      "title": "Smarter Review Process",
+      "description": "Only low-confidence prescriptions require manual verification, reducing unnecessary workload."
+    },
+    {
+      "icon": "trending-up",
+      "title": "Scalable Operations",
+      "description": "Supports increasing prescription volumes without requiring proportional staffing growth."
+    }
+  ],
+
+  "features": [
+    "Automated handwritten prescription digitization",
+    "AI-assisted medication extraction",
+    "Medical terminology validation",
+    "Confidence-based review workflow",
+    "Structured digital prescription records",
+    "Searchable medicine database",
+    "Real-time processing",
+    "Hospital-ready API integration"
+  ],
+
+  "screenshots": [
+    {
+      "image": "/images/case-studies/medical-prescription-ocr-shot-1.svg",
+      "caption": "Prescription Upload"
+    },
+    {
+      "image": "/images/case-studies/medical-prescription-ocr-shot-2.svg",
+      "caption": "AI Prescription Analysis"
+    },
+    {
+      "image": "/images/case-studies/medical-prescription-ocr-shot-3.svg",
+      "caption": "Medication Validation"
+    },
+    {
+      "image": "/images/case-studies/medical-prescription-ocr-shot-4.svg",
+      "caption": "Pharmacy Workflow Dashboard"
+    }
+  ],
+
+  "testimonial": {
+    "quote": "The biggest improvement wasn't just accuracy—it was how much time our pharmacists got back. Tasks that previously required manual interpretation now happen automatically, allowing our team to focus on delivering better patient care.",
+    "name": "Dr. Rajesh Mehta",
+    "position": "Pharmacy Lead",
+    "avatar": "/images/case-studies/medical-prescription-ocr-avatar.svg",
+    "rating": 5
+  },
+
+  "demoUrl": "https://demo.qbitlog.com",
+
+  "isPrototype": true,
+
+  "contentHtml": "<h2>The Business Challenge</h2><p>Handwritten prescriptions are a daily reality for many hospitals, but manually interpreting them slows pharmacy operations, increases administrative workload, and introduces unnecessary risk. As prescription volumes grow, pharmacists spend more time reading handwriting than supporting patients.</p><h2>Our Approach</h2><p>We developed an AI-powered workflow that automatically converts handwritten prescriptions into structured digital records. Multiple AI models work together to extract medication names, dosages, frequencies, and durations while validating results against a comprehensive medicine database.</p><h2>Business Impact</h2><ul><li>Reduced manual prescription processing</li><li>Improved pharmacist productivity</li><li>Accelerated patient service</li><li>Reduced transcription errors</li><li>Standardized digital prescription records</li><li>Built a scalable pharmacy workflow</li></ul><h2>Technology</h2><p>The solution combines OCR, Medical NLP, AI validation, and cloud infrastructure to deliver reliable prescription automation while maintaining clinical oversight.</p>"
+}
