@@ -2,7 +2,8 @@ import { Metadata } from "next";
 import Navbar from "@/components/global/navbar";
 import Hero5 from "@/app/_home/components/hero_5";
 import OurMarque from "@/components/global/our-marque";
-import AboutV2 from "@/app/_home/components/about/about-v2";
+import AboutV3 from "@/app/_home/components/about/about-v3";
+import LifeAtQbitlog from "@/app/_home/components/about/life-at-qbitlog";
 import Services from "@/components/global/services";
 import {
 	Star,
@@ -296,11 +297,16 @@ export default function Home() {
 					title=''
 					description=''>
 				</SectionLayout> */}
-				<section id='about' className=' my-5 mx-4'>
-					<AboutV2 />
+				<section id='about' className='container px-4 my-16'>
+					<AboutV3 />
 				</section>
 
+
 				<Services />
+
+				<section id='life-at-qbitlog' className='container px-4 my-16'>
+					<LifeAtQbitlog />
+				</section>
 				<section id='how-it-works' className='container px-2'>
 					<HowItWorks />
 				</section>

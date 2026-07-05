@@ -72,30 +72,59 @@ export function Globe({
 	};
 
 	useEffect(() => {
-		const onResize = () => {
-			if (canvasRef.current) {
-				width = canvasRef.current.offsetWidth;
-			}
-		};
+		const canvas = canvasRef.current;
+		if (!canvas) return;
 
+		let globe: ReturnType<typeof createGlobe> | null = null;
+
+		const onResize = () => {
+			width = canvas.offsetWidth;
+		};
 		window.addEventListener("resize", onResize);
 		onResize();
 
-		const globe = createGlobe(canvasRef.current!, {
-			...config,
-			width: width * 2,
-			height: width * 2,
-			onRender: (state) => {
-				if (!pointerInteracting.current) phi += 0.001;
-				state.phi = phi + rs.get();
-				state.width = width * 2;
-				state.height = width * 2;
-			},
-		});
+		const start = () => {
+			if (globe) return;
+			globe = createGlobe(canvas, {
+				...config,
+				// Render at 1x instead of 2x supersampling: the globe's on-screen
+				// size is buffer/devicePixelRatio, so halving both keeps identical
+				// geometry while cutting per-frame pixel work by ~4x.
+				devicePixelRatio: 1,
+				width: width,
+				height: width,
+				onRender: (state) => {
+					if (!pointerInteracting.current) phi += 0.001;
+					state.phi = phi + rs.get();
+					state.width = width;
+					state.height = width;
+				},
+			});
+			requestAnimationFrame(() => {
+				if (canvasRef.current) canvasRef.current.style.opacity = "1";
+			});
+		};
 
-		setTimeout(() => (canvasRef.current!.style.opacity = "1"), 0);
+		const stop = () => {
+			if (globe) {
+				globe.destroy();
+				globe = null;
+			}
+			if (canvasRef.current) canvasRef.current.style.opacity = "0";
+		};
+
+		// Only run the (expensive, continuously-rendering) WebGL globe while it
+		// is actually on screen — this frees the main thread when scrolling the
+		// rest of the page.
+		const observer = new IntersectionObserver(
+			([entry]) => (entry.isIntersecting ? start() : stop()),
+			{ threshold: 0 },
+		);
+		observer.observe(canvas);
+
 		return () => {
-			globe.destroy();
+			observer.disconnect();
+			stop();
 			window.removeEventListener("resize", onResize);
 		};
 	}, [rs, config]);

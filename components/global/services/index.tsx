@@ -88,7 +88,7 @@ const services_data: ServicesData = [
 		],
 	},
 	{
-		title: "Graphics Design",
+		title: "UI/UX Design",
 		description:
 			"Professional graphic design services for branding, UI/UX, and visual identity. Create stunning visuals that capture attention, communicate your message effectively, and strengthen your brand presence.",
 		learn_more: "/services/graphics-design",

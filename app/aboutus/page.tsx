@@ -4,16 +4,9 @@ import Footer from "@/components/global/footer";
 import SectionLayout from "@/components/global/section-layout";
 import CompanyStory from "./_components/company-story";
 import OurValues from "./_components/our-values";
-import CompanyStats from "./_components/company-stats";
-import {
-	Building2,
-	Target,
-	TrendingUp,
-	Users,
-	Award,
-	Lightbulb,
-} from "lucide-react";
-import Hero from "@/app/_home/components/hero";
+import AboutHeroV2 from "./_components/hero-v2";
+import OurStory from "./_components/our-story";
+import { Compass, Target, Users, Award, Lightbulb } from "lucide-react";
 import CtaBanner from "@/components/global/cta-banner";
 import ContactUs from "@/components/global/contact-us";
 const ICON_SIZE = 32;
@@ -66,82 +59,39 @@ export default function AboutUsPage() {
 		<div className=''>
 			<Navbar />
 
-			<Hero
-				title={["A", "B", "O", "U", "T", "U", "S"]}
-				description={`Qbitlog is a future-forward software design agency where innovation meets intelligence. We specialize in crafting adaptive web and mobile applications. Our passionate team leverages machine learning and cutting-edge animations, delivering intuitively engaging and transformative digital experiences. We empower your vision, building an intelligent digital future, one meticulously designed, AI-enhanced solution at a time.`}
-				button=''
-				subtitle="Architecting Tomorrow's Digital Landscape"
-			/>
+			<AboutHeroV2 />
 			<main className='container'>
-				<SectionLayout
+				<section
+					id='our-story'
+					className='mx-auto w-full  px-4 py-12 md:py-16'>
+					<OurStory />
+				</section>
+
+				<CompanyStory />
+
+				{/* <SectionLayout
 					id='company-story'
-					badgeIcon={<Building2 size={ICON_SIZE} className='text-primary' />}
-					badgeLabel='Who We Are'
-					title='Powered by Expertise, Driven by Excellence'
-					description='QBITLOG assembles elite professionals with extensive experience from leading tech companies and Fortune 500 enterprises. Our expert-driven approach combines decades of collective knowledge with cutting-edge innovation to deliver transformative digital solutions that drive measurable business results.'>
-					<CompanyStory />
-				</SectionLayout>
+					badgeIcon={<Compass size={ICON_SIZE} className='text-primary' />}
+					badgeLabel='Our Purpose'
+					title='Purpose That Drives Everything We Do'
+					description='Our purpose is the foundation of our culture, decisions, and long-term relationships.'>
+					
+				</SectionLayout> */}
 
 				<SectionLayout
 					id='our-values'
-					badgeIcon={<Target size={ICON_SIZE} className='text-primary' />}
-					badgeLabel='Our Values'
+					badgeIcon={<Target size={ICON_SIZE} className='text-primary hidden md:block' />}
+					badgeLabel='Our Core Values'
 					title='What Drives Us Forward'
-					description='Our core values shape every project we undertake and every relationship we build. These principles guide our decisions and ensure we deliver exceptional results.'>
+					description='Our core values shape every project we undertake and every relationship we build.'>
 					<OurValues />
 				</SectionLayout>
 				<div className='-mb-25'>
 					<CtaBanner />
 				</div>
 
-				<SectionLayout
-					id='company-stats'
-					badgeIcon={<TrendingUp size={ICON_SIZE} className='text-primary' />}
-					badgeLabel='Our Capabilities'
-					title='Excellence Measured in Expertise'
-					description='Our strength lies in our team collective experience and technical mastery. These metrics showcase the depth of knowledge and professional excellence we bring to every project, ensuring world-class solutions for our clients.'>
-					<CompanyStats />
-				</SectionLayout>
 
-				<SectionLayout
-					id='why-choose-us'
-					badgeIcon={<Award size={ICON_SIZE} className='text-primary' />}
-					badgeLabel='Why Choose Us'
-					title='What Sets Us Apart'
-					description='We combine technical expertise with creative vision to deliver cutting-edge solutions that drive business growth and user engagement.'>
-					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-						<div className='text-center p-6 rounded-lg border bg-card'>
-							<Users className='w-12 h-12 mx-auto mb-4 text-primary' />
-							<h3 className='text-lg font-semibold mb-2'>
-								Battle-Tested Professionals
-							</h3>
-							<p className='text-sm text-muted-foreground'>
-								C-level executives and senior engineers with proven expertise
-								from industry-leading organizations
-							</p>
-						</div>
-						<div className='text-center p-6 rounded-lg border bg-card'>
-							<Lightbulb className='w-12 h-12 mx-auto mb-4 text-primary' />
-							<h3 className='text-lg font-semibold mb-2'>
-								Enterprise-Grade Innovation
-							</h3>
-							<p className='text-sm text-muted-foreground'>
-								Leveraging advanced technologies and architectural patterns
-								proven at scale in global enterprises
-							</p>
-						</div>
-						<div className='text-center p-6 rounded-lg border bg-card'>
-							<Award className='w-12 h-12 mx-auto mb-4 text-primary' />
-							<h3 className='text-lg font-semibold mb-2'>
-								Precision Execution
-							</h3>
-							<p className='text-sm text-muted-foreground'>
-								Applying lessons from hundreds of enterprise deployments to
-								ensure flawless delivery and performance
-							</p>
-						</div>
-					</div>
-				</SectionLayout>
+
 
 				<ContactUs />
 			</main>
