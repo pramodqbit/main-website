@@ -138,6 +138,20 @@ const teamData = [
 			"Digital Marketing",
 		],
 	},
+	{
+		name: "Ayush",
+		role: "BUSINESS DEVELOPMENT LEAD ( BD LEAD )",
+		description:
+			"Ayush plays a central role in QBITLOG’s business expansion, identifying opportunities, building meaningful client relationships, and converting leads into lasting partnerships. With a strategic and tech-savvy approach to every client engagement, he ensures alignment between client goals and the development team from day one.",
+		skills: [
+			"Business Development",
+			"Sales",
+			"Client Relationship Management",
+			"Strategic Planning",
+			"Market Analysis",
+			"Sales Strategy",
+		],
+	},
 ];
 
 export default function TeamMembers() {

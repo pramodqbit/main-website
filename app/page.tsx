@@ -28,7 +28,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://qbitlog.com";
 export const metadata: Metadata = {
 	title: "Home",
 	description:
-		"QBITLOG delivers innovative digital solutions with elite professionals from Fortune 500 companies. Expert web development, mobile apps, AI/ML, cloud solutions, and UI/UX design services. Transform your business with enterprise-grade technology and proven expertise.",
+		"Qbitlog builds scalable web applications, mobile apps, AI solutions, SaaS platforms and enterprise software for startups and businesses worldwide.",
 	openGraph: {
 		title: "QBITLOG - Empowering Your Vision with Innovative Digital Solutions",
 		description:
