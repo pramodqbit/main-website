@@ -39,8 +39,8 @@ export default function Footer() {
 			{ name: "Case Studies", href: "/case-studies" },
 		],
 		legal: [
-			{ name: "Privacy Policy", href: "/construction" },
-			{ name: "Terms of Service", href: "/construction" },
+			{ name: "Privacy Policy", href: "/academyai/privacy-policy" },
+			{ name: "Terms of Service", href: "/academyai/terms-and-conditions" },
 			{ name: "Cookie Policy", href: "/construction" },
 		],
 	};

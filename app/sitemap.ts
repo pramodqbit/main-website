@@ -69,6 +69,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
+    {
+      url: `${baseUrl}/academyai/privacy-policy`,
+      lastModified: new Date('2026-09-18'),
+      changeFrequency: 'yearly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/academyai/terms-and-conditions`,
+      lastModified: new Date('2026-09-18'),
+      changeFrequency: 'yearly' as const,
+      priority: 0.5,
+    },
   ]
 
   // Service pages
