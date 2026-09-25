@@ -16,6 +16,7 @@ import { InsightsBlock } from "./InsightsBlock";
 import { JobsListBlock } from "./JobsListBlock";
 import { LogoWallBlock } from "./LogoWallBlock";
 import { LogTickerBlock } from "./LogTickerBlock";
+import { ManifestoBlock } from "./ManifestoBlock";
 import { MediaAnnotatedBlock } from "./MediaAnnotatedBlock";
 import { MethodBlock } from "./MethodBlock";
 import { MetricsBlock } from "./MetricsBlock";
@@ -43,6 +44,8 @@ export function renderBlock(block: LayoutBlock, i: number, blocks: LayoutBlock[]
       return <HeroLogBlock key={key} block={block} proofStrip={next?.blockType === "proofStrip" ? next : null} />;
     case "proofStrip":
       return blocks[i - 1]?.blockType === "heroLog" ? null : <ProofStripBlock key={key} block={block} />;
+    case "manifesto":
+      return <ManifestoBlock key={key} block={block} />;
     case "logTicker":
       return <LogTickerBlock key={key} block={block} />;
     case "showcase":

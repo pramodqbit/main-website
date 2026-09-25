@@ -46,7 +46,7 @@ function BulletList({ title, items }: { title: string; items: { item: string; id
       </MonoLabel>
       <ul className="m-0 flex list-none flex-col gap-3 p-0">
         {items.map((it, i) => (
-          <li key={it.id ?? i} className="flex gap-3">
+          <li key={it.id ?? i} className="flex gap-3" data-reveal="up" data-reveal-stagger={80}>
             <span aria-hidden="true" className="font-mono text-brand">
               —
             </span>
@@ -80,9 +80,13 @@ export default async function JobPage({ params }: Props) {
           <Heading size="h1" className="mt-5">
             {job.title}
           </Heading>
-          {job.salary ? <p className="mt-4 font-mono text-sm text-muted">{job.salary}</p> : null}
+          {job.salary ? (
+            <p className="mt-4 font-mono text-sm text-muted" data-reveal="up" data-reveal-delay={350}>
+              {job.salary}
+            </p>
+          ) : null}
           {!open ? (
-            <div className="mt-4">
+            <div className="mt-4" data-reveal="up" data-reveal-delay={350}>
               <Pill tone="muted">This role is closed</Pill>
             </div>
           ) : null}

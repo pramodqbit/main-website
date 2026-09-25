@@ -9,6 +9,8 @@ export function PostRow({ href, date, category, title, className }: PostRowProps
   return (
     <Link
       href={href}
+      data-reveal="up"
+      data-reveal-stagger={90}
       className={cn(
         "group grid grid-cols-[110px_1fr] gap-6 border-b border-line py-[22px] no-underline first:border-t max-[520px]:grid-cols-1 max-[520px]:gap-1.5",
         className,

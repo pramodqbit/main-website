@@ -22,6 +22,8 @@ export function FeatureCase({ href, labels, title, summary, metrics, visual, pro
   return (
     <Link
       href={href}
+      data-reveal="up"
+      data-reveal-delay={120}
       className={cn(
         "grid grid-cols-[1fr_1.1fr] border border-line bg-surface no-underline transition-colors duration-200 hover:border-ink max-[900px]:grid-cols-1",
         className,

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { clsx as cn } from "clsx";
+import { BITS_BURST } from "./events";
 
 export type BitFieldProps = {
   variant: "field" | "wordmark";
@@ -11,7 +12,8 @@ export type BitFieldProps = {
   ariaLabel?: string;
 };
 
-type Point = { x: number; y: number; e: number; s: number };
+/** px/py: drawn position (differs from x/y while the wordmark assembles); sx/sy: scattered start; d: assemble delay. */
+type Point = { x: number; y: number; e: number; s: number; px: number; py: number; sx: number; sy: number; d: number };
 
 type Opts = {
   text?: string;
@@ -22,7 +24,14 @@ type Opts = {
   rest: (g: number) => number;
   grow: (g: number) => number;
   decay: number;
-  ambient: number;
+  /** One quick sweep of flipping bits every `every` ms, lasting `sweep` ms, first after `first` ms. Calm, not busy. */
+  every: number;
+  sweep: number;
+  first: number;
+  /** Dots fly in from scattered positions the first time the canvas scrolls into view. */
+  assemble?: boolean;
+  /** Listen for the intro's "burst" event. */
+  burst?: boolean;
 };
 
 const FIELD: Opts = {
@@ -32,7 +41,10 @@ const FIELD: Opts = {
   rest: () => 2,
   grow: () => 7,
   decay: 0.955,
-  ambient: 7000,
+  every: 25000,
+  sweep: 2600,
+  first: 9000,
+  burst: true,
 };
 
 const WORDMARK: Opts = {
@@ -43,8 +55,13 @@ const WORDMARK: Opts = {
   rest: (g) => g * 0.5,
   grow: (g) => g * 0.45,
   decay: 0.94,
-  ambient: 9000,
+  every: 28000,
+  sweep: 3200,
+  first: 4000,
+  assemble: true,
 };
+
+const easeInOut = (k: number) => (k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2);
 
 /**
  * Interactive dot grid: dots flip into violet "bits" under the pointer.
@@ -74,6 +91,7 @@ export function BitField({ variant, text = "QBITLOG", className, ariaLabel }: Bi
     let visible = true;
     let disposed = false;
     const t0 = performance.now();
+    let asmStart: number | null = null;
 
     const cssv = (n: string) => getComputedStyle(root).getPropertyValue(n).trim();
     const readColors = () => {
@@ -84,11 +102,26 @@ export function BitField({ variant, text = "QBITLOG", className, ariaLabel }: Bi
       ctx.clearRect(0, 0, W, H);
       const R = opts.radius(W);
       let sx = -1e9;
-      if (!reduce) sx = (((now - t0) % opts.ambient) / opts.ambient) * (W + 400) - 200;
+      const since = now - t0 - opts.first;
+      if (!reduce && since > 0) {
+        const inCycle = since % opts.every;
+        if (inCycle < opts.sweep) sx = (inCycle / opts.sweep) * (W + 400) - 200;
+      }
       const rest = opts.rest(gap);
       const hot: Point[] = [];
+      const assembling = opts.assemble && !reduce;
       ctx.fillStyle = colors.rest;
       for (const p of pts) {
+        if (assembling) {
+          const k = asmStart === null ? 0 : Math.min(1, Math.max(0, (now - asmStart - p.d) / 1100));
+          const ek = easeInOut(k);
+          p.px = p.sx + (p.x - p.sx) * ek;
+          p.py = p.sy + (p.y - p.sy) * ek;
+          if (k > 0 && k < 1) p.e = Math.max(p.e, 0.6 * (1 - k));
+        } else {
+          p.px = p.x;
+          p.py = p.y;
+        }
         if (mouse.on) {
           const dx = p.x - mouse.x;
           const dy = p.y - mouse.y;
@@ -98,13 +131,13 @@ export function BitField({ variant, text = "QBITLOG", className, ariaLabel }: Bi
         if (Math.abs(p.x - sx) < gap * 0.9 && Math.random() < 0.07) p.e = Math.max(p.e, 0.5 + Math.random() * 0.5);
         p.e *= opts.decay;
         if (p.e > 0.04) hot.push(p);
-        else ctx.fillRect(p.x - rest / 2, p.y - rest / 2, rest, rest);
+        else ctx.fillRect(p.px - rest / 2, p.py - rest / 2, rest, rest);
       }
       for (const q of hot) {
         const sz = rest + q.e * opts.grow(gap);
         ctx.globalAlpha = 0.25 + 0.75 * q.e;
         ctx.fillStyle = q.s < 0.12 ? colors.signal : colors.brand;
-        ctx.fillRect(q.x - sz / 2, q.y - sz / 2, sz, sz);
+        ctx.fillRect(q.px - sz / 2, q.py - sz / 2, sz, sz);
       }
       ctx.globalAlpha = 1;
     };
@@ -149,7 +182,10 @@ export function BitField({ variant, text = "QBITLOG", className, ariaLabel }: Bi
       for (let y = gap / 2; y < H; y += gap) {
         for (let x = gap / 2; x < W; x += gap) {
           if (mask && mask[(Math.floor(y) * mw + Math.floor(x)) * 4 + 3] < 128) continue;
-          pts.push({ x, y, e: 0, s: Math.random() });
+          pts.push({
+            x, y, e: 0, s: Math.random(), px: x, py: y,
+            sx: Math.random() * W, sy: Math.random() * H, d: (x / W) * 500 + Math.random() * 350,
+          });
         }
       }
       draw(performance.now());
@@ -205,15 +241,28 @@ export function BitField({ variant, text = "QBITLOG", className, ariaLabel }: Bi
     };
     host.addEventListener("pointermove", onMove);
     host.addEventListener("pointerleave", onLeave);
-    const io = new IntersectionObserver(([entry]) => {
-      visible = entry.isIntersecting;
-      if (visible) start();
-    });
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        visible = entry.isIntersecting;
+        if (visible && opts.assemble && asmStart === null && entry.intersectionRatio >= 0.3) asmStart = performance.now() + 150;
+        if (visible) start();
+      },
+      { threshold: opts.assemble ? [0, 0.3] : 0 },
+    );
     io.observe(canvas);
     start();
 
+    /* The intro hands over by flashing a share of the bits. */
+    const onBurst = (e: Event) => {
+      const amount = (e as CustomEvent<number>).detail ?? 0.2;
+      for (const p of pts) if (Math.random() < amount) p.e = 0.5 + Math.random() * 0.5;
+      start();
+    };
+    if (opts.burst) window.addEventListener(BITS_BURST, onBurst);
+
     return () => {
       disposed = true;
+      if (opts.burst) window.removeEventListener(BITS_BURST, onBurst);
       ro.disconnect();
       mo.disconnect();
       io.disconnect();

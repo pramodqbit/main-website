@@ -2,6 +2,7 @@ import type { Block } from "payload";
 import { blockHelp } from "../fields/blockHelp";
 import { linkField } from "../fields/link";
 import { rowLabel } from "../fields/rowLabel";
+import { HERO_INTRO_DEFAULT_LINES } from "./heroIntroDefaults";
 
 type HeroSibling = { logSource?: "caseStudy" | "manual" };
 
@@ -106,6 +107,45 @@ export const HeroLog: Block = {
       type: "checkbox",
       defaultValue: true,
       admin: { description: "Show the interactive dot grid behind the hero." },
+    },
+    {
+      name: "intro",
+      type: "group",
+      label: "Opening intro (home page only)",
+      admin: {
+        description:
+          "On the first visit of a session, these lines type out on a blank page, then break into dots that become the hero. Visitors can skip it. Never shown to people who turn off animations.",
+      },
+      fields: [
+        {
+          name: "enabled",
+          type: "checkbox",
+          defaultValue: true,
+          label: "Play the intro",
+          admin: { description: "Only plays on the home page (/)." },
+        },
+        {
+          name: "lines",
+          type: "array",
+          maxRows: 5,
+          labels: { singular: "Line", plural: "Lines" },
+          defaultValue: HERO_INTRO_DEFAULT_LINES,
+          admin: {
+            initCollapsed: true,
+            description: "Keep it to 3–5 short, true lines. The label is violet mono (a year or a verb); the text is typed.",
+            components: { RowLabel: rowLabel("text", "Line") },
+          },
+          fields: [
+            {
+              type: "row",
+              fields: [
+                { name: "label", type: "text", required: true, admin: { width: "25%", description: 'e.g. "2025", "DECIDED"' } },
+                { name: "text", type: "text", required: true, maxLength: 70, admin: { width: "75%" } },
+              ],
+            },
+          ],
+        },
+      ],
     },
   ],
 };

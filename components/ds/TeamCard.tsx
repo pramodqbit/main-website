@@ -24,7 +24,7 @@ function initials(name: string) {
 /** Team member: square grayscale photo (or monogram), role and name. */
 export function TeamCard({ id, name, role, photo, bio, links, className }: TeamCardProps) {
   return (
-    <article id={id} className={cn("group flex scroll-mt-24 flex-col gap-3", className)}>
+    <article id={id} data-reveal="up" className={cn("group flex scroll-mt-24 flex-col gap-3", className)}>
       <div className="relative aspect-square overflow-hidden border border-line bg-surface">
         {photo ? (
           <Image

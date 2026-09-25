@@ -18,7 +18,7 @@ const cell = "border-b border-l border-line px-4 py-3 text-left align-top";
 export function CapabilityTable({ caption, columns, rows, emptyLabel = "Ask us", emptyHref = "/contact", className }: CapabilityTableProps) {
   if (!rows.length || !columns.length) return null;
   return (
-    <div className={cn("max-w-full overflow-x-auto border-r border-t border-line", className)} tabIndex={0} role="region" aria-label={caption}>
+    <div data-reveal="up" data-reveal-delay={150} className={cn("max-w-full overflow-x-auto border-r border-t border-line", className)} tabIndex={0} role="region" aria-label={caption}>
       <table className="w-full min-w-[640px] border-collapse text-[15px]">
         <caption className="sr-only">{caption}</caption>
         <thead>

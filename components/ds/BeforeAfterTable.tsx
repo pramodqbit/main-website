@@ -33,7 +33,7 @@ export function BeforeAfterTable({ rows, caption = "What changed", className }: 
       </thead>
       <tbody className="max-[760px]:block">
         {rows.map((r, i) => (
-          <tr key={`${r.aspect}-${i}`} className="max-[760px]:block max-[760px]:border-b max-[760px]:border-line max-[760px]:py-4">
+          <tr key={`${r.aspect}-${i}`} data-reveal="fade" data-reveal-stagger={140} className="max-[760px]:block max-[760px]:border-b max-[760px]:border-line max-[760px]:py-4">
             <th scope="row" className={cn(td, "text-left font-serif text-xl font-normal max-[760px]:block max-[760px]:pb-2")}>
               {r.aspect}
             </th>

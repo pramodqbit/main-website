@@ -99,3 +99,9 @@ These come from `content/drafts/phase-8/case-studies.json`. The seed step **does
 
 - [ ] Freepik images on the 6 insights: replace with real diagrams or screenshots, or keep them with the "Image: Freepik" credit (Media → filter by credit)
 - [ ] Team photos: none yet. Cards show a monogram until a photo is uploaded (Studio → Team → Photo)
+
+## Phase 9: story layer (intro + manifesto)
+
+- [ ] Intro line "SHIPPED · Academy AI, our own product.": confirm Academy AI is live and can be called our own product. (Content → Pages → Home → Hero → Opening intro)
+- [ ] Manifesto line "Deadlines paid for by tired teams.": founders approve the tone. (Content → Pages → Home → Manifesto, draft added by seed step 17)
+- [ ] Publish the Home page draft that adds the manifesto after review.

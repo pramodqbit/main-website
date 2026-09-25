@@ -7,6 +7,8 @@ export type TypicalProjectRowProps = { name: string; duration?: string | null; d
 export function TypicalProjectRow({ name, duration, description, className }: TypicalProjectRowProps) {
   return (
     <li
+      data-reveal="up"
+      data-reveal-stagger={100}
       className={cn(
         "grid grid-cols-[1fr_auto_1.2fr] items-baseline gap-8 border-b border-line py-6 first:border-t max-[860px]:grid-cols-1 max-[860px]:gap-2",
         className,

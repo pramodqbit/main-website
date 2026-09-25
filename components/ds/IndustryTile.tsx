@@ -9,6 +9,7 @@ export function IndustryTile({ href, label, title, summary, footLabel, className
   return (
     <Link
       href={href}
+      data-reveal="up"
       className={cn("flex min-h-[190px] flex-col gap-2.5 bg-surface p-6 no-underline transition-colors duration-200 hover:bg-paper", className)}
     >
       <MonoLabel>{label}</MonoLabel>

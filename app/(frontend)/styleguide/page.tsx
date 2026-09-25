@@ -8,6 +8,7 @@ import {
   Prose, ProofStrip, Quote, Section, SectionHead, Select, ServiceRow, Steps, TeamCard, Textarea, TextLink, TechByCategory,
   ThemeToggle, Ticker, TileGrid, TypicalProjectRow, type MetricProps,
 } from "@/components/ds";
+import { ManifestoBlock } from "@/components/blocks/ManifestoBlock";
 import { LazyBitField } from "@/components/motion/LazyBitField";
 import { TokenSwatches } from "./TokenSwatches";
 
@@ -568,6 +569,22 @@ export default function StyleguidePage() {
             <div data-bitfield-host="" className="relative h-[320px] overflow-hidden border border-line">
               <div aria-hidden="true" className="absolute inset-0 dotgrid bits-mask [[data-bitfield-host]:has(canvas)_&]:hidden" />
               <LazyBitField variant="field" />
+            </div>
+          </Block>
+
+          <Block title="Manifesto (story layer)">
+            <div className="border border-line">
+              <ManifestoBlock
+                block={{
+                  blockType: "manifesto",
+                  label: "ENTRY 001 / WHY WE EXIST",
+                  lines: [
+                    { text: "In 2025, a few engineers got tired of building for everyone else." },
+                    { text: "Now we build yours the same way: *like it’s ours*, with every decision on the record." },
+                  ],
+                  signature: "The Qbitlog team · 2025",
+                }}
+              />
             </div>
           </Block>
 

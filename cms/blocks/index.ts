@@ -12,6 +12,7 @@ import { Insights } from "./Insights";
 import { JobsList } from "./JobsList";
 import { LogoWall } from "./LogoWall";
 import { LogTicker } from "./LogTicker";
+import { Manifesto } from "./Manifesto";
 import { MediaAnnotated } from "./MediaAnnotated";
 import { Method } from "./Method";
 import { Metrics } from "./Metrics";
@@ -29,6 +30,7 @@ export { postContentBlocks } from "./lexical";
 
 export const pageBlocks: Block[] = [
   HeroLog,
+  Manifesto,
   ProofStrip,
   LogTicker,
   Showcase,

@@ -25,7 +25,7 @@ export async function ContactFormBlock({ block }: { block: ContactFormData }) {
       <SectionHeader data={block} as="h1" />
       <div className="grid grid-cols-[1.4fr_1fr] gap-12 max-[980px]:grid-cols-1">
         <LazyContactForm replyTime={replyTime} />
-        <aside aria-label="Contact details" className="self-start border border-line bg-surface p-8">
+        <aside aria-label="Contact details" className="self-start border border-line bg-surface p-8" data-reveal="up" data-reveal-delay={300}>
           <MonoLabel as="h2" tone="ink">
             What happens next
           </MonoLabel>

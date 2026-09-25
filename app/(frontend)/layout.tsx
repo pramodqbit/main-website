@@ -5,6 +5,10 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeScript } from "@/components/ds/ThemeScript";
 import { CtaTracker } from "@/components/forms/CtaTracker";
 import { UtmCapture } from "@/components/forms/UtmCapture";
+import { MotionRuntime } from "@/components/motion/MotionRuntime";
+import { MotionScript } from "@/components/motion/MotionScript";
+import { Narrator } from "@/components/motion/Narrator";
+import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { AnnouncementBar } from "@/components/site/AnnouncementBar";
 import { DraftBanner } from "@/components/site/DraftBanner";
 import { LazyLivePreview } from "@/components/site/LazyLivePreview";
@@ -43,9 +47,15 @@ export const viewport: Viewport = {
 export default async function FrontendLayout({ children }: { children: React.ReactNode }) {
   const [draft, settings] = await Promise.all([isDraft(), getSiteSettings()]);
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable} ${serif.variable}`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${sans.variable} ${mono.variable} ${serif.variable}`}
+      data-draft={draft ? "" : undefined}
+      suppressHydrationWarning
+    >
       <head>
         <ThemeScript />
+        <MotionScript />
         <JsonLd data={organizationLd(settings)} />
       </head>
       <body>
@@ -62,6 +72,9 @@ export default async function FrontendLayout({ children }: { children: React.Rea
         </main>
         <SiteFooter />
         <UtmCapture />
+        <SmoothScroll />
+        <MotionRuntime />
+        <Narrator />
         <CtaTracker />
         {draft ? (
           <>

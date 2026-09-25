@@ -21,7 +21,7 @@ export function EngagementCard({ name, bestFor, duration, team, pricing, include
     ["Pricing", pricing],
   ].filter((f): f is [string, string] => Boolean(f[1]));
   return (
-    <article className={cn("flex flex-col gap-5 border border-line bg-surface p-7", className)}>
+    <article data-reveal="up" data-reveal-stagger={140} className={cn("flex flex-col gap-5 border border-line bg-surface p-7", className)}>
       <div className="flex flex-col gap-2">
         <h3 className="font-serif text-[28px] leading-[1.15]">{name}</h3>
         <p className="text-muted">{bestFor}</p>

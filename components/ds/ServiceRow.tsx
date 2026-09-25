@@ -19,6 +19,8 @@ export function ServiceRow({ href, category, title, summary, highlights, caseCou
   const items = (highlights ?? []).slice(0, 3);
   return (
     <div
+      data-reveal="up"
+      data-reveal-stagger={90}
       className={cn(
         "relative grid grid-cols-[200px_1.1fr_1fr_32px] items-baseline gap-8 border-b border-line py-[26px] transition-[padding,background-color] duration-200 first:border-t hover:bg-surface hover:px-4 max-[860px]:grid-cols-1 max-[860px]:gap-1.5",
         className,

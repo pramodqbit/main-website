@@ -23,7 +23,7 @@ function shortDate(date: string) {
 /** Dated activity list (studio log). */
 export function LogStream({ entries, title = "Studio log", meta, note, as: Tag = "aside", className }: LogStreamProps) {
   return (
-    <Tag aria-label={title} className={cn("self-start border border-line bg-surface font-mono text-[13px]", className)}>
+    <Tag aria-label={title} data-reveal="up" data-reveal-delay={250} className={cn("self-start border border-line bg-surface font-mono text-[13px]", className)}>
       <div className="flex justify-between gap-2.5 border-b border-line px-4 py-3 text-label uppercase">
         <span className="text-ink">{title}</span>
         {meta ? <span className="text-muted">{meta}</span> : null}

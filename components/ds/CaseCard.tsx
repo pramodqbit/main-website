@@ -26,6 +26,7 @@ export function CaseCard({ href, industry, meta, client, title, summary, image, 
   return (
     <Link
       href={href}
+      data-reveal={priority ? undefined : "up"}
       className={cn(
         "group flex flex-col border border-line bg-surface no-underline transition-colors duration-200 hover:border-ink",
         className,

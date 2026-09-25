@@ -80,7 +80,7 @@ export default async function IndustryPage({ params }: Props) {
         <Section>
           <div className="grid grid-cols-[200px_1fr] gap-8 max-[860px]:grid-cols-1 max-[860px]:gap-3">
             <h2 className="m-0 font-mono text-sm font-normal text-brand">Compliance we design for</h2>
-            <ul className="m-0 flex list-none flex-wrap gap-2 p-0">
+            <ul className="m-0 flex list-none flex-wrap gap-2 p-0" data-reveal="up" data-reveal-delay={150}>
               {compliance.map((c) => (
                 <li key={c}>
                   <Pill tone="muted">{c}</Pill>

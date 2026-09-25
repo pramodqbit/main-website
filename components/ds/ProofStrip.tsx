@@ -18,7 +18,7 @@ export function ProofStrip({ items, className }: ProofStripProps) {
       )}
     >
       {items.slice(0, 4).map((m, i) => (
-        <div key={`${m.label}-${i}`} className="bg-paper px-6 py-[26px]">
+        <div key={`${m.label}-${i}`} className="bg-paper px-6 py-[26px]" data-reveal="up" data-reveal-stagger={120}>
           <Metric {...m} size="lg" countUp />
         </div>
       ))}

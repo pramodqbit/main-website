@@ -15,6 +15,8 @@ export function JobRow({ href, title, department, location, type, className }: J
   return (
     <Link
       href={href}
+      data-reveal="up"
+      data-reveal-stagger={90}
       className={cn(
         "grid grid-cols-[200px_1.1fr_1fr_32px] items-baseline gap-8 border-b border-line py-[26px] no-underline transition-[padding,background-color] duration-200 first:border-t hover:bg-surface hover:px-4 max-[860px]:grid-cols-1 max-[860px]:gap-1.5",
         className,

@@ -22,7 +22,7 @@ function hrefFor(basePath: string, page: number, query: PaginationProps["query"]
 export function Pagination({ page, totalPages, basePath, query, className }: PaginationProps) {
   if (totalPages <= 1) return null;
   return (
-    <nav aria-label="Pagination" className={cn("flex items-center justify-between gap-4 pt-8", className)}>
+    <nav aria-label="Pagination" data-reveal="fade" className={cn("flex items-center justify-between gap-4 pt-8", className)}>
       {page > 1 ? (
         <Button href={hrefFor(basePath, page - 1, query)} variant="ghost" size="sm">
           <span aria-hidden="true" className="font-mono">←</span> Previous

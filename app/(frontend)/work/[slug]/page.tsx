@@ -173,9 +173,13 @@ export default async function CaseStudyPage({ params }: Props) {
           {cs.title}
         </Heading>
         <Lede className="mt-6">{cs.summary}</Lede>
-        {isPrototype ? <p className="mt-4 max-w-[54ch] text-sm text-muted">{disclaimer}</p> : null}
+        {isPrototype ? (
+          <p className="mt-4 max-w-[54ch] text-sm text-muted" data-reveal="up" data-reveal-delay={400}>
+            {disclaimer}
+          </p>
+        ) : null}
         {cs.status === "live" && cs.liveUrl ? (
-          <div className="mt-8">
+          <div className="mt-8" data-reveal="up" data-reveal-delay={500}>
             <Button href={cs.liveUrl} newTab variant="ghost">
               View live product ↗
             </Button>
@@ -240,7 +244,12 @@ export default async function CaseStudyPage({ params }: Props) {
               />
               <ol className="m-0 flex list-none flex-col gap-16 p-0">
                 {cs.decisions.map((d, i) => (
-                  <li key={d.id ?? i} className="grid grid-cols-[200px_1fr] gap-8 max-[860px]:grid-cols-1 max-[860px]:gap-4">
+                  <li
+                    key={d.id ?? i}
+                    className="grid grid-cols-[200px_1fr] gap-8 max-[860px]:grid-cols-1 max-[860px]:gap-4"
+                    data-reveal="up"
+                    data-reveal-stagger={0}
+                  >
                     <span className="font-mono text-label uppercase text-muted">Decision {String(i + 1).padStart(2, "0")}</span>
                     <div className="measure">
                       <Heading as="h3" size="h3" className="mb-6">
@@ -274,7 +283,7 @@ export default async function CaseStudyPage({ params }: Props) {
           {cs.features?.length ? (
             <ul className="m-0 mt-12 grid list-none grid-cols-2 gap-px border border-line bg-line p-0 max-[760px]:grid-cols-1">
               {cs.features.map((f, i) => (
-                <li key={f.id ?? i} className="bg-paper p-6">
+                <li key={f.id ?? i} className="bg-paper p-6" data-reveal="up">
                   <h3 className="m-0 font-serif text-xl">{f.title}</h3>
                   {f.description ? <p className="mb-0 mt-2 text-muted">{f.description}</p> : null}
                 </li>
@@ -322,7 +331,9 @@ export default async function CaseStudyPage({ params }: Props) {
       {team ? (
         <Section>
           <SectionHead label={nextLog("TEAM")} title="Who built it" />
-          <p className="m-0 font-mono text-sm text-ink">{team}</p>
+          <p className="m-0 font-mono text-sm text-ink" data-reveal="up" data-reveal-delay={150}>
+            {team}
+          </p>
         </Section>
       ) : null}
 

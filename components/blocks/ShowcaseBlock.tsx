@@ -16,7 +16,7 @@ export function ShowcaseBlock({ block, priority }: { block: ShowcaseData; priori
     <section className="overflow-hidden border-b border-line py-24 max-md:py-16">
       <div className="wrap">
         <div className="mb-16 grid grid-cols-[1fr_minmax(0,420px)] items-end gap-10 max-[860px]:mb-10 max-[860px]:grid-cols-1 max-[860px]:gap-5">
-          <div>
+          <div data-chapter={labels.length ? labels.slice(0, 2).join(" / ") : block.title}>
             {labels.length ? <LogLabel items={labels} /> : null}
             <Heading
               as="h2"
@@ -28,7 +28,7 @@ export function ShowcaseBlock({ block, priority }: { block: ShowcaseData; priori
             </Heading>
           </div>
           {block.intro || cs ? (
-            <div className="text-[17px] text-muted">
+            <div className="text-[17px] text-muted" data-reveal="up" data-reveal-delay={350}>
               {block.intro ? <p className="m-0">{block.intro}</p> : null}
               {cs ? (
                 <Link href={`/work/${cs.slug}`} className="mt-3 inline-block font-mono text-sm text-brand underline-offset-[3px] hover:underline">

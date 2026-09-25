@@ -29,7 +29,9 @@
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit}
@@ -306,10 +308,101 @@ footer{padding-block:56px 40px;background:var(--paper)}
 
 @media (prefers-reduced-motion:reduce){.ticker-track,.hot .pin::after{animation:none}.frame{transform:none!important}}
 
+/* ===== story layer ===== */
+/* intro: "the first entry" */
+.intro{position:fixed;inset:0;z-index:100;background:var(--paper);display:flex;align-items:center;justify-content:center;transition:background-color .9s ease}
+.intro.clear{background-color:transparent}
+.intro.gone{display:none}
+.intro-inner{position:relative;z-index:1;width:min(820px,100%);padding-inline:24px;font-family:var(--mono);font-size:clamp(14px,1.55vw,18px);line-height:1.9}
+.intro-line{display:grid;grid-template-columns:120px 1fr;gap:18px;min-height:1.9em}
+.intro-line .k{color:var(--brand);letter-spacing:.08em}
+.intro-line .t{color:var(--ink)}
+.intro .cur{display:inline-block;width:.6em;height:1.1em;background:var(--brand);vertical-align:-.18em;margin-left:3px;animation:blink 1.1s steps(1) infinite}
+.intro canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
+.intro .skip{position:absolute;z-index:3;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--paper);border:1px solid var(--line);padding:8px 12px;cursor:pointer}
+.intro .skip:hover{color:var(--ink);border-color:var(--ink)}
+.intro.clear .skip{opacity:0}
+@media (max-width:560px){.intro-line{grid-template-columns:1fr;gap:0;margin-bottom:10px}}
+
+/* the narrator: a small instrument that follows the story */
+.hud{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;align-items:center;gap:12px;background:color-mix(in srgb,var(--surface) 90%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--line);padding:8px 16px 8px 8px;opacity:0;transform:translateY(10px);transition:opacity .45s,transform .45s;pointer-events:none}
+.hud.on{opacity:1;transform:none}
+.hud canvas{width:56px;height:56px;display:block;border-right:1px solid var(--line);padding-right:8px;box-sizing:content-box}
+.hud .t{display:flex;flex-direction:column;gap:5px;min-width:190px}
+.hud .n{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--brand)}
+.hud .c{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);transition:opacity .25s}
+.hud .c.swap{opacity:0}
+.hud .bar{height:2px;background:var(--line);margin-top:2px}
+.hud .bar i{display:block;height:100%;background:var(--brand);transform-origin:0 50%;transform:scaleX(0)}
+@media (max-width:600px){.hud canvas{width:40px;height:40px}.hud .t{min-width:150px}.hud{right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px))}}
+
+/* entry 001: why we exist */
+.why{padding-block:128px 120px}
+.why-grid{display:grid;grid-template-columns:200px minmax(0,1fr) 180px;gap:32px;align-items:start}
+.why-grid .idx{font-family:var(--mono);font-size:13px;color:var(--brand);padding-top:14px}
+.manifesto p{font-family:var(--serif);font-size:clamp(28px,3.5vw,50px);line-height:1.18;letter-spacing:-.02em;margin:0 0 .55em;max-width:24ch;text-wrap:pretty}
+.manifesto p em{color:var(--brand)}
+.manifesto .sw{display:inline-block;color:color-mix(in srgb,currentColor 14%,transparent);transform:translateY(.14em);filter:blur(1.5px);transition:color .5s ease,transform .6s cubic-bezier(.2,.7,.2,1),filter .5s ease}
+.manifesto .sw.lit{color:inherit;transform:none;filter:none}
+.manifesto .sw.lit.edge{color:var(--brand)}
+.manifesto .sig{margin-top:40px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;gap:14px;align-items:center}
+.manifesto .sig::before{content:"";width:40px;height:1px;background:var(--ink)}
+.cursorbits{position:sticky;top:120px;width:100%;max-width:180px;aspect-ratio:9/16;display:block}
+@media (max-width:1000px){.why-grid{grid-template-columns:1fr}.cursorbits{display:none}.why-grid .idx{padding-top:0}}
+
+/* headlines write themselves in */
+.wr .w{display:inline-block;color:color-mix(in srgb,currentColor 12%,transparent);transform:translateY(.35em);filter:blur(3px);transition:color .7s ease,transform .8s cubic-bezier(.2,.7,.2,1),filter .7s ease}
+.wr.lit .w{color:inherit;transform:none;filter:none}
+
+/* the decision plays out */
+.dplay{margin-top:72px;align-items:start;display:grid;grid-template-columns:200px minmax(0,1fr);gap:32px;border-top:1px solid var(--inv-line);padding-top:40px}
+.dplay h3{font-size:clamp(26px,2.8vw,36px);line-height:1.15;margin-bottom:22px}
+.opts{list-style:none;margin:0 0 22px;padding:0;display:flex;flex-direction:column;gap:8px;max-width:640px}
+.opts li{font-family:var(--mono);font-size:14.5px;padding:13px 16px;border:1px dashed var(--inv-line);display:flex;justify-content:space-between;gap:12px;transition:color .4s,border-color .4s,background-color .4s}
+.opts li .tag{font-size:11px;letter-spacing:.1em;opacity:0;transition:opacity .4s}
+.opts li.x{color:var(--inv-muted)}
+.opts li.x span:first-child{text-decoration:line-through;text-decoration-color:var(--inv-muted)}
+.opts li.x .tag{opacity:1}
+.opts li.ok{border-style:solid;border-color:var(--inv-brand);background:color-mix(in srgb,var(--inv-brand) 12%,transparent)}
+.opts li.ok .tag{opacity:1;color:var(--inv-brand)}
+.dplay .dec,.dplay .whyp{max-width:62ch;color:var(--inv-muted);transition:color .5s;margin-top:10px}
+.dplay .dec b,.dplay .whyp b{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.1em;margin-right:8px;color:var(--inv-brand)}
+.dplay.done .dec,.dplay.done .whyp{color:var(--inv-ink)}
+@media (max-width:860px){.dplay{grid-template-columns:1fr;gap:12px}}
+
+/* pins arrive one by one */
+.hot .pin{transform:scale(.72);transition:transform .55s cubic-bezier(.2,1.5,.4,1)}
+.hot.pop .pin{transform:scale(1)}
+
+/* everything else arrives after its headline */
+.js-rv .rvl{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform 1.05s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0ms)}
+.js-rv .rvl.rvl-fade{transform:none}
+.js-rv .rvl.in{opacity:1;transform:none}
+
+.replay{background:none;border:0;padding:0;cursor:pointer;font:inherit;color:var(--brand)}
+.replay:hover{text-decoration:underline;text-underline-offset:3px}
+
+@media (prefers-reduced-motion:reduce){.manifesto .sw,.wr .w{color:inherit!important;transform:none!important;filter:none!important;transition:none}.hud{transition:none}}
+
 .draft{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:11px;letter-spacing:.06em;padding:7px 10px;text-transform:uppercase}
 </style>
 
 <div class="draft">Design draft · not live</div>
+
+<div class="intro gone" id="intro" aria-hidden="true">
+  <div class="intro-inner" id="introLines"></div>
+  <canvas id="introCanvas"></canvas>
+  <button class="skip" id="introSkip" type="button">Skip intro</button>
+</div>
+
+<div class="hud" id="hud" aria-hidden="true">
+  <canvas id="hudBits" width="112" height="112"></canvas>
+  <div class="t">
+    <span class="n" id="hudN">ENTRY 000</span>
+    <span class="c" id="hudC">Start</span>
+    <span class="bar"><i id="hudBar"></i></span>
+  </div>
+</div>
 
 <header class="nav">
   <div class="wrap">
@@ -348,56 +441,73 @@ footer{padding-block:56px 40px;background:var(--paper)}
         </div>
       </div>
 
-      <figure class="log" style="margin:0" aria-label="Project log from the Batra Hospital engagement">
+      <figure class="log" style="margin:0" aria-label="Project log from the prescription OCR prototype">
         <div class="log-top">
-          <span class="label" style="color:var(--ink)">batra-hospital / rx-automation</span>
-          <span class="live">SHIPPED</span>
+          <span class="label" style="color:var(--ink)">rx-ocr / prototype</span>
+          <span class="live">DEMOED</span>
         </div>
         <div class="log-body">
-          <div class="lr"><span class="w">Wk 01</span><span class="ph">DISCOVER</span><span class="m">Pharmacists read every handwritten prescription by hand before dispensing.</span></div>
-          <div class="lr"><span class="w">Wk 02</span><span class="ph">DECIDE</span><span class="m">AI handwriting recognition + medical NLP, not fixed templates. No two doctors write alike.</span></div>
-          <div class="lr"><span class="w">Wk 06</span><span class="ph">BUILD</span><span class="m">Every extraction validated against a <b>253K+</b> medicine knowledge base.</span></div>
-          <div class="lr"><span class="w">Wk 10</span><span class="ph m">MEASURE</span><span class="m"><b>99%</b> accuracy · <b>3–5s</b> per prescription · <b>80%</b> less manual entry<span class="caret" aria-hidden="true"></span></span></div>
+          <div class="lr"><span class="w">Wk 01</span><span class="ph">DISCOVER</span><span class="m">Pharmacists decipher handwritten prescriptions and re-type them by hand.</span></div>
+          <div class="lr"><span class="w">Wk 03</span><span class="ph">DECIDE</span><span class="m">Run Google, Azure and AWS OCR in parallel and keep the most confident reading per section.</span></div>
+          <div class="lr"><span class="w">Wk 07</span><span class="ph">BUILD</span><span class="m">Every medicine checked against <b>253,973</b> records. Anything under <b>0.95</b> confidence goes to a pharmacist.</span></div>
+          <div class="lr"><span class="w">Wk 10</span><span class="ph m">MEASURE</span><span class="m"><b>98–99%</b> medicine names · <b>~8.5s</b> per prescription, in demo testing<span class="caret" aria-hidden="true"></span></span></div>
         </div>
-        <div class="log-foot"><span class="label">10 weeks · 6 engineers</span><a class="label" href="#work" style="color:var(--brand);text-decoration:none">Read the full log →</a></div>
+        <div class="log-foot"><span class="label">10 weeks · prototype on demo data</span><a class="label" href="#work" style="color:var(--brand);text-decoration:none">Read the full log →</a></div>
       </figure>
     </div>
 
     <div class="proof">
-      <div><span class="v">99<small>%</small></span><span class="k">Prescription extraction accuracy</span><span class="s">BATRA HOSPITAL · HEALTHCARE</span></div>
-      <div><span class="v">80<small>%</small></span><span class="k">Less manual data entry</span><span class="s">BATRA HOSPITAL · HEALTHCARE</span></div>
-      <div><span class="v">60<small>%</small></span><span class="k">Fewer manual admin tasks</span><span class="s">RESTAURANTOS · HOSPITALITY</span></div>
-      <div><span class="v">98<small>%</small></span><span class="k">Customer satisfaction</span><span class="s">HYTP · TRAVEL</span></div>
+      <div><span class="v" data-nocount>2025</span><span class="k">Founded by engineers, for engineers’ standards</span><span class="s">QBITLOG</span></div>
+      <div><span class="v">98<small>%</small></span><span class="k">Medicine-name extraction</span><span class="s">RX OCR PROTOTYPE · DEMO TESTING</span></div>
+      <div><span class="v">253<small>K+</small></span><span class="k">Medicine records behind every check</span><span class="s">RX OCR PROTOTYPE</span></div>
+      <div><span class="v">8</span><span class="k">Working screens, one restaurant interface</span><span class="s">RESTAURANTOS PROTOTYPE</span></div>
     </div>
   </div>
 </section>
 
 <div class="ticker" aria-label="Recent studio activity">
   <div class="ticker-track">
-    <span><i>SHIPPED</i><b>RestaurantOS</b> · real-time inventory alerts</span>
-    <span><i>MEASURED</i><b>Batra Hospital</b> · <em>99%</em> extraction accuracy</span>
-    <span><i>DECIDED</i><b>HYTP</b> · one platform for bookings, trips and family updates</span>
+    <span><i>STARTED</i><b>Qbitlog</b> · <em>2025</em>, to build for ourselves</span>
+    <span><i>SHIPPED</i><b>Academy AI</b> · our own product</span>
+    <span><i>DECIDED</i><b>Rx OCR</b> · under <em>0.95</em> confidence, a pharmacist checks it</span>
+    <span><i>MEASURED</i><b>Rx OCR</b> · <em>98–99%</em> medicine names in demo testing</span>
+    <span><i>BUILT</i><b>RestaurantOS</b> · <em>8</em> screens, one interface</span>
     <span><i>WROTE</i><b>Insights</b> · Building secure RAG architectures</span>
-    <span><i>MEASURED</i><b>RestaurantOS</b> · <em>60%</em> fewer manual admin tasks</span>
-    <span><i>SHIPPED</i><b>Batra Hospital</b> · Rx processing in <em>3–5s</em></span>
-    <span><i>SHIPPED</i><b>RestaurantOS</b> · real-time inventory alerts</span>
-    <span><i>MEASURED</i><b>Batra Hospital</b> · <em>99%</em> extraction accuracy</span>
-    <span><i>DECIDED</i><b>HYTP</b> · one platform for bookings, trips and family updates</span>
+    <span><i>STARTED</i><b>Qbitlog</b> · <em>2025</em>, to build for ourselves</span>
+    <span><i>SHIPPED</i><b>Academy AI</b> · our own product</span>
+    <span><i>DECIDED</i><b>Rx OCR</b> · under <em>0.95</em> confidence, a pharmacist checks it</span>
+    <span><i>MEASURED</i><b>Rx OCR</b> · <em>98–99%</em> medicine names in demo testing</span>
+    <span><i>BUILT</i><b>RestaurantOS</b> · <em>8</em> screens, one interface</span>
     <span><i>WROTE</i><b>Insights</b> · Building secure RAG architectures</span>
-    <span><i>MEASURED</i><b>RestaurantOS</b> · <em>60%</em> fewer manual admin tasks</span>
-    <span><i>SHIPPED</i><b>Batra Hospital</b> · Rx processing in <em>3–5s</em></span>
   </div>
 </div>
+
+<!-- ENTRY 001: WHY WE EXIST -->
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="why-grid">
+      <span class="idx">ENTRY 001 / WHY WE EXIST</span>
+      <div class="manifesto" id="manifesto">
+        <p>In 2025, a few engineers got tired of building for everyone else.</p>
+        <p>Other people’s roadmaps. Other people’s shortcuts. Deadlines paid for by tired teams.</p>
+        <p>So we started Qbitlog to build for ourselves, at a pace that keeps people sharp.</p>
+        <p>Now we build yours the same way: <em>like it’s ours</em>, with every decision on the record.</p>
+        <div class="sig">The Qbitlog team · 2025</div>
+      </div>
+      <canvas class="cursorbits" id="cursorBits" aria-hidden="true"></canvas>
+    </div>
+  </div>
+</section>
 
 <!-- SHOWCASE -->
 <section class="showcase" id="showcase">
   <div class="wrap">
     <div class="show-head">
       <div>
-        <span class="eyebrow">Shipped <span class="sep">/</span> RestaurantOS <span class="sep">/</span> 14 weeks</span>
-        <h2>Four tools became <em>one screen.</em></h2>
+        <span class="eyebrow">Prototype <span class="sep">/</span> RestaurantOS <span class="sep">/</span> Interface</span>
+        <h2>Four tools, designed into <em>one screen.</em></h2>
       </div>
-      <p>Sales, orders, inventory and staff used to live in separate systems. We designed and built one operations platform that shows a restaurant’s whole day at a glance.</p>
+      <p>Sales, orders, inventory and staff usually live in separate systems. We designed and built one interface that shows a restaurant’s whole day at a glance.</p>
     </div>
     <div class="stage">
       <figure class="frame" id="frame" style="margin:0 auto">
@@ -411,9 +521,9 @@ footer{padding-block:56px 40px;background:var(--paper)}
       </figure>
     </div>
     <ol class="show-notes">
-      <li><span class="pin">A</span><span>Low-stock items surface next to their thresholds.<em>Kitchens reorder before service, not during it.</em></span></li>
-      <li><span class="pin">B</span><span>Dine-in, takeaway, delivery and online in one chart.<em>No more reconciling four reports on Monday.</em></span></li>
-      <li><span class="pin">C</span><span>Delayed orders are counted live.<em>Managers act while guests are still at the table.</em></span></li>
+      <li><span class="pin">A</span><span>Low-stock items surface next to their thresholds.<em>Designed so kitchens reorder before service, not during it.</em></span></li>
+      <li><span class="pin">B</span><span>Dine-in, takeaway, delivery and online in one chart.<em>One view instead of four reports.</em></span></li>
+      <li><span class="pin">C</span><span>Delayed orders get their own count.<em>So a manager sees the problem while guests are still at the table.</em></span></li>
     </ol>
   </div>
 </section>
@@ -430,14 +540,14 @@ footer{padding-block:56px 40px;background:var(--paper)}
     <a class="feature" href="#work">
       <div class="txt">
         <div style="display:flex;flex-direction:column;gap:16px">
-          <span class="eyebrow">Healthcare <span class="sep">/</span> AI automation <span class="sep">/</span> 10 weeks</span>
-          <h3>Giving pharmacists their time back at Batra Hospital</h3>
-          <p>Handwritten prescriptions now become structured, validated records in seconds. Low-confidence lines go to a pharmacist for review instead of failing silently.</p>
+          <span class="eyebrow">Healthcare <span class="sep">/</span> AI prototype <span class="sep">/</span> 10 weeks</span>
+          <h3>Reading handwritten prescriptions with AI</h3>
+          <p>A working prototype that turns photos of handwritten prescriptions into structured, validated records. Anything the system isn’t sure about goes to a pharmacist instead of failing silently.</p>
         </div>
         <div class="stats">
-          <div><span class="v">99%</span><span class="k">Extraction accuracy</span></div>
-          <div><span class="v">3–5s</span><span class="k">Per prescription</span></div>
-          <div><span class="v">80%</span><span class="k">Less manual entry</span></div>
+          <div><span class="v">98–99%</span><span class="k">Medicine names, demo testing</span></div>
+          <div><span class="v">~8.5s</span><span class="k">Per prescription, end to end</span></div>
+          <div><span class="v">253K+</span><span class="k">Medicine records checked</span></div>
         </div>
       </div>
       <div class="vis dotgrid">
@@ -450,7 +560,7 @@ footer{padding-block:56px 40px;background:var(--paper)}
             <div class="srow"><span class="rx">RX-20934 · Atorvastatin 20mg</span><span class="c">0.98</span><span class="pill ok">AUTO</span></div>
           </div>
           <span class="pin" style="top:96px;left:-12px">A</span>
-          <div class="callout"><span class="pin" style="position:static;display:inline-grid;width:18px;height:18px;font-size:10px;box-shadow:none;margin-right:6px;vertical-align:-3px">A</span>Below <b>0.80</b> confidence, a human checks it. That’s how accuracy holds in practice.</div>
+          <div class="callout"><span class="pin" style="position:static;display:inline-grid;width:18px;height:18px;font-size:10px;box-shadow:none;margin-right:6px;vertical-align:-3px">A</span>Below <b>0.95</b> confidence, a pharmacist checks it. Nothing uncertain goes straight through.</div>
         </div>
       </div>
     </a>
@@ -458,15 +568,15 @@ footer{padding-block:56px 40px;background:var(--paper)}
     <div class="cards">
       <a class="case" href="#work">
         <div class="img"><img src="../../../public/images/case-studies/re-os/ordering.png" alt="RestaurantOS order tracking screen" loading="lazy" width="1536" height="1024"></div>
-        <div class="top"><span class="label" style="color:var(--ink)">Hospitality</span><span class="label">14 wks · 5 eng</span></div>
-        <div class="mid"><span class="label">RestaurantOS</span><h4>One platform for ordering, inventory and reporting</h4><p>Staff stopped switching between systems; owners got real-time visibility into every location.</p></div>
-        <div class="bot"><div><span class="v">60%</span><span class="k">Fewer manual admin tasks</span></div><div><span class="v">24/7</span><span class="k">Business monitoring</span></div></div>
+        <div class="top"><span class="label" style="color:var(--ink)">Hospitality</span><span class="label">Prototype · interface</span></div>
+        <div class="mid"><span class="label">RestaurantOS</span><h4>One interface for a restaurant’s whole day</h4><p>Menu, orders, tables and inventory in one dashboard, designed for staff on desktops, tablets and phones.</p></div>
+        <div class="bot"><div><span class="v">8</span><span class="k">Working screens</span></div><div><span class="v">20+</span><span class="k">Reusable UI components</span></div></div>
       </a>
       <a class="case" href="#work">
         <div class="img"><img src="../../../public/images/case-studies/hytp/booking.png" alt="Hire Your Travel Partner booking management screen" loading="lazy" width="1024" height="600"></div>
         <div class="top"><span class="label" style="color:var(--ink)">Travel &amp; senior care</span><span class="label">16 wks · 5 eng</span></div>
-        <div class="mid"><span class="label">Hire Your Travel Partner</span><h4>Helping a senior travel business scale with confidence</h4><p>Bookings, trip planning and family updates moved onto one platform travelers and families trust.</p></div>
-        <div class="bot"><div><span class="v">98%</span><span class="k">Customer satisfaction</span></div><div><span class="v">100%</span><span class="k">Digital trip management</span></div></div>
+        <div class="mid"><span class="label">Hire Your Travel Partner</span><h4>Bookings, trips and family updates for senior travellers</h4><p>Screens for booking management, trip planning and keeping families in the loop.</p></div>
+        <div class="bot"><div><span class="v">16</span><span class="k">Weeks</span></div><div><span class="v">5</span><span class="k">Engineers</span></div></div>
       </a>
     </div>
   </div>
@@ -487,11 +597,17 @@ footer{padding-block:56px 40px;background:var(--paper)}
       <div class="step"><span class="n">PHASE 3</span><h3>Build</h3><p>Two-week sprints, a demo every sprint, and a written update every Friday in your time zone.</p><div class="art">You get<span>Working software · weekly log</span></div></div>
       <div class="step"><span class="n">PHASE 4</span><h3>Measure</h3><p>We check the metrics we agreed in Phase 1 and publish the results, good or bad.</p><div class="art">You get<span>Results report · roadmap</span></div></div>
     </div>
-    <div class="quote">
-      <span class="eyebrow">Client note</span>
+    <div class="dplay" id="dplay">
+      <span class="eyebrow">A real decision<br>Rx OCR prototype</span>
       <div>
-        <blockquote>The biggest improvement wasn’t just accuracy. It was how much time our pharmacists got back.</blockquote>
-        <cite>Dr. Rajesh Mehta · Pharmacy Lead, Batra Hospital</cite>
+        <h3>When does a human check the result?</h3>
+        <ol class="opts">
+          <li data-x><span>Auto-approve everything</span><span class="tag">REJECTED</span></li>
+          <li data-x><span>A pharmacist reviews every prescription</span><span class="tag">REJECTED</span></li>
+          <li data-ok><span>Route by confidence score</span><span class="tag">✓ CHOSEN</span></li>
+        </ol>
+        <p class="dec"><b>DECISION</b>Auto-approve at 0.95 confidence or above. Everything else goes to a pharmacist, marked low, high or urgent.</p>
+        <p class="whyp"><b>WHY</b>Pharmacists spend their time only where they’re needed, and nothing uncertain goes straight through.</p>
       </div>
     </div>
   </div>
@@ -604,13 +720,28 @@ footer{padding-block:56px 40px;background:var(--paper)}
       <div><h5>Company</h5><ul><li><a href="#method">About</a></li><li><a href="#method">Team</a></li><li><a href="#method">Careers</a></li><li><a href="#insights">Insights</a></li><li><a href="#contact">Contact</a></li></ul></div>
     </div>
     <div class="wordmark"><canvas id="wordBits" aria-label="QBITLOG"></canvas><span class="cap">Every bit, on the record</span></div>
-    <div class="f-bot"><span class="label">© 2026 Qbitlog</span><span class="label">Privacy · Terms</span></div>
+    <div class="f-bot"><span class="label">© 2026 Qbitlog · End of entry</span><span class="label"><button class="replay label" id="replayIntro" type="button">Replay intro ↺</button> · Privacy · Terms</span></div>
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js"></script>
 <script>
 (function(){
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* ---------- smooth scrolling (Lenis) ---------- */
+  var lenis = null;
+  if (!reduce && window.Lenis){
+    lenis = new Lenis({ lerp: 0.085, smoothWheel: true, wheelMultiplier: 0.9 });
+    (function raf(t){ lenis.raf(t); requestAnimationFrame(raf); })(performance.now());
+    document.addEventListener('click', function(e){
+      var a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (!a) return;
+      var id = a.getAttribute('href'), el = id.length > 1 ? document.querySelector(id) : null;
+      if (!el && id !== '#top') return;
+      e.preventDefault();
+      lenis.scrollTo(el || 0, { offset: -72, duration: 1.4 });
+    });
+  }
   function cssv(n){ return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
   function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
 
@@ -646,23 +777,35 @@ footer{padding-block:56px 40px;background:var(--paper)}
       for (var y = gap / 2; y < H; y += gap){
         for (var x = gap / 2; x < W; x += gap){
           if (mask && mask[((Math.floor(y) * mw) + Math.floor(x)) * 4 + 3] < 128) continue;
-          pts.push({ x: x, y: y, e: 0, s: Math.random() });
+          pts.push({ x: x, y: y, e: 0, s: Math.random(),
+            sx: Math.random() * W, sy: Math.random() * H, d: (x / W) * 500 + Math.random() * 350 });
         }
       }
       draw(performance.now());
     }
 
+    var asmStart = null;
+    function easeIO(k){ return k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2; }
+
     function draw(now){
       ctx.clearRect(0, 0, W, H);
       var R = opts.radius(W), sx = -1e9;
       if (opts.ambient && !reduce){
-        var ph = ((now - t0) % opts.ambient) / opts.ambient;
-        sx = ph * (W + 400) - 200;
+        var since = now - t0 - (opts.firstSweep || 0);
+        if (since > 0){
+          var inCycle = since % opts.ambient, dur = opts.sweep || 2600;
+          if (inCycle < dur) sx = (inCycle / dur) * (W + 400) - 200;
+        }
       }
-      var rest = opts.rest(gap), hot = [];
+      var rest = opts.rest(gap), hot = [], assembling = opts.assemble && !reduce;
       ctx.fillStyle = colors.dot;
       for (var i = 0; i < pts.length; i++){
         var p = pts[i];
+        if (assembling){
+          var k = asmStart === null ? 0 : clamp((now - asmStart - p.d) / 1100, 0, 1), ek = easeIO(k);
+          p.px = p.sx + (p.x - p.sx) * ek; p.py = p.sy + (p.y - p.sy) * ek;
+          if (k > 0 && k < 1) p.e = Math.max(p.e, 0.6 * (1 - k));
+        } else { p.px = p.x; p.py = p.y; }
         if (mouse.on){
           var dx = p.x - mouse.x, dy = p.y - mouse.y, d = Math.sqrt(dx * dx + dy * dy);
           if (d < R) p.e = Math.max(p.e, (1 - d / R) * (0.55 + 0.45 * p.s));
@@ -670,15 +813,20 @@ footer{padding-block:56px 40px;background:var(--paper)}
         if (Math.abs(p.x - sx) < gap * 0.9 && Math.random() < 0.07) p.e = Math.max(p.e, 0.5 + Math.random() * 0.5);
         p.e *= opts.decay;
         if (p.e > 0.04) hot.push(p);
-        else ctx.fillRect(p.x - rest / 2, p.y - rest / 2, rest, rest);
+        else ctx.fillRect(p.px - rest / 2, p.py - rest / 2, rest, rest);
       }
       for (var j = 0; j < hot.length; j++){
         var q = hot[j], sz = rest + q.e * opts.grow(gap);
         ctx.globalAlpha = 0.25 + 0.75 * q.e;
         ctx.fillStyle = q.s < 0.12 ? colors.signal : colors.brand;
-        ctx.fillRect(q.x - sz / 2, q.y - sz / 2, sz, sz);
+        ctx.fillRect(q.px - sz / 2, q.py - sz / 2, sz, sz);
       }
       ctx.globalAlpha = 1;
+    }
+
+    function burst(amount){
+      for (var i = 0; i < pts.length; i++) if (Math.random() < amount) pts[i].e = 0.5 + Math.random() * 0.5;
+      start();
     }
 
     function loop(now){
@@ -692,7 +840,11 @@ footer{padding-block:56px 40px;background:var(--paper)}
     });
     host.addEventListener('pointerleave', function(){ mouse.on = false; });
     if ('IntersectionObserver' in window){
-      new IntersectionObserver(function(en){ visible = en[0].isIntersecting; if (visible) start(); }).observe(canvas);
+      new IntersectionObserver(function(en){
+        visible = en[0].isIntersecting;
+        if (visible && opts.assemble && asmStart === null) asmStart = performance.now() + 150;
+        if (visible) start();
+      }, { threshold: opts.assemble ? 0.35 : 0 }).observe(canvas);
     }
     if ('ResizeObserver' in window){ new ResizeObserver(function(){ layout(); }).observe(canvas.parentElement); }
     else window.addEventListener('resize', layout);
@@ -702,18 +854,20 @@ footer{padding-block:56px 40px;background:var(--paper)}
     new MutationObserver(recolor).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
     readColors(); layout(); start();
-    return { relayout: layout };
+    return { relayout: layout, burst: burst };
   }
 
   var heroCanvas = document.getElementById('heroBits');
-  BitField(heroCanvas, {
+  var heroField = BitField(heroCanvas, {
     host: heroCanvas.parentElement,
     gap: function(W){ return W < 600 ? 18 : 22; },
     radius: function(W){ return W < 600 ? 90 : 150; },
     rest: function(){ return 2; },
     grow: function(){ return 7; },
     decay: 0.955,
-    ambient: 7000
+    ambient: 25000,
+    sweep: 2600,
+    firstSweep: 9000
   });
 
   var wm = BitField(document.getElementById('wordBits'), {
@@ -725,14 +879,370 @@ footer{padding-block:56px 40px;background:var(--paper)}
     rest: function(g){ return g * 0.5; },
     grow: function(g){ return g * 0.45; },
     decay: 0.94,
-    ambient: 9000
+    ambient: 28000,
+    sweep: 3200,
+    firstSweep: 4000,
+    assemble: true
   });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ wm.relayout(); });
 
-  /* ---------- hero log rows ---------- */
-  if (!reduce){
-    document.querySelectorAll('.log .lr').forEach(function(r, i){ setTimeout(function(){ r.classList.add('in'); }, 250 + i * 420); });
+  /* ---------- hero log rows (played after the intro) ---------- */
+  function heroRows(){
+    if (reduce) return;
+    document.querySelectorAll('.log .lr').forEach(function(r, i){
+      r.classList.remove('in'); void r.offsetWidth;
+      setTimeout(function(){ r.classList.add('in'); }, 200 + i * 420);
+    });
   }
+
+  function store(k, v){ try { if (v === undefined) return sessionStorage.getItem(k); sessionStorage.setItem(k, v); } catch (e) { return null; } }
+
+  /* ---------- INTRO: "the first entry" ---------- */
+  var intro = document.getElementById('intro'), introBox = document.getElementById('introLines'),
+      introCanvas = document.getElementById('introCanvas'), ictx = introCanvas.getContext('2d');
+  var LINES = [
+    ['2025', 'A few engineers got tired of building for everyone else.'],
+    ['DECIDED', 'Build for ourselves.'],
+    ['SHIPPED', 'Academy AI, our own product.'],
+    ['NOW', 'Building yours like it’s ours.']
+  ];
+  var timers = [], introRaf = 0, introOn = false;
+  function later(fn, ms){ timers.push(setTimeout(fn, ms)); }
+
+  function playIntro(){
+    if (reduce) return finishIntro(true);
+    introOn = true; timers.forEach(clearTimeout); timers = []; cancelAnimationFrame(introRaf);
+    if (lenis) lenis.scrollTo(0, { immediate: true }); else window.scrollTo(0, 0);
+    introBox.innerHTML = ''; introBox.style.visibility = '';
+    ictx.clearRect(0, 0, introCanvas.width, introCanvas.height);
+    intro.classList.remove('gone', 'clear');
+    document.documentElement.style.overflow = 'hidden'; if (lenis) lenis.stop();
+    var cur = document.createElement('span'); cur.className = 'cur';
+    var t = 250;
+    LINES.forEach(function(l, i){
+      var row = document.createElement('div'); row.className = 'intro-line';
+      var k = document.createElement('span'); k.className = 'k'; k.textContent = '';
+      var tx = document.createElement('span'); tx.className = 't';
+      row.appendChild(k); row.appendChild(tx); introBox.appendChild(row);
+      later(function(){ k.textContent = l[0]; tx.appendChild(cur); }, t);
+      t += 180;
+      for (var c = 1; c <= l[1].length; c++){
+        (function(n){ later(function(){ tx.textContent = l[1].slice(0, n); tx.appendChild(cur); }, t); })(c);
+        t += 32 + (Math.random() * 14 - 7);
+      }
+      t += i === LINES.length - 1 ? 850 : 380;
+    });
+    later(dissolve, t);
+  }
+
+  function dissolve(){
+    var dpr = Math.min(window.devicePixelRatio || 1, 2), W = window.innerWidth, H = window.innerHeight;
+    introCanvas.width = W * dpr; introCanvas.height = H * dpr; ictx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var curEl = introBox.querySelector('.cur'); if (curEl) curEl.remove();
+    var brand = cssv('--brand'), ink = cssv('--ink');
+    /* draw the typed text onto an offscreen canvas at the same positions, then sample it into particles */
+    var off = document.createElement('canvas'); off.width = W; off.height = H;
+    var o = off.getContext('2d'); o.textBaseline = 'middle';
+    introBox.querySelectorAll('.k, .t').forEach(function(s){
+      var r = s.getBoundingClientRect(), cs = getComputedStyle(s);
+      o.font = cs.fontWeight + ' ' + cs.fontSize + ' ' + cs.fontFamily;
+      o.fillStyle = s.classList.contains('k') ? '#f00' : '#00f';
+      var words = s.textContent, lh = parseFloat(cs.lineHeight) || r.height;
+      o.fillText(words, r.left, r.top + Math.min(r.height, lh) / 2);
+    });
+    var data = o.getImageData(0, 0, W, H).data, parts = [], step = W < 700 ? 3 : 3;
+    var hero = document.querySelector('.hero').getBoundingClientRect(), g = W < 600 ? 18 : 22;
+    for (var y = 0; y < H; y += step){
+      for (var x = 0; x < W; x += step){
+        var idx = (y * W + x) * 4;
+        if (data[idx + 3] > 120){
+          parts.push({
+            x0: x, y0: y,
+            x1: Math.round(Math.random() * (W / g)) * g + g / 2,
+            y1: hero.top + Math.round(Math.random() * (hero.height * 0.7 / g)) * g + g / 2,
+            c: data[idx] > data[idx + 2] ? brand : ink,
+            d: Math.random() * 260 + (x / W) * 240,
+            a: (Math.random() - 0.5) * 120
+          });
+        }
+      }
+    }
+    introBox.style.visibility = 'hidden';
+    intro.classList.add('clear');
+    var t0 = performance.now(), dur = 1150;
+    (function frame(now){
+      ictx.clearRect(0, 0, W, H);
+      var alive = false;
+      for (var i = 0; i < parts.length; i++){
+        var p = parts[i], k = clamp((now - t0 - p.d) / dur, 0, 1);
+        if (k < 1) alive = true;
+        var e = easeInOut(k), arc = Math.sin(k * Math.PI) * p.a;
+        var x = p.x0 + (p.x1 - p.x0) * e + arc * 0.3, y = p.y0 + (p.y1 - p.y0) * e - Math.abs(arc);
+        ictx.globalAlpha = k < 0.6 ? 1 : 1 - (k - 0.6) / 0.4;
+        ictx.fillStyle = k > 0.25 ? brand : p.c;
+        var sz = 2 + Math.sin(k * Math.PI) * 1.6;
+        ictx.fillRect(x - sz / 2, y - sz / 2, sz, sz);
+      }
+      ictx.globalAlpha = 1;
+      if (alive) introRaf = requestAnimationFrame(frame); else finishIntro();
+    })(t0);
+    later(function(){ heroField.burst(0.22); }, 750);
+  }
+  function easeInOut(k){ return k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2; }
+
+  function finishIntro(silent){
+    timers.forEach(clearTimeout); timers = []; cancelAnimationFrame(introRaf);
+    intro.classList.add('gone'); introBox.style.visibility = '';
+    document.documentElement.style.overflow = ''; if (lenis) lenis.start();
+    store('qb-intro', '1');
+    if (introOn && !silent) heroField.burst(0.12);
+    introOn = false;
+    heroRows(); writeHeadline(document.querySelector('.hero h1'));
+  }
+  document.getElementById('introSkip').addEventListener('click', function(){ finishIntro(); });
+  ['wheel', 'touchstart', 'keydown'].forEach(function(ev){
+    window.addEventListener(ev, function(){ if (introOn) finishIntro(); }, { passive: true });
+  });
+  document.getElementById('replayIntro').addEventListener('click', function(){ playIntro(); });
+
+  /* ---------- headlines write themselves in ---------- */
+  function splitWords(el, cls){
+    if (el.dataset.split) return el.querySelectorAll('.' + cls);
+    el.dataset.split = '1';
+    (function walk(node){
+      Array.prototype.slice.call(node.childNodes).forEach(function(n){
+        if (n.nodeType === 3){
+          var frag = document.createDocumentFragment(), glue = !/^\s/.test(n.nodeValue) && n.previousSibling && n.previousSibling.nodeType === 1;
+          n.nodeValue.split(/(\s+)/).forEach(function(part){
+            if (!part) return;
+            if (glue){ glue = false; var prev = n.previousSibling.querySelectorAll('.' + cls); if (prev.length){ prev[prev.length - 1].textContent += part; return; } }
+            if (/^\s+$/.test(part)) frag.appendChild(document.createTextNode(part));
+            else { var s = document.createElement('span'); s.className = cls; s.textContent = part; frag.appendChild(s); }
+          });
+          node.replaceChild(frag, n);
+        } else if (n.nodeType === 1 && n.tagName !== 'BR') walk(n);
+      });
+    })(el);
+    return el.querySelectorAll('.' + cls);
+  }
+  function writeHeadline(el){
+    if (!el || reduce) return;
+    var ws = splitWords(el, 'w');
+    el.classList.add('wr'); el.classList.remove('lit'); void el.offsetWidth;
+    ws.forEach(function(w, i){ w.style.transitionDelay = (i * 80) + 'ms'; });
+    requestAnimationFrame(function(){ el.classList.add('lit'); });
+  }
+  if (!reduce && 'IntersectionObserver' in window){
+    var heads = document.querySelectorAll('.sec-head h2, .show-head h2, .cta-box h2, .dplay h3');
+    heads.forEach(function(h){ splitWords(h, 'w'); h.classList.add('wr'); });
+    var hio = new IntersectionObserver(function(en){
+      en.forEach(function(e){ if (e.isIntersecting){ hio.unobserve(e.target); writeHeadline(e.target); } });
+    }, { threshold: 0.6 });
+    heads.forEach(function(h){ hio.observe(h); });
+  }
+
+  /* ---------- content reveals: every block arrives after its headline ---------- */
+  if (!reduce && 'IntersectionObserver' in window){
+    /* [selector, base delay ms, stagger ms between siblings, fade-only] */
+    var GROUPS = [
+      ['.sec-head .idx, .why-grid .idx', 0, 0],
+      ['.sec-head p, .show-head p', 260, 0],
+      ['.sec-head .more', 420, 0],
+      ['.manifesto .sig', 200, 0],
+      ['.show-notes li', 150, 140],
+      ['.feature', 100, 0],
+      ['.cards .case', 120, 150],
+      ['.dplay > .eyebrow', 0, 0],
+      ['.svc a', 80, 90],
+      ['.ind a', 80, 110],
+      ['.posts a', 80, 90],
+      ['.stream', 250, 0],
+      ['.faq-grid > .label', 0, 0],
+      ['.faq details', 80, 90],
+      ['.cta-box', 0, 0, true],
+      ['.cta-box .l > :not(h2)', 150, 110],
+      ['.cta-box .r .row', 350, 100],
+      ['.f-grid > div', 0, 100],
+      ['.f-bot', 200, 0, true]
+    ];
+    var rvEls = [];
+    GROUPS.forEach(function(g){
+      var counts = new Map();
+      document.querySelectorAll(g[0]).forEach(function(el){
+        if (el.classList.contains('rvl')) return;
+        var parent = el.parentElement, n = counts.get(parent) || 0; counts.set(parent, n + 1);
+        el.classList.add('rvl'); if (g[3]) el.classList.add('rvl-fade');
+        el.style.setProperty('--d', (g[1] + Math.min(n, 6) * g[2]) + 'ms');
+        rvEls.push(el);
+      });
+    });
+    document.documentElement.classList.add('js-rv');
+    var rio = new IntersectionObserver(function(en){
+      en.forEach(function(e){
+        if (!e.isIntersecting) return;
+        var el = e.target; rio.unobserve(el);
+        el.classList.add('in');
+        /* once it has arrived, hand the element back its own hover transitions */
+        var wait = parseFloat(getComputedStyle(el).getPropertyValue('--d')) + 1150;
+        setTimeout(function(){ el.classList.remove('rvl', 'rvl-fade', 'in'); el.style.removeProperty('--d'); }, wait);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    rvEls.forEach(function(el){ rio.observe(el); });
+  }
+
+  /* ---------- the decision plays out ---------- */
+  var dplay = document.getElementById('dplay');
+  function playDecision(instant){
+    var xs = dplay.querySelectorAll('[data-x]'), ok = dplay.querySelector('[data-ok]');
+    if (instant){ xs.forEach(function(x){ x.classList.add('x'); }); ok.classList.add('ok'); dplay.classList.add('done'); return; }
+    xs.forEach(function(x, i){ setTimeout(function(){ x.classList.add('x'); }, 500 + i * 600); });
+    setTimeout(function(){ ok.classList.add('ok'); }, 500 + xs.length * 600);
+    setTimeout(function(){ dplay.classList.add('done'); }, 1000 + xs.length * 600);
+  }
+  if (reduce || !('IntersectionObserver' in window)) playDecision(true);
+  else {
+    var dio = new IntersectionObserver(function(en){ if (en[0].isIntersecting){ dio.disconnect(); playDecision(false); } }, { threshold: 0.45 });
+    dio.observe(dplay);
+  }
+
+  /* ---------- showcase pins arrive one by one ---------- */
+  var hots = document.querySelectorAll('.hot');
+  if (reduce || !('IntersectionObserver' in window)) hots.forEach(function(h){ h.classList.add('pop'); });
+  else {
+    var pio = new IntersectionObserver(function(en){
+      if (en[0].isIntersecting){ pio.disconnect(); hots.forEach(function(h, i){ setTimeout(function(){ h.classList.add('pop'); }, 400 + i * 450); }); }
+    }, { threshold: 0.5 });
+    pio.observe(document.getElementById('frame'));
+  }
+
+  /* ---------- ENTRY 001: manifesto words + the cursor that fills ---------- */
+  var manifesto = document.getElementById('manifesto'), mWords = [];
+  if (!reduce) manifesto.querySelectorAll('p').forEach(function(p){ mWords = mWords.concat(Array.prototype.slice.call(splitWords(p, 'sw'))); });
+  var cb = document.getElementById('cursorBits'), cbx = cb.getContext('2d'), CB_C = 9, CB_R = 16, cbP = reduce ? 1 : 0;
+  function drawCursor(now){
+    var r = cb.getBoundingClientRect(); if (!r.width) return;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    if (cb.width !== Math.round(r.width * dpr)){ cb.width = Math.round(r.width * dpr); cb.height = Math.round(r.height * dpr); }
+    cbx.setTransform(dpr, 0, 0, dpr, 0, 0); cbx.clearRect(0, 0, r.width, r.height);
+    var cw = r.width / CB_C, ch = r.height / CB_R, total = CB_C * CB_R, filled = Math.round(cbP * total);
+    var blinkOn = cbP >= 1 && Math.floor(now / 560) % 2 === 0;
+    var dot = cssv('--dot'), ink = cssv('--ink'), brand = cssv('--brand');
+    for (var i = 0; i < total; i++){
+      var cx = (i % CB_C) * cw + cw / 2, cy = Math.floor(i / CB_C) * ch + ch / 2, s;
+      if (i < filled){ cbx.fillStyle = cbP >= 1 ? (blinkOn ? brand : ink) : (i > filled - CB_C ? brand : ink); s = Math.min(cw, ch) * 0.62; }
+      else { cbx.fillStyle = dot; s = 2; }
+      cbx.fillRect(cx - s / 2, cy - s / 2, s, s);
+    }
+  }
+
+  /* ---------- the narrator (HUD) ---------- */
+  var hud = document.getElementById('hud'), hudN = document.getElementById('hudN'), hudC = document.getElementById('hudC'),
+      hudBar = document.getElementById('hudBar'), hc = document.getElementById('hudBits'), hx = hc.getContext('2d');
+  var CH = [
+    ['.hero', '000', 'Start', 'scatter'], ['#why', '001', 'Why we exist', 'cursor'],
+    ['#showcase', '002', 'What we’ve built', 'screen'], ['#work', '002', 'What we’ve built', 'screen'],
+    ['#method', '003', 'How we decide', 'branch'], ['#services', '004', 'What we do', 'clusters'],
+    ['#industries', '004', 'What we do', 'clusters'], ['#insights', '005', 'What we’re learning', 'lines'],
+    ['#faq', '005', 'What we’re learning', 'lines'], ['#contact', '006', 'Your entry', 'square']
+  ].map(function(c){ return { el: document.querySelector(c[0]), n: c[1], c: c[2], shape: c[3] }; });
+
+  function range(a, b){ var r = []; for (var i = a; i <= b; i++) r.push(i); return r; }
+  var SHAPES = {
+    cursor: (function(){ var s = []; range(1, 10).forEach(function(y){ range(4, 7).forEach(function(x){ s.push([x, y, 1]); }); }); return s; })(),
+    screen: (function(){ var s = [];
+      range(0, 11).forEach(function(x){ s.push([x, 1, 0]); s.push([x, 8, 0]); });
+      range(2, 7).forEach(function(y){ s.push([0, y, 0]); s.push([11, y, 0]); });
+      range(2, 5).forEach(function(x){ s.push([x, 3, 1]); }); range(2, 8).forEach(function(x){ s.push([x, 5, 0]); });
+      s.push([5, 9, 0], [6, 9, 0]); range(3, 8).forEach(function(x){ s.push([x, 10, 0]); }); return s; })(),
+    branch: (function(){ var s = []; range(7, 11).forEach(function(y){ s.push([6, y, 1]); });
+      [[5, 6], [4, 5], [3, 4], [2, 3], [1, 2]].forEach(function(p){ s.push([p[0], p[1], 0]); });
+      [[6, 6], [6, 5], [6, 4], [6, 3], [6, 2]].forEach(function(p){ s.push([p[0], p[1], 0]); });
+      [[7, 6], [8, 5], [9, 4], [10, 3], [11, 2]].forEach(function(p){ s.push([p[0], p[1], 1]); });
+      s.push([0, 1, 0], [6, 1, 0], [11, 1, 1], [10, 1, 1]); return s; })(),
+    clusters: (function(){ var s = []; [[1, 1], [8, 1], [1, 8], [8, 8]].forEach(function(o, q){
+      range(0, 2).forEach(function(y){ range(0, 2).forEach(function(x){ s.push([o[0] + x, o[1] + y, q + 2]); }); }); }); return s; })(),
+    lines: (function(){ var s = []; [[2, 10], [4, 8], [6, 11], [8, 6], [10, 9]].forEach(function(l, i){
+      range(0, l[1] - 1).forEach(function(x){ s.push([x + 0.5, l[0], i === 0 ? 1 : 0]); }); }); return s; })(),
+    square: (function(){ var s = []; range(4, 7).forEach(function(y){ range(4, 7).forEach(function(x){ s.push([x, y, 1]); }); }); return s; })()
+  };
+  var HN = 144, HS = hc.width, cell = HS / 12, hp = [];
+  for (var i = 0; i < HN; i++) hp.push({ x: Math.random() * HS, y: Math.random() * HS, a: 0.6, tx: 0, ty: 0, ta: 0.6, hi: 0 });
+  var hudShape = null, active = -1;
+  function setShape(name){
+    if (hudShape === name) return; hudShape = name;
+    var pts = SHAPES[name];
+    hp.forEach(function(p, i){
+      if (name === 'scatter' || !pts){ p.tx = Math.random() * HS; p.ty = Math.random() * HS; p.ta = 0.55; p.hi = 0; }
+      else if (i < pts.length){ p.tx = (pts[i][0] + 0.5) * cell; p.ty = (pts[i][1] + 0.5) * cell; p.ta = 1; p.hi = pts[i][2]; }
+      else { p.tx = HS / 2 + (Math.random() - 0.5) * cell * 2; p.ty = HS / 2 + (Math.random() - 0.5) * cell * 2; p.ta = 0; p.hi = 0; }
+    });
+  }
+  function drawHud(now){
+    hx.clearRect(0, 0, HS, HS);
+    var muted = cssv('--muted'), brand = cssv('--brand'), ease = reduce ? 1 : 0.12;
+    var pulse = 0.55 + 0.45 * Math.sin(now / 320), blink = Math.floor(now / 520) % 2 === 0, q = Math.floor(now / 900) % 4;
+    for (var i = 0; i < HN; i++){
+      var p = hp[i];
+      p.x += (p.tx - p.x) * ease; p.y += (p.ty - p.y) * ease; p.a += (p.ta - p.a) * ease;
+      if (p.a < 0.02) continue;
+      var isHi = p.hi === 1 || (p.hi >= 2 && p.hi - 2 === q), a = p.a;
+      if (hudShape === 'cursor') a *= blink ? 1 : 0.25;
+      if (hudShape === 'square') a *= pulse;
+      hx.globalAlpha = a; hx.fillStyle = isHi ? brand : muted;
+      var s = cell * (isHi ? 0.62 : 0.5);
+      hx.fillRect(p.x - s / 2, p.y - s / 2, s, s);
+    }
+    hx.globalAlpha = 1;
+  }
+
+  /* ---------- scroll: tilt, rail, manifesto, narrator ---------- */
+  var frame = document.getElementById('frame'), steps = document.getElementById('steps'),
+      fill = document.getElementById('railFill'), items = steps.querySelectorAll('.step');
+  if (!reduce) steps.classList.add('tracking');
+  var ticking = false;
+  function onScroll(){
+    var vh = window.innerHeight;
+    if (!reduce){
+      var fr = frame.getBoundingClientRect();
+      var p = clamp((vh - fr.top) / (vh * 0.8), 0, 1), e = 1 - Math.pow(1 - p, 2);
+      frame.style.transform = 'rotateX(' + ((1 - e) * 24).toFixed(2) + 'deg) scale(' + (0.88 + 0.12 * e).toFixed(3) + ')';
+      var sr = steps.getBoundingClientRect();
+      var q = clamp((vh * 0.8 - sr.top) / (sr.height * 0.9 + vh * 0.2), 0, 1);
+      fill.style.transform = 'scaleX(' + q.toFixed(3) + ')';
+      items.forEach(function(s, i){ s.classList.toggle('on', q > i / items.length + 0.01 || q > 0.97); });
+      var mr = manifesto.getBoundingClientRect();
+      var mp = clamp((vh * 0.82 - mr.top) / (mr.height * 0.85), 0, 1);
+      var lit = Math.round(mp * mWords.length);
+      mWords.forEach(function(w, i){ w.classList.toggle('lit', i < lit); w.classList.toggle('edge', i < lit && i >= lit - 3 && mp < 0.999); });
+      cbP = mp;
+    }
+    var idx = 0;
+    CH.forEach(function(c, i){ if (c.el && c.el.getBoundingClientRect().top < vh * 0.5) idx = i; });
+    var heroBottom = document.querySelector('.hero').getBoundingClientRect().bottom;
+    hud.classList.toggle('on', heroBottom < vh * 0.55 && !introOn);
+    if (idx !== active){
+      active = idx; var c = CH[idx];
+      hudC.classList.add('swap');
+      setTimeout(function(){ hudN.textContent = 'ENTRY ' + c.n; hudC.textContent = c.c; hudC.classList.remove('swap'); }, 200);
+      setShape(c.shape);
+    }
+    var docH = document.documentElement.scrollHeight - vh;
+    hudBar.style.transform = 'scaleX(' + (docH > 0 ? clamp(window.scrollY / docH, 0, 1) : 0).toFixed(3) + ')';
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){ if (!ticking){ ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  window.addEventListener('resize', onScroll);
+  setShape('scatter'); onScroll();
+
+  (function tick(now){
+    if (hud.classList.contains('on') || reduce) drawHud(now);
+    var r = cb.getBoundingClientRect();
+    if (r.bottom > 0 && r.top < window.innerHeight) drawCursor(now);
+    if (!reduce) requestAnimationFrame(tick);
+  })(performance.now());
+
+  /* ---------- start ---------- */
+  if (!reduce && !store('qb-intro')) playIntro(); else finishIntro(true);
 
   /* ---------- count-up metrics ---------- */
   if (!reduce && 'IntersectionObserver' in window){
@@ -748,29 +1258,7 @@ footer{padding-block:56px 40px;background:var(--paper)}
         })(t1);
       });
     }, { threshold: 0.6 });
-    document.querySelectorAll('.proof .v').forEach(function(el){ io.observe(el); });
-  }
-
-  /* ---------- scroll: tilting showcase + method rail ---------- */
-  var frame = document.getElementById('frame'), steps = document.getElementById('steps'),
-      fill = document.getElementById('railFill'), items = steps.querySelectorAll('.step');
-  if (!reduce){
-    steps.classList.add('tracking');
-    var ticking = false;
-    var onScroll = function(){
-      var vh = window.innerHeight;
-      var fr = frame.getBoundingClientRect();
-      var p = clamp((vh - fr.top) / (vh * 0.8), 0, 1), e = 1 - Math.pow(1 - p, 2);
-      frame.style.transform = 'rotateX(' + ((1 - e) * 24).toFixed(2) + 'deg) scale(' + (0.88 + 0.12 * e).toFixed(3) + ')';
-      var sr = steps.getBoundingClientRect();
-      var q = clamp((vh * 0.8 - sr.top) / (sr.height * 0.9 + vh * 0.2), 0, 1);
-      fill.style.transform = 'scaleX(' + q.toFixed(3) + ')';
-      items.forEach(function(s, i){ s.classList.toggle('on', q > i / items.length + 0.01 || q > 0.97); });
-      ticking = false;
-    };
-    window.addEventListener('scroll', function(){ if (!ticking){ ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
-    window.addEventListener('resize', onScroll);
-    onScroll();
+    document.querySelectorAll('.proof .v:not([data-nocount])').forEach(function(el){ io.observe(el); });
   }
 })();
 </script>

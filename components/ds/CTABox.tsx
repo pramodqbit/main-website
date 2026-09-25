@@ -16,14 +16,18 @@ export type CTABoxProps = {
 /** Closing call-to-action: pitch | "what happens next" details. */
 export function CTABox({ label, title, emphasis, body, button, details = [], className }: CTABoxProps) {
   return (
-    <div className={cn("grid grid-cols-[1.3fr_1fr] border border-ink bg-surface max-[860px]:grid-cols-1", className)}>
+    <div data-reveal="fade" className={cn("grid grid-cols-[1.3fr_1fr] border border-ink bg-surface max-[860px]:grid-cols-1", className)}>
       <div className="flex flex-col gap-5 p-12 max-[860px]:p-7">
         {label ? <LogLabel items={[label]} /> : null}
-        <Heading size="h2" emphasis={emphasis} className="text-[clamp(34px,4.4vw,56px)] leading-[1.02]">
+        <Heading size="h2" emphasis={emphasis} revealDelay={150} className="text-[clamp(34px,4.4vw,56px)] leading-[1.02]">
           {title}
         </Heading>
-        {body ? <p className="max-w-[46ch] text-[17px] text-muted">{body}</p> : null}
-        <div>
+        {body ? (
+          <p className="max-w-[46ch] text-[17px] text-muted" data-reveal="up" data-reveal-delay={350}>
+            {body}
+          </p>
+        ) : null}
+        <div data-reveal="up" data-reveal-delay={480}>
           <Button href={button.href} newTab={button.newTab} arrow data-cta="cta_block">
             {button.label}
           </Button>
@@ -34,6 +38,9 @@ export function CTABox({ label, title, emphasis, body, button, details = [], cla
           {details.map((d, i) => (
             <div
               key={`${d.label}-${i}`}
+              data-reveal="up"
+              data-reveal-delay={400}
+              data-reveal-stagger={100}
               className="grid grid-cols-[90px_1fr] gap-3.5 border-b border-dashed border-line py-3 text-[15px] last:border-b-0"
             >
               <dt className="pt-[3px] font-mono text-[11.5px] uppercase tracking-[.08em] text-muted">{d.label}</dt>

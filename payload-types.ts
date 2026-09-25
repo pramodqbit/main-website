@@ -239,6 +239,7 @@ export interface Page {
    */
   layout: (
     | HeroLogBlock
+    | ManifestoBlock
     | ProofStripBlock
     | LogTickerBlock
     | ShowcaseBlock
@@ -356,6 +357,28 @@ export interface HeroLogBlock {
    * Show the interactive dot grid behind the hero.
    */
   showBitField?: boolean | null;
+  /**
+   * On the first visit of a session, these lines type out on a blank page, then break into dots that become the hero. Visitors can skip it. Never shown to people who turn off animations.
+   */
+  intro?: {
+    /**
+     * Only plays on the home page (/).
+     */
+    enabled?: boolean | null;
+    /**
+     * Keep it to 3–5 short, true lines. The label is violet mono (a year or a verb); the text is typed.
+     */
+    lines?:
+      | {
+          /**
+           * e.g. "2025", "DECIDED"
+           */
+          label: string;
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
   id?: string | null;
   blockName?: string | null;
   blockType: 'heroLog';
@@ -719,6 +742,7 @@ export interface Industry {
   layout?:
     | (
         | HeroLogBlock
+        | ManifestoBlock
         | ProofStripBlock
         | LogTickerBlock
         | ShowcaseBlock
@@ -835,6 +859,7 @@ export interface Service {
   layout?:
     | (
         | HeroLogBlock
+        | ManifestoBlock
         | ProofStripBlock
         | LogTickerBlock
         | ShowcaseBlock
@@ -923,6 +948,27 @@ export interface Faq {
   order?: number | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ManifestoBlock".
+ */
+export interface ManifestoBlock {
+  /**
+   * Mono label on the left. Also names this chapter in the narrator.
+   */
+  label?: string | null;
+  /**
+   * Each line is its own paragraph. Wrap words in *asterisks* to show them in violet italic.
+   */
+  lines: {
+    text: string;
+    id?: string | null;
+  }[];
+  signature?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'manifesto';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2277,6 +2323,7 @@ export interface PagesSelect<T extends boolean = true> {
     | T
     | {
         heroLog?: T | HeroLogBlockSelect<T>;
+        manifesto?: T | ManifestoBlockSelect<T>;
         proofStrip?: T | ProofStripBlockSelect<T>;
         logTicker?: T | LogTickerBlockSelect<T>;
         showcase?: T | ShowcaseBlockSelect<T>;
@@ -2353,6 +2400,18 @@ export interface HeroLogBlockSelect<T extends boolean = true> {
         footerLink?: T | LinkFieldSelect<T>;
       };
   showBitField?: T;
+  intro?:
+    | T
+    | {
+        enabled?: T;
+        lines?:
+          | T
+          | {
+              label?: T;
+              text?: T;
+              id?: T;
+            };
+      };
   id?: T;
   blockName?: T;
 }
@@ -2366,6 +2425,22 @@ export interface LinkFieldSelect<T extends boolean = true> {
   reference?: T;
   url?: T;
   label?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ManifestoBlock_select".
+ */
+export interface ManifestoBlockSelect<T extends boolean = true> {
+  label?: T;
+  lines?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  signature?: T;
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2910,6 +2985,7 @@ export interface ServicesSelect<T extends boolean = true> {
     | T
     | {
         heroLog?: T | HeroLogBlockSelect<T>;
+        manifesto?: T | ManifestoBlockSelect<T>;
         proofStrip?: T | ProofStripBlockSelect<T>;
         logTicker?: T | LogTickerBlockSelect<T>;
         showcase?: T | ShowcaseBlockSelect<T>;
@@ -2977,6 +3053,7 @@ export interface IndustriesSelect<T extends boolean = true> {
     | T
     | {
         heroLog?: T | HeroLogBlockSelect<T>;
+        manifesto?: T | ManifestoBlockSelect<T>;
         proofStrip?: T | ProofStripBlockSelect<T>;
         logTicker?: T | LogTickerBlockSelect<T>;
         showcase?: T | ShowcaseBlockSelect<T>;

@@ -9,7 +9,7 @@ export type FactsPanelProps = { rows: FactsPanelRow[]; title?: string; className
 export function FactsPanel({ rows, title = "Project facts", className }: FactsPanelProps) {
   if (!rows.length) return null;
   return (
-    <section aria-label={title} className={cn("border border-line bg-surface", className)}>
+    <section aria-label={title} data-reveal="up" data-reveal-delay={200} className={cn("border border-line bg-surface", className)}>
       <h2 className="m-0 border-b border-line px-5 py-3 font-mono text-label font-normal uppercase text-ink">{title}</h2>
       <dl className="m-0 grid grid-cols-[104px_1fr] gap-x-4 px-5">
         {rows.map((r, i) => (

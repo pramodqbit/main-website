@@ -48,7 +48,7 @@ export function AnnotatedMedia({
         <span aria-hidden="true" className="size-[9px] rounded-full bg-line" />
         {chromeLabel ? <span className="ml-3.5 truncate font-mono text-xs text-muted">{chromeLabel}</span> : null}
       </div>
-      <div className="relative">
+      <div className="relative" data-reveal={annotations.length ? "pins" : undefined}>
         <Image
           src={image.src}
           width={image.width}
@@ -64,8 +64,9 @@ export function AnnotatedMedia({
             type="button"
             aria-describedby={`${base}-n${i}`}
             aria-label={`Annotation ${LETTERS[i]}`}
+            data-pin=""
             className="absolute z-[2] -translate-1/2 cursor-default rounded-full"
-            style={{ left: `${a.x}%`, top: `${a.y}%` }}
+            style={{ left: `${a.x}%`, top: `${a.y}%`, ["--i" as string]: i }}
           >
             <Pin letter={LETTERS[i]} size="lg" className="relative pin-ring" />
           </button>
@@ -89,6 +90,9 @@ export function AnnotatedMedia({
             <li
               key={`${a.title}-${i}`}
               id={`${base}-n${i}`}
+              data-reveal="up"
+              data-reveal-delay={150}
+              data-reveal-stagger={140}
               className="grid grid-cols-[30px_1fr] gap-3.5 pt-[22px] pr-6 text-[15.5px] [&+&]:border-l [&+&]:border-line [&+&]:pl-6 max-[860px]:pr-0 max-[860px]:pt-[18px] max-[860px]:[&+&]:border-l-0 max-[860px]:[&+&]:pl-0"
             >
               <Pin letter={LETTERS[i]} />

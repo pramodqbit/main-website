@@ -16,15 +16,30 @@ export type SectionHeadProps = {
 export function SectionHead({ label, title, emphasis, intro, more, as = "h2", className }: SectionHeadProps) {
   return (
     <div className={cn("mb-12 grid grid-cols-[200px_1fr_auto] items-end gap-8 max-[860px]:grid-cols-1 max-[860px]:gap-2.5", className)}>
-      <span className="self-start pt-2.5 font-mono text-sm text-brand max-[860px]:pt-0">{label}</span>
+      <span
+        className="self-start pt-2.5 font-mono text-sm text-brand max-[860px]:pt-0"
+        data-chapter={label || undefined}
+        data-reveal={label ? "fade" : undefined}
+      >
+        {label}
+      </span>
       <div>
         <Heading as={as} size="h2" emphasis={emphasis}>
           {title}
         </Heading>
-        {intro ? <p className="mt-3.5 text-[17px] text-muted measure">{intro}</p> : null}
+        {intro ? (
+          <p className="mt-3.5 text-[17px] text-muted measure" data-reveal="up" data-reveal-delay={260}>
+            {intro}
+          </p>
+        ) : null}
       </div>
       {more ? (
-        <Link href={more.href} className="whitespace-nowrap font-mono text-sm text-brand underline-offset-[3px] hover:underline">
+        <Link
+          href={more.href}
+          className="whitespace-nowrap font-mono text-sm text-brand underline-offset-[3px] hover:underline"
+          data-reveal="up"
+          data-reveal-delay={420}
+        >
           {more.label} <span aria-hidden="true">→</span>
         </Link>
       ) : (

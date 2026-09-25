@@ -7,7 +7,7 @@ export type Chip = { href: string; label: string; active: boolean };
 export function FilterChips({ chips, label }: { chips: Chip[]; label: string }) {
   if (chips.length < 2) return null;
   return (
-    <nav aria-label={label} className="mb-10">
+    <nav aria-label={label} className="mb-10" data-reveal="up" data-reveal-delay={300}>
       <ul className="m-0 flex list-none flex-wrap gap-2 p-0">
         {chips.map((c) => (
           <li key={c.href}>

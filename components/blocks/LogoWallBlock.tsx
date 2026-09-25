@@ -15,7 +15,7 @@ export async function LogoWallBlock({ block }: { block: LogoWallData }) {
       <SectionHeader data={block} />
       <ul className="m-0 grid list-none grid-cols-4 gap-px border border-line bg-line p-0 max-[860px]:grid-cols-2">
         {clients.map((c) => (
-          <li key={c.id} className="flex items-center justify-center bg-paper p-8">
+          <li key={c.id} className="flex items-center justify-center bg-paper p-8" data-reveal="up" data-reveal-stagger={80}>
             <Media media={c.logo} size="thumb" sizes="200px" className="max-h-12 w-auto object-contain" />
             <span className="sr-only">{c.name}</span>
           </li>

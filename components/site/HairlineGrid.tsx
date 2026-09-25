@@ -7,7 +7,7 @@ export function HairlineGrid({ items }: { items: Item[] | null | undefined }) {
   return (
     <ul className="m-0 grid list-none grid-cols-2 gap-px border border-line bg-line p-0 max-[760px]:grid-cols-1">
       {rows.map((r, i) => (
-        <li key={r.id ?? i} className="bg-paper p-6">
+        <li key={r.id ?? i} className="bg-paper p-6" data-reveal="up">
           {r.title ? <h3 className="m-0 font-serif text-xl">{r.title}</h3> : null}
           {r.description ? <p className="mb-0 mt-2 text-muted">{r.description}</p> : null}
         </li>

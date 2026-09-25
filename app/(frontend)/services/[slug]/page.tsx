@@ -91,7 +91,7 @@ export default async function ServicePage({ params }: Props) {
           {s.outcomeHeadline || s.title}
         </Heading>
         <Lede className="mt-6">{s.summary}</Lede>
-        <div className="mt-8">
+        <div className="mt-8" data-reveal="up" data-reveal-delay={450}>
           <Button href={booking.href} newTab={booking.newTab} arrow data-cta="service_hero">
             {booking.label}
           </Button>
@@ -125,7 +125,7 @@ export default async function ServicePage({ params }: Props) {
         <MonoSection label="LOG / DELIVERABLES" title="What you get">
           <ul className="m-0 grid list-none grid-cols-2 gap-x-8 gap-y-3 p-0 font-mono text-sm max-[760px]:grid-cols-1">
             {deliverables.map((d) => (
-              <li key={d} className="flex gap-3 border-b border-dashed border-line pb-3">
+              <li key={d} className="flex gap-3 border-b border-dashed border-line pb-3" data-reveal="up" data-reveal-stagger={70}>
                 <span aria-hidden="true" className="text-brand">
                   ✓
                 </span>
@@ -140,7 +140,7 @@ export default async function ServicePage({ params }: Props) {
         <MonoSection label="LOG / WORK" title="Where we’ve done it">
           <FeatureCaseFor cs={featured} />
           {firstDecision ? (
-            <div className="mt-12">
+            <div className="mt-12" data-reveal="up" data-reveal-delay={150}>
               <LogLabel items={["How we decided"]} />
               <div className="mt-5 measure">
                 <Heading as="h3" size="h3" className="mb-6">

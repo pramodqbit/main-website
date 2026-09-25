@@ -24,7 +24,7 @@ export function Steps({ steps, className }: StepsProps) {
       )}
     >
       {steps.map((s, i) => (
-        <div key={`${s.name}-${i}`} data-step="" className="flex flex-col gap-3.5 bg-paper pt-7 pr-6 pb-8 min-[561px]:max-[960px]:[&:nth-child(odd)]:pl-6 min-[961px]:[&+&]:pl-6">
+        <div key={`${s.name}-${i}`} data-step="" data-reveal="up" data-reveal-stagger={130} className="flex flex-col gap-3.5 bg-paper pt-7 pr-6 pb-8 min-[561px]:max-[960px]:[&:nth-child(odd)]:pl-6 min-[961px]:[&+&]:pl-6">
           <span className="font-mono text-label uppercase text-brand">Phase {i + 1}</span>
           <h3 className="font-serif text-[28px] leading-[1.15]">{s.name}</h3>
           {s.description ? <p className="text-[15px] text-muted">{s.description}</p> : null}

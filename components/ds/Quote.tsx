@@ -19,7 +19,7 @@ export type QuoteProps = {
 export function Quote({ quote, name, role, company, label, badge, size = "md", className }: QuoteProps) {
   const cite = [name, [role, company].filter(Boolean).join(", ")].filter(Boolean).join(" · ");
   const body = (
-    <figure className="m-0">
+    <figure className="m-0" data-reveal="up" data-reveal-delay={150}>
       <blockquote
         className={cn(
           "m-0 max-w-[36ch] font-serif leading-[1.3] tracking-[-0.01em] before:text-brand before:content-['“'] after:text-brand after:content-['”']",

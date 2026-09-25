@@ -10,7 +10,7 @@ export function MetricGrid({ items }: { items: MetricProps[] }) {
   return (
     <div className="grid grid-cols-3 gap-px border border-line bg-line max-[860px]:grid-cols-2 max-[480px]:grid-cols-1">
       {items.map((m, i) => (
-        <div key={`${m.label}-${i}`} className="bg-paper p-6">
+        <div key={`${m.label}-${i}`} className="bg-paper p-6" data-reveal="up" data-reveal-stagger={120}>
           <Metric {...m} />
         </div>
       ))}

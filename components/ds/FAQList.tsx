@@ -8,7 +8,13 @@ export function FAQList({ items, defaultOpen, className }: FAQListProps) {
   return (
     <div className={cn("border-t border-line", className)}>
       {items.map((item, i) => (
-        <details key={`${item.question}-${i}`} open={i === defaultOpen} className="border-b border-line">
+        <details
+          key={`${item.question}-${i}`}
+          open={i === defaultOpen}
+          className="border-b border-line"
+          data-reveal="up"
+          data-reveal-stagger={90}
+        >
           <summary className="grid cursor-pointer grid-cols-[1fr_24px] gap-5 py-[22px] font-serif text-[23px] leading-[1.25] faq-summary">
             {item.question}
           </summary>

@@ -95,7 +95,7 @@ export default async function PostPage({ params }: Props) {
             </Heading>
             <Lede className="mt-6">{post.excerpt}</Lede>
             {authors.length ? (
-              <p className="mt-6 text-sm text-muted">
+              <p className="mt-6 text-sm text-muted" data-reveal="up" data-reveal-delay={420}>
                 By{" "}
                 {authors.map((a, i) => (
                   <span key={a.id}>
@@ -108,7 +108,7 @@ export default async function PostPage({ params }: Props) {
                 <time dateTime={date}>{formatDate(date)}</time>
               </p>
             ) : (
-              <p className="mt-6 text-sm text-muted">
+              <p className="mt-6 text-sm text-muted" data-reveal="up" data-reveal-delay={420}>
                 <time dateTime={date}>{formatDate(date)}</time>
               </p>
             )}
@@ -121,7 +121,7 @@ export default async function PostPage({ params }: Props) {
 
             <RichText data={post.content} className="mt-12" />
 
-            <div className="mt-12 flex flex-wrap items-center gap-5 border-t border-line pt-5">
+            <div className="mt-12 flex flex-wrap items-center gap-5 border-t border-line pt-5" data-reveal="up">
               <MonoLabel>Share</MonoLabel>
               {share.map((s) => (
                 <a
@@ -141,7 +141,7 @@ export default async function PostPage({ params }: Props) {
             {authors.length ? (
               <div className="mt-12 flex flex-col gap-6">
                 {authors.map((a) => (
-                  <div key={a.id} className="border border-line bg-surface p-6">
+                  <div key={a.id} className="border border-line bg-surface p-6" data-reveal="up">
                     <MonoLabel>{a.kind === "team" ? "Written by" : a.role}</MonoLabel>
                     <p className="m-0 mt-2 font-serif text-xl">
                       <AuthorName author={a} />
@@ -155,7 +155,7 @@ export default async function PostPage({ params }: Props) {
 
           {toc.length > 1 ? (
             <nav aria-label="On this page" className="max-[1099px]:hidden">
-              <div className="sticky top-24">
+              <div className="sticky top-24" data-reveal="fade" data-reveal-delay={600}>
                 <MonoLabel as="p" className="mb-4">
                   On this page
                 </MonoLabel>

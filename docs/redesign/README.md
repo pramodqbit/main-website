@@ -41,6 +41,7 @@ Run the phases **in order**. Each phase ends with a green build and a commit.
 | 5 | [phase-5-pages-and-templates.md](phase-5-pages-and-templates.md) | Build every route, the block renderer, forms, live preview and the homepage | 5–7 days |
 | 6 | [phase-6-seo-performance-launch.md](phase-6-seo-performance-launch.md) | SEO, redirects, JSON-LD, performance, accessibility, tests, go-live | 2–3 days |
 | 7 | [phase-7-growth-and-editor-enablement.md](phase-7-growth-and-editor-enablement.md) | Editor guide, content backlog, industry pages, analytics, cadence | Ongoing |
+| 9 | [phase-9-story-and-motion.md](phase-9-story-and-motion.md) | **Built.** Opening intro, manifesto, narrator, word-by-word headlines, content reveals, smooth scroll | Done |
 | 8 | [phase-8-services-and-work-depth.md](phase-8-services-and-work-depth.md) | Deeper `/services` and `/work` pages, new case-study fields, drafted content from `content/drafts/phase-8/` | 3–4 days |
 
 Phases 2 and 3 can run in parallel with two agents. Phase 5 needs both finished.
@@ -53,7 +54,8 @@ Phases 2 and 3 can run in parallel with two agents. Phase 5 needs both finished.
 2. **Keep these URLs live, with the same content:** `/academyai/privacy-policy` and `/academyai/terms-and-conditions`. They are linked from a mobile app store listing.
 3. **Never hardcode secrets.** All keys go in environment variables (see §7). Never log secrets.
 4. **Use design tokens only.** Never write a hex colour, a raw `px` font size or Tailwind's default palette (`bg-purple-600`, `text-gray-500`…) in a component. Use the token classes defined in Phase 2. Never use Tailwind's `dark:` variant; tokens switch themselves.
-5. **No new UI libraries.** Radix, shadcn, GSAP, Lenis, cobe, Motion, Framer and similar are banned. Motion is handled by the small vanilla hooks in `components/motion`. `lucide-react` is the only icon set, and icons are used sparingly.
+5. **No new UI libraries.** Radix, shadcn, GSAP, cobe, Motion, Framer and similar are banned. Motion is handled by the small vanilla code in `components/motion`. **One approved exception: `lenis`** for site-wide smooth scrolling (approved by the product owner in Phase 9). `lucide-react` is the only icon set, and icons are used sparingly.
+   **Animations:** never animate content by hand in a page. Put `data-reveal` on the element (see Phase 9 §9.3); the story layer does the rest and respects reduced motion.
 6. **Server Components by default.** Add `"use client"` only to leaf components that need interaction.
 7. **All content comes from Payload** (Phase 5 onwards). The only exceptions are the two legal pages and `/styleguide`.
 8. **Every phase ends with** `npm run lint`, `npx tsc --noEmit` and `npm run build` all passing, then one commit per phase using the message format `redesign(phase-N): <summary>`.

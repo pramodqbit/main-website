@@ -22,7 +22,13 @@ export function FaqSection({ label, title, faqs }: { label?: string | null; titl
   return (
     <Section id="faq">
       <div className="grid grid-cols-[200px_1fr] gap-8 max-[860px]:grid-cols-1 max-[860px]:gap-4">
-        <span className="pt-[26px] font-mono text-sm text-brand max-[860px]:pt-0">{label || "LOG / FAQ"}</span>
+        <span
+          className="pt-[26px] font-mono text-sm text-brand max-[860px]:pt-0"
+          data-chapter={label || "LOG / FAQ"}
+          data-reveal="fade"
+        >
+          {label || "LOG / FAQ"}
+        </span>
         <div>
           {title ? (
             <Heading as="h2" size="h2" className="mb-8">

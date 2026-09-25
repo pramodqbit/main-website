@@ -4,6 +4,8 @@ import { LogLabel } from "@/components/ds/LogLabel";
 import { LogPanel, type LogPanelRow } from "@/components/ds/LogPanel";
 import { MonoLabel } from "@/components/ds/MonoLabel";
 import { ProofStrip } from "@/components/ds/ProofStrip";
+import { HERO_INTRO_DEFAULT_LINES } from "@/cms/blocks/heroIntroDefaults";
+import { IntroLog } from "@/components/motion/IntroLog";
 import { LazyBitField } from "@/components/motion/LazyBitField";
 import { featuredMetrics, populated, toMetric } from "@/lib/content";
 import { resolveLink } from "@/lib/links";
@@ -98,9 +100,16 @@ export async function HeroLogBlock({ block, proofStrip }: Props) {
       : [];
 
   const showBits = block.showBitField !== false;
+  /* Hero blocks saved before the intro fields existed have no `intro` data: use the defaults. */
+  const savedLines = block.intro?.lines;
+  const introLines = (savedLines == null ? HERO_INTRO_DEFAULT_LINES : savedLines)
+    .filter((l) => l.label && l.text)
+    .map((l) => ({ label: l.label, text: l.text }));
+  const showIntro = block.intro?.enabled !== false && introLines.length > 0;
 
   return (
     <section data-bitfield-host="" className="relative overflow-hidden pt-[104px] max-md:pt-20">
+      {showIntro ? <IntroLog lines={introLines} /> : null}
       {showBits ? (
         <>
           <div aria-hidden="true" className="absolute inset-0 dotgrid bits-mask [[data-bitfield-host]:has(canvas)_&]:hidden" />
@@ -117,8 +126,14 @@ export async function HeroLogBlock({ block, proofStrip }: Props) {
             <Heading as="h1" size="display" emphasis={block.emphasis} breakEmphasis className="mt-[22px]">
               {block.title}
             </Heading>
-            <p className="relative mt-[26px] max-w-[52ch] text-[19px] leading-[1.55] text-muted">{block.subhead}</p>
-            <div className="mt-[34px] flex flex-wrap gap-3">
+            <p
+              className="relative mt-[26px] max-w-[52ch] text-[19px] leading-[1.55] text-muted"
+              data-reveal="up"
+              data-reveal-delay={450}
+            >
+              {block.subhead}
+            </p>
+            <div className="mt-[34px] flex flex-wrap gap-3" data-reveal="up" data-reveal-delay={600}>
               <Button href={primary.href} newTab={primary.newTab} arrow data-cta="hero">
                 {primary.label}
               </Button>
@@ -129,7 +144,11 @@ export async function HeroLogBlock({ block, proofStrip }: Props) {
               ) : null}
             </div>
             {block.trustItems?.length ? (
-              <ul className="relative m-0 mt-[34px] flex list-none flex-wrap gap-x-[22px] gap-y-2.5 p-0">
+              <ul
+                className="relative m-0 mt-[34px] flex list-none flex-wrap gap-x-[22px] gap-y-2.5 p-0"
+                data-reveal="fade"
+                data-reveal-delay={800}
+              >
                 {block.trustItems.map((t, i) => (
                   <li key={t.id ?? i}>
                     <MonoLabel>{t.text}</MonoLabel>

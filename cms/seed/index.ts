@@ -18,6 +18,7 @@ import { seedGlobals } from "./steps/13-globals";
 import { seedPages } from "./steps/14-pages";
 import { seedDecisionDrafts } from "./steps/15-decision-drafts";
 import { seedPhase8Drafts } from "./steps/16-phase8-drafts";
+import { seedStoryLayer } from "./steps/17-story-layer";
 
 const STEPS: Array<[string, (p: Payload) => Promise<void>]> = [
   ["media", seedMedia],
@@ -36,6 +37,7 @@ const STEPS: Array<[string, (p: Payload) => Promise<void>]> = [
   ["pages", seedPages],
   ["decision-drafts", seedDecisionDrafts],
   ["16", seedPhase8Drafts],
+  ["17", seedStoryLayer],
 ];
 
 async function main() {

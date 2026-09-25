@@ -21,7 +21,12 @@ export async function WriteupExplainerBlock({ block }: { block: WriteupExplainer
         {parts.length ? (
           <ol className="m-0 flex list-none flex-col p-0">
             {parts.map((p, i) => (
-              <li key={p.id ?? i} className="grid grid-cols-[48px_1fr] gap-4 border-b border-line py-5 first:border-t">
+              <li
+                key={p.id ?? i}
+                className="grid grid-cols-[48px_1fr] gap-4 border-b border-line py-5 first:border-t"
+                data-reveal="up"
+                data-reveal-stagger={100}
+              >
                 <span aria-hidden="true" className="font-mono text-sm text-brand">
                   {String(i + 1).padStart(2, "0")}
                 </span>
@@ -34,7 +39,7 @@ export async function WriteupExplainerBlock({ block }: { block: WriteupExplainer
           </ol>
         ) : null}
         {decision && visible ? (
-          <figure className="m-0 self-start border border-line bg-surface p-7">
+          <figure className="m-0 self-start border border-line bg-surface p-7" data-reveal="up" data-reveal-delay={300}>
             <figcaption className="mb-5 flex flex-col gap-3">
               <LogLabel items={["Example", visible.client]} />
               <span className="font-serif text-2xl leading-[1.2]">{decision.title}</span>
