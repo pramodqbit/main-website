@@ -1,0 +1,103 @@
+{
+  "_about": "Phase 8 draft content for the 3 case studies: the new fields timeline, beforeAfter, teamRoles, lessons and platforms, plus recommended metric/status corrections. Imported by cms/seed/steps/16-phase8-drafts.ts as DRAFT versions only. Only facts found in content/legacy/docs/*.md are used; [VERIFY] marks anything the team must confirm. See REVIEW.md in this folder: the source documents contradict several claims currently published on the site.",
+  "caseStudies": [
+    {
+      "slug": "medical-prescription-ocr",
+      "source": "content/legacy/docs/BATRA_PROJECT_CASE_STUDY.md",
+      "recommended": {
+        "status": "prototype",
+        "title": "[VERIFY] Reading handwritten prescriptions with AI: a working prototype",
+        "summary": "[VERIFY] A prototype that turns photos of handwritten prescriptions into structured, validated medication records, with every uncertain result routed to a pharmacist.",
+        "metrics": [
+          { "value": "98–99", "unit": "%", "label": "Medicine-name extraction in demo testing", "source": "Qbitlog prototype testing on synthetic data", "featured": true },
+          { "value": "97–98", "unit": "%", "label": "Dosage extraction in demo testing", "source": "Qbitlog prototype testing on synthetic data", "featured": true },
+          { "value": "~8.5", "unit": "s", "label": "End-to-end processing per prescription (demo)", "source": "Qbitlog pipeline timings, demo environment", "featured": true },
+          { "value": "253,973+", "unit": "", "label": "Medicine records in the validation knowledge base", "source": "Qbitlog prototype", "featured": true }
+        ],
+        "metricsToRemove": [
+          { "value": "80%", "label": "Less Manual Data Entry", "reason": "Not in the source document; no measurement exists." },
+          { "value": "3-5s", "label": "Average Processing Time", "reason": "The source document's own timing breakdown totals ~8.5 s. 3–5 s was the target in the summary table." }
+        ]
+      },
+      "platforms": ["Web app", "REST API"],
+      "timeline": [
+        { "marker": "Wk 01–02", "phase": "BUILD", "text": "Foundation: FastAPI backend, React + TypeScript frontend, PostgreSQL and a CI/CD pipeline." },
+        { "marker": "Wk 03–04", "phase": "DECIDE", "text": "Google, Azure and AWS OCR run in parallel on each section of the prescription; the most confident result wins." },
+        { "marker": "Wk 05–06", "phase": "BUILD", "text": "Medical NLP: AWS Comprehend Medical extracts drugs and doses, Gemini corrects OCR errors and expands abbreviations." },
+        { "marker": "Wk 07–08", "phase": "BUILD", "text": "253,973+ medicine records and RxNorm lookups added; confidence scoring routes uncertain results to review." },
+        { "marker": "Wk 09–10", "phase": "LAUNCH", "text": "Upload, review and pharmacy screens connected end to end; prototype demoed." },
+        { "marker": "Wk 10", "phase": "MEASURE", "text": "Demo testing: 98–99% medicine names, 97–98% dosages, ~8.5 s per prescription." }
+      ],
+      "beforeAfter": [
+        { "aspect": "Reading the prescription", "before": "A pharmacist deciphers the handwriting and re-types it.", "after": "OCR and medical NLP extract patient, medicine, dose, frequency and duration; the pharmacist reviews and edits." },
+        { "aspect": "Checking the medicine exists", "before": "Memory, or a manual lookup.", "after": "Every medicine is matched against 253,973+ records and RxNorm codes." },
+        { "aspect": "Unclear prescriptions", "before": "Re-read, guess, or call the doctor.", "after": "Flagged automatically by confidence score, with low, high or urgent review priority." },
+        { "aspect": "Prescription data", "before": "Stays on paper.", "after": "Stored as structured records that can feed pharmacy and health systems." }
+      ],
+      "teamRoles": [
+        { "role": "[VERIFY] Backend / Python (FastAPI)", "count": null },
+        { "role": "[VERIFY] ML / NLP", "count": null },
+        { "role": "[VERIFY] Frontend (React)", "count": null }
+      ],
+      "lessons": [
+        { "title": "The language model is the bottleneck", "text": "The Gemini correction step took about 4.5 of the ~8.5 seconds. For production we would cache common corrections, try faster model variants and parallelise the NLP step." },
+        { "title": "Image quality matters as much as the model", "text": "Accuracy drops quickly with blurry or skewed photos. Capture guidance in the upload screen is as important as the OCR engines behind it." },
+        { "title": "Three OCR vendors means three bills", "text": "Running Google, Azure and AWS on every section improves accuracy, but cost per prescription has to be designed in from the start." },
+        { "title": "A prototype is not a clinical system", "text": "Before real patient data, the system needs authentication, audit logs, encryption at rest, HIPAA/GDPR compliance work and clinical validation with pharmacists." }
+      ]
+    },
+    {
+      "slug": "restaurant-os",
+      "source": "content/legacy/docs/RestaurantOS_CASE_STUDY.md",
+      "recommended": {
+        "status": "prototype",
+        "title": "[VERIFY] RestaurantOS: one interface for a restaurant's whole day",
+        "summary": "[VERIFY] A front-end prototype that brings menu, orders, tables, inventory and reports into one dashboard designed for staff on desktops, tablets and phones.",
+        "metrics": [
+          { "value": "8", "unit": "", "label": "Working screens: dashboard, menu, orders, tables, inventory, reports, settings", "source": "RestaurantOS prototype", "featured": true },
+          { "value": "20+", "unit": "", "label": "Reusable UI components", "source": "RestaurantOS prototype", "featured": true },
+          { "value": "6", "unit": "", "label": "Order statuses in one consistent workflow", "source": "RestaurantOS prototype", "featured": true }
+        ],
+        "metricsToRemove": [
+          { "value": "60%", "label": "Reduced Manual Administrative Tasks", "reason": "Not in the source document. The source describes a front-end application with backend integration listed as future work, so no operational result could be measured." },
+          { "value": "24/7", "label": "Business Monitoring", "reason": "Not supported: real-time updates and a backend are listed under Future Enhancements." },
+          { "value": "100%", "label": "Real-Time Operational Visibility", "reason": "Same as above." }
+        ]
+      },
+      "platforms": ["Web app (desktop, tablet, mobile)"],
+      "timeline": [],
+      "beforeAfter": [],
+      "teamRoles": [],
+      "lessons": [
+        { "title": "Headless components save weeks", "text": "Radix UI primitives gave us keyboard navigation, focus management and screen-reader support without giving up a custom design." },
+        { "title": "Design tokens first", "text": "Setting up colours, spacing and shadows as CSS variables before building screens kept eight pages consistent and made light and dark themes almost free." },
+        { "title": "Define a workflow once", "text": "A single status configuration for orders (label, icon, colour) meant every screen showed order state the same way." },
+        { "title": "[VERIFY] What's next", "text": "[VERIFY] The prototype is front-end only. The next step is a backend with authentication, live order updates over WebSockets and a kitchen display." }
+      ]
+    },
+    {
+      "slug": "hire-your-travel-partner",
+      "source": "content/legacy/docs/Hire-Your-Travel-Partner.md",
+      "recommended": {
+        "status": "[VERIFY] live or prototype?",
+        "metricsToRemove": [
+          { "value": "98%", "label": "Customer Satisfaction", "reason": "The source document attributes this to HYTP's business since 2018. It is the client's service metric, not a result of Qbitlog's work. Only show it if the client approves and the label makes that clear." },
+          { "value": "2018", "label": "Trusted Since", "reason": "The client's founding year, not a result." }
+        ],
+        "note": "The source document is written from HYTP's public About page and says the stack is 'likely' React or WordPress. It does not describe what Qbitlog built. Do not publish new detail until the team confirms Qbitlog's scope."
+      },
+      "platforms": [],
+      "timeline": [],
+      "beforeAfter": [],
+      "teamRoles": [],
+      "lessons": [],
+      "questionsForTheTeam": [
+        "What exactly did Qbitlog build for HYTP (web app, admin, mobile app, integrations), and is it live?",
+        "Which technologies did we actually use?",
+        "Did we build the companion vetting workflow, the itinerary tools and the WhatsApp Business integration, or were those existing HYTP processes?",
+        "What did we measure before and after launch?",
+        "Does HYTP approve being named, the testimonial, and the screenshots?"
+      ]
+    }
+  ]
+}

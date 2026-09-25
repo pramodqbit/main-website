@@ -1,0 +1,8 @@
+/* Admin-only overrides. Keep this minimal; Payload's own CSS variables drive the theme. */
+:root {
+  --qbit-brand: #5b2be0;
+}
+
+html[data-theme="dark"] {
+  --qbit-brand: #a487ff;
+}

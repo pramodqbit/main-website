@@ -1,0 +1,458 @@
+[
+	{
+		"slug": "medical-prescription-ocr",
+		"title": "Helping Hospitals Automate Prescription Processing",
+		"excerpt": "We helped a healthcare provider reduce manual prescription processing using AI, enabling pharmacists to spend less time on paperwork and more time on patient care.",
+		"date": "2024-12-26",
+		"tags": [
+			"AI Automation",
+			"Healthcare",
+			"Workflow Automation",
+			"OCR",
+			"Healthcare AI"
+		],
+		"heroImage": "/images/case-studies/hospital/dash.png",
+		"iconImage": "/images/medical-prescription-ocr.jpg",
+		"client": "Batra Hospital",
+		"industry": "Healthcare",
+		"duration": "10 Weeks",
+		"teamSize": "6 Developers",
+
+		"challenge": "Pharmacists relied on manually reading handwritten prescriptions, creating delays in dispensing medication, increasing administrative workload, and introducing avoidable transcription errors.",
+
+		"solution": "We automated the prescription processing workflow using AI-powered handwriting recognition, medical language processing, and intelligent validation, allowing prescriptions to be converted into structured digital records within seconds.",
+
+		"results": "Faster prescription processing, improved pharmacist productivity, reduced manual data entry, and a more reliable medication workflow.",
+
+		"technologies": [
+			{ "name": "Python", "icon": "/icons/tech/python.svg" },
+			{ "name": "FastAPI", "icon": "/icons/tech/fastapi.svg" },
+			{ "name": "React", "icon": "/icons/tech/react.svg" },
+			{ "name": "TypeScript", "icon": "/icons/tech/typescript.svg" },
+			{ "name": "Google Document AI", "icon": "/icons/tech/google.svg" },
+			{
+				"name": "Azure Document Intelligence",
+				"icon": "/icons/tech/azure.svg"
+			},
+			{ "name": "AWS Textract", "icon": "/icons/tech/aws.svg" },
+			{ "name": "AWS Comprehend Medical", "icon": "/icons/tech/aws.svg" },
+			{ "name": "Google Gemini AI", "icon": "/icons/tech/gemini.svg" },
+			{ "name": "PostgreSQL", "icon": "/icons/tech/postgresql.svg" }
+		],
+
+		"categories": ["AI Automation", "Healthcare"],
+
+		"projectType": "Healthcare Workflow Automation",
+
+		"description": "An AI-powered workflow automation platform that transforms handwritten prescriptions into structured digital records, helping hospitals improve operational efficiency, reduce manual work, and accelerate patient service.",
+
+		"mobileImage": "/images/case-studies/hospital/mb.png",
+
+		"liveUrl": "https://demo.qbitlog.com",
+
+		"metrics": [
+			{
+				"value": "99%",
+				"label": "Prescription Extraction Accuracy",
+				"icon": "target"
+			},
+			{
+				"value": "3-5s",
+				"label": "Average Processing Time",
+				"icon": "clock"
+			},
+			{
+				"value": "253K+",
+				"label": "Medicine Knowledge Base",
+				"icon": "database"
+			},
+			{
+				"value": "80%",
+				"label": "Less Manual Data Entry",
+				"icon": "zap"
+			}
+		],
+
+		"overviewAbout": "The hospital's pharmacy team was spending valuable time manually interpreting handwritten prescriptions before medicines could be dispensed. As patient volumes increased, this process became a significant operational bottleneck. Our objective was to automate repetitive work, improve prescription accuracy, and allow pharmacists to focus on patient care instead of administrative tasks.",
+
+		"solutionIntro": "Rather than replacing pharmacists, we built an AI-assisted workflow that digitizes handwritten prescriptions, validates medication information, and automatically routes uncertain cases for human review. This approach increased productivity while maintaining clinical oversight.",
+
+		"solutionFeatures": [
+			{
+				"icon": "clock",
+				"title": "Faster Prescription Processing",
+				"description": "Digitizes handwritten prescriptions within seconds, dramatically reducing manual interpretation time."
+			},
+			{
+				"icon": "users",
+				"title": "Improved Staff Productivity",
+				"description": "Allows pharmacists to focus on patient care instead of repetitive administrative work."
+			},
+			{
+				"icon": "shield-check",
+				"title": "Reduced Medication Errors",
+				"description": "AI validation and confidence scoring help minimize transcription mistakes before dispensing."
+			},
+			{
+				"icon": "database",
+				"title": "Structured Medical Records",
+				"description": "Creates searchable, standardized prescription data for downstream healthcare systems."
+			},
+			{
+				"icon": "workflow",
+				"title": "Smarter Review Process",
+				"description": "Only low-confidence prescriptions require manual verification, reducing unnecessary workload."
+			},
+			{
+				"icon": "trending-up",
+				"title": "Scalable Operations",
+				"description": "Supports increasing prescription volumes without requiring proportional staffing growth."
+			}
+		],
+
+		"features": [
+			"Automated handwritten prescription digitization",
+			"AI-assisted medication extraction",
+			"Medical terminology validation",
+			"Confidence-based review workflow",
+			"Structured digital prescription records",
+			"Searchable medicine database",
+			"Real-time processing",
+			"Hospital-ready API integration"
+		],
+
+		"screenshots": [
+			{
+				"image": "/images/case-studies/hospital/dash.png",
+				"caption": "Prescription Upload"
+			},
+			{
+				"image": "/images/case-studies/hospital/4.png",
+				"caption": "Medication Validation"
+			},
+			{
+				"image": "/images/case-studies/hospital/3.png",
+				"caption": "AI Prescription Analysis"
+			},
+			{
+				"image": "/images/case-studies/hospital/2.png",
+				"caption": "Pharmacy Workflow Dashboard"
+			}
+		],
+
+		"testimonial": {
+			"quote": "The biggest improvement wasn't just accuracy—it was how much time our pharmacists got back. Tasks that previously required manual interpretation now happen automatically, allowing our team to focus on delivering better patient care.",
+			"name": "Dr. Rajesh Mehta",
+			"position": "Pharmacy Lead",
+			"avatar": "/images/case-studies/medical-prescription-ocr-avatar.svg",
+			"rating": 5
+		},
+
+		"demoUrl": "https://demo.qbitlog.com",
+
+		"isPrototype": true,
+
+		"contentHtml": "<h2>The Business Challenge</h2><p>Handwritten prescriptions are a daily reality for many hospitals, but manually interpreting them slows pharmacy operations, increases administrative workload, and introduces unnecessary risk. As prescription volumes grow, pharmacists spend more time reading handwriting than supporting patients.</p><h2>Our Approach</h2><p>We developed an AI-powered workflow that automatically converts handwritten prescriptions into structured digital records. Multiple AI models work together to extract medication names, dosages, frequencies, and durations while validating results against a comprehensive medicine database.</p><h2>Business Impact</h2><ul><li>Reduced manual prescription processing</li><li>Improved pharmacist productivity</li><li>Accelerated patient service</li><li>Reduced transcription errors</li><li>Standardized digital prescription records</li><li>Built a scalable pharmacy workflow</li></ul><h2>Technology</h2><p>The solution combines OCR, Medical NLP, AI validation, and cloud infrastructure to deliver reliable prescription automation while maintaining clinical oversight.</p>"
+	},
+	{
+		"slug": "hire-your-travel-partner",
+		"title": "Helping a Senior Travel Business Scale with Confidence",
+		"excerpt": "We helped a senior travel company streamline trip planning, improve customer trust, and reduce manual coordination by digitizing their entire service workflow.",
+		"date": "2024-11-15",
+		"tags": [
+			"Travel Tech",
+			"Workflow Automation",
+			"Senior Care",
+			"Customer Experience"
+		],
+		"heroImage": "/images/case-studies/hytp/dash.png",
+		"iconImage": "/images/travel-partner.jpg",
+		"client": "Hire Your Travel Partner (HYTP)",
+		"industry": "Travel & Senior Care",
+		"duration": "16 Weeks",
+		"teamSize": "5 Developers",
+
+		"challenge": "As bookings increased, managing companion assignments, itinerary planning, family communication, and traveler safety became increasingly manual and difficult to scale while maintaining a premium customer experience.",
+
+		"solution": "We built a centralized operations platform that streamlines companion management, itinerary planning, family communication, and booking workflows, enabling the business to deliver a consistent travel experience while reducing operational overhead.",
+
+		"results": "Improved operational efficiency, reduced manual coordination, increased customer confidence, and created a scalable platform capable of supporting business growth.",
+
+		"technologies": [
+			{ "name": "React.js", "icon": "/icons/tech/react.svg" },
+			{ "name": "Node.js", "icon": "/icons/tech/nodejs.svg" },
+			{ "name": "PostgreSQL", "icon": "/icons/tech/postgresql.svg" },
+			{ "name": "WhatsApp Business API", "icon": "/icons/tech/whatsapp.svg" },
+			{ "name": "AWS S3", "icon": "/icons/tech/aws.svg" },
+			{ "name": "Razorpay" },
+			{ "name": "Stripe", "icon": "/icons/tech/stripe.svg" }
+		],
+
+		"categories": ["Travel Platform", "Workflow Automation"],
+
+		"projectType": "Business Operations Platform",
+
+		"description": "A business operations platform that helps senior travel companies manage bookings, companions, itineraries, and customer communication from a single system—reducing manual work while improving customer satisfaction.",
+
+		"mobileImage": "/images/case-studies/hytp/mb.png",
+
+		"metrics": [
+			{
+				"value": "98%",
+				"label": "Customer Satisfaction",
+				"icon": "smile"
+			},
+			{
+				"value": "24/7",
+				"label": "Traveler Support",
+				"icon": "shield"
+			},
+			{
+				"value": "2018",
+				"label": "Trusted Since",
+				"icon": "calendar"
+			},
+			{
+				"value": "100%",
+				"label": "Digital Trip Management",
+				"icon": "workflow"
+			}
+		],
+
+		"overviewAbout": "Hire Your Travel Partner wanted to deliver exceptional travel experiences for senior citizens without increasing operational complexity. Their growing business required a better way to manage bookings, companions, family communication, and traveler safety while maintaining the personal touch their customers valued.",
+
+		"solutionIntro": "We digitized the entire customer journey—from booking and companion matching to itinerary planning and family updates—creating a single platform that simplified operations for staff while building greater confidence for travelers and their families.",
+
+		"solutionFeatures": [
+			{
+				"icon": "users",
+				"title": "Simplified Companion Management",
+				"description": "Reduced the time required to match travelers with qualified companions through centralized profiles and availability management."
+			},
+			{
+				"icon": "map",
+				"title": "Smarter Trip Planning",
+				"description": "Enabled staff to create personalized, senior-friendly travel itineraries while reducing repetitive planning work."
+			},
+			{
+				"icon": "message-circle",
+				"title": "Family Communication",
+				"description": "Automated travel updates kept families informed throughout the journey, improving transparency and trust."
+			},
+			{
+				"icon": "shield-check",
+				"title": "Operational Consistency",
+				"description": "Standardized booking and travel workflows helped deliver a reliable customer experience across every trip."
+			},
+			{
+				"icon": "headphones",
+				"title": "Centralized Support",
+				"description": "A single platform allowed staff to manage bookings, emergencies, and traveler requests more efficiently."
+			},
+			{
+				"icon": "trending-up",
+				"title": "Scalable Business Growth",
+				"description": "The platform enables the company to manage increasing booking volumes without proportionally increasing administrative effort."
+			}
+		],
+
+		"features": [
+			"Centralized booking management",
+			"Companion matching workflow",
+			"Personalized itinerary planning",
+			"Real-time family updates",
+			"24/7 traveler support workflow",
+			"Secure online payments",
+			"Accessibility-first interface",
+			"Cloud-based trip management"
+		],
+
+		"screenshots": [
+			{
+				"image": "/images/case-studies/hytp/dash.png",
+				"caption": "Traveler Dashboard"
+			},
+			{
+				"image": "/images/case-studies/hytp/trip-planner.png",
+				"caption": "Trip Planning"
+			},
+			{
+				"image": "/images/case-studies/hytp/family.png",
+				"caption": "Family Communication"
+			},
+			{
+				"image": "/images/case-studies/hytp/booking.png",
+				"caption": "Booking Management"
+			}
+		],
+
+		"testimonial": {
+			"quote": "The new platform transformed how we manage trips. Our team spends less time coordinating logistics and more time delivering memorable travel experiences for our customers.",
+			"name": "Ananya Sharma",
+			"position": "Customer Experience Manager",
+			"avatar": "/images/case-studies/hire-your-travel-partner-avatar.svg",
+			"rating": 5
+		}
+	},
+	{
+		"slug": "restaurant-os",
+		"title": "Helping Restaurants Streamline Daily Operations from a Single Platform",
+		"excerpt": "We helped a growing restaurant business replace fragmented tools with a unified operations platform, improving staff productivity, reducing manual work, and giving managers real-time visibility across the business.",
+		"date": "2024-10-08",
+		"tags": [
+			"Restaurant Technology",
+			"Business Automation",
+			"Operations Management",
+			"Hospitality"
+		],
+		"heroImage": "/images/case-studies/re-os/dashboard.png",
+		"iconImage": "/images/restaurant-os.jpg",
+		"client": "RestaurantOS",
+		"industry": "Hospitality & Restaurants",
+		"duration": "14 Weeks",
+		"teamSize": "5 Developers",
+
+		"challenge": "Restaurant staff were managing orders, inventory, menus, reservations, and daily operations across multiple disconnected systems. This created unnecessary manual work, slowed service, and limited managers' ability to make informed operational decisions.",
+
+		"solution": "We developed a centralized restaurant management platform that brings together inventory, menu management, order tracking, reservations, reporting, and staff operations into a single intuitive dashboard.",
+
+		"results": "Reduced operational complexity, improved staff productivity, increased visibility into restaurant performance, and created a scalable operational workflow for future growth.",
+
+		"technologies": [
+			{
+				"name": "React",
+				"icon": "/icons/tech/react.svg"
+			},
+			{
+				"name": "TypeScript",
+				"icon": "/icons/tech/typescript.svg"
+			},
+			{
+				"name": "Node.js",
+				"icon": "/icons/tech/nodejs.svg"
+			},
+			{
+				"name": "PostgreSQL",
+				"icon": "/icons/tech/postgresql.svg"
+			},
+			{
+				"name": "Redis",
+				"icon": "/icons/tech/redis.svg"
+			},
+			{
+				"name": "AWS",
+				"icon": "/icons/tech/aws.svg"
+			},
+			{
+				"name": "Docker",
+				"icon": "/icons/tech/docker.svg"
+			}
+		],
+
+		"categories": ["Restaurant Management", "Business Automation"],
+
+		"projectType": "Restaurant Operations Platform",
+
+		"description": "A centralized restaurant operations platform that helps restaurant owners streamline daily workflows, improve staff efficiency, and gain real-time visibility into business performance.",
+
+		"mobileImage": "/images/case-studies/re-os/mobile.png",
+
+		"metrics": [
+			{
+				"value": "1",
+				"label": "Unified Operations Platform",
+				"icon": "layout-dashboard"
+			},
+			{
+				"value": "100%",
+				"label": "Real-Time Operational Visibility",
+				"icon": "eye"
+			},
+			{
+				"value": "24/7",
+				"label": "Business Monitoring",
+				"icon": "activity"
+			},
+			{
+				"value": "60%",
+				"label": "Reduced Manual Administrative Tasks",
+				"icon": "zap"
+			}
+		],
+
+		"overviewAbout": "As restaurant operations expanded, relying on separate systems for inventory, menu updates, orders, reservations, and reporting became increasingly inefficient. Managers needed a better way to oversee the business while enabling staff to work faster and with fewer errors.",
+
+		"solutionIntro": "We built a unified operations platform that simplifies restaurant management by centralizing every critical workflow into one easy-to-use system. This reduced operational complexity while providing real-time insights that help managers make faster business decisions.",
+
+		"solutionFeatures": [
+			{
+				"icon": "clipboard-list",
+				"title": "Centralized Restaurant Operations",
+				"description": "Manage menus, inventory, orders, reservations, and staff workflows from a single dashboard."
+			},
+			{
+				"icon": "package",
+				"title": "Smarter Inventory Management",
+				"description": "Track inventory levels in real time to reduce stock shortages, minimize waste, and improve purchasing decisions."
+			},
+			{
+				"icon": "shopping-cart",
+				"title": "Faster Order Management",
+				"description": "Streamline order processing and improve coordination between front-of-house and kitchen staff."
+			},
+			{
+				"icon": "bar-chart-3",
+				"title": "Real-Time Business Insights",
+				"description": "Access live operational reports that help managers monitor performance and make informed decisions."
+			},
+			{
+				"icon": "users",
+				"title": "Improved Staff Productivity",
+				"description": "Simplified workflows reduce repetitive tasks, allowing staff to focus on delivering better customer service."
+			},
+			{
+				"icon": "trending-up",
+				"title": "Built for Growth",
+				"description": "A scalable platform designed to support multiple restaurant locations as the business expands."
+			}
+		],
+
+		"features": [
+			"Centralized operations dashboard",
+			"Inventory management",
+			"Menu management",
+			"Order tracking",
+			"Reservation management",
+			"Real-time reporting",
+			"Role-based staff access",
+			"Multi-location support"
+		],
+
+		"screenshots": [
+			{
+				"image": "/images/case-studies/re-os/dashboard.png",
+				"caption": "Operations Dashboard"
+			},
+			{
+				"image": "/images/case-studies/re-os/inventory.png",
+				"caption": "Inventory Management"
+			},
+			{
+				"image": "/images/case-studies/re-os/ordering.png",
+				"caption": "Order Tracking"
+			},
+			{
+				"image": "/images/case-studies/re-os/business.png",
+				"caption": "Business Analytics"
+			}
+		],
+
+		"testimonial": {
+			"quote": "Managing our restaurant has become significantly easier. Our team spends less time switching between systems and more time serving customers. Having all operational data in one place has completely changed how we run the business.",
+			"name": "Michael Anderson",
+			"position": "Restaurant Operations Manager",
+			"avatar": "/images/case-studies/restaurant-os-avatar.svg",
+			"rating": 5
+		}
+	}
+]

@@ -1,117 +1,64 @@
-import { MetadataRoute } from 'next'
-import posts from './blog/_data/posts.json'
-import caseStudies from './case-studies/_data/case-studies.json'
-import { readdirSync, readFileSync } from 'fs'
-import { join } from 'path'
+import type { MetadataRoute } from "next";
+import type { CollectionSlug, Where } from "payload";
+import { publicUrlFor } from "@/cms/utilities/paths";
+import { getPayloadClient } from "@/lib/payload";
+import { absoluteUrl } from "@/lib/site";
 
-// Get all service slugs
-function getAllServiceSlugs(): string[] {
+export const revalidate = 3600;
+
+const LEGAL_UPDATED = new Date("2026-09-18");
+
+const STATIC_PATHS = ["/work", "/services", "/insights", "/about/team", "/careers", "/log"];
+
+type Row = { slug?: string | null; updatedAt?: string | null };
+
+async function published(collection: CollectionSlug, extra?: Where): Promise<Row[]> {
   try {
-    const dataDir = join(process.cwd(), 'app/services/_data')
-    const files = readdirSync(dataDir).filter((file) => file.endsWith('.json'))
-    
-    return files.map((filename) => {
-      const filePath = join(dataDir, filename)
-      const fileContent = readFileSync(filePath, 'utf-8')
-      const data = JSON.parse(fileContent)
-      return data.slug
-    })
-  } catch (error) {
-    console.error('Error reading service files:', error)
-    return []
+    const payload = await getPayloadClient();
+    const where: Where = { _status: { equals: "published" } };
+    const res = await payload.find({
+      collection,
+      where: extra ? { and: [where, extra] } : where,
+      limit: 1000,
+      depth: 0,
+      pagination: false,
+      select: { slug: true, updatedAt: true },
+    });
+    return res.docs as Row[];
+  } catch {
+    return [];
   }
 }
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://qbitlog.com'
-  
-  // Static pages
-  const staticPages = [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/aboutus`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/services`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'daily' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/case-studies`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/teams`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/contact-us`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/academyai/privacy-policy`,
-      lastModified: new Date('2026-09-18'),
-      changeFrequency: 'yearly' as const,
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/academyai/terms-and-conditions`,
-      lastModified: new Date('2026-09-18'),
-      changeFrequency: 'yearly' as const,
-      priority: 0.5,
-    },
-  ]
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const [pages, caseStudies, services, industries, posts, jobs] = await Promise.all([
+    published("pages", { "meta.noindex": { not_equals: true } }),
+    published("case-studies"),
+    published("services"),
+    published("industries"),
+    published("posts"),
+    published("jobs", { status: { equals: "open" } }),
+  ]);
 
-  // Service pages
-  const servicePages = getAllServiceSlugs().map((slug) => ({
-    url: `${baseUrl}/services/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.8,
-  }))
+  const entry = (path: string, updatedAt?: string | null): MetadataRoute.Sitemap[number] => ({
+    url: absoluteUrl(path),
+    ...(updatedAt ? { lastModified: new Date(updatedAt) } : {}),
+  });
 
-  // Blog posts
-  const blogPages = posts.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }))
+  const docs = (collection: string, rows: Row[]) =>
+    rows.filter((r) => r.slug).map((r) => entry(publicUrlFor(collection, r.slug), r.updatedAt));
 
-  // Case studies
-  const caseStudyPages = caseStudies.map((study) => ({
-    url: `${baseUrl}/case-studies/${study.slug}`,
-    lastModified: new Date(study.date),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }))
-
+  const home = pages.find((p) => p.slug === "home");
   return [
-    ...staticPages,
-    ...servicePages,
-    ...blogPages,
-    ...caseStudyPages,
-  ]
+    entry("/", home?.updatedAt),
+    ...docs("pages", pages.filter((p) => p.slug !== "home")),
+    ...STATIC_PATHS.map((p) => entry(p)),
+    ...docs("case-studies", caseStudies),
+    ...docs("services", services),
+    ...docs("industries", industries),
+    ...docs("posts", posts),
+    ...docs("jobs", jobs),
+    { url: absoluteUrl("/academyai/privacy-policy"), lastModified: LEGAL_UPDATED },
+    { url: absoluteUrl("/academyai/terms-and-conditions"), lastModified: LEGAL_UPDATED },
+  ];
 }
-

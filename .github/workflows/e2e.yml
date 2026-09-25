@@ -1,0 +1,44 @@
+name: Build and e2e
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    services:
+      mongo:
+        image: mongo:7
+        ports: ["27017:27017"]
+    env:
+      DATABASE_URI: mongodb://127.0.0.1:27017/qbitlog-ci
+      PAYLOAD_SECRET: ci-only-secret-not-used-in-production-000000
+      PREVIEW_SECRET: ci-preview-secret
+      CRON_SECRET: ci-cron-secret
+      NEXT_PUBLIC_SITE_URL: http://localhost:3001
+      EMAIL_DRY_RUN: "true"
+      PLAYWRIGHT_BASE_URL: http://localhost:3001
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run seed
+      - name: Publish seeded drafts for the test run
+        run: npm run seed:publish-drafts
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - name: Start server
+        run: npx next start --port 3001 &
+      - run: npx wait-on http://localhost:3001/work --timeout 120000
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: playwright-report

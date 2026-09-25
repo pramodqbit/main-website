@@ -1,27 +1,9 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from "next";
+import { siteUrl } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://qbitlog.com'
-  
   return {
-    rules: [
-      {
-        userAgent: '*',
-        allow: '/',
-        disallow: ['/api/', '/admin/', '/_next/'],
-      },
-      {
-        userAgent: 'Googlebot',
-        allow: '/',
-        disallow: ['/api/', '/admin/'],
-      },
-      {
-        userAgent: 'Bingbot',
-        allow: '/',
-        disallow: ['/api/', '/admin/'],
-      },
-    ],
-    sitemap: `${baseUrl}/sitemap.xml`,
-  }
+    rules: [{ userAgent: "*", allow: "/", disallow: ["/admin", "/api/", "/next/", "/styleguide"] }],
+    sitemap: `${siteUrl}/sitemap.xml`,
+  };
 }
-
