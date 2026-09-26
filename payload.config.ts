@@ -1,5 +1,11 @@
+import dns from "node:dns";
 import path from "path";
 import { fileURLToPath } from "url";
+
+const mongoDns = process.env.MONGODB_DNS_SERVERS?.trim();
+if (mongoDns) {
+  dns.setServers(mongoDns.split(",").map((s) => s.trim()).filter(Boolean));
+}
 import sharp from "sharp";
 import { buildConfig, type PayloadRequest } from "payload";
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
@@ -7,7 +13,6 @@ import { nodemailerAdapter } from "@payloadcms/email-nodemailer";
 import { seoPlugin } from "@payloadcms/plugin-seo";
 import { redirectsPlugin } from "@payloadcms/plugin-redirects";
 import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
-import { s3Storage } from "@payloadcms/storage-s3";
 import * as C from "./cms/collections";
 import * as G from "./cms/globals";
 import { defaultEditor } from "./cms/fields/editor";
@@ -121,23 +126,22 @@ export default buildConfig({
         },
       },
     }),
+    /**
+     * All uploads live in Vercel Blob; without a token Payload falls back to local disk (dev only).
+     * Blob objects are public-only, so résumés get a random suffix (unguessable URL) and are still
+     * served to the admin through /api/resumes/file/*, which enforces the collection's read access.
+     * clientUploads sends admin uploads straight to Blob, bypassing Vercel's 4.5MB body limit.
+     */
     vercelBlobStorage({
       enabled: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
-      collections: { media: true },
-      token: process.env.BLOB_READ_WRITE_TOKEN ?? "",
-    }),
-    s3Storage({
-      enabled: Boolean(process.env.S3_BUCKET),
-      collections: { resumes: { prefix: "resumes" } },
-      bucket: process.env.S3_BUCKET ?? "",
-      config: {
-        region: process.env.S3_REGION ?? "auto",
-        endpoint: process.env.S3_ENDPOINT || undefined,
-        credentials: {
-          accessKeyId: process.env.S3_ACCESS_KEY_ID ?? "",
-          secretAccessKey: process.env.S3_SECRET_ACCESS_KEY ?? "",
-        },
+      token: process.env.BLOB_READ_WRITE_TOKEN,
+      collections: {
+        media: { prefix: "media" },
+        resumes: { prefix: "resumes" },
       },
+      addRandomSuffix: true,
+      alwaysInsertFields: true,
+      clientUploads: true,
     }),
   ],
 });

@@ -35,7 +35,6 @@ import { BeforeDashboard as BeforeDashboard_daeae1d051edd84ea84c757302c19c36 } f
 import { ContentHealth as ContentHealth_e21717584edcd0f01d8a31b6d0b645af } from '../../../cms/components/ContentHealth'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 import { VercelBlobClientUploadHandler as VercelBlobClientUploadHandler_16c82c5e25f430251a3e3ba57219ff4e } from '@payloadcms/storage-vercel-blob/client'
-import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client'
 
 /** @type import('payload').ImportMap */
 export const importMap = {
@@ -75,6 +74,5 @@ export const importMap = {
   "/cms/components/BeforeDashboard#BeforeDashboard": BeforeDashboard_daeae1d051edd84ea84c757302c19c36,
   "/cms/components/ContentHealth#ContentHealth": ContentHealth_e21717584edcd0f01d8a31b6d0b645af,
   "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1,
-  "@payloadcms/storage-vercel-blob/client#VercelBlobClientUploadHandler": VercelBlobClientUploadHandler_16c82c5e25f430251a3e3ba57219ff4e,
-  "@payloadcms/storage-s3/client#S3ClientUploadHandler": S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24
+  "@payloadcms/storage-vercel-blob/client#VercelBlobClientUploadHandler": VercelBlobClientUploadHandler_16c82c5e25f430251a3e3ba57219ff4e
 }
