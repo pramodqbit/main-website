@@ -13,10 +13,16 @@ function resolveSiteUrl(): string {
 
 export const siteUrl = resolveSiteUrl();
 
+/**
+ * Custom domains the site is served on. Vercel exposes no env for these, and Payload ignores the
+ * login cookie on requests from an origin missing from `csrf`, so add any new domain here.
+ */
+const CUSTOM_DOMAINS = ["qbitlog.com", "www.qbitlog.com", "staging.qbitlog.com"];
+
 /** Every origin this deployment answers on, for Payload's CORS/CSRF allowlists. */
 export const siteOrigins = [
   ...new Set(
-    [siteUrl, process.env.VERCEL_URL, process.env.VERCEL_BRANCH_URL]
+    [siteUrl, process.env.VERCEL_URL, process.env.VERCEL_BRANCH_URL, ...CUSTOM_DOMAINS]
       .filter((v): v is string => Boolean(v))
       .map((v) => (v.startsWith("http") ? v : `https://${v}`)),
   ),

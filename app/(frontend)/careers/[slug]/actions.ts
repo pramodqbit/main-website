@@ -1,5 +1,6 @@
 "use server";
 
+import { randomUUID } from "node:crypto";
 import { z } from "zod";
 import type { FormState } from "@/components/forms/types";
 import { fakeId, fieldErrors, isBot, textValues, verifyTurnstile } from "@/lib/forms";
@@ -85,7 +86,8 @@ export async function applyForJob(_prev: FormState, formData: FormData): Promise
       return { ok: false, values, message: "This role is no longer accepting applications." };
     }
 
-    const safeName = `${slugifyText(d.name) || "applicant"}-${Date.now()}.${ext}`;
+    // Blob URLs are public, so the random UUID is what keeps a résumé's link unguessable.
+    const safeName = `${slugifyText(d.name) || "applicant"}-${randomUUID()}.${ext}`;
     const resume = await payload.create({
       collection: "resumes",
       overrideAccess: true,

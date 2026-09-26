@@ -128,9 +128,11 @@ export default buildConfig({
     }),
     /**
      * All uploads live in Vercel Blob; without a token Payload falls back to local disk (dev only).
-     * Blob objects are public-only, so résumés get a random suffix (unguessable URL) and are still
-     * served to the admin through /api/resumes/file/*, which enforces the collection's read access.
+     * Blob objects are public-only, so résumé filenames carry a random UUID (careers action) and the admin
+     * reads them through /api/resumes/file/*, which enforces the collection's read access.
      * clientUploads sends admin uploads straight to Blob, bypassing Vercel's 4.5MB body limit.
+     * Don't enable addRandomSuffix: the adapter writes each image size's suffixed name over the
+     * doc's filename, so the doc points at files that don't exist.
      */
     vercelBlobStorage({
       enabled: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
@@ -139,7 +141,6 @@ export default buildConfig({
         media: { prefix: "media" },
         resumes: { prefix: "resumes" },
       },
-      addRandomSuffix: true,
       alwaysInsertFields: true,
       clientUploads: true,
     }),
