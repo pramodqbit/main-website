@@ -1,4 +1,5 @@
 import type { Block } from "payload";
+import { BeforeAfter } from "./BeforeAfter";
 import { CapabilityMatrix } from "./CapabilityMatrix";
 import { CaseStudyGrid } from "./CaseStudyGrid";
 import { ContactForm } from "./ContactForm";
@@ -36,6 +37,7 @@ export const pageBlocks: Block[] = [
   Showcase,
   CaseStudyGrid,
   Method,
+  BeforeAfter,
   ServiceList,
   IndustryGrid,
   Insights,

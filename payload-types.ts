@@ -245,6 +245,7 @@ export interface Page {
     | ShowcaseBlock
     | CaseStudyGridBlock
     | MethodBlock
+    | BeforeAfterBlock
     | ServiceListBlock
     | IndustryGridBlock
     | InsightsBlock
@@ -748,6 +749,7 @@ export interface Industry {
         | ShowcaseBlock
         | CaseStudyGridBlock
         | MethodBlock
+        | BeforeAfterBlock
         | ServiceListBlock
         | IndustryGridBlock
         | InsightsBlock
@@ -865,6 +867,7 @@ export interface Service {
         | ShowcaseBlock
         | CaseStudyGridBlock
         | MethodBlock
+        | BeforeAfterBlock
         | ServiceListBlock
         | IndustryGridBlock
         | InsightsBlock
@@ -1124,6 +1127,46 @@ export interface Testimonial {
   approved?: boolean | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BeforeAfterBlock".
+ */
+export interface BeforeAfterBlock {
+  /**
+   * Small mono eyebrow above the title, e.g. "LOG / WORK".
+   */
+  label?: string | null;
+  title: string;
+  /**
+   * Shown in violet italic after the title.
+   */
+  emphasis?: string | null;
+  /**
+   * One or two sentences under the title.
+   */
+  intro?: string | null;
+  more?: LinkField;
+  rows?:
+    | {
+        /**
+         * The area of work, e.g. "Reporting"
+         */
+        aspect: string;
+        /**
+         * How it works today (the pain).
+         */
+        before: string;
+        /**
+         * How it works after (no numbers unless measured).
+         */
+        after: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'beforeAfter';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2329,6 +2372,7 @@ export interface PagesSelect<T extends boolean = true> {
         showcase?: T | ShowcaseBlockSelect<T>;
         caseStudyGrid?: T | CaseStudyGridBlockSelect<T>;
         method?: T | MethodBlockSelect<T>;
+        beforeAfter?: T | BeforeAfterBlockSelect<T>;
         serviceList?: T | ServiceListBlockSelect<T>;
         industryGrid?: T | IndustryGridBlockSelect<T>;
         insights?: T | InsightsBlockSelect<T>;
@@ -2537,6 +2581,27 @@ export interface MethodBlockSelect<T extends boolean = true> {
       };
   testimonial?: T;
   inverted?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BeforeAfterBlock_select".
+ */
+export interface BeforeAfterBlockSelect<T extends boolean = true> {
+  label?: T;
+  title?: T;
+  emphasis?: T;
+  intro?: T;
+  more?: T | LinkFieldSelect<T>;
+  rows?:
+    | T
+    | {
+        aspect?: T;
+        before?: T;
+        after?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
@@ -2991,6 +3056,7 @@ export interface ServicesSelect<T extends boolean = true> {
         showcase?: T | ShowcaseBlockSelect<T>;
         caseStudyGrid?: T | CaseStudyGridBlockSelect<T>;
         method?: T | MethodBlockSelect<T>;
+        beforeAfter?: T | BeforeAfterBlockSelect<T>;
         serviceList?: T | ServiceListBlockSelect<T>;
         industryGrid?: T | IndustryGridBlockSelect<T>;
         insights?: T | InsightsBlockSelect<T>;
@@ -3059,6 +3125,7 @@ export interface IndustriesSelect<T extends boolean = true> {
         showcase?: T | ShowcaseBlockSelect<T>;
         caseStudyGrid?: T | CaseStudyGridBlockSelect<T>;
         method?: T | MethodBlockSelect<T>;
+        beforeAfter?: T | BeforeAfterBlockSelect<T>;
         serviceList?: T | ServiceListBlockSelect<T>;
         industryGrid?: T | IndustryGridBlockSelect<T>;
         insights?: T | InsightsBlockSelect<T>;

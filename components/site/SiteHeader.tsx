@@ -10,8 +10,8 @@ export async function SiteHeader() {
 
   return (
     <header className="sticky top-[env(safe-area-inset-top)] z-30 border-b border-line bg-[color-mix(in_srgb,var(--paper)_92%,transparent)] backdrop-blur-[6px]">
-      <div className="wrap flex items-center justify-between gap-5 py-3.5">
-        <Logo />
+      <div className="wrap relative flex items-center gap-5 py-3.5">
+        <Logo className="relative z-10 shrink-0" />
         <HeaderNav links={links} cta={cta} />
       </div>
     </header>

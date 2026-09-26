@@ -3,6 +3,7 @@ import { Heading } from "@/components/ds/Heading";
 import { LogLabel } from "@/components/ds/LogLabel";
 import { Section } from "@/components/ds/Section";
 import type { Page } from "@/payload-types";
+import { BeforeAfterBlock } from "./BeforeAfterBlock";
 import { CapabilityMatrixBlock } from "./CapabilityMatrixBlock";
 import { CaseStudyGridBlock } from "./CaseStudyGridBlock";
 import { ContactFormBlock } from "./ContactFormBlock";
@@ -35,6 +36,12 @@ export type LayoutBlock = NonNullable<Page["layout"]>[number];
 /** Blocks that render the page's `h1`. */
 const H1_BLOCKS = new Set<LayoutBlock["blockType"]>(["heroLog", "contactForm"]);
 
+/** Blocks that become the page's opening section (and `h1`) when they come first with a title. */
+const LEAD_BLOCKS = new Set<LayoutBlock["blockType"]>(["industryGrid"]);
+
+const leads = (block: LayoutBlock | undefined) =>
+  Boolean(block && LEAD_BLOCKS.has(block.blockType) && "title" in block && block.title);
+
 /** One block. `blocks` and `i` give the neighbours (a hero absorbs the proof strip after it). */
 export function renderBlock(block: LayoutBlock, i: number, blocks: LayoutBlock[]): ReactNode {
   const key = block.id ?? `${block.blockType}-${i}`;
@@ -54,10 +61,12 @@ export function renderBlock(block: LayoutBlock, i: number, blocks: LayoutBlock[]
       return <CaseStudyGridBlock key={key} block={block} />;
     case "method":
       return <MethodBlock key={key} block={block} />;
+    case "beforeAfter":
+      return <BeforeAfterBlock key={key} block={block} />;
     case "serviceList":
       return <ServiceListBlock key={key} block={block} />;
     case "industryGrid":
-      return <IndustryGridBlock key={key} block={block} />;
+      return <IndustryGridBlock key={key} block={block} lead={i === 0 && leads(block)} />;
     case "insights":
       return <InsightsBlock key={key} block={block} />;
     case "faq":
@@ -110,7 +119,7 @@ export function renderBlock(block: LayoutBlock, i: number, blocks: LayoutBlock[]
  */
 export function RenderBlocks({ blocks, pageTitle }: { blocks: LayoutBlock[] | null | undefined; pageTitle?: string }) {
   if (!blocks?.length) return null;
-  const title = blocks.some((b) => H1_BLOCKS.has(b.blockType)) ? null : pageTitle;
+  const title = blocks.some((b) => H1_BLOCKS.has(b.blockType)) || leads(blocks[0]) ? null : pageTitle;
   return (
     <>
       {title ? (

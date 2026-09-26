@@ -19,6 +19,7 @@ import { seedPages } from "./steps/14-pages";
 import { seedDecisionDrafts } from "./steps/15-decision-drafts";
 import { seedPhase8Drafts } from "./steps/16-phase8-drafts";
 import { seedStoryLayer } from "./steps/17-story-layer";
+import { seedIndustriesPage } from "./steps/18-industries-page";
 
 const STEPS: Array<[string, (p: Payload) => Promise<void>]> = [
   ["media", seedMedia],
@@ -38,6 +39,7 @@ const STEPS: Array<[string, (p: Payload) => Promise<void>]> = [
   ["decision-drafts", seedDecisionDrafts],
   ["16", seedPhase8Drafts],
   ["17", seedStoryLayer],
+  ["18", seedIndustriesPage],
 ];
 
 async function main() {

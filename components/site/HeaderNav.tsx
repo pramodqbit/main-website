@@ -6,14 +6,24 @@ import { useEffect, useRef, useState } from "react";
 import { clsx as cn } from "clsx";
 import { buttonStyles } from "@/components/ds/buttonStyles";
 
-function CtaLink({ link, size, location }: { link: NavLink; size?: "sm"; location: string }) {
+function CtaLink({
+  link,
+  size,
+  location,
+  className,
+}: {
+  link: NavLink;
+  size?: "sm";
+  location: string;
+  className?: string;
+}) {
   const external = link.newTab || /^(https?:)?\/\//.test(link.href);
   return (
     <Link
       href={link.href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener" : undefined}
-      className={buttonStyles({ size })}
+      className={cn(buttonStyles({ size }), className)}
       data-cta={location}
     >
       {link.label}
@@ -107,24 +117,29 @@ export function HeaderNav({ links, cta }: HeaderNavProps) {
 
   return (
     <>
-      <nav aria-label="Primary" className="flex items-center gap-7 max-[859px]:hidden">
+      <nav
+        aria-label="Primary"
+        className="absolute left-1/2 top-1/2 z-10 flex -translate-x-1/2 -translate-y-1/2 items-center max-[859px]:hidden"
+      >
         <ul className="m-0 flex list-none items-center gap-7 p-0">{linkEls(false)}</ul>
-        {cta ? <CtaLink link={cta} size="sm" location="header" /> : null}
       </nav>
 
-      <button
-        ref={buttonRef}
-        type="button"
-        aria-expanded={open}
-        aria-controls="mobile-nav"
-        onClick={() => {
-          setOpenedAt(pathname);
-          setOpen((o) => !o);
-        }}
-        className="border border-ink px-3 py-2 font-mono text-label uppercase min-[860px]:hidden"
-      >
-        {open ? "Close" : "Menu"}
-      </button>
+      <div className="relative z-10 ml-auto flex items-center gap-5">
+        {cta ? <CtaLink link={cta} size="sm" location="header" className="max-[859px]:hidden" /> : null}
+        <button
+          ref={buttonRef}
+          type="button"
+          aria-expanded={open}
+          aria-controls="mobile-nav"
+          onClick={() => {
+            setOpenedAt(pathname);
+            setOpen((o) => !o);
+          }}
+          className="border border-ink px-3 py-2 font-mono text-label uppercase min-[860px]:hidden"
+        >
+          {open ? "Close" : "Menu"}
+        </button>
+      </div>
 
       {open ? (
         <div

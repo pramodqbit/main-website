@@ -105,3 +105,15 @@ These come from `content/drafts/phase-8/case-studies.json`. The seed step **does
 - [ ] Intro line "SHIPPED · Academy AI, our own product.": confirm Academy AI is live and can be called our own product. (Content → Pages → Home → Hero → Opening intro)
 - [ ] Manifesto line "Deadlines paid for by tired teams.": founders approve the tone. (Content → Pages → Home → Manifesto, draft added by seed step 17)
 - [ ] Publish the Home page draft that adds the manifesto after review.
+
+## Industries landing page (`/industries`)
+
+Added by seed step 18 as a draft (Content → Pages → Industries). Until it's published, `/industries` shows a plain grid of industries + the closing CTA.
+
+- [ ] "What gets easier" (before / after) rows: check each "after" is something we have actually delivered for a client.
+- [ ] "From 0 to 1" steps: "Prove: a small working version… before you commit to more" and "Hand over: You’re never locked in". Confirm both match how we sell and contract.
+- [ ] Five new `[REVIEW]` FAQs (spreadsheets, industry experience, existing systems, sensitive data, "How will we know it’s working?"). The data answer mentions GDPR only; add HIPAA etc. only if we can back it up. Remove the `[REVIEW]` prefix to approve.
+- [ ] The page also reuses two Phase 8 FAQs: "Can we start small?" and "What happens after launch?".
+- [ ] Publish the page.
+- [ ] Industry tiles show the **first featured result** of the industry's first case study. Today that's "99% extraction accuracy" (Healthcare, unverified), "100% real-time visibility" (Hospitality, not really a measurement) and "98% customer satisfaction" (Travel). To change one, reorder the results in the case study or untick "featured".
+- [ ] Pain points ("problems we solve") drafted for all 4 industries (Industries → each → draft). SaaS has no case study, so its two are general. Review, then publish each industry.

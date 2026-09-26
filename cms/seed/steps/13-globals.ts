@@ -8,7 +8,7 @@ const header: Omit<Header, "id"> = {
   nav: [
     { link: urlLink("Work", "/work") },
     { link: urlLink("Services", "/services") },
-    { link: urlLink("Industries", "/industries/healthcare") },
+    { link: urlLink("Industries", "/industries") },
     { link: urlLink("Insights", "/insights") },
     { link: urlLink("About", "/about") },
   ],
@@ -22,7 +22,7 @@ const footer: Omit<Footer, "id"> = {
       title: "Work",
       links: [
         { link: urlLink("Case studies", "/work") },
-        { link: urlLink("Industries", "/industries/healthcare") },
+        { link: urlLink("Industries", "/industries") },
         { link: urlLink("Studio log", "/log") },
       ],
     },
