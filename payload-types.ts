@@ -658,6 +658,8 @@ export interface Media {
    * e.g. "Image: Freepik". Required for stock images.
    */
   credit?: string | null;
+  prefix?: string | null;
+  _objectKey?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -2039,6 +2041,8 @@ export interface Application {
  */
 export interface Resume {
   id: string;
+  prefix?: string | null;
+  _objectKey?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -3393,6 +3397,8 @@ export interface MediaSelect<T extends boolean = true> {
   alt?: T;
   caption?: T;
   credit?: T;
+  prefix?: T;
+  _objectKey?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -3454,6 +3460,8 @@ export interface MediaSelect<T extends boolean = true> {
  * via the `definition` "resumes_select".
  */
 export interface ResumesSelect<T extends boolean = true> {
+  prefix?: T;
+  _objectKey?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
