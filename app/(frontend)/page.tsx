@@ -23,7 +23,7 @@ export default async function HomePage() {
     <>
       <JsonLd data={websiteLd(settings)} />
       <RenderBlocks blocks={page.layout} />
-      <p>TESTING</p>
+
     </>
   );
 }
