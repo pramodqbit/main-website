@@ -17,6 +17,7 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 import { JsonLd } from "@/components/site/JsonLd";
 import { isDraft } from "@/lib/draft";
 import { organizationLd } from "@/lib/jsonld";
+import { siteUrl } from "@/lib/site";
 import { getSiteSettings } from "@/lib/queries/globals";
 import "./globals.css";
 
@@ -27,7 +28,6 @@ const serif = Source_Serif_4({
   style: ["normal", "italic"], axes: ["opsz"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://qbitlog.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

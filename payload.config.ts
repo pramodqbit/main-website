@@ -17,9 +17,9 @@ import * as C from "./cms/collections";
 import * as G from "./cms/globals";
 import { defaultEditor } from "./cms/fields/editor";
 import { publicUrlFor } from "./cms/utilities/paths";
+import { siteOrigins, siteUrl } from "./lib/site";
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3001";
 
 /**
  * Zoho SMTP is only wired when credentials exist. Without them Payload falls back to its console
@@ -50,7 +50,7 @@ const canRunJobs = ({ req }: { req: PayloadRequest }): boolean => {
 type SeoDoc = { title?: unknown; summary?: unknown; excerpt?: unknown; slug?: unknown } | undefined;
 
 export default buildConfig({
-  serverURL: siteUrl,
+  // No serverURL: Payload builds links (uploads, auth emails) from the request host it is served on.
   secret: process.env.PAYLOAD_SECRET ?? "",
   db: mongooseAdapter({ url: process.env.DATABASE_URI ?? "" }),
   editor: defaultEditor,
@@ -89,8 +89,8 @@ export default buildConfig({
     access: { run: canRunJobs },
     tasks: [],
   },
-  cors: [siteUrl],
-  csrf: [siteUrl],
+  cors: siteOrigins,
+  csrf: siteOrigins,
   plugins: [
     seoPlugin({
       collections: ["pages", "case-studies", "services", "industries", "posts", "jobs"],

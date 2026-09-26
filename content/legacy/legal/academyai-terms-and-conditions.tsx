@@ -4,7 +4,7 @@ import Navbar from "@/components/global/navbar";
 import Footer from "@/components/global/footer";
 import { ChevronRight, Home, FileText } from "lucide-react";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://qbitlog.com";
+import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
 	title: "Terms & Conditions - Academy Ai",

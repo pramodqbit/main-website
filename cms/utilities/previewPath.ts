@@ -1,6 +1,7 @@
+import { siteUrl } from "../../lib/site";
 import { publicUrlFor } from "./paths";
 
-export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3001";
+export { siteUrl };
 
 export function previewPath({ collection, slug }: { collection: string; slug?: string | null }): string {
   return (

@@ -1,11 +1,9 @@
 import { getSeedPayload } from "../cms/seed/lib/payload";
 
 function refuseProduction() {
-  const site = process.env.NEXT_PUBLIC_SITE_URL ?? "";
   const db = process.env.DATABASE_URI ?? "";
-  const productionSite = /(^|\/\/|\.)qbitlog\.com(\/|$)/i.test(site);
   const remoteDb = !/^mongodb:\/\/(127\.0\.0\.1|localhost|mongo)(:\d+)?\//i.test(db);
-  if (process.env.VERCEL_ENV === "production" || productionSite || remoteDb) {
+  if (process.env.VERCEL_ENV === "production" || remoteDb) {
     console.error("Refusing: production or remote database. Local dev only.");
     process.exit(1);
   }

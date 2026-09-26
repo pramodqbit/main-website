@@ -171,7 +171,6 @@ payload-types.ts         generated
 |---|---|---|
 | `DATABASE_URI` | Payload | MongoDB Atlas connection string `[HUMAN]` |
 | `PAYLOAD_SECRET` | Payload | 32+ random chars |
-| `NEXT_PUBLIC_SITE_URL` | SEO, preview | `https://qbitlog.com` in production |
 | `PREVIEW_SECRET` | draft preview | random string |
 | `BLOB_READ_WRITE_TOKEN` | media storage | Vercel Blob `[HUMAN]` |
 | `S3_BUCKET`, `S3_REGION`, `S3_ENDPOINT`, `S3_ACCESS_KEY_ID`, `S3_SECRET_ACCESS_KEY` | résumé storage (private) | Cloudflare R2 or AWS S3 `[HUMAN]` |

@@ -4,7 +4,7 @@ import { Heading } from "@/components/ds/Heading";
 import { LogLabel } from "@/components/ds/LogLabel";
 import { Section } from "@/components/ds/Section";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://qbitlog.com";
+import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
 	title: "Terms & Conditions - Academy Ai",

@@ -18,7 +18,7 @@ Marketing site for Qbitlog — Next.js frontend + Payload CMS (MongoDB).
    cp .env.example .env.local
    ```
 
-   Minimum for dev: `DATABASE_URI`, `PAYLOAD_SECRET`, `NEXT_PUBLIC_SITE_URL=http://localhost:3001`, `CRON_SECRET` (any long random string). Leave `TURNSTILE_SECRET_KEY` unset unless you add a widget.
+   Minimum for dev: `DATABASE_URI`, `PAYLOAD_SECRET`, `CRON_SECRET` (any long random string). Leave `TURNSTILE_SECRET_KEY` unset unless you add a widget.
 
 3. Install and seed:
 

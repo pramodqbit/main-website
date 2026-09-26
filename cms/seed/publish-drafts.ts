@@ -9,11 +9,9 @@ import { getSeedPayload } from "./lib/payload";
 const VERSIONED: CollectionSlug[] = ["pages", "case-studies", "services", "industries", "posts", "jobs"];
 
 function refuseProduction() {
-  const site = process.env.NEXT_PUBLIC_SITE_URL ?? "";
   const db = process.env.DATABASE_URI ?? "";
-  const productionSite = /(^|\/\/|\.)qbitlog\.com(\/|$)/i.test(site);
   const remoteDb = !/^mongodb:\/\/(127\.0\.0\.1|localhost|mongo)(:\d+)?\//i.test(db);
-  if (process.env.VERCEL_ENV === "production" || productionSite || remoteDb) {
+  if (process.env.VERCEL_ENV === "production" || remoteDb) {
     console.error("Refusing to publish drafts: this looks like a production or remote database. Local and CI databases only.");
     process.exit(1);
   }

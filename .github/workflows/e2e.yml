@@ -16,7 +16,6 @@ jobs:
       PAYLOAD_SECRET: ci-only-secret-not-used-in-production-000000
       PREVIEW_SECRET: ci-preview-secret
       CRON_SECRET: ci-cron-secret
-      NEXT_PUBLIC_SITE_URL: http://localhost:3001
       EMAIL_DRY_RUN: "true"
       PLAYWRIGHT_BASE_URL: http://localhost:3001
     steps:
