@@ -1802,6 +1802,9 @@ export interface Team {
    */
   role: string;
   bio?: string | null;
+  /**
+   * Never shown as a photo: the site turns it into a dot portrait. Use a head-and-shoulders shot on a plain background, and set the image's focal point on the face. Without a photo, the card shows a dot silhouette.
+   */
   photo?: (string | null) | Media;
   /**
    * Skills, e.g. "React Native", "LLM agents". Press Enter after each.

@@ -21,12 +21,13 @@ async function stillHidden(page: Page) {
   );
 }
 
-const PAGES = ["/", "/services", "/work", "/insights", "/about"];
+const PAGES = ["/", "/services", "/work", "/insights", "/about", "/about/team"];
 
 test.describe("story layer", () => {
   /* Warm the pages up so a slow first compile (dev server) doesn't trip the 6s no-JS safety net. */
-  test.beforeAll(async ({ request }) => {
-    for (const path of PAGES) await request.get(path);
+  test.beforeAll(async ({ request }, testInfo) => {
+    testInfo.setTimeout(180_000);
+    for (const path of PAGES) await request.get(path, { timeout: 120_000 });
   });
 
   test("home: the intro plays, can be skipped, and hands over to the hero", async ({ page }) => {

@@ -29,7 +29,15 @@ export const Team: CollectionConfig = {
     },
     { name: "role", type: "text", required: true, admin: { description: 'Job title, e.g. "Lead Engineer".' } },
     { name: "bio", type: "textarea" },
-    { name: "photo", type: "upload", relationTo: "media" },
+    {
+      name: "photo",
+      type: "upload",
+      relationTo: "media",
+      admin: {
+        description:
+          "Never shown as a photo: the site turns it into a dot portrait. Use a head-and-shoulders shot on a plain background, and set the image's focal point on the face. Without a photo, the card shows a dot silhouette.",
+      },
+    },
     {
       name: "expertise",
       type: "text",

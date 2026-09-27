@@ -19,6 +19,7 @@
 | **Decision plays out** | Every `DecisionRecord` (case studies, service pages, blocks) | Rejected options are crossed out one by one, then the chosen option lights up with “✓ CHOSEN”. |
 | **Pins A → B → C** | Every `AnnotatedMedia` with annotations | Pins pop in one after another. |
 | **Hero bit field** | `heroLog` | Calm: one quick sweep every 25s (first after 9s); cursor still flips bits. |
+| **Team portraits** | `/about/team` and every `teamGrid` block | Each person is drawn as a 48×48 **dot-matrix portrait**, never shown as a photo. The dots fly in, top to bottom, the first time a card scrolls into view, and turn violet under the pointer. No photo: a neutral head-and-shoulders silhouette shaded in dots, with the light angle and five violet bits generated from the name. |
 | **Footer wordmark** | Site footer | Dots fly together into QBITLOG the first time it scrolls into view; one sweep every 28s. |
 | **Smooth scrolling** | Site-wide | Lenis (`lerp 0.085`); same-page anchors glide; paused during the intro. |
 
@@ -41,6 +42,10 @@ components/motion/
   Narrator.tsx         client, in layout: chapters = every `#main [data-chapter]`; shape chosen from the label.
   IntroLog.tsx         client, rendered by HeroLogBlock: typing + dot dissolve; dispatches qb:bits-burst and qb:intro-done.
   ManifestoMotion.tsx  client, wraps the manifesto: scroll progress → .mw.lit/.edge + cursor dot block.
+  DotPortrait.tsx      client, in TeamCard: draws the dot grid (or the name-based silhouette), assembles on view, hover bits.
+lib/portrait.ts        server-only: team photo → 48×48 darkness grid (sharp: attention crop, greyscale, normalise),
+                       one hex digit per dot. Reads the 480px thumb from Vercel Blob (head()) or media/public locally.
+                       Only this string is sent to the browser; the photo URL never is. Cached per media id + updatedAt.
   BitField.tsx         canvas field/wordmark: sweep interval, wordmark assemble, listens for qb:bits-burst.
   events.ts            INTRO_DONE, BITS_BURST, afterIntro()
 app/(frontend)/globals.css   "Story layer" section: all hidden/visible states, keyed on html.rv / html.qb-intro.
@@ -73,6 +78,7 @@ Components that already reveal: `SectionHead` (label/intro/more), `Heading`, `Le
 
 - **Hero (log panel) → Opening intro (home page only):** `enabled` + up to 5 lines (`label` in violet mono, `text` typed, ≤ 70 chars). Hero blocks saved before this field existed use the defaults in `cms/blocks/heroIntroDefaults.ts`.
 - **New block “Manifesto (why we exist)”** (`cms/blocks/Manifesto.ts`): `label`, 1–6 `lines` (`*asterisks*` = violet italic), `signature`.
+- **Team → Photo:** never shown as a photo; it becomes the dot portrait. Best results: head-and-shoulders, plain background. **Set the focal point on the face** (Media → the image → focal point): the portrait is cropped to a head-and-shoulders square around it. Without a focal point, tall photos use their upper part and others use sharp's attention crop. Blob files are read at `<prefix>/<_objectKey>/<filename>`, the same key the storage adapter uses. After replacing a photo, the team page updates on its next revalidation (the `team` hook revalidates `/about/team`).
 - Seed step `17` (`npm run seed -- --only=17`) adds the manifesto to the home page **as a draft**. Publish it in `/admin` → Pages → Home after review.
 
 ## 9.5 Testing

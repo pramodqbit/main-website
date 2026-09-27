@@ -65,11 +65,6 @@ export function technologiesByCategory(techs: Technology[]): { category: string;
     .map(([category, names]) => ({ category, names }));
 }
 
-export function teamPhoto(t: Team) {
-  const img = mediaSource(t.photo as Media | null, "thumb");
-  return img ? { src: img.src, alt: img.alt || t.name } : null;
-}
-
 export function teamLinks(t: Team) {
   const l = t.links;
   return [

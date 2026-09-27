@@ -1,15 +1,17 @@
 import { Section } from "@/components/ds/Section";
 import { TeamCard } from "@/components/ds/TeamCard";
-import { teamLinks, teamPhoto } from "@/lib/content";
+import { teamLinks } from "@/lib/content";
+import { portraitDots } from "@/lib/portrait";
 import { listTeam } from "@/lib/queries/team";
 import type { Team, TeamGridBlock as TeamGridData } from "@/payload-types";
 import { SectionHeader } from "./SectionHeader";
 
-export function TeamGrid({ people }: { people: Team[] }) {
+export async function TeamGrid({ people }: { people: Team[] }) {
+  const portraits = await Promise.all(people.map((t) => portraitDots(t.photo)));
   return (
     <div className="grid grid-cols-3 gap-5 max-[980px]:grid-cols-2 max-[560px]:grid-cols-1">
-      {people.map((t) => (
-        <TeamCard key={t.id} id={t.slug ?? undefined} name={t.name} role={t.role} bio={t.bio} photo={teamPhoto(t)} links={teamLinks(t)} />
+      {people.map((t, i) => (
+        <TeamCard key={t.id} id={t.slug ?? undefined} name={t.name} role={t.role} bio={t.bio} portrait={portraits[i]} links={teamLinks(t)} />
       ))}
     </div>
   );

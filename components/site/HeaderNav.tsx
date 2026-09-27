@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { clsx as cn } from "clsx";
 import { buttonStyles } from "@/components/ds/buttonStyles";
 
@@ -52,9 +53,14 @@ function isActive(pathname: string, href: string) {
 export function HeaderNav({ links, cta }: HeaderNavProps) {
   const pathname = usePathname() ?? "/";
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [openedAt, setOpenedAt] = useState(pathname);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   if (open && openedAt !== pathname) {
     setOpen(false);
@@ -141,25 +147,28 @@ export function HeaderNav({ links, cta }: HeaderNavProps) {
         </button>
       </div>
 
-      {open ? (
-        <div
-          id="mobile-nav"
-          ref={panelRef}
-          role="dialog"
-          aria-modal="true"
-          aria-label="Menu"
-          className="fixed inset-x-0 bottom-0 top-[calc(env(safe-area-inset-top)+61px)] z-40 overflow-y-auto bg-paper px-6 pb-10 min-[860px]:hidden"
-        >
-          <nav aria-label="Mobile">
-            <ul className="m-0 list-none p-0">{linkEls(true)}</ul>
-          </nav>
-          {cta ? (
-            <div className="mt-8">
-              <CtaLink link={cta} location="mobile_nav" />
-            </div>
-          ) : null}
-        </div>
-      ) : null}
+      {open && mounted
+        ? createPortal(
+            <div
+              id="mobile-nav"
+              ref={panelRef}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Menu"
+              className="fixed inset-x-0 bottom-0 top-[calc(env(safe-area-inset-top)+61px)] z-40 overflow-y-auto bg-paper px-6 pb-10 min-[860px]:hidden"
+            >
+              <nav aria-label="Mobile">
+                <ul className="m-0 list-none p-0">{linkEls(true)}</ul>
+              </nav>
+              {cta ? (
+                <div className="mt-8">
+                  <CtaLink link={cta} location="mobile_nav" />
+                </div>
+              ) : null}
+            </div>,
+            document.body,
+          )
+        : null}
     </>
   );
 }
