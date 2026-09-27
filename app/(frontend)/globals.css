@@ -297,6 +297,13 @@ html.rv [data-manifesto] .mw:not(.lit) {
 }
 html.rv [data-manifesto] .mw.lit.edge { color: var(--brand); }
 
+/* Theme switch (ThemeToggle): the new theme grows out of the button as a circle, no cross-fade. */
+html.theme-vt::view-transition-old(root),
+html.theme-vt::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+html.theme-vt::view-transition-new(root) { z-index: 1; }
+.theme-icon { animation: theme-icon-in .45s cubic-bezier(.34,1.4,.64,1); }
+@keyframes theme-icon-in { from { opacity: 0; transform: rotate(-90deg) scale(.6); } }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }

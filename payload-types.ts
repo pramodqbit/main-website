@@ -1102,7 +1102,7 @@ export interface MethodBlock {
     | null;
   testimonial?: (string | null) | Testimonial;
   /**
-   * Dark section (light text on ink).
+   * Show the section on the lighter surface colour so it stands out from the page.
    */
   inverted?: boolean | null;
   id?: string | null;
@@ -4029,7 +4029,7 @@ export interface MethodSection {
     | null;
   testimonial?: (string | null) | Testimonial;
   /**
-   * Dark section (light text on ink).
+   * Show the section on the lighter surface colour so it stands out from the page.
    */
   inverted?: boolean | null;
   id?: string | null;

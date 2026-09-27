@@ -345,7 +345,7 @@ export default async function CaseStudyPage({ params }: Props) {
       ) : null}
 
       {showQuote && testimonial ? (
-        <Section tone="inverted">
+        <Section tone="surface">
           <Quote
             quote={testimonial.quote}
             name={testimonial.name}

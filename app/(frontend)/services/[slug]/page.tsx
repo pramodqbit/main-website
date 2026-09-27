@@ -115,9 +115,9 @@ export default async function ServicePage({ params }: Props) {
       ) : null}
 
       {steps.length ? (
-        <Section tone="inverted">
+        <Section tone="surface">
           <SectionHead label="LOG / METHOD" title="How we run it" />
-          <Steps steps={steps} tone="inverted" />
+          <Steps steps={steps} />
         </Section>
       ) : null}
 

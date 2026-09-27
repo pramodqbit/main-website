@@ -29,7 +29,8 @@ export const Method: Block = {
       name: "inverted",
       type: "checkbox",
       defaultValue: true,
-      admin: { description: "Dark section (light text on ink)." },
+      label: "Highlight",
+      admin: { description: "Show the section on the lighter surface colour so it stands out from the page." },
     },
   ],
 };

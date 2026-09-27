@@ -14,7 +14,7 @@ export async function SiteFooter() {
   const legal = resolveLinks(footer?.legalLinks);
 
   return (
-    <footer className="bg-paper pb-10 pt-14">
+    <footer className="bg-paper pb-5 pt-14">
       <div className="wrap">
         <div className="grid grid-cols-2 gap-8 min-[761px]:grid-cols-[1.4fr_repeat(3,1fr)]">
           <div className="col-span-full min-[761px]:col-span-1" data-reveal="up" data-reveal-stagger={100}>
@@ -56,24 +56,28 @@ export async function SiteFooter() {
           ) : null}
         </div>
 
-        <div className="mt-12 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-4.5" data-reveal="fade" data-reveal-delay={200}>
+        <div
+          className="mt-12 grid grid-cols-[1fr_auto_1fr] items-center gap-3 border-t border-line pt-4.5 max-[640px]:grid-cols-1 max-[640px]:justify-items-center max-[640px]:text-center"
+          data-reveal="fade"
+          data-reveal-delay={200}
+        >
           <span className="font-mono text-label uppercase text-muted">
             © {new Date().getFullYear()} {siteName}
           </span>
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-            {legal.length ? (
-              <ul className="m-0 flex list-none flex-wrap gap-x-4 gap-y-2 p-0">
-                {legal.map((l) => (
-                  <li key={l.href}>
-                    <Link href={l.href} className="font-mono text-label uppercase text-muted no-underline hover:text-ink">
-                      {l.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            ) : null}
-            <ThemeToggle />
-          </div>
+          <ThemeToggle className="max-[640px]:order-last" />
+          {legal.length ? (
+            <ul className="m-0 flex list-none flex-wrap justify-end gap-x-4 gap-y-2 p-0 max-[640px]:justify-center">
+              {legal.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="font-mono text-label uppercase text-muted no-underline hover:text-ink">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <span />
+          )}
         </div>
       </div>
     </footer>

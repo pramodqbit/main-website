@@ -10,15 +10,15 @@ import { SectionHeader } from "./SectionHeader";
 /** "How we work" steps with the progress rail, plus an optional approved client quote. */
 export async function MethodBlock({ block }: { block: MethodData }) {
   const draft = await isDraft();
-  const inverted = block.inverted !== false;
+  /* The `inverted` field now means "highlight": the surface colour of the current theme, not a fixed dark band. */
+  const highlight = block.inverted !== false;
   const t = populated(block.testimonial) ? block.testimonial : null;
   const showQuote = t && (t.approved || draft);
   return (
-    <Section id="method" tone={inverted ? "inverted" : "paper"}>
+    <Section id="method" tone={highlight ? "surface" : "paper"}>
       <SectionHeader data={block} />
       {block.steps?.length ? (
         <Steps
-          tone={inverted ? "inverted" : "paper"}
           steps={block.steps.map((s) => ({ name: s.name, description: s.description, deliverable: s.deliverable }))}
         />
       ) : null}

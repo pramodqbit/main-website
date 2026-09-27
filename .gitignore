@@ -54,3 +54,6 @@ next-env.d.ts
 # ignore all files in the docs folder
 /docs
 /docs/*
+
+/content
+/content/*
