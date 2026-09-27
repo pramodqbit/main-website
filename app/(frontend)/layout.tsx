@@ -17,7 +17,7 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 import { JsonLd } from "@/components/site/JsonLd";
 import { isDraft } from "@/lib/draft";
 import { organizationLd } from "@/lib/jsonld";
-import { siteUrl } from "@/lib/site";
+import { brandLogoPath, siteUrl } from "@/lib/site";
 import { getSiteSettings } from "@/lib/queries/globals";
 import "./globals.css";
 
@@ -33,7 +33,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: { default: "Qbitlog: Software, on the record", template: "%s · Qbitlog" },
   description: "Qbitlog designs and builds web, mobile and AI products for teams in the US and Europe, with every decision documented and every result measured.",
-  icons: { icon: [{ url: "/favicon.ico" }] },
+  icons: {
+    icon: [{ url: brandLogoPath, type: "image/webp" }],
+    apple: [{ url: brandLogoPath, type: "image/webp" }],
+  },
   verification: { google: process.env.GOOGLE_SITE_VERIFICATION || "sjK98A76LzMwXaZmTO1dNeZjbQPckDpM2uKNvkpraI8" },
 };
 

@@ -13,6 +13,9 @@ function resolveSiteUrl(): string {
 
 export const siteUrl = resolveSiteUrl();
 
+/** Primary brand mark (navbar, favicon, structured data fallbacks). */
+export const brandLogoPath = "/logo (4).webp";
+
 /**
  * Custom domains the site is served on. Vercel exposes no env for these, and Payload ignores the
  * login cookie on requests from an origin missing from `csrf`, so add any new domain here.
